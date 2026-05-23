@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRNKL Dashboard — Woningbouw</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf9f4;
+  --bg-tertiary: #f5f4ee;
+  --bg-orange-fade: linear-gradient(135deg, #FFF8F2 0%, #FFFAF6 100%);
+  --text-primary: #1a1a18;
+  --text-secondary: #5f5e5a;
+  --text-tertiary: #888780;
+  --border-light: rgba(0,0,0,0.08);
+  --border-mid: rgba(0,0,0,0.14);
+  --orange: #FF5A1F;
+  --orange-text: #C2410C;
+  --orange-dark: #E64A0F;
+  --orange-light: #FFF1EA;
+  --orange-border: #FFE3D1;
+  --green: #2D9B6A;
+  --red: #D14B4B;
+  --yellow: #D89B2D;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1c;
+    --bg-secondary: #2a2a27;
+    --bg-tertiary: #242422;
+    --bg-orange-fade: linear-gradient(135deg, #2a201c 0%, #241e1a 100%);
+    --text-primary: #e8e6de;
+    --text-secondary: #9c9a92;
+    --text-tertiary: #94928a;
+    --border-light: rgba(255,255,255,0.06);
+    --border-mid: rgba(255,255,255,0.12);
+    --orange-light: #3a2520;
+    --orange-border: #5a3525;
+    --orange-text: #FF5A1F;
+  }
+}
+body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--orange-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border-mid); position: sticky; top: 0; z-index: 100; }
+@media (prefers-color-scheme: dark) { header { background: rgba(30,30,28,0.85); } }
+.nav { display: flex; align-items: center; padding: 14px 0; gap: 32px; }
+.nav-logo { flex-shrink: 0; }
+.nav-logo:hover { text-decoration: none; }
+.bl-mark, .bl-sub { white-space: nowrap; }
+.merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+.nav-logo .bl-mark { font-weight: 800; font-size: 22px; color: var(--orange); letter-spacing: -0.03em; }
+.nav-links { display: flex; gap: 28px; margin-left: auto; align-items: center; }
+.nav-link { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+.nav-link:hover { color: var(--text-primary); text-decoration: none; }
+.hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 56px 0 64px; }
+.hero h1 { font-size: 42px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 16px; }
+.hero h1 em { font-style: normal; color: var(--orange); }
+.hero p.lede { font-size: 17px; color: var(--text-secondary); max-width: 720px; line-height: 1.55; }
+.section { padding: 56px 0; }
+.section.bg-primary { background: var(--bg-primary); }
+.section-eyebrow { font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+.section-title { font-size: 26px; font-weight: 700; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 12px; }
+.section-lede { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; max-width: 720px; }
+
+/* Spoor-koppen */
+.spoor-header { margin-top: 40px; margin-bottom: 16px; }
+.spoor-header h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.spoor-header p { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+/* Doel-grid */
+.doel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 900px) { .doel-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .doel-grid { grid-template-columns: 1fr; } }
+.doel-card { display: block; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 18px 16px; color: inherit; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
+.doel-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-color: var(--orange-border); text-decoration: none; }
+.doel-id { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.04em; }
+.doel-titel { font-size: 14px; font-weight: 600; margin-top: 6px; line-height: 1.35; color: var(--text-primary); }
+.doel-meta { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.tag { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; background: var(--bg-tertiary); color: var(--text-secondary); }
+.tag.aangenomen { background: rgba(45,155,106,0.12); color: var(--green); }
+.tag.verworpen { background: rgba(209,75,75,0.10); color: var(--red); }
+.tag.programma { background: var(--orange-light); color: var(--orange-text); }
+.tag.blind { background: var(--bg-tertiary); color: var(--text-tertiary); font-style: italic; }
+
+/* Detail-pagina */
+.doel-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 48px 0 40px; }
+.doel-hero .doel-id { font-size: 13px; }
+.doel-hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin-top: 8px; margin-bottom: 16px; }
+.doel-hero .akkoord-tekst { font-size: 16px; color: var(--text-secondary); font-style: italic; padding: 14px 18px; background: rgba(255,255,255,0.6); border-left: 3px solid var(--orange); border-radius: 6px; max-width: 780px; }
+@media (prefers-color-scheme: dark) { .doel-hero .akkoord-tekst { background: rgba(58,37,32,0.6); } }
+
+/* Programma-blok */
+.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 700px) { .prog-grid { grid-template-columns: 1fr; } }
+.prog-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 14px; }
+.prog-partij { font-size: 13px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.02em; margin-bottom: 6px; }
+.prog-status { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-bottom: 8px; }
+.prog-status.behouden { background: rgba(45,155,106,0.14); color: var(--green); }
+.prog-status.afgezwakt { background: rgba(216,155,45,0.14); color: var(--yellow); }
+.prog-status.gesneuveld { background: rgba(209,75,75,0.12); color: var(--red); }
+.prog-status.uniek-coalitie { background: var(--bg-tertiary); color: var(--text-secondary); }
+.prog-tekst { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.prog-toelichting { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 6px; }
+
+/* Kamerstukken */
+table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--bg-secondary); border-radius: 10px; overflow: hidden; }
+.kamerstukken th, .kamerstukken td { padding: 10px 12px; text-align: left; border-bottom: 0.5px solid var(--border-light); font-size: 13px; vertical-align: top; }
+.kamerstukken td.datum { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kamerstukken th { background: var(--bg-tertiary); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); }
+.kamerstukken td.stem { font-family: var(--font-mono); font-size: 12px; text-align: center; font-weight: 700; }
+.stem-V { color: var(--green); } .stem-T { color: var(--red); } .stem-onbekend { color: var(--text-tertiary); }
+.kamerstukken tr.aangenomen td.uitkomst { color: var(--green); font-weight: 600; }
+.kamerstukken tr.verworpen td.uitkomst { color: var(--red); font-weight: 600; }
+.kamerwerk-subkop { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; margin: 32px 0 4px; }
+.kamerwerk-sublede { font-size: 13px; color: var(--text-tertiary); margin-bottom: 14px; }
+
+/* Lege staat */
+.empty { padding: 28px; background: var(--bg-secondary); border: 1px dashed var(--border-mid); border-radius: 10px; color: var(--text-tertiary); text-align: center; font-size: 13px; }
+
+/* Duiding */
+.duiding-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.duiding-card.is-verworpen { background: var(--bg-primary); border-style: dashed; border-color: var(--border-mid); }
+.duiding-card-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.duiding-type-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; border: 1px solid transparent; }
+.duiding-type-badge.afzwakking { background: rgba(209,75,75,0.12); color: var(--red); }
+.duiding-type-badge.blokkade { background: rgba(209,75,75,0.12); color: var(--red); }
+.duiding-type-badge.aanscherping { background: var(--orange-light); color: var(--orange-text); }
+.duiding-type-badge.bevestiging { background: rgba(45,155,106,0.14); color: var(--green); }
+.duiding-type-badge.eigen-partij-gap { background: var(--text-primary); color: var(--bg-primary); }
+.duiding-type-badge.muted { background: transparent; color: var(--text-tertiary); border-color: var(--border-mid); }
+.duiding-status { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; }
+.duiding-status.aangenomen { background: rgba(45,155,106,0.14); color: var(--green); }
+.duiding-status.verworpen { background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-mid); }
+.duiding-effect { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding: 10px 13px; background: var(--bg-secondary); border-left: 2px solid var(--border-mid); border-radius: 0 6px 6px 0; }
+.duiding-zaak { font-size: 12px; color: var(--text-tertiary); margin-bottom: 8px; }
+.duiding-zaak a { color: var(--text-tertiary); text-decoration: underline; }
+.duiding-notitie-tekst { font-size: 14px; color: var(--text-primary); line-height: 1.65; }
+.duiding-bron { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--border-light); }
+
+/* Begroting-blok */
+.begroting-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; }
+.begroting-naam { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.begroting-artikel { font-size: 11px; color: var(--text-tertiary); margin-bottom: 12px; }
+.begroting-bar { height: 7px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
+.begroting-bar-fill { height: 100%; background: var(--orange); }
+.begroting-cijfers { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; color: var(--text-primary); }
+.begroting-cijfers em { font-style: normal; color: var(--text-tertiary); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 6px; }
+.begroting-verschil { color: var(--text-secondary); }
+.begroting-bron { font-size: 11px; color: var(--text-tertiary); font-style: italic; margin-top: 6px; }
+
+/* Externe toetsing */
+.toets-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.toets-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.toets-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border-mid); }
+.toets-instantie { font-size: 12px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.02em; }
+.toets-titel { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 8px; }
+.toets-tekst { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+.toets-reactie { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding: 10px 13px; background: var(--bg-secondary); border-left: 2px solid var(--border-mid); border-radius: 0 6px 6px 0; }
+.toets-reactie-kop { font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; margin-right: 6px; }
+.toets-bron { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--border-light); }
+.toets-bron a { color: var(--text-tertiary); text-decoration: underline; }
+
+/* Indicator-blok */
+.indicator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .indicator-grid { grid-template-columns: 1fr; } }
+.indicator-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 18px; }
+.indicator-naam { font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.indicator-bron { font-size: 10px; color: var(--text-tertiary); margin-bottom: 10px; }
+.indicator-bron a { color: var(--text-tertiary); text-decoration: underline; }
+.indicator-laatste { font-size: 24px; font-weight: 700; color: var(--orange); letter-spacing: -0.01em; line-height: 1; }
+.indicator-laatste small { font-size: 11px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; margin-left: 6px; }
+.indicator-periode { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+.indicator-referentie { margin-top: 10px; padding: 8px 10px; background: var(--orange-light); border-radius: 6px; font-size: 12px; }
+.indicator-referentie .ref-norm { color: var(--text-secondary); }
+.indicator-referentie .ref-gap { font-weight: 700; }
+.ref-gap.onder { color: var(--red); }
+.ref-gap.boven { color: var(--green); }
+.cbs-interpretatie { font-size: 14px; color: var(--text-secondary); line-height: 1.65; padding: 16px 18px; background: var(--bg-secondary); border-left: 3px solid var(--orange); border-radius: 6px; margin-bottom: 28px; }
+.cbs-interpretatie p { margin: 0 0 10px; }
+.cbs-interpretatie p:last-child { margin-bottom: 0; }
+.indicator-historie { margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--border-light); display: flex; flex-direction: column; gap: 4px; }
+.indicator-historie-row { display: flex; justify-content: space-between; font-size: 12px; }
+.indicator-historie-row span:first-child { color: var(--text-tertiary); }
+.indicator-historie-row span:last-child { font-family: var(--font-mono); color: var(--text-secondary); }
+
+/* Portal */
+.portal-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 60px 0 52px; }
+.hero-logo { margin-bottom: 28px; line-height: 1; }
+.hero-logo .bl-mark { display: block; font-weight: 800; font-size: 62px; color: var(--orange); letter-spacing: -0.03em; line-height: 1; }
+.hero-logo .bl-sub { display: block; font-weight: 700; font-size: 15px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.22em; margin-top: 12px; }
+@media (max-width: 520px) { .hero-logo .bl-mark { font-size: 46px; } .hero-logo .bl-sub { font-size: 12px; letter-spacing: 0.18em; } }
+@media (prefers-color-scheme: dark) { .hero-logo .bl-sub { color: var(--text-secondary); } }
+.portal-titel { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 10px 0 18px; }
+.portal-lede { font-size: 17px; color: var(--text-secondary); line-height: 1.6; max-width: 720px; }
+.thema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 4px; }
+.thema-tile { display: block; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 22px 24px; }
+.thema-tile.live { border-color: var(--orange-border); }
+.thema-tile.live:hover { border-color: var(--orange); text-decoration: none; }
+.thema-tile h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+.thema-tile .thema-meta { font-size: 13px; color: var(--text-tertiary); margin-top: 5px; }
+.thema-tile .thema-cta { font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 16px; }
+.thema-tile.binnenkort { opacity: 0.6; }
+.thema-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 6px; margin-top: 16px; background: var(--bg-tertiary); color: var(--text-tertiary); }
+
+footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; border-top: 0.5px solid var(--border-light); font-size: 12px; color: var(--text-tertiary); text-align: center; }
+.accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo"><span class="bl-mark">TRNKL<span class="merkpunt"></span></span></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Dashboard</a>
+        <a href="methode.html" class="nav-link">Methode</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<section class="hero"><div class="container">
+<h1>Politiek Dashboard — <em>Woningbouw</em></h1>
+<p class="lede">Voor elk doel uit het hoofdstuk Bouwen en wonen van het coalitieakkoord 2026&ndash;2030: wat het kabinet beloofde, wat de drie coalitiepartijen in hun programma schreven, en welke Kamerzaken er sindsdien op zijn ingediend en hoe daarover is gestemd.</p>
+</div></section>
+<section class="section bg-primary"><div class="container-narrow">
+<div class="section-eyebrow">Leeswijzer</div>
+<h2 class="section-title">Hoe lees je dit dashboard?</h2>
+<div style="font-size:15px; color: var(--text-secondary); line-height: 1.75;">
+<p><strong>Wat is dit?</strong> Het dashboard ontleedt het hoofdstuk &lsquo;Bouwen en wonen&rsquo; van het coalitieakkoord 2026&ndash;2030 in losse doelen, gegroepeerd in drie sporen — <em>Belemmeringen</em>, <em>Bouwen</em> en <em>Betaalbaarheid</em> — met daarnaast één referentiepunt (de gewenste 100.000 woningen per jaar) en enkele knelpunten die buiten dit hoofdstuk vallen. Elke doelpagina bouwt het doel laag voor laag op: wat het <em>akkoord</em> afspreekt, wat de coalitiepartijen er in hun <em>programma</em> over schreven, welk <em>Kamerwerk</em> er sinds de be&euml;diging van het kabinet (23 februari 2026) op is verricht, een redactionele <em>duiding</em> daarvan, feitelijke <em>cijfers</em>, en &mdash; waar onafhankelijke instanties zich hebben uitgesproken &mdash; een <em>externe toetsing</em>.</p>
+<p><strong>Hoe lees je het?</strong> Klik een doel aan voor de detailpagina. Bij de Kamerzaken zie je hoe D66, VVD en CDA stemden (<span class="stem-V" style="font-weight:700">V</span> = voor, <span class="stem-T" style="font-weight:700">T</span> = tegen) en wat de uitkomst was; klik op het onderwerp om het stuk te lezen op tweedekamer.nl.</p>
+<p><strong>Wat zegt het wel &mdash; en niet?</strong> Het dashboard toont <em>welke posities op welk doel zijn ingenomen</em>, niet of een doel wordt behaald. Een doel zonder Kamerwerk betekent niet dat er niets gebeurt; een aangenomen motie betekent niet dat het doel is bereikt. Het is geen oordeel over partijen, maar een geordende weergave van publieke bronnen. Voor de keuzes daarachter: zie de <a href="methode.html">methodepagina</a>.</p>
+</div></div></section>
+<section class="section"><div class="container">
+<div class="spoor-header"><h2>Referentiepunt</h2>
+<p>Het ankergetal waartegen de productie wordt afgemeten — geen kabinetstoezegging, wel de gewenste norm. · 1 doel</p></div>
+<div class="doel-grid">
+<a href="doel/WB-00.html" class="doel-card"><div class="doel-id">WB-00</div><div class="doel-titel">Gewenste bouwproductie: 100.000 woningen per jaar</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+</div>
+<div class="spoor-header"><h2>Belemmeringen</h2>
+<p>Schrappen, versoepelen, versimpelen — bezwaar, vergunningen, splitsen, kamerverhuur. · 19 doelen</p></div>
+<div class="doel-grid">
+<a href="doel/WB-01.html" class="doel-card"><div class="doel-id">WB-01</div><div class="doel-titel">Eén beroepsgang (geen stapeling bezwaar→beroep)</div><div class="doel-meta"><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-02.html" class="doel-card"><div class="doel-id">WB-02</div><div class="doel-titel">Vaste uitspraaktermijnen bij beroep</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-03.html" class="doel-card"><div class="doel-id">WB-03</div><div class="doel-titel">Vaste vergoeding bij stilleggen bouw</div><div class="doel-meta"><span class="tag blind">geen Kamerwerk gevonden</span></div></a>
+<a href="doel/WB-04.html" class="doel-card"><div class="doel-id">WB-04</div><div class="doel-titel">Drempels bezwaar/beroep omhoog</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-05.html" class="doel-card"><div class="doel-id">WB-05</div><div class="doel-titel">Landelijke regeling nadeelcompensatie/planschade</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-06.html" class="doel-card"><div class="doel-id">WB-06</div><div class="doel-titel">Ambtelijke capaciteit vergunningverlening</div><div class="doel-meta"><span class="tag aangenomen">3× aangenomen</span><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-07.html" class="doel-card"><div class="doel-id">WB-07</div><div class="doel-titel">Jaarlijkse Vereenvoudigingswet</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-08.html" class="doel-card"><div class="doel-id">WB-08</div><div class="doel-titel">Simpelere regels optoppen/splitsen, vergunningsvrij waar mogelijk</div><div class="doel-meta"><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-09.html" class="doel-card"><div class="doel-id">WB-09</div><div class="doel-titel">Gemeenten verplicht helder beleid splitsen/transformeren/optoppen</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-10.html" class="doel-card"><div class="doel-id">WB-10</div><div class="doel-titel">Rijk minimumomstandigheden splitsen/transformeren/optoppen</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-11.html" class="doel-card"><div class="doel-id">WB-11</div><div class="doel-titel">Woningdelen/kamerverhuur makkelijker</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-12.html" class="doel-card"><div class="doel-id">WB-12</div><div class="doel-titel">Familie-/mantelzorgwoning op eigen terrein vergunningsvrij</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-13.html" class="doel-card"><div class="doel-id">WB-13</div><div class="doel-titel">Belemmeringen hospitaverhuur weghalen</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-14.html" class="doel-card"><div class="doel-id">WB-14</div><div class="doel-titel">Standaardisering duurzaamheidsnormen; bovenwettelijke eisen schrappen</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-15.html" class="doel-card"><div class="doel-id">WB-15</div><div class="doel-titel">Provincies uniformeren natuurregels</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-16.html" class="doel-card"><div class="doel-id">WB-16</div><div class="doel-titel">Gemeenten ruimtelijk kwaliteitskader; welstandscommissies overbodig</div><div class="doel-meta"><span class="tag blind">geen Kamerwerk gevonden</span></div></a>
+<a href="doel/WB-17.html" class="doel-card"><div class="doel-id">WB-17</div><div class="doel-titel">Besluit bouwwerken leefomgeving vereenvoudigen</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-18.html" class="doel-card"><div class="doel-id">WB-18</div><div class="doel-titel">Wet betaalbare huur evaluatie &amp; optimalisatie</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag verworpen">2× verworpen</span><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-19.html" class="doel-card"><div class="doel-id">WB-19</div><div class="doel-titel">Zelfbewoning/opkoopplicht inperken</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+</div>
+<div class="spoor-header"><h2>Bouwen</h2>
+<p>Ruim baan voor nieuwe huizen — locaties, regie Rijk, betaalbare percentages, doorstroom. · 15 doelen</p></div>
+<div class="doel-grid">
+<a href="doel/WB-20.html" class="doel-card"><div class="doel-id">WB-20</div><div class="doel-titel">Minstens 30 grootschalige nieuwbouwlocaties van nationaal belang</div><div class="doel-meta"><span class="tag aangenomen">3× aangenomen</span><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-21.html" class="doel-card"><div class="doel-id">WB-21</div><div class="doel-titel">Sterkere regierol Rijk in ruimtelijke ordening en woningbouw</div><div class="doel-meta"><span class="tag aangenomen">2× aangenomen</span><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-22.html" class="doel-card"><div class="doel-id">WB-22</div><div class="doel-titel">Beloning gemeenten die doelen overtreffen; ondersteuning achterblijvers</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-23.html" class="doel-card"><div class="doel-id">WB-23</div><div class="doel-titel">Investeren in realisatiestimulans en woningbouwimpuls; NPLV borgen</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-24.html" class="doel-card"><div class="doel-id">WB-24</div><div class="doel-titel">Nationaal wettelijk vastleggen waar/hoeveel/wanneer woningen</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-25.html" class="doel-card"><div class="doel-id">WB-25</div><div class="doel-titel">Forse verhoging betaalbare huur &amp; koop; oormerken betaalbare koop</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag verworpen">1× verworpen</span><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-26.html" class="doel-card"><div class="doel-id">WB-26</div><div class="doel-titel">Woondeals: 2/3 betaalbaar, 30% sociale huur, 25% betaalbare koop</div><div class="doel-meta"><span class="tag aangenomen">3× aangenomen</span><span class="tag verworpen">5× verworpen</span><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-27.html" class="doel-card"><div class="doel-id">WB-27</div><div class="doel-titel">Gebiedssubsidies bundelen in één budget</div><div class="doel-meta"><span class="tag blind">geen Kamerwerk gevonden</span></div></a>
+<a href="doel/WB-28.html" class="doel-card"><div class="doel-id">WB-28</div><div class="doel-titel">Toepassen instrumenten crisis- en herstelwet voor procedures</div><div class="doel-meta"><span class="tag blind">geen Kamerwerk gevonden</span></div></a>
+<a href="doel/WB-29.html" class="doel-card"><div class="doel-id">WB-29</div><div class="doel-titel">Bereikbaarheid nieuwe wijken: middelen OV &amp; auto</div><div class="doel-meta"><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-30.html" class="doel-card"><div class="doel-id">WB-30</div><div class="doel-titel">Financiële positie corporaties &amp; private verhuurders verbeteren</div><div class="doel-meta"><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-31.html" class="doel-card"><div class="doel-id">WB-31</div><div class="doel-titel">Jaarlijkse inkomenstoets sociale huur</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-32.html" class="doel-card"><div class="doel-id">WB-32</div><div class="doel-titel">Vermogenstoets nieuwe instroom sociale huur</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-33.html" class="doel-card"><div class="doel-id">WB-33</div><div class="doel-titel">Prefab: regels gelijktrekken, digitaal planproces</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-34.html" class="doel-card"><div class="doel-id">WB-34</div><div class="doel-titel">Fastlane vergunning herhaalbare bouwconcepten; typegoedkeuring</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag programma">1 programma</span></div></a>
+</div>
+<div class="spoor-header"><h2>Betaalbaarheid</h2>
+<p>Een passend huis voor iedere portemonnee — eigen-woningfiscaliteit, ouderen, grond, migratie. · 13 doelen</p></div>
+<div class="doel-grid">
+<a href="doel/WB-35.html" class="doel-card"><div class="doel-id">WB-35</div><div class="doel-titel">Fiscale behandeling eigen woning ongewijzigd (HRA blijft)</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-36.html" class="doel-card"><div class="doel-id">WB-36</div><div class="doel-titel">Stimuleren bouw woonvormen voor ouderen</div><div class="doel-meta"><span class="tag programma">3 programma's</span></div></a>
+<a href="doel/WB-37.html" class="doel-card"><div class="doel-id">WB-37</div><div class="doel-titel">Doorstroombank of doorstroomhypotheek voor ouderen</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-38.html" class="doel-card"><div class="doel-id">WB-38</div><div class="doel-titel">Gedeelde woonvormen jongeren/studenten met objectsubsidies</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-39.html" class="doel-card"><div class="doel-id">WB-39</div><div class="doel-titel">Permanente bewoning recreatiewoningen mogelijk maken</div><div class="doel-meta"><span class="tag verworpen">1× verworpen</span><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-40.html" class="doel-card"><div class="doel-id">WB-40</div><div class="doel-titel">Vereenvoudigen procedures verkoop corporatiewoningen</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-41.html" class="doel-card"><div class="doel-id">WB-41</div><div class="doel-titel">Gemeenten meer actief grondbeleid (voorkeursrecht, grondfaciliteit)</div><div class="doel-meta"><span class="tag programma">2 programma's</span></div></a>
+<a href="doel/WB-42.html" class="doel-card"><div class="doel-id">WB-42</div><div class="doel-titel">Kostenverhaal uitbreiden; private grond-winsten publiek aanwenden</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-43.html" class="doel-card"><div class="doel-id">WB-43</div><div class="doel-titel">Nationale Prestatieafspraken &amp; Woontop doorzetten</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-44.html" class="doel-card"><div class="doel-id">WB-44</div><div class="doel-titel">Verruiming niet-DAEB-activiteiten corporaties</div><div class="doel-meta"><span class="tag blind">geen Kamerwerk gevonden</span></div></a>
+<a href="doel/WB-45.html" class="doel-card"><div class="doel-id">WB-45</div><div class="doel-titel">Grip op migratie als vraag-beheersing woningmarkt</div><div class="doel-meta"><span class="tag aangenomen">1× aangenomen</span><span class="tag verworpen">1× verworpen</span><span class="tag programma">1 programma</span></div></a>
+<a href="doel/WB-46.html" class="doel-card"><div class="doel-id">WB-46</div><div class="doel-titel">Onderwijsinstellingen verantwoordelijk huisvesting int. studenten</div><div class="doel-meta"><span class="tag blind">geen Kamerwerk gevonden</span></div></a>
+<a href="doel/WB-47.html" class="doel-card"><div class="doel-id">WB-47</div><div class="doel-titel">Werkgevers arbeidsmigranten verantwoordelijk voor woonvoorzieningen</div><div class="doel-meta"><span class="tag programma">1 programma</span></div></a>
+</div>
+<div class="spoor-header"><h2>Knelpunten buiten dit hoofdstuk</h2>
+<p>Erkende woningbouw-belemmeringen waarvoor het hoofdstuk &#x27;Bouwen en wonen&#x27; geen doel bevat — het akkoord adresseert ze elders. · 2 doelen</p></div>
+<div class="doel-grid">
+<a href="doel/NC-01.html" class="doel-card"><div class="doel-id">NC-01</div><div class="doel-titel">Netcongestie als woningbouw-belemmering</div><div class="doel-meta"><span class="tag blind">geen Kamerwerk gevonden</span></div></a>
+<a href="doel/ST-01.html" class="doel-card"><div class="doel-id">ST-01</div><div class="doel-titel">Stikstof als woningbouw-belemmering</div><div class="doel-meta"><span class="tag aangenomen">3× aangenomen</span></div></a>
+</div>
+</div></section>
+<footer>
+  <div class="container">
+    <span class="accent">TRNKL<span class="merkpunt"></span></span> Politiek Dashboard · samengesteld uit openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten
+  </div>
+</footer>
+</body>
+</html>

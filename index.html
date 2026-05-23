@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRNKL — Atelier voor kennis en beleid</title>
+<meta name="description" content="TRNKL maakt kennis over recht en beleid navolgbaar, in twee vormen: flowcharts en dashboards.">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf9f4;
+  --bg-tertiary: #f5f4ee;
+  --bg-orange-fade: linear-gradient(135deg, #FFF8F2 0%, #FFFAF6 100%);
+  --text-primary: #1a1a18;
+  --text-secondary: #5f5e5a;
+  --text-tertiary: #888780;
+  --border-light: rgba(0,0,0,0.08);
+  --border-mid: rgba(0,0,0,0.14);
+  --orange: #FF5A1F;
+  --orange-text: #C2410C;
+  --orange-light: #FFF1EA;
+  --orange-border: #FFE3D1;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1c;
+    --bg-secondary: #2a2a27;
+    --bg-tertiary: #242422;
+    --bg-orange-fade: linear-gradient(135deg, #2a201c 0%, #241e1a 100%);
+    --text-primary: #e8e6de;
+    --text-secondary: #9c9a92;
+    --text-tertiary: #94928a;
+    --border-light: rgba(255,255,255,0.06);
+    --border-mid: rgba(255,255,255,0.12);
+    --orange-light: #3a2520;
+    --orange-border: #5a3525;
+    --orange-text: #FF5A1F;
+  }
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--orange-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+.accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
+
+/* Header */
+header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border-mid); position: sticky; top: 0; z-index: 100; }
+@media (prefers-color-scheme: dark) { header { background: rgba(30,30,28,0.85); } }
+.nav { display: flex; align-items: center; padding: 14px 0; gap: 32px; }
+.nav-logo { flex-shrink: 0; }
+.nav-logo:hover { text-decoration: none; }
+.nav-logo .bl-mark { font-weight: 800; font-size: 22px; color: var(--orange); letter-spacing: -0.03em; }
+.nav-links { display: flex; gap: 28px; margin-left: auto; align-items: center; }
+.nav-link { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+.nav-link:hover { color: var(--text-primary); text-decoration: none; }
+
+/* Hero */
+.hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 68px 0 64px; }
+.hero-logo { line-height: 1; margin-bottom: 26px; }
+.hero-logo .bl-mark { display: block; font-weight: 800; font-size: 64px; color: var(--orange); letter-spacing: -0.03em; line-height: 1; }
+.hero-logo .bl-sub { display: block; font-weight: 700; font-size: 13px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.2em; margin-top: 14px; }
+@media (prefers-color-scheme: dark) { .hero-logo .bl-sub { color: var(--text-secondary); } }
+.hero h1 { font-size: 38px; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 18px; max-width: 720px; }
+.hero p.lede { font-size: 17px; color: var(--text-secondary); max-width: 680px; line-height: 1.6; }
+@media (max-width: 560px) {
+  .hero-logo .bl-mark { font-size: 46px; }
+  .hero h1 { font-size: 28px; }
+  .hero p.lede { font-size: 15px; }
+}
+
+/* Secties */
+.section { padding: 56px 0; }
+.section.bg-primary { background: var(--bg-primary); }
+.section-eyebrow { font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 10px; }
+.section-title { font-size: 27px; font-weight: 700; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 14px; }
+.section-lede { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; max-width: 680px; line-height: 1.65; }
+
+/* Productkaarten */
+.product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .product-grid { grid-template-columns: 1fr; } }
+.product-card {
+  display: flex; flex-direction: column;
+  background: var(--bg-secondary); border: 1px solid var(--border-light);
+  border-radius: 14px; padding: 24px 22px; color: inherit;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.section.bg-primary .product-card { background: var(--bg-primary); }
+.product-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.07); border-color: var(--orange-border); text-decoration: none; }
+.card-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.04em; text-transform: uppercase; }
+.card-title { font-size: 18px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; margin: 8px 0 10px; color: var(--text-primary); }
+.card-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; flex-grow: 1; }
+.card-cta { font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 18px; }
+
+/* Footer */
+footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid var(--border-light); margin-top: 8px; }
+.footer-mark { font-weight: 800; font-size: 15px; color: var(--orange); letter-spacing: -0.03em; }
+.footer-text { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container-narrow">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"><span class="bl-mark">TRNKL<span class="merkpunt"></span></span></a>
+      <div class="nav-links">
+        <a href="#flowcharts" class="nav-link">Flowcharts</a>
+        <a href="#dashboards" class="nav-link">Dashboards</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container-narrow">
+    <div class="hero-logo">
+      <span class="bl-mark">TRNKL<span class="merkpunt"></span></span>
+      <span class="bl-sub">Atelier voor kennis en beleid</span>
+    </div>
+    <h1>Kennis over recht en beleid, navolgbaar gemaakt.</h1>
+    <p class="lede"><span class="accent">TRNKL<span class="merkpunt"></span></span> werkt complexe regelgeving en politieke afspraken stap voor stap uit, herleidbaar tot de bron. Dat gebeurt in twee vormen: flowcharts en dashboards.</p>
+  </div>
+</section>
+
+<section class="section" id="flowcharts">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Vorm één</div>
+    <h2 class="section-title">Flowcharts</h2>
+    <p class="section-lede">Een flowchart werkt een wet of regeling stap voor stap uit: welke verplichting geldt wanneer, en wat dat betekent voor de onderneming die eronder valt. Bij elke stap staat operationeel en strategisch advies. De flowcharts zijn gebaseerd op bestaande en toekomstige wet- en regelgeving.</p>
+    <div class="product-grid">
+      <a href="flowcharts/artikel17a-wwft.html" class="product-card">
+        <div class="card-label">Art. 17a Wwft</div>
+        <div class="card-title">Opschortingsbevoegdheid FIU</div>
+        <div class="card-desc">Wanneer en hoe lang de FIU een banktransactie mag aanhouden, en wat een meldingsplichtige instelling dan moet doen. Met wetsanalyse, parlementaire geschiedenis en een stappenplan voor de Event-Driven Review.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/artikel75-amlr.html" class="product-card">
+        <div class="card-label">Art. 75 AMLR</div>
+        <div class="card-title">Partnerschappen voor informatie-uitwisseling</div>
+        <div class="card-desc">Het oprichten van een partnerschap voor informatie-uitwisseling onder de nieuwe Europese antiwitwasverordening. Met wetsanalyse, kritisch commentaar en operationeel, strategisch en governance-advies voor banken.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-primary" id="dashboards">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Vorm twee</div>
+    <h2 class="section-title">Dashboards</h2>
+    <p class="section-lede">Een dashboard volgt politiek beleid doel voor doel en legt het naast de feiten: wat is afgesproken, wat ermee gebeurt, en hoe dat zich verhoudt tot publieke cijfers. Het dashboard velt geen oordeel; het toont het verschil, de lezer weegt het.</p>
+    <a href="dashboard/index.html" class="product-card">
+      <div class="card-label">Coalitieakkoord 2026&ndash;2030</div>
+      <div class="card-title">Het akkoord, doel voor doel</div>
+      <div class="card-desc">Het coalitieakkoord van het kabinet-Jetten ontleed in losse doelen. Per doel zie je naast elkaar wat het akkoord afspreekt, wat de coalitiepartijen er in hun verkiezingsprogramma over schreven, wat de Tweede Kamer ermee doet en welke feitelijke cijfers uit publieke bronnen erbij horen. Het thema Wonen is volledig uitgewerkt; de overige thema&rsquo;s volgen.</div>
+      <div class="card-cta">Open het dashboard &rarr;</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container-narrow">
+    <span class="footer-mark">TRNKL<span class="merkpunt"></span></span>
+    <p class="footer-text">Atelier voor kennis en beleid. Alle uitwerkingen zijn herleidbaar tot openbare bronnen: wet- en regelgeving, parlementaire stukken en officiële statistiek.</p>
+  </div>
+</footer>
+
+</body>
+</html>

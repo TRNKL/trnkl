@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base target="_blank" rel="noopener noreferrer">
+<title>TRNKL — Artikel 17a Wwft</title>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Artikel 17a Wwft — Opschortingsbevoegdheid FIU">
+<meta property="og:description" content="Interactieve achtergrondschets · wetsanalyse · parlementaire geschiedenis · advies aan instellingen · EDR-stappenplan">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #faf9f4;
+    --bg-tertiary: #f5f4ee;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --border-light: rgba(0,0,0,0.10);
+    --border-mid: rgba(0,0,0,0.18);
+    --border-strong: rgba(0,0,0,0.28);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c;
+      --bg-secondary: #2a2a27;
+      --bg-tertiary: #242422;
+      --text-primary: #e8e6de;
+      --text-secondary: #9c9a92;
+      --text-tertiary: #6b6960;
+      --border-light: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.22);
+    }
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--bg-primary);
+    border-bottom: 0.5px solid var(--border-mid);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: #FFF1EA; display: flex; align-items: center;
+    justify-content: center; font-size: 16px;
+  }
+  .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .header-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+  .brand-mark { font-size: 21px; font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; line-height: 1; text-decoration: none; }
+  .brand-mark:hover { opacity: 0.7; }
+  .merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+  .header-rule { width: 1px; height: 26px; background: var(--border-mid); flex: 0 0 auto; }
+  .header-badge {
+    margin-left: auto;
+    font-size: 13px; font-weight: 700;
+    background: #E1F5EE; color: #085041;
+    border-radius: 20px; padding: 6px 16px;
+    letter-spacing: .02em;
+    border: 1.5px solid #A8DFC9;
+  }
+
+  .canvas-wrap {
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .n8n-node {
+    display: flex; flex-direction: column; align-items: center;
+    cursor: pointer; user-select: none;
+    margin-top: 40px;
+  }
+  .n8n-node:hover .node-box { transform: translateY(-2px); }
+  .node-box {
+    border-radius: 10px;
+    border: 1.5px solid var(--border-mid);
+    background: var(--bg-primary);
+    display: flex; align-items: center; gap: 9px;
+    padding: 10px 14px;
+    width: 280px;
+    transition: border-color .15s, transform .12s, box-shadow .12s;
+    position: relative;
+    cursor: pointer;
+  }
+  .n8n-node:hover .node-box {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .node-icon-wrap {
+    width: 32px; height: 32px; min-width: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .node-text { flex: 1; min-width: 0; }
+  .node-name { font-size: 12px; font-weight: 500; color: var(--text-primary); line-height: 1.35; }
+  .node-type { font-size: 10px; color: var(--text-secondary); margin-top: 2px; line-height: 1.3; }
+
+  .node-badge {
+    position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; border-radius: 20px; padding: 2px 9px;
+    white-space: nowrap; font-weight: 600; letter-spacing: .03em;
+  }
+
+  .info-dot {
+    position: absolute; top: -9px; right: -9px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-mid);
+    font-size: 11px; font-weight: 500; color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10;
+    transition: background .12s, border-color .12s, color .12s;
+  }
+  .info-dot:hover {
+    background: #E6F1FB; border-color: #185FA5; color: #185FA5;
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.45);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--bg-primary);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 14px;
+    max-width: 680px; width: 100%;
+    max-height: 88vh; overflow-y: auto;
+    padding: 22px 24px 28px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  .modal-close {
+    position: absolute; top: 14px; right: 16px;
+    font-size: 20px; cursor: pointer;
+    background: none; border: none;
+    color: var(--text-secondary); line-height: 1;
+  }
+  .modal-close:hover { color: var(--text-primary); }
+  .modal-title {
+    font-size: 15px; font-weight: 500;
+    color: var(--text-primary); margin-bottom: 14px;
+    padding-right: 26px; line-height: 1.4;
+  }
+  .mh {
+    font-size: 10px; font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase; letter-spacing: .06em;
+    margin: 16px 0 6px;
+  }
+  .mp { font-size: 12px; color: var(--text-primary); line-height: 1.75; }
+  .mtag {
+    display: inline-block; font-size: 10px;
+    border-radius: 4px; padding: 2px 8px;
+    margin: 2px 3px 2px 0;
+    background: #E6F1FB; color: #0C447C;
+  }
+  .mtag.g { background: #E1F5EE; color: #085041; }
+  .mtag.p { background: #EEEDFE; color: #3C3489; }
+  .mtag.o { background: #FFF3E0; color: #7A3200; }
+  .mtag.r { background: #FCEBEB; color: #791F1F; }
+  .ml {
+    font-size: 12px; color: var(--text-primary);
+    line-height: 1.75; padding-left: 16px;
+  }
+  .ml li { margin-bottom: 2px; }
+
+  .modal-section {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 0.5px solid var(--border-light);
+  }
+  .modal-section:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .modal-section-title {
+    font-size: 13px; font-weight: 700;
+    color: var(--text-primary); margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .modal-section-sub {
+    font-size: 10px; color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 8px 0;
+  }
+  .compare-col {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 0.5px solid var(--border-light);
+  }
+  .compare-col-title {
+    font-size: 10px; font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 6px;
+  }
+  .compare-col ul {
+    font-size: 11px; line-height: 1.7;
+    padding-left: 14px; color: var(--text-primary);
+  }
+
+  .info-banner {
+    background: #FFF3E0;
+    border: 1px solid #F5D9A8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 11px;
+    color: #7A3200;
+    line-height: 1.65;
+  }
+  .info-banner strong { font-weight: 600; }
+
+  .source-block {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 0.5px solid var(--border-light);
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+  }
+  .source-label {
+    font-size: 9px; font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    margin-bottom: 4px;
+  }
+  .source-text {
+    font-size: 10px; color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .source-text a {
+    color: #185FA5;
+    text-decoration: none;
+  }
+  .source-text a:hover { text-decoration: underline; }
+
+  .hint {
+    font-size: 11px; color: var(--text-tertiary);
+    padding: 8px 24px 14px;
+    text-align: center;
+  }
+
+  .inst-node {
+    user-select: none;
+  }
+  .inst-box {
+    border-radius: 10px;
+    border: 1.5px solid #1D9E75;
+    background: var(--bg-primary);
+    display: flex; align-items: center; gap: 8px;
+    padding: 9px 12px;
+    width: 210px;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .inst-node:hover .inst-box {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(29,158,117,0.12);
+  }
+  .inst-icon {
+    width: 30px; height: 30px; min-width: 30px;
+    border-radius: 7px;
+    background: #E1F5EE;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+  }
+  .inst-text { flex: 1; min-width: 0; }
+  .inst-name { font-size: 11px; font-weight: 500; color: var(--text-primary); line-height: 1.3; }
+  .inst-art { font-size: 9px; color: var(--text-secondary); margin-top: 2px; line-height: 1.3; }
+
+  @media (max-width: 600px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" target="_self" class="brand-mark" title="Naar de homepage">TRNKL<span class="merkpunt"></span></a>
+  <div class="header-rule"></div>
+  <div>
+    <div class="header-title">Artikel 17a Wwft — Opschortingsbevoegdheid FIU</div>
+    <div class="header-sub">Interactieve achtergrondschets · wetsanalyse · parlementaire geschiedenis · advies aan instellingen · EDR-stappenplan</div>
+  </div>
+</header>
+
+<div class="canvas-wrap" style="flex-direction:column;align-items:center">
+  <div class="hint">Klik op <span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-mid);font-size:11px;font-weight:500;color:var(--text-secondary);vertical-align:middle;margin:0 2px;cursor:default">i</span> voor meer informatie</div>
+  <!-- Hoofdnode -->
+  <div class="n8n-node">
+    <div class="node-box" style="border-color:#FF5A1F" onclick="openModal()">
+      <div class="node-badge" style="background:#FFF1EA;color:#C2410C">ACHTERGRONDINFORMATIE</div>
+      <button class="info-dot" onclick="event.stopPropagation();openModal()" title="Bronnen & toelichting">i</button>
+      <div class="node-icon-wrap" style="background:#FFF1EA">🔍</div>
+      <div class="node-text">
+        <div class="node-name">Achtergrondinformatie artikel 17a Wwft</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verbindingsstreep -->
+  <div style="width:2px;height:36px;background:var(--border-mid);margin:0 auto"></div>
+  <div style="font-size:10px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;text-align:center;margin:4px 0 12px"></div>
+
+  <!-- Instellingen grid: bank (met sub-node) -->
+  <div style="display:flex;flex-wrap:nowrap;gap:12px;justify-content:center;align-items:flex-start">
+
+    <!-- Bank kolom -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <div class="inst-node">
+        <div class="inst-box">
+          <div class="inst-icon">🏦</div>
+          <div class="inst-text">
+            <div class="inst-name">Bank</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 1a lid 2 Wwft</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Streep -->
+      <div style="width:2px;height:28px;background:var(--border-mid)"></div>
+      <!-- FIU-verzoek node met EDR node links (absoluut gepositioneerd) -->
+      <div class="inst-node" style="position:relative">
+        <!-- EDR node absoluut links -->
+        <div style="position:absolute;right:calc(100% + 24px);top:50%;transform:translateY(-50%);display:flex;align-items:center">
+          <div class="inst-box" style="border-color:#1D9E75;position:relative;width:200px">
+            <button class="info-dot" onclick="event.stopPropagation();openEdrModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+            <div class="inst-icon" style="background:#E1F5EE">📋</div>
+            <div class="inst-text">
+              <div class="inst-name">Stappenplan Event-Driven Review naar aanleiding van FIU-verzoek</div>
+            </div>
+          </div>
+          <!-- Horizontale verbindingsstreep -->
+          <div style="height:2px;width:24px;background:var(--border-mid)"></div>
+        </div>
+        <!-- FIU-verzoek node -->
+        <div class="inst-box" style="border-color:#1D9E75;position:relative">
+          <button class="info-dot" onclick="event.stopPropagation();openFiuModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+          <div class="inst-icon" style="background:#E1F5EE">📩</div>
+          <div class="inst-text">
+            <div class="inst-name">De bank ontvangt het verzoek van de FIU om een transactie aan te houden</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 17a lid 1, 4, 5 en 6 Wwft</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Streep -->
+      <div style="width:2px;height:28px;background:var(--border-mid)"></div>
+      <!-- Maximale duur node -->
+      <div class="inst-node">
+        <div class="inst-box" style="border-color:#1D9E75;position:relative">
+          <button class="info-dot" onclick="event.stopPropagation();openDuurModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+          <div class="inst-icon" style="background:#E1F5EE">⏱️</div>
+          <div class="inst-text">
+            <div class="inst-name">Maximale duur</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 17a lid 1, 2 en 3 Wwft</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Streep -->
+      <div style="width:2px;height:28px;background:var(--border-mid)"></div>
+      <!-- Informeren cliënt node -->
+      <div class="inst-node">
+        <div class="inst-box" style="border-color:#1D9E75;position:relative">
+          <button class="info-dot" onclick="event.stopPropagation();openInfoClientModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+          <div class="inst-icon" style="background:#E1F5EE">📢</div>
+          <div class="inst-text">
+            <div class="inst-name">Informeren van de cliënt</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 17a lid 6 Wwft</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Streep -->
+      <div style="width:2px;height:28px;background:var(--border-mid)"></div>
+      <!-- Einde opschorting node -->
+      <div class="inst-node">
+        <div class="inst-box" style="border-color:#1D9E75;position:relative">
+          <button class="info-dot" onclick="event.stopPropagation();openEindeModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+          <div class="inst-icon" style="background:#E1F5EE">🔓</div>
+          <div class="inst-text">
+            <div class="inst-name">Einde opschorting: vrijgave of beslag</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 17a lid 1, 2 en 3 Wwft</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Streep -->
+      <div style="width:2px;height:28px;background:var(--border-mid)"></div>
+      <!-- Civielrechtelijke vrijwaring node -->
+      <div class="inst-node">
+        <div class="inst-box" style="border-color:#1D9E75;position:relative">
+          <button class="info-dot" onclick="event.stopPropagation();openVrijwaringModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+          <div class="inst-icon" style="background:#E1F5EE">🛡️</div>
+          <div class="inst-text">
+            <div class="inst-name">Civielrechtelijke vrijwaring</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 20c Wwft</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Streep -->
+      <div style="width:2px;height:28px;background:var(--border-mid)"></div>
+      <!-- Toezicht DNB node -->
+      <div class="inst-node">
+        <div class="inst-box" style="border-color:#1D9E75;position:relative">
+          <button class="info-dot" onclick="event.stopPropagation();openToezichtModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+          <div class="inst-icon" style="background:#E1F5EE">👁️</div>
+          <div class="inst-text">
+            <div class="inst-name">Bestuursrechtelijk toezicht door DNB</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 17a lid 5 jo. art. 29 en 30 Wwft</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Streep -->
+      <div style="width:2px;height:28px;background:var(--border-mid)"></div>
+      <!-- Strafrechtelijke handhaving node -->
+      <div class="inst-node">
+        <div class="inst-box" style="border-color:#1D9E75;position:relative">
+          <button class="info-dot" onclick="event.stopPropagation();openWedModal()" title="Toelichting" style="position:absolute;top:-9px;right:-9px">i</button>
+          <div class="inst-icon" style="background:#E1F5EE">⚖️</div>
+          <div class="inst-text">
+            <div class="inst-name">Strafrechtelijke handhaving</div>
+            <div style="margin-top:4px"><span class="mtag g" style="font-size:9px">Art. 1 sub 2° WED jo. art. 17a lid 4 Wwft</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <div class="modal-title">Achtergrondschets artikel 17a Wwft — Opschortingsbevoegdheid FIU</div>
+
+    <!-- STAP 1 -->
+    <div class="modal-section">
+      <div class="modal-section-title">1. Aanleiding</div>
+      <div class="modal-section-sub">Waarom een opschortingsbevoegdheid voor de FIU?</div>
+
+      <div class="mh">Het probleem</div>
+      <div class="mp">In de Memorie van Toelichting bij wetsvoorstel 36.463 wordt gesignaleerd dat het voor opsporingsinstanties steeds moeilijker wordt om criminele geldstromen tijdig te onderscheppen. Geld dat afkomstig is van, of bestemd is voor misdrijven, wordt in de praktijk doorgesluisd vóórdat er langs strafrechtelijke weg beslag kan worden gelegd. Dit geldt in het bijzonder bij snelle en grensoverschrijdende betalingen. Er bestond een lacune tussen het strafrechtelijk beslagregime enerzijds en de Wwft-meldplicht anderzijds: de FIU ontving wel meldingen van ongebruikelijke transacties, maar beschikte niet over een zelfstandige bevoegdheid om de uitvoering van een transactie tijdelijk op te schorten.</div>
+
+      <div class="mh">Doel van de opschortingsbevoegdheid</div>
+      <div class="mp">Door het opschorten van een transactie wordt voorkomen dat crimineel geld wordt weggesluisd, en wordt gewaarborgd dat er tijdig passende maatregelen genomen kunnen worden — bijvoorbeeld beslaglegging door opsporingsdiensten. De FIU voert als Financial Intelligence Unit analyses uit op ongebruikelijke transacties; met de nieuwe bevoegdheid kan zij gedurende zo'n analyse een transactie tijdelijk laten opschorten die mogelijk verband houdt met witwassen, onderliggende basisdelicten of terrorismefinanciering.</div>
+
+      <div class="mh">Internationale context</div>
+      <div class="mp">In andere EU-lidstaten beschikten financiële inlichtingeneenheden al langer over een dergelijke opschortingsbevoegdheid. Door deze bevoegdheid nu ook voor de Nederlandse FIU te creëren, wordt de internationale samenwerking versterkt: FIU's kunnen elkaar wederzijds verzoeken een transactie tijdelijk tegen te houden. Daarnaast was op Europees niveau de Anti-Money Laundering Regulation (AMLR, EU-antiwitwasverordening) in voorbereiding, waarin een vergelijkbare bevoegdheid voor alle lidstaten verplicht wordt gesteld (verwachte inwerkingtreding: medio 2027).</div>
+
+      <div class="source-block">
+        <div class="source-label">Bronnen</div>
+        <div class="source-text">Kamerstukken II 2023/24, 36 463, nr. 3 (MvT) · Kamerstukken II 2024/25, 36 463, nr. 6 (NnavV) · AMLR (EU Anti-Money Laundering Regulation) · <a href="https://www.eerstekamer.nl/wetsvoorstel/36463_versterking_strafrechtelijke" target="_blank" rel="noopener noreferrer">Eerste Kamer — Dossier 36.463</a> · <a href="https://www.amlc.nl/nieuwe-bevoegdheden-fiu-nederland/" target="_blank" rel="noopener noreferrer">AMLC — Nieuwe bevoegdheden FIU-Nederland</a> · <a href="https://www.fiu-nederland.nl/fiu-nederland-krijgt-opschortingsbevoegdheid-wat-verandert-er-vanaf-1-juli-2026/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Opschortingsbevoegdheid per 1 juli 2026</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a> · <a href="https://www.advocatie.nl/nieuws/fiu-nederland-mag-vanaf-1-juli-transacties-tijdelijk-opschorten/" target="_blank" rel="noopener noreferrer">Advocatie.nl — FIU-Nederland mag transacties opschorten (25 maart 2026)</a> · <a href="https://www.taxence.nl/nieuws/fiu-nederland-krijgt-opschortingsbevoegdheid-wijzigingen-per-1-juli-2026/" target="_blank" rel="noopener noreferrer">Taxence — Wijzigingen per 1 juli 2026 (10 maart 2026)</a></div>
+      </div>
+    </div>
+
+    <!-- STAP 2 -->
+    <div class="modal-section">
+      <div class="modal-section-title">2. De amendementen: van banken naar alle instellingen én terstond informeren</div>
+      <div class="modal-section-sub">De twee belangrijkste inhoudelijke wijzigingen ten opzichte van het oorspronkelijke wetsvoorstel</div>
+
+      <div class="mh">Oorspronkelijk voorstel tegenover geamendeerde versie</div>
+
+      <div class="compare-grid">
+        <div class="compare-col">
+          <div class="compare-col-title" style="color:#791F1F">❌ Oorspronkelijk wetsvoorstel</div>
+          <ul>
+            <li>Bevoegdheid FIU beperkt tot <strong>banken</strong></li>
+            <li>Informatieplicht aan cliënt: op verzoek van de cliënt</li>
+            <li>Regering kiest voor "beperkte en beheerste toepassing" op basis van ervaringen in andere EU-landen</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="compare-col-title" style="color:#085041">✅ Na amendementen (definitieve wet)</div>
+          <ul>
+            <li>Bevoegdheid FIU voor <strong>alle Wwft-instellingen</strong> (banken, notarissen, advocaten, makelaars, cryptodienstverleners, etc.) — <em>amendement Van Nispen/Mutluer (nr. 13)</em></li>
+            <li>Informatieplicht aan cliënt: <strong>terstond</strong> (lid 6) — <em>amendement Six Dijkstra (nr. 10)</em></li>
+            <li>Vooruitlopend op AMLR die dit per 2027 EU-breed verplicht stelt</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="source-block">
+        <div class="source-label">Bronnen</div>
+        <div class="source-text">Kamerstukken II 2025/26, 36 463, nr. 13 (amendement Van Nispen/Mutluer) · Kamerstukken II 2025/26, 36 463, nr. 10 (amendement Six Dijkstra, ter vervanging van nr. 7) · Kamerstukken II 2023/24, 36 463, nr. 5 (verslag) · <a href="https://www.tweedekamer.nl/kamerstukken/amendementen/detail?id=2025Z17671&did=2025D41313" target="_blank" rel="noopener noreferrer">Tweede Kamer — Amendement nr. 13</a> · <a href="https://www.eerstekamer.nl/behandeling/20251002/stemmingsoverzicht_tweede_kamer" target="_blank" rel="noopener noreferrer">Eerste Kamer — Stemmingsoverzicht TK 2 oktober 2025</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+      </div>
+    </div>
+
+    <!-- STAP 3 -->
+    <div class="modal-section">
+      <div class="modal-section-title">3. Inhoud van artikel 17a Wwft (per 1 juli 2026)</div>
+      <div class="modal-section-sub">De kernbepalingen van de opschortingsbevoegdheid en de praktische werking</div>
+
+      <div class="mh">Bevoegdheid (lid 1–3)</div>
+      <div class="mp"><span class="mtag">Art. 17a Wwft</span> De FIU-Nederland kan een Wwft-instelling verzoeken de uitvoering van een transactie tijdelijk aan te houden, of een bedrag ter hoogte van de betreffende transactie tijdelijk te blokkeren, indien er aanwijzingen bestaan dat de transactie verband houdt met witwassen, onderliggende basisdelicten of terrorismefinanciering. De FIU zet deze bevoegdheid uitsluitend in wanneer haar eigen analyse daartoe aanleiding geeft, of op verzoek van een buitenlandse FIU. Proportionaliteit is daarbij het uitgangspunt: de FIU verzoekt instellingen nooit ongefundeerd om een transactie op te schorten.</div>
+
+      <div class="mh">Maximale duur (lid 1–3)</div>
+      <div class="mp">De opschorting duurt maximaal <strong>vijf werkdagen</strong>. Indien het verzoek voortkomt uit een signaal van een buitenlandse FIU, bedraagt de maximale termijn <strong>tien werkdagen</strong>. Gedurende deze periode analyseert de FIU (of de buitenlandse FIU) de transactie om te beslissen of verdere maatregelen nodig zijn. De FIU kan de instelling ook verzoeken de opschorting <em>eerder</em> te beëindigen dan de gestelde termijn.</div>
+
+      <div class="mh">Welke instellingen?</div>
+      <div class="mp">Wettelijk gezien kan de FIU elke Wwft-meldingsplichtige instelling een opschortingsverzoek doen. In de praktijk betreft het volgens FIU-Nederland vooral <strong>banken, crypto- en betaaldienstverleners</strong>, maar ook notarissen, advocaten, makelaars en belastingadviseurs vallen onder de reikwijdte.</div>
+
+      <div class="mh">Verplichtingen instelling (lid 4–5)</div>
+      <div class="mp"><span class="mtag g">Art. 17a lid 4–5 Wwft</span> De instelling is verplicht het FIU-verzoek <strong>onverwijld</strong> op te volgen — dat wil zeggen: zo snel mogelijk en zonder onnodige vertraging. Daarnaast moet de instelling beschikken over beleid, procedures en maatregelen die haar in staat stellen om een dergelijk verzoek zonder vertraging uit te voeren, vergelijkbaar met de onverwijldheidseis bij de meldplicht ex art. 16 Wwft.</div>
+
+      <div class="mh">Instant payments — reeds uitgevoerde transacties</div>
+      <div class="mp"><span class="mtag o">Praktijk</span> In het huidige betalingslandschap vinden veel transacties nagenoeg realtime plaats (instant payments). Hierdoor kan het voorkomen dat de op te schorten transactie al (gedeeltelijk) is uitgevoerd op het moment dat het FIU-verzoek binnenkomt. In dat geval is opschorting van de transactie zelf niet meer mogelijk. De instelling dient dan een <strong>tegoed ter grootte van de transactie(s) te blokkeren</strong>. De MvT licht toe dat deze blokkering naar analogie van art. 475 Rv en de vaste rechtspraak betreffende het beslag op een bankrekening enkel betrekking heeft op het op dat moment aanwezige saldo; latere stortingen vallen er niet onder (HR 7 juni 1929, NJ 1929/1285 (Girobeslag)). Wanneer er geen saldo beschikbaar is, is blokkering uiteraard niet mogelijk.</div>
+
+      <div class="mh">Informatieplicht aan cliënt (lid 6)</div>
+      <div class="mp"><span class="mtag p">Art. 17a lid 6 Wwft</span> De instelling moet de cliënt <strong>terstond</strong> informeren over de opschorting. Dit is een bewuste afwijking van het tipping off-verbod van art. 23 Wwft: waar normaliter elke hint richting de cliënt over een FIU-melding verboden is, schept art. 17a lid 6 hier een expliciete uitzondering. De oorspronkelijke wettekst voorzag in informatie "op verzoek van de cliënt"; dit is bij amendement-Six Dijkstra (nr. 10) gewijzigd naar "terstond".</div>
+
+      <div class="info-banner">
+        <strong>Let op — tipping off-verbod vs. informatieplicht:</strong> Volgens FIU-Nederland schendt het informeren van de cliënt over de opschorting het tipping off-verbod (art. 23 Wwft) <em>niet</em>. Het tipping off-verbod geldt voor meldingen van ongebruikelijke transacties bij FIU-Nederland en het verstrekken van nadere informatie daarover, maar niet voor het opvolgen van een opschortingsverzoek. De instelling mag echter niet meedelen dat er een melding is gedaan of dat er een onderzoek loopt — uitsluitend het feit van de opschorting zelf.
+      </div>
+
+      <div class="mh">Na afloop van de opschorting</div>
+      <div class="mp">Wanneer het onderzoek naar de transactie is afgerond en opschorting niet langer nodig is, dient de FIU het verzoek in te trekken en de instelling daarvan in kennis te stellen. Na het intrekkingsbericht geeft de instelling het geblokkeerde tegoed vrij respectievelijk voert zij de aangehouden transactie alsnog uit, tenzij de opsporing inmiddels beslag heeft gelegd. Indien de door de FIU opgegeven termijn nadert zonder intrekkingsbericht, dient de instelling naar mijn mening contact op te nemen met de FIU en intern te escaleren — de wet verduidelijkt niet of de opschorting van rechtswege vervalt na het verstrijken van de termijn. Indien het opschortingsverzoek door de Nederlandse FIU is gedaan op verzoek van een buitenlandse FIU, ligt het initiatief voor beslaglegging bij een buitenlandse opsporingsdienst, die via een <strong>rechtshulpverzoek</strong> beslag kan laten leggen in Nederland.</div>
+
+      <div class="mh">Civielrechtelijke vrijwaring (art. 20c Wwft)</div>
+      <div class="mp"><span class="mtag g">Art. 20c Wwft</span> Instellingen en hun medewerkers zijn niet civielrechtelijk of arbeidsrechtelijk aansprakelijk voor eventuele economische schade die de cliënt lijdt als gevolg van het opvolgen van een FIU-verzoek ex art. 17a Wwft. Hiermee wordt het risico van schadeclaims door cliënten expliciet weggenomen.</div>
+
+      <div class="mh">Strafrechtelijke handhaving</div>
+      <div class="mp"><span class="mtag r">Art. 1 sub 2° WED</span> Niet-naleving van art. 17a lid 4 Wwft (het niet onverwijld uitvoeren van een FIU-verzoek) is aangewezen als economisch delict.</div>
+
+      <div class="mh">Proportionaliteit en inzetdrempel</div>
+      <div class="mp">De FIU zet de opschortingsbevoegdheid uitsluitend in bij sterke aanwijzingen van witwassen, onderliggende criminaliteit of terrorismefinanciering. Het betalingsverkeer mag hierdoor niet structureel worden belemmerd: de ingreep is steeds gericht op een specifieke transactie of een afgebakend tegoed. De bevoegdheid biedt de FIU meer tijd en ruimte om snel te handelen bij vermoedens van financiële criminaliteit, zonder dat het reguliere betalingsverkeer onevenredig wordt geraakt.</div>
+
+      <div class="mh">Europees AML-pakket</div>
+      <div class="mp">Met de invoering van artikel 17a Wwft per 1 juli 2026 loopt Nederland vooruit op het Europese AML-pakket dat medio 2027 in werking treedt. Vanaf <strong>10 juli 2027</strong> zal art. 3.6 van de Implementatiewet ter voorkoming van witwassen en terrorismefinanciering (Iwt) de FIU-opschortingsbevoegdheid regelen. Het Europese regime kent een iets ruimere reikwijdte en beoogt de antiwitwasregels in de gehele EU te harmoniseren. Art. 3.6 Iwt wijkt op onderdelen af van art. 17a Wwft — zie het Loyens & Loeff-kritiekpuntenblok in stap 4 voor een bespreking van de voornaamste knelpunten. Het is daarom mijns inziens van belang dat de instelling haar inrichting voor art. 17a Wwft voldoende wendbaar houdt om per 10 juli 2027 snel te kunnen overschakelen op het Iwt-regime (zie het <em>Stappenplan Event-Driven Review</em>, randvoorwaarden en fase 7.4).</div>
+
+      <div class="source-block">
+        <div class="source-label">Bronnen</div>
+        <div class="source-text">Wwft art. 17a (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 · Wwft art. 20c · WED art. 1 sub 2° · <a href="https://www.amlc.nl/nieuwe-bevoegdheden-fiu-nederland/" target="_blank" rel="noopener noreferrer">AMLC — Nieuwe bevoegdheden FIU-Nederland</a> · <a href="https://www.fiu-nederland.nl/fiu-nederland-krijgt-opschortingsbevoegdheid-wat-verandert-er-vanaf-1-juli-2026/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Opschortingsbevoegdheid per 1 juli 2026</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a> · <a href="https://www.advocatie.nl/nieuws/fiu-nederland-mag-vanaf-1-juli-transacties-tijdelijk-opschorten/" target="_blank" rel="noopener noreferrer">Advocatie.nl — FIU-Nederland mag transacties opschorten (25 maart 2026)</a> · <a href="https://www.taxence.nl/nieuws/fiu-nederland-krijgt-opschortingsbevoegdheid-wijzigingen-per-1-juli-2026/" target="_blank" rel="noopener noreferrer">Taxence — Wijzigingen per 1 juli 2026 (10 maart 2026)</a> · <a href="https://www.fiscaalvanmorgen.nl/2026/03/04/fiu-nederland-krijgt-opschortingsbevoegdheid-implicaties-voor-meldingsplichtige-instellingen/" target="_blank" rel="noopener noreferrer">Fiscaal Vanmorgen — Implicaties voor meldingsplichtige instellingen (4 maart 2026)</a></div>
+      </div>
+    </div>
+
+    <!-- STAP 4: Parlementaire kritiek -->
+    <div class="modal-section">
+      <div class="modal-section-title">4. Parlementaire kritiek en adviezen</div>
+      <div class="modal-section-sub">Kritiekpunten op artikel 17a Wwft vanuit adviesorganen, toezichthouders en de advocatuur</div>
+
+      <div class="mh">Raad van State — samenhang wetsvoorstel</div>
+      <div class="mp">De Afdeling advisering plaatste in haar advies (Kamerstukken II 2023/24, 36 463, nr. 4) kanttekeningen bij de samenhang van bepaalde onderdelen — met name de wrakingsregeling en de wijziging van de vervolgingsbevoegdheid van het functioneel parket — met de overkoepelende doelstelling van het wetsvoorstel. Zij adviseerde de toelichting op dit punt aan te vullen; de regering heeft dit advies opgevolgd.</div>
+
+      <div class="mh">NOvA, OM, NVvR, Politie, BOD en NVB — uitbreiding reikwijdte</div>
+      <div class="mp">Zes adviesorganen en beroepsorganisaties (NOvA, OM, NVvR, Politie, BOD en NVB) adviseerden de bevoegdheid niet te beperken tot banken maar uit te breiden naar alle meldingsplichtige instellingen. De regering koos aanvankelijk voor een beperkte toepassing op basis van ervaringen in andere EU-landen; dit standpunt werd via het amendement Van Nispen/Mutluer door de Tweede Kamer gecorrigeerd.</div>
+
+      <div class="mh">Loyens & Loeff — consultatiereactie Iwt (art. 3.6)</div>
+      <div class="mp">In haar consultatiereactie van 29 augustus 2025 op de concept-Implementatiewet uitte Loyens & Loeff vier kritiekpunten op art. 3.6 Iwt: (i) een verwarrende verwijzing naar art. 17a Wwft als bestaand recht, (ii) onvoldoende vrijwaring van de meldingsplichtige entiteit die het verzoek uitvoert, (iii) onduidelijkheid over de vraag of de opschorting na afloop van de termijn van rechtswege vervalt, en (iv) spanning tussen de passieve informatieplicht aan de cliënt en het Europese tipping off-verbod (art. 73 AMLR). De gesignaleerde knelpunten onder (ii), (iii) en (iv) zijn direct relevant voor de toepassing van art. 17a Wwft per 1 juli 2026. Het is mijns inziens van belang dat de instelling haar inrichting voldoende wendbaar houdt om per 10 juli 2027 snel te kunnen overschakelen op het Iwt-regime — zie de randvoorwaarde <em>"Wendbaarheid met het oog op de Iwt-transitie"</em> en fase 7.4 in het <em>Stappenplan Event-Driven Review</em>.</div>
+
+
+
+      <div class="source-block">
+        <div class="source-label">Bronnen</div>
+        <div class="source-text">Kamerstukken II 2023/24, 36 463, nr. 4 (Advies Afdeling advisering RvS en Nader Rapport) · Kamerstukken II 2023/24, 36 463, nr. 6 (NnavV) · <a href="https://www.raadvanstate.nl/adviezen/@134746/w16-22-00219-ii/" target="_blank" rel="noopener noreferrer">Raad van State — Advies W16.22.00219/II</a> · <a href="https://zoek.officielebekendmakingen.nl/kst-36463-4.html" target="_blank" rel="noopener noreferrer">Kamerstukken II 2023/24, 36 463, nr. 4 (officielebekendmakingen.nl)</a> · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), bijlagen: Advies NOvA (blg-1116410), Advies OM (blg-1116407), Advies NVvR (blg-1116409), Advies Politie (blg-1116415), Advies BOD (blg-1116413), Advies NVB (blg-1116408), Advies AP (blg-1116412) · Loyens & Loeff N.V., Consultatiereactie Implementatiewet ter voorkoming van witwassen en terrorismefinanciering, ref. 57990059, 29 augustus 2025, par. 5 (art. 3.6 Iwt) · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="font-size:11px;color:var(--text-tertiary);text-align:center;padding:12px 24px 18px;border-top:0.5px solid var(--border-light);font-style:italic;">
+  Disclaimer: Dit document is een achtergrondschets op basis van openbare parlementaire bronnen en dient uitsluitend ter informatie en kennisoverdracht. De praktische uitwerking, het stappenplan en de adviezen aan instellingen die in dit document zijn opgenomen, betreffen een eigen uitwerking op basis van analyse van wetten, wetsgeschiedenis en openbare bronnen en zijn niet gebaseerd op interne richtlijnen of werkwijzen van enige instelling. Aan de inhoud kunnen geen rechten worden ontleend. Raadpleeg altijd de actuele wet- en regelgeving en/of een juridisch adviseur voor toepassing in de praktijk.
+</div>
+
+<!-- MODAL FIU-VERZOEK -->
+<div class="modal-overlay" id="fiu-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFiuModal()">&#x2715;</button>
+    <div class="modal-title">De bank ontvangt het verzoek van de FIU om een transactie aan te houden — Art. 17a lid 1, 4, 5 en 6 Wwft</div>
+
+    <div class="mh">Inleiding</div>
+    <div class="mp">De opschortingsbevoegdheid van artikel 17a Wwft treedt per 1 juli 2026 in werking. De operationele uitwerking is door FIU-Nederland nog niet volledig gepubliceerd en ook in de vakliteratuur ontbreekt vooralsnog een diepgaande analyse van de begrippen uit het artikel. Op basis van eigen analyse aan de hand van de wetsgeschiedenis ben ik tot de conclusie gekomen dat de nieuwe bevoegdheid uit artikel 17a Wwft wezenlijke overeenkomsten vertoont met de bestaande bevoegdheid tot het opvragen van nadere inlichtingen (art. 17 Wwft).</div>
+
+    <div class="mp" style="margin-top:10px">Hierna wordt stilgestaan bij twee kernbegrippen uit artikel 17a lid 1 Wwft: (i) <strong>het verzoek</strong> — vorm, inhoud en rechtsgevolgen; en (ii) <strong>het aanhouden van de transactie</strong> — betekenis, verhouding tot instant payments en de verwachte handelingen van de instelling voorafgaand aan het daadwerkelijk aanhouden.</div>
+
+    <div class="info-banner" style="margin-top:14px">
+      <strong>Praktische uitleg nodig?</strong> Bent u als lezer uitsluitend geïnteresseerd in een praktische uitleg hoe de instelling (Bank) deze stap naar mijn mening zou moeten uitvoeren, raadpleeg dan de node <em>"Stappenplan Event-Driven Review naar aanleiding van FIU-verzoek"</em> (links naast deze node in de flowchart). Daarin is een chronologisch en praktisch stappenplan opgenomen voor de KYC-afdeling.
+    </div>
+
+    <div class="mh">Het verzoek</div>
+    <div class="mp">Art. 17a Wwft en art. 17 Wwft zijn publiekrechtelijke bevoegdheidsinstrumenten die functioneel verwant zijn aan elkaar. In beide gevallen richt de FIU zich met een eenzijdig verzoek tot een specifieke instelling, met het doel een wettelijk voorgeschreven handeling of informatieverstrekking af te dwingen.</div>
+
+    <div class="mp" style="margin-top:10px">De wijze waarop de FIU haar bestaande bevoegdheid op grond van art. 17 Wwft jegens de instelling uitoefent, verloopt via de volgende kanalen:</div>
+    <ul class="ml" style="margin-top:6px">
+      <li>Het verzoek om nadere inlichtingen wordt door de FIU verzonden via het <strong>meldportaal</strong> van FIU-Nederland — hetzelfde beveiligde portaal waarmee instellingen ongebruikelijke transacties melden.</li>
+      <li>De instelling ontvangt het verzoek als bericht in het portaal en is verplicht de gevraagde gegevens <strong>onverwijld en schriftelijk</strong> te verstrekken (art. 17 lid 2 Wwft).</li>
+      <li>Ook de terugkoppeling dat een gemelde transactie verdacht is verklaard — de zogenoemde <em>dissemination notification</em> — wordt via dit portaal aan de instelling verzonden.</li>
+    </ul>
+
+    <div class="mp" style="margin-top:10px">Gezien deze functionele verwantschap ligt het in de lijn der verwachting dat het opschortingsverzoek op grond van art. 17a Wwft de instelling op dezelfde wijze zal bereiken als het informatieverzoek op grond van art. 17 Wwft: via het meldportaal van FIU-Nederland. De wet schrijft geen specifieke vorm voor, maar het bestaande portaal biedt reeds een beveiligd, verifieerbaar en bij de instelling bekend communicatiekanaal — en daarmee de meest voor de hand liggende route voor de operationele uitvoering van de nieuwe bevoegdheid.</div>
+
+    <div class="mh">Het aanhouden van de transactie</div>
+    <div class="mp" style="margin-top:8px">Het aanhouden van de transactie is naar mijn mening te kwalificeren als een <strong>inspanningsverplichting</strong>: de instelling moet zich aantoonbaar maximaal inspannen om de transactie niet uit te voeren of het tegoed ter grootte van de transactie te blokkeren, maar het resultaat kan niet in alle gevallen worden gegarandeerd — bijvoorbeeld wanneer een transactie reeds is uitgevoerd via instant payments of wanneer onvoldoende saldo beschikbaar is.</div>
+
+    <div class="mp" style="margin-top:10px">Aan het verzoek van de FIU dient de instelling <strong>onverwijld</strong> gevolg te geven (art. 17a lid 4 Wwft). Dit begrip heeft dezelfde betekenis als in andere Wwft-voorschriften waarin het voorkomt — zoals het onverwijld melden van een ongebruikelijke transactie (art. 16 lid 1 Wwft) en het desgevraagd onverwijld verstrekken van gegevens of inlichtingen aan de FIU (art. 17 lid 2 Wwft) — en houdt in: zo snel mogelijk en zonder onnodige vertraging.</div>
+
+    <div class="mh">Twee situaties waarin aanhouden aan de orde kan zijn</div>
+    <div class="mp">De MvT beschrijft twee situaties waarin het verzoek van de FIU zich kan voordoen:</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>Verzoek aan de uitvoerende bank:</strong> de bank waaraan wordt verzocht een transactie uit te voeren, voert deze tijdelijk (nog) niet uit.</li>
+      <li><strong>Verzoek aan de ontvangende bank:</strong> het verzoek richt zich tot een bank die een geldovermaking van een andere bank heeft ontvangen, ter voorkoming dat de begunstigde (cliënt van de ontvangende bank) de beschikking krijgt over het ontvangen geld.</li>
+    </ul>
+    <div class="mp" style="margin-top:10px">In beide situaties geldt dat een bank de uitvoering van een transactie in de regel niet kan tegenhouden vanwege het gebruik van instant payments, die binnen vijf seconden geautomatiseerd worden verwerkt. Feitelijk geeft de bank in deze gevallen uitvoering aan het verzoek door — nadat de transactie is uitgevoerd — een <strong>tegoed ter grootte van de transactie tijdelijk te blokkeren</strong> op de betreffende rekening.</div>
+
+    <div class="mh">Reikwijdte van de blokkering</div>
+    <div class="mp">De blokkering heeft naar analogie van art. 475 Rv en de vaste rechtspraak betreffende het beslag op een bankrekening enkel betrekking op het op dat moment aanwezige saldo; latere stortingen vallen er niet onder (HR 7 juni 1929, NJ 1929/1285 (Girobeslag)). Het verzoek kan ook op meerdere transacties van dezelfde cliënt betrekking hebben.</div>
+
+    <div class="mh">Informatieplicht aan de cliënt</div>
+    <div class="mp">De instelling dient de cliënt <strong>terstond</strong> te informeren over de opschorting (art. 17a lid 6 Wwft). De bank mag hierbij uitsluitend mededelen dat de transactie op verzoek van de FIU tijdelijk niet wordt uitgevoerd of dat het tegoed tijdelijk is geblokkeerd. De inhoud van het onderzoek van de FIU mag niet worden gedeeld. Dit levert geen schending op van het tipping off-verbod van art. 23 Wwft: dat verbod ziet op meldingen van ongebruikelijke transacties en het verstrekken van nadere informatie, niet op het opvolgen van een opschortingsverzoek.</div>
+
+    <div class="mh">Civielrechtelijke vrijwaring en strafrechtelijke handhaving</div>
+    <div class="mp">De instelling is op grond van art. 20c Wwft gevrijwaard van aansprakelijkheid voor schade als gevolg van het opvolgen van het FIU-verzoek. Niet-onverwijld opvolgen is een economisch delict (art. 1 sub 2° WED).</div>
+
+    <div class="mh">Interne verwerking door de instelling</div>
+    <div class="mp">Het verzoek van de FIU richt zich op het aanhouden van een specifieke transactie. Dit betekent dat het verzoek voldoende concrete informatie moet bevatten zodat de ontvangende instelling kan vaststellen om welk type transactie het gaat en voor welke cliënt het verzoek geldt. Met andere woorden: het verzoek moet voor de instelling voldoende bepaalbaar zijn om er daadwerkelijk uitvoering aan te kunnen geven.</div>
+
+    <div class="mp" style="margin-top:10px">Juist vanwege dit vereiste van bepaalbaarheid en de vertrouwelijkheid van het verzoek en de daarin vervatte informatie, is het van belang dat het verzoek intern wordt beoordeeld door medewerkers met een KYC-achtergrond — zij beschikken over de kennis van de cliënt en diens transactiepatroon die nodig is om het verzoek correct te interpreteren en op de juiste transactie toe te passen. Deze beoordeling dient vastgelegd te worden in de interne case management systemen van de instelling, zodat het besluitvormingsproces achteraf reconstrueerbaar en toetsbaar is.</div>
+
+    <div class="mp" style="margin-top:10px">De betrokken medewerkers moeten intern de bevoegdheid hebben om de transactie daadwerkelijk aan te houden, dan wel een bedrag ter hoogte van de betreffende transactie tijdelijk te blokkeren. Indien geen van beide mogelijk is — bijvoorbeeld omdat de transactie reeds is uitgevoerd en er onvoldoende saldo beschikbaar is — raad ik de instelling aan om zorgvuldig te documenteren waarom uitvoering van het verzoek niet mogelijk was.</div>
+
+    <div style="margin-top:18px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan instelling</span></div>
+      <div class="mp" style="margin-top:6px">Mijn advies is om de bestaande beleidsstukken en werkinstructies rond artikel 17 Wwft aan te vullen met wat artikel 17a Wwft van de instelling vraagt. Concreet:</div>
+      <ul class="ml" style="margin-top:6px">
+        <li><strong>Verantwoordelijke afdeling:</strong> Wijs de KYC-afdeling die reeds verantwoordelijk is voor de behandeling van informatieverzoeken op grond van artikel 17 Wwft aan als verantwoordelijke voor de beoordeling en uitvoering van opschortingsverzoeken op grond van artikel 17a Wwft.</li>
+        <li><strong>Interne bevoegdheden:</strong> Zorg dat de betrokken medewerkers de interne bevoegdheid hebben om transacties aan te houden of tegoeden te blokkeren, en dat de technische infrastructuur beide operationele handelingen ondersteunt: het tegenhouden van nog niet uitgevoerde transacties én het achteraf blokkeren van een tegoed ter grootte van een reeds uitgevoerde instant payment.</li>
+        <li><strong>Informatieplicht:</strong> Richt een procedure in voor het terstond informeren van de cliënt over de opschorting, waarbij uitsluitend het feit van de opschorting wordt medegedeeld — niet de achtergrond of het bestaan van een FIU-onderzoek. Overweeg hierbij om de cliënt te informeren vanuit de <em>event-driven review</em> die naar mijn mening tegelijkertijd dient te worden gestart naar aanleiding van het FIU-verzoek. Op die manier wordt de informatieplicht vervuld binnen een reeds lopend beoordelingsproces en wordt voorkomen dat de cliënt afzonderlijk en zonder context wordt benaderd.</li>
+        <li><strong>Vastleggingsprocedure:</strong> Richt een vastleggingsprocedure in — zowel voor gevallen waarin het verzoek wel kan worden uitgevoerd als voor gevallen waarin dit niet mogelijk blijkt. Documenteer in het laatste geval waarom uitvoering niet mogelijk was, zodat de instelling kan aantonen zich maximaal te hebben ingespannen. De verdere vastlegging bij uitvoering komt terug in het <em>stappenplan event-driven review</em>, aangezien het ontvangen van een opschortingsverzoek naar mijn mening op zichzelf een aanleiding vormt voor een event-driven review en de overweging om een ongebruikelijke transactie bij de FIU te melden.</li>
+        <li><strong>Bewijs van het FIU-verzoek:</strong> Bewaar het (schriftelijke) verzoek van de FIU zorgvuldig. Dit dient als bewijs in geval van een civielrechtelijke aansprakelijkstelling door een cliënt, in samenhang met de vrijwaring van art. 20c Wwft.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 17a en art. 17 (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 · <a href="https://www.fiu-nederland.nl/fiu-nederland-krijgt-opschortingsbevoegdheid-wat-verandert-er-vanaf-1-juli-2026/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Opschortingsbevoegdheid per 1 juli 2026</a> · <a href="https://www.fiu-nederland.nl/faq/ik-heb-een-bericht-dissemination-notification-ontvangen-wat-betekent-dit/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ Dissemination notification</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Veelgestelde vragen over nieuwe wetgeving</a> · <a href="https://www.advocatie.nl/nieuws/fiu-nederland-mag-vanaf-1-juli-transacties-tijdelijk-opschorten/" target="_blank" rel="noopener noreferrer">Advocatie.nl</a> · <a href="https://www.taxence.nl/nieuws/fiu-nederland-krijgt-opschortingsbevoegdheid-wijzigingen-per-1-juli-2026/" target="_blank" rel="noopener noreferrer">Taxence</a> · <a href="https://www.fiscaalvanmorgen.nl/2026/03/04/fiu-nederland-krijgt-opschortingsbevoegdheid-implicaties-voor-meldingsplichtige-instellingen/" target="_blank" rel="noopener noreferrer">Fiscaal Vanmorgen</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MAXIMALE DUUR -->
+<div class="modal-overlay" id="duur-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDuurModal()">&#x2715;</button>
+    <div class="modal-title">Maximale duur — Art. 17a lid 1, 2 en 3 Wwft</div>
+
+    <div class="mh">Termijnen</div>
+    <div class="mp">De opschorting geldt voor maximaal <strong>vijf werkdagen</strong> (art. 17a lid 1 Wwft). Indien het verzoek door de Nederlandse FIU wordt gedaan op verzoek van een buitenlandse FIU, kan deze termijn met maximaal <strong>vijf werkdagen worden verlengd</strong> tot in totaal tien werkdagen (art. 17a lid 2 Wwft). Volgens de MvT is deze verlengingsmogelijkheid beperkt tot gevallen waarin het vanwege administratieve handelingen rond een door de buitenlandse autoriteiten in te dienen verzoek niet haalbaar is om binnen vijf werkdagen te beoordelen of de transactie in verband staat met witwassen of terrorismefinanciering.</div>
+
+    <div class="mh">Vroegtijdige intrekking</div>
+    <div class="mp">Zodra het onderzoek naar de achtergronden van de transactie is afgerond en het aanhouden niet langer nodig is, dient de FIU het verzoek in te trekken en de instelling daarvan in kennis te stellen (art. 17a lid 3 Wwft). De MvT benadrukt dat hiermee wordt gewaarborgd dat de opschorting niet langer duurt dan strikt noodzakelijk.</div>
+
+    <div class="mh">Na afloop van de termijn</div>
+    <div class="mp">Na het ontvangen van een intrekkingsbericht van de FIU zijn er twee scenario's, afhankelijk van hoe het verzoek is uitgevoerd:</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>De transactie werd aangehouden</strong> (nog niet uitgevoerd): de transactie wordt alsnog uitgevoerd, tenzij de opsporingsautoriteiten inmiddels strafvorderlijk beslag hebben gelegd.</li>
+      <li><strong>Een tegoed werd geblokkeerd</strong> (transactie reeds uitgevoerd via instant payment): het geblokkeerde tegoed wordt vrijgegeven, tenzij de opsporingsautoriteiten inmiddels strafvorderlijk beslag hebben gelegd.</li>
+    </ul>
+    <div class="mp" style="margin-top:8px">Indien de door de FIU opgegeven termijn nadert zonder intrekkingsbericht of beslagbevel, dient de instelling naar mijn mening contact op te nemen met de FIU en intern te escaleren naar de tweede of derde lijn en/of de juridische afdeling. De wet verduidelijkt niet of de opschorting van rechtswege vervalt na het verstrijken van de termijn — handel niet zelfstandig tot vrijgave of uitvoering over zonder nadere afstemming.</div>
+
+    <div style="margin-top:18px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan instelling</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li><strong>Termijnbewaking:</strong> Richt een systeem in voor het actief bewaken van de termijn per opschortingsverzoek. De FIU vermeldt in haar verzoek de geldende termijn — deze bedraagt maximaal vijf werkdagen, of maximaal tien werkdagen bij een buitenlands FIU-verzoek, maar kan ook korter zijn. Bewaar de in het verzoek genoemde termijn als uitgangspunt en zorg dat het systeem tijdig signaleert wanneer deze termijn nadert, zodat de transactie of het tegoed niet langer dan door de FIU verzocht wordt aangehouden of geblokkeerd.</li>
+        <li><strong>Intrekkingsbericht:</strong> Spreek intern af dat de transactie wordt uitgevoerd respectievelijk het tegoed wordt vrijgegeven na ontvangst van een intrekkingsbericht van de FIU, óf na het verstrijken van de door de FIU opgegeven termijn — afhankelijk van wat zich het eerst voordoet.</li>
+        <li><strong>Escalatieprocedure:</strong> Houd er rekening mee dat opsporingsautoriteiten gedurende de opschortingstermijn strafvorderlijk beslag kunnen leggen. Richt een escalatieprocedure in voor gevallen waarin de instelling gedurende de opschortingstermijn een beslagbevel ontvangt, zodat de overgang van opschorting naar beslag gecontroleerd verloopt.</li>
+        <li><strong>Documentatie:</strong> Leg per verzoek de begin- en einddatum van de opschorting vast, evenals het intrekkingsbericht van de FIU of — bij uitblijven daarvan — de interne escalatie en de verdere afhandeling.</li>
+        <li><strong>Verlenging als signaal:</strong> Indien de termijn wordt verlengd in verband met een buitenlandse FIU, is dit een indicatie om in het onderzoekskader van de <em>event-driven review</em> specifiek aandacht te besteden aan de internationale transacties en activiteiten van de betreffende cliënt.</li>
+        <li><strong>Verscherpte monitoring:</strong> Het is sterk aan te bevelen om de cliënt gedurende de opschortingsperiode op <em>verscherpte monitoring</em> te zetten in het transactiemonitoringsysteem. Hiermee wordt voorkomen dat transacties die niet in het FIU-verzoek zijn opgenomen, maar die qua kenmerken — zoals hoogte van het bedrag, afzender, begunstigde of transactiepatroon — overeenkomsten vertonen met de transactie(s) uit het verzoek, onopgemerkt blijven. Door deze transacties direct te detecteren kan de instelling onverwijld actie ondernemen: denk aan het melden bij de FIU als ongebruikelijke transactie en het via de reeds opgestarte <em>event-driven review</em> uitvragen bij de cliënt naar de achtergrond van deze transacties.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 17a lid 1, 2 en 3 (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 · <a href="https://www.fiu-nederland.nl/fiu-nederland-krijgt-opschortingsbevoegdheid-wat-verandert-er-vanaf-1-juli-2026/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Opschortingsbevoegdheid per 1 juli 2026</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL INFORMEREN CLIËNT -->
+<div class="modal-overlay" id="infoclient-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeInfoClientModal()">&#x2715;</button>
+    <div class="modal-title">Informeren van de cliënt — Art. 17a lid 6 Wwft</div>
+
+    <div class="mh">Wettelijke verplichting</div>
+    <div class="mp">De instelling is verplicht de cliënt <strong>terstond</strong> te informeren over de toepassing van de opschortingsmaatregel (art. 17a lid 6 Wwft). De oorspronkelijke wettekst voorzag in informatie "op verzoek van de cliënt" (een passieve informatieplicht); dit is bij amendement-Six Dijkstra (nr. 10) gewijzigd naar een actieve informatieplicht: terstond en uit eigen beweging.</div>
+
+    <div class="mh">Wat mag wel en niet worden medegedeeld</div>
+    <div class="mp">De instelling mag de cliënt uitsluitend mededelen dat de uitvoering van de transactie op verzoek van de FIU tijdelijk wordt aangehouden, dan wel dat een tegoed ter grootte van de transactie tijdelijk is geblokkeerd. De instelling mag <strong>niet</strong> mededelen:</div>
+    <ul class="ml" style="margin-top:6px">
+      <li>Dat er een melding van een ongebruikelijke transactie is gedaan of dat er een FIU-onderzoek loopt.</li>
+      <li>De inhoudelijke reden of achtergrond van het opschortingsverzoek.</li>
+      <li>Of de transactie door de FIU als verdacht is of wordt aangemerkt.</li>
+    </ul>
+
+    <div class="mh">Verhouding tot het tipping off-verbod</div>
+    <div class="mp">Het informeren van de cliënt over de opschorting levert volgens FIU-Nederland geen schending op van het tipping off-verbod van art. 23 Wwft. Dit verbod ziet op het informeren over een melding van een ongebruikelijke transactie bij de FIU en over het verstrekken van nadere informatie op grond van art. 17 Wwft, maar niet op het opvolgen van een opschortingsverzoek op grond van art. 17a Wwft.</div>
+
+    <div style="margin-top:18px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan instelling</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li><strong>Standaardcommunicatie:</strong> Stel een standaardtekst op waarmee de cliënt terstond wordt geïnformeerd over de opschorting. Beperk de mededeling strikt tot het feit van de opschorting en vermijd iedere verwijzing naar een melding of onderzoek.</li>
+        <li><strong>Kanaal:</strong> Bepaal via welk kanaal de cliënt wordt geïnformeerd (beveiligde berichtenomgeving, telefonisch, schriftelijk) en leg dit vast in de werkinstructies.</li>
+        <li><strong>Vastlegging in event-driven review:</strong> Leg het moment en de wijze van informeren vast in de <em>event-driven review</em> die naar aanleiding van het FIU-verzoek is opgestart. Documenteer wat aan de cliënt is medegedeeld en eventuele reacties van de cliënt. Deze vastlegging dient zowel als bewijs van nakoming van de wettelijke informatieplicht als als input voor de verdere beoordeling van het cliëntrisico.</li>
+        <li><strong>Reactie van de cliënt:</strong> Houd er rekening mee dat de cliënt naar aanleiding van de mededeling vragen zal stellen of een klacht zal indienen. Bereid medewerkers voor op het omgaan met dergelijke situaties, waarbij zij uitsluitend mogen verwijzen naar het feit dat de opschorting op wettelijke grondslag plaatsvindt — zonder inhoudelijke toelichting over het FIU-onderzoek.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 17a lid 6 (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 en 10 · Kamerstukken II 2025/26, 36 463, nr. 10 (amendement Six Dijkstra, ter vervanging van nr. 7) · Kamerstukken II 2025/26, 36 463, nr. 13 (amendement Van Nispen/Mutluer) · <a href="https://www.fiu-nederland.nl/fiu-nederland-krijgt-opschortingsbevoegdheid-wat-verandert-er-vanaf-1-juli-2026/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Opschortingsbevoegdheid per 1 juli 2026</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EINDE OPSCHORTING -->
+<div class="modal-overlay" id="einde-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeEindeModal()">&#x2715;</button>
+    <div class="modal-title">Einde opschorting: vrijgave of beslag — Art. 17a lid 1, 2 en 3 Wwft</div>
+
+    <div class="mh">Twee scenario's</div>
+    <div class="mp">Het einde van de opschorting kan op twee manieren plaatsvinden:</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>Vrijgave:</strong> Indien het FIU-onderzoek geen aanleiding geeft tot strafvorderlijk optreden, trekt de FIU het verzoek in en stelt de instelling daarvan in kennis. De instelling geeft het geblokkeerde tegoed vrij respectievelijk voert de aangehouden transactie alsnog uit. Indien de door de FIU opgegeven termijn is verstreken zonder intrekking en zonder beslaglegging, is de juridische situatie minder eenduidig: de wet verduidelijkt niet of de opschorting van rechtswege vervalt. Mijn advies is in dat geval contact op te nemen met de FIU en intern te escaleren alvorens tot vrijgave over te gaan.</li>
+      <li><strong>Beslag:</strong> Indien het FIU-onderzoek daartoe aanleiding geeft, kunnen het OM en/of opsporingsdiensten gedurende de opschortingstermijn strafvorderlijk beslag leggen (art. 94 en 94a Sv). Bij een buitenlands FIU-verzoek kan beslaglegging via een rechtshulpverzoek plaatsvinden.</li>
+    </ul>
+
+    <div class="mh">Intrekking door de FIU</div>
+    <div class="mp">De FIU dient het verzoek in te trekken zodra het aanhouden niet langer noodzakelijk is, ook als de maximale termijn nog niet is verstreken. De instelling wordt hiervan in kennis gesteld.</div>
+
+    <div class="mh">Overgang opschorting naar beslag</div>
+    <div class="mp">De MvT beschrijft de opschortingsbevoegdheid als aanvullend op, en bij een positieve uitslag voorafgaand aan, de bestaande mogelijkheid van strafvorderlijk beslag. Voor de instelling betekent dit naar mijn mening dat zij voorbereid moet zijn op een naadloze overgang, zodat het tegoed op geen enkel moment onbedoeld vrijkomt.</div>
+
+    <div style="margin-top:18px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan instelling</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li><strong>Beslismoment vastleggen:</strong> Leg per verzoek vast op welke grond de opschorting is beëindigd: intrekkingsbericht FIU, verstrijken termijn, of overgang naar beslag. Neem dit op in de <em>event-driven review</em>.</li>
+        <li><strong>Overgang naar beslag:</strong> Richt een escalatieprocedure in voor het geval gedurende de opschortingstermijn een beslagbevel wordt ontvangen, zodat het tegoed niet tussentijds wordt vrijgegeven.</li>
+        <li><strong>Vrijgave-procedure:</strong> Stel een procedure vast voor het beëindigen van de opschorting na ontvangst van een intrekkingsbericht van de FIU. Afhankelijk van hoe het verzoek is uitgevoerd betekent dit: het vrijgeven van het geblokkeerde tegoed, dan wel het alsnog uitvoeren van de aangehouden transactie. Informeer de cliënt over de beëindiging van de opschorting en leg dit vast in het dossier. Indien de termijn nadert zonder intrekkingsbericht, activeer dan de escalatieprocedure.</li>
+        <li><strong>Afronding event-driven review:</strong> Het einde van de opschorting is niet het einde van de beoordeling. Rond de <em>event-driven review</em> af met een conclusie over het cliëntrisico: moet het risicoprofiel worden aangepast, zijn aanvullende maatregelen nodig (zoals verscherpt cliëntenonderzoek), en is een (aanvullende) melding bij de FIU aangewezen?</li>
+        <li><strong>Verscherpte monitoring handhaven:</strong> Overweeg om de verscherpte monitoring die gedurende de opschorting is ingesteld ook na afloop te handhaven, totdat de <em>event-driven review</em> definitief is afgerond en een besluit over het cliëntrisico is genomen.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 17a lid 1, 2 en 3 (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 · Art. 94 en 94a Sv · <a href="https://www.fiu-nederland.nl/fiu-nederland-krijgt-opschortingsbevoegdheid-wat-verandert-er-vanaf-1-juli-2026/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Opschortingsbevoegdheid per 1 juli 2026</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CIVIELRECHTELIJKE VRIJWARING -->
+<div class="modal-overlay" id="vrijwaring-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeVrijwaringModal()">&#x2715;</button>
+    <div class="modal-title">Civielrechtelijke vrijwaring — Art. 20c Wwft</div>
+
+    <div class="mh">Wettelijke grondslag</div>
+    <div class="mp">Art. 20c Wwft voorziet in een civielrechtelijke vrijwaring voor de instelling en haar medewerkers met betrekking tot het uitvoeren van een opschortingsverzoek van de FIU op grond van art. 17a Wwft. Een instelling die gevolg geeft aan het verzoek wordt gevrijwaard van civielrechtelijke aansprakelijkheid voor schade die de cliënt dientengevolge lijdt.</div>
+
+    <div class="mh">Reikwijdte van de vrijwaring</div>
+    <div class="mp">Art. 20c Wwft strekt ertoe de instelling te beschermen tegen schadeclaims van een cliënt die stelt schade te hebben geleden door de vertraagde uitvoering van een transactie. Doet de cliënt tegen de instelling een verzoek tot schadevergoeding, dan kan de instelling zich verweren met een beroep op de wettelijke verplichting tot het opvolgen van het FIU-verzoek. De vrijwaring strekt zich uitdrukkelijk ook uit tot <strong>medewerkers</strong> van de instelling die ter uitoefening van hun taak gevolg geven aan het verzoek.</div>
+
+
+
+    <div class="mh">Arbeidsrechtelijke bescherming</div>
+    <div class="mp">Art. 20c Wwft biedt tevens arbeidsrechtelijke bescherming aan werknemers van de instelling: zij mogen door hun werkgever niet worden benadeeld als gevolg van het uitvoeren van een opschortingsverzoek.</div>
+
+    <div class="mh">Grenzen van de vrijwaring</div>
+    <div class="mp">De vrijwaring geldt voor het opvolgen van het FIU-verzoek als zodanig. Naar mijn mening volgt hieruit dat de instelling, om zich met succes op art. 20c Wwft te kunnen beroepen, aantoonbaar gevolg moet hebben gegeven aan het verzoek en zich — in lijn met de eerder besproken inspanningsverplichting — aantoonbaar maximaal moet hebben ingespannen. Bewijs van het FIU-verzoek en van de uitvoering daarvan is daarom essentieel.</div>
+
+    <div style="margin-top:18px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan instelling</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li><strong>Bewijs van het FIU-verzoek bewaren:</strong> Bewaar het schriftelijke verzoek van de FIU zorgvuldig in het cliëntdossier. Dit dient als primair bewijs in geval van een civielrechtelijke aansprakelijkstelling.</li>
+        <li><strong>Vastlegging in event-driven review:</strong> Documenteer in de <em>event-driven review</em> de wijze waarop het verzoek is uitgevoerd, het tijdstip van uitvoering en eventuele beperkingen (bijvoorbeeld onvoldoende saldo). Hiermee toont de instelling aan dat zij zich maximaal heeft ingespannen — een vereiste om de vrijwaring te kunnen inroepen.</li>
+        <li><strong>Standaardverweer bij claims:</strong> Stel een standaardverweer op voor het geval een cliënt een schadeclaim indient. Verwijs hierin naar de wettelijke verplichting van art. 17a lid 4 Wwft en de vrijwaring van art. 20c Wwft, zonder inhoudelijk in te gaan op de achtergrond van het FIU-verzoek.</li>
+
+        <li><strong>Bescherming medewerkers:</strong> Borg in interne procedures dat medewerkers die uitvoering geven aan een FIU-verzoek arbeidsrechtelijk worden beschermd. Communiceer dit duidelijk naar de KYC-afdeling, zodat medewerkers het verzoek zonder aarzeling kunnen uitvoeren.</li>
+        <li><strong>Bewaartermijn:</strong> Hanteer voor het FIU-verzoek en de bijbehorende vastlegging dezelfde bewaartermijn als voor andere Wwft-documentatie (vijf jaar na beëindiging van de zakelijke relatie of na uitvoering van de incidentele transactie, op grond van art. 33 Wwft).</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 20c (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · Wwft art. 17a · Wwft art. 33 · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 en artikelsgewijze toelichting bij art. 20c · <a href="https://www.fiu-nederland.nl/fiu-nederland-krijgt-opschortingsbevoegdheid-wat-verandert-er-vanaf-1-juli-2026/" target="_blank" rel="noopener noreferrer">FIU-Nederland — Opschortingsbevoegdheid per 1 juli 2026</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TOEZICHT DNB -->
+<div class="modal-overlay" id="toezicht-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeToezichtModal()">&#x2715;</button>
+    <div class="modal-title">Bestuursrechtelijk toezicht door DNB — Art. 17a lid 5 jo. art. 29 en 30 Wwft</div>
+
+    <div class="mh">Wettelijke grondslag</div>
+    <div class="mp">Art. 17a lid 5 Wwft bepaalt dat een instelling beschikt over gedragslijnen, procedures en maatregelen die haar in staat stellen te voldoen aan het vierde lid. Lid 4 verplicht de instelling om onverwijld gevolg te geven aan een opschortingsverzoek van de FIU. Lid 5 vereist daarmee indirect dat de instelling het gehele proces — van ontvangst van het verzoek tot en met uitvoering — zo heeft ingericht dat onverwijld handelen ook daadwerkelijk mogelijk is. De Nederlandsche Bank (DNB) is op grond van art. 29 en 30 Wwft belast met het toezicht op de aanwezigheid en toereikendheid van deze gedragslijnen, procedures en maatregelen.</div>
+
+    <div class="mh">Handhavingsinstrumenten DNB</div>
+    <div class="mp">De art. 29 en 30 Wwft voorzien reeds in de algemene toezichts- en handhavingsbevoegdheden van DNB voor de bij haar belegde Wwft-verplichtingen. Op grond van deze bepalingen houdt DNB toezicht op de aanwezigheid en toereikendheid van de gedragslijnen, procedures en maatregelen die art. 17a lid 5 Wwft vereist, zodat de instelling in staat is onverwijld te voldoen aan lid 4. De handhavingsinstrumenten van art. 29 en 30 Wwft gelden daarmee ook ten aanzien van tekortkomingen in die gedragslijnen, procedures en maatregelen:</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>Last onder dwangsom</strong> (art. 29 Wwft) — om de instelling te dwingen alsnog aan de verplichting te voldoen.</li>
+      <li><strong>Bestuurlijke boete</strong> (art. 30 Wwft) — als bestuurlijke sanctie voor het ontbreken van adequate procedures.</li>
+    </ul>
+
+    <div class="mh">Onderscheid: procedurefout vs. uitvoeringsfout</div>
+    <div class="mp">Uit de systematiek van art. 17a Wwft volgt naar mijn mening een belangrijk onderscheid tussen twee typen tekortkomingen. Indien de instelling <em>niet beschikt</em> over toereikende gedragslijnen, procedures en maatregelen (art. 17a lid 5 Wwft), ligt bestuursrechtelijke handhaving door DNB via last onder dwangsom of boete in de rede. Indien de instelling wél over deze procedures beschikt maar in een concreet geval desondanks geen gevolg geeft aan een FIU-verzoek (art. 17a lid 4 Wwft), valt dat onder de strafrechtelijke handhaving via de WED (zie volgende node).</div>
+
+    <div style="margin-top:18px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan instelling</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li><strong>Beleidsmatige verankering:</strong> Veranker de art. 17a Wwft-verplichting expliciet in de bestaande Wwft-beleidsstukken, werkinstructies en het AML/CTF-beleid. Sluit aan bij de bestaande structuur rond art. 16 (meldplicht) en art. 17 (informatieverzoek) Wwft, zodat de samenhang met de overige FIU-bevoegdheden zichtbaar is.</li>
+        <li><strong>Aantoonbare procedures:</strong> Zorg dat de gedragslijnen, procedures en maatregelen schriftelijk zijn vastgelegd, actueel zijn en periodiek worden getoetst. DNB kan bij een toezichtonderzoek vragen om bewijs van het bestaan en de werking van deze procedures.</li>
+        <li><strong>Technische infrastructuur:</strong> Borg dat de IT-systemen ondersteunen dat een transactie kan worden aangehouden of een tegoed kan worden geblokkeerd. Documenteer deze technische voorzieningen.</li>
+        <li><strong>Training en bewustwording:</strong> Train de KYC-medewerkers en relevante operationele teams in de werking van art. 17a Wwft, de termijnen, de informatieplicht en de vastleggingsvereisten. Documenteer trainingen.</li>
+        <li><strong>Periodieke audit:</strong> Onderwerp het art. 17a-proces aan een periodieke interne audit (bijvoorbeeld door de tweede of derde lijn), zodat de instelling kan aantonen dat het proces niet alleen op papier maar ook in de praktijk functioneert.</li>
+        <li><strong>Vastlegging in event-driven review:</strong> Documenteer de uitvoering van elk individueel verzoek in de <em>event-driven review</em>. Deze vastlegging dient niet alleen als operationeel dossier, maar ook als bewijs richting DNB dat de procedures effectief worden toegepast.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 17a lid 5, art. 29 en art. 30 (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 en par. 9 · Artikelsgewijze toelichting bij art. V, onderdelen C en D · <a href="https://www.dnb.nl/" target="_blank" rel="noopener noreferrer">De Nederlandsche Bank — Toezicht Wwft</a> · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL STRAFRECHTELIJKE HANDHAVING -->
+<div class="modal-overlay" id="wed-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeWedModal()">&#x2715;</button>
+    <div class="modal-title">Strafrechtelijke handhaving — Art. 1 sub 2° WED jo. art. 17a lid 4 Wwft</div>
+
+    <div class="mh">Wettelijke grondslag</div>
+    <div class="mp">Het niet onverwijld voldoen aan een opschortingsverzoek van de FIU op grond van art. 17a lid 4 Wwft is via de wijziging van art. 1 sub 2° van de Wet op de economische delicten (WED) aangemerkt als <strong>economisch delict</strong>.</div>
+
+    <div class="mh">Sanctionering</div>
+    <div class="mp">Het sanctieregime volgt rechtstreeks uit de WED en is afhankelijk van de mate van verwijtbaarheid:</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>Opzettelijk begaan</strong> — misdrijf, te bestraffen met gevangenisstraf van ten hoogste twee jaar of een geldboete van de vierde categorie (art. 2 lid 1 jo. art. 6 lid 1 sub 2° WED).</li>
+      <li><strong>Niet-opzettelijk begaan</strong> — overtreding, te bestraffen met hechtenis van ten hoogste zes maanden, taakstraf of een geldboete van de vierde categorie (art. 2 lid 1 jo. art. 6 lid 1 sub 5° WED).</li>
+    </ul>
+
+    <div class="mh">Verhouding tot bestuursrechtelijk toezicht</div>
+    <div class="mp">Zoals toegelicht in de node <em>"Bestuursrechtelijk toezicht door DNB"</em>, volgt uit de systematiek van art. 17a Wwft een onderscheid tussen twee typen tekortkomingen. De strafrechtelijke handhaving ziet op de situatie waarin de instelling — ondanks toereikende gedragslijnen, procedures en maatregelen — in een concreet geval geen gevolg geeft aan een FIU-verzoek (feitelijke niet-uitvoering). Het bestuursrechtelijk toezicht door DNB ziet daarentegen op het ontbreken of tekortschieten van de procedures zelf. Beide handhavingsregimes bestaan naast elkaar en sluiten elkaar niet uit.</div>
+
+    <div class="mh">Inspanningsverplichting als verweer</div>
+    <div class="mp">Zoals in de node <em>"FIU-verzoek ontvangen"</em> toegelicht, is de verplichting tot het opvolgen van het FIU-verzoek naar mijn mening te kwalificeren als een <strong>inspanningsverplichting</strong>. De MvT licht toe dat een bank de uitvoering van een transactie in de regel niet kan tegenhouden, omdat veelal sprake is van instant payments die binnen vijf seconden worden verwerkt. Daaruit volgt dat van de instelling niet meer kan worden gevergd dan een maximale inspanning om aan het verzoek gevolg te geven. Indien de instelling kan aantonen zich maximaal te hebben ingespannen — bijvoorbeeld omdat de transactie reeds was uitgevoerd via instant payments of omdat er onvoldoende saldo beschikbaar was — is geen sprake van strafbare niet-uitvoering. Documentatie van deze inspanning is daarom essentieel.</div>
+
+    <div style="margin-top:18px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan instelling</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li><strong>Documentatie inspanningsverplichting:</strong> Leg per FIU-verzoek vast welke handelingen zijn verricht om aan het verzoek te voldoen, op welk moment, en — bij gehele of gedeeltelijke niet-uitvoering — wat de feitelijke en technische redenen hiervoor waren. Deze documentatie vormt het belangrijkste verweer tegen een eventuele strafrechtelijke vervolging.</li>
+        <li><strong>Vastlegging in event-driven review:</strong> Neem deze documentatie integraal op in de <em>event-driven review</em> die naar aanleiding van het FIU-verzoek is gestart. Hiermee wordt zowel het inhoudelijke beoordelingsproces als de uitvoering van het verzoek in één samenhangend dossier vastgelegd.</li>
+        <li><strong>Escalatie bij twijfel:</strong> Wanneer de KYC-medewerker in een concreet geval twijfelt of het verzoek (volledig) kan worden uitgevoerd, escaleer dan tijdig naar de tweede of derde lijn en/of de juridische afdeling. Leg het escalatiemoment en het besluit vast.</li>
+        <li><strong>Periodieke evaluatie:</strong> Evalueer periodiek de gevallen waarin uitvoering van een FIU-verzoek niet (volledig) mogelijk bleek. Identificeer structurele knelpunten in de procedures of techniek en pas deze waar nodig aan, om herhaling te voorkomen. Dit toont tevens aan DNB en het OM dat de instelling actief stuurt op naleving.</li>
+        <li><strong>Bewijs van het FIU-verzoek bewaren:</strong> Zoals ook bij art. 20c Wwft geadviseerd: bewaar het schriftelijke FIU-verzoek zorgvuldig. Het verzoek vormt de wettelijke grondslag voor het handelen en is essentieel bewijs in zowel een strafrechtelijke als civielrechtelijke context.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 17a lid 4 (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · WED art. 1 sub 2°, art. 2 lid 1 en art. 6 lid 1 · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 en artikelsgewijze toelichting bij art. VI, onderdeel B · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDR STAPPENPLAN -->
+<div class="modal-overlay" id="edr-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeEdrModal()">&#x2715;</button>
+    <div class="modal-title">Stappenplan Event-Driven Review naar aanleiding van FIU-verzoek</div>
+
+    <div class="mp">Een opschortingsverzoek op grond van art. 17a Wwft vormt naar mijn mening op zichzelf aanleiding voor een <em>event-driven review</em> (EDR). Onderstaand stappenplan bundelt de adviezen uit de afzonderlijke processtappen tot één chronologische leidraad voor de KYC-afdeling die verantwoordelijk is voor de afhandeling van het aan de bank gerichte FIU-verzoek, en veronderstelt dat de hieronder beschreven randvoorwaarden vooraf zijn ingericht.</div>
+
+    <div class="mh">Randvoorwaarden (vooraf ingericht, vóór het eerste FIU-verzoek)</div>
+    <div class="mp">Het stappenplan hieronder gaat uit van een situatie waarin de instelling bij ontvangst van een art. 17a-verzoek direct operationeel kan handelen. Dat vergt een aantal randvoorwaarden die vóóraf moeten zijn ingericht.</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>Beleidsmatige verankering:</strong> Veranker de art. 17a Wwft-verplichting expliciet in de bestaande Wwft-beleidsstukken, werkinstructies en het AML/CTF-beleid. Art. 17a lid 5 Wwft vereist dat de instelling beschikt over gedragslijnen, procedures en maatregelen die haar in staat stellen te voldoen aan lid 4 — de verplichting om onverwijld gevolg te geven aan een opschortingsverzoek. Dit betekent dat het gehele proces, van ontvangst van het verzoek tot en met uitvoering, beleidsmatig verankerd moet zijn. Sluit aan bij de bestaande structuur rond art. 16 Wwft (meldplicht) en art. 17 Wwft (informatieverzoek). Leg vast wie binnen de organisatie eigenaar is van het art. 17a-proces.</li>
+      <li><strong>Aantoonbare procedures:</strong> Zorg dat de gedragslijnen, procedures en maatregelen schriftelijk zijn vastgelegd, actueel zijn en periodiek worden getoetst (ten minste jaarlijks). DNB kan bij een toezichtonderzoek vragen om bewijs van het bestaan én de werking van deze procedures — zorg dus voor een auditspoor van toetsingen, versiebeheer en vaststellingen door het verantwoordelijke orgaan.</li>
+      <li><strong>Technische infrastructuur:</strong> Borg dat de IT-systemen ondersteunen dat een transactie kan worden aangehouden of een tegoed kan worden geblokkeerd — zowel het tegenhouden van een nog niet uitgevoerde transactie als het achteraf blokkeren van een tegoed ter grootte van een reeds uitgevoerde instant payment. Test deze functionaliteit periodiek en documenteer de technische voorzieningen, inclusief de koppeling met het case management systeem waarin de EDR wordt gevoerd.</li>
+      <li><strong>Escalatiepaden en afstemming:</strong> Leg de escalatiepaden naar compliance, legal en senior management vooraf vast in de werkinstructies — bijvoorbeeld via een vast escalatieformulier of een beslisboom. Zorg dat KYC-medewerkers weten dat afstemming in ieder geval plaatsvindt bij twijfel, juridische vragen, complexe casussen, aanpassing van het cliëntrisicoprofiel, exit-besluiten en voorafgaand aan een (aanvullende) FIU-melding. Leg per casus vast wanneer, met wie en met welke uitkomst is afgestemd.</li>
+      <li><strong>Training en bewustwording:</strong> Train de KYC-medewerkers en relevante operationele teams vooraf in de werking van art. 17a Wwft: de termijnen (maximaal 5 of 10 werkdagen, maar mogelijk korter afhankelijk van het verzoek), de informatieplicht aan de cliënt, de verhouding tot het tipping off-verbod, de civielrechtelijke vrijwaring (art. 20c Wwft) en de vastleggingsvereisten. Documenteer trainingen (datum, deelnemers, inhoud) zodat de instelling de opgebouwde kennis en bewustwording kan aantonen.</li>
+      <li><strong>Standaardcommunicatie aan cliënt:</strong> Stel vooraf een standaard-tekst op voor de mededeling aan de cliënt ex art. 17a lid 6 Wwft, waarin uitsluitend het feit van de opschorting wordt gedeeld — zonder enige verwijzing naar een onderliggend FIU-onderzoek. Laat deze tekst beoordelen door legal en compliance en borg deze in de werkinstructies, zodat elke medewerker dezelfde boodschap hanteert.</li>
+      <li><strong>Standaardverweer bij claims:</strong> Stel vooraf een standaardverweer op voor het geval een cliënt naar aanleiding van de opschorting een schadeclaim indient. Verwijs hierin naar de wettelijke verplichting van art. 17a lid 4 Wwft en de civielrechtelijke vrijwaring van art. 20c Wwft, zonder inhoudelijk in te gaan op de achtergrond van het FIU-verzoek.</li>
+      <li><strong>Periodieke interne audit:</strong> Onderwerp het art. 17a-proces aan een periodieke interne audit door de tweede of derde lijn, zodat de instelling kan aantonen dat het proces niet alleen op papier maar ook in de praktijk functioneert. De auditresultaten vormen tevens input voor de periodieke evaluatie in fase 7.</li>
+      <li><strong>Wendbaarheid met het oog op de Iwt-transitie (per 10 juli 2027):</strong> Per 10 juli 2027 wordt de opschortingsbevoegdheid overgeheveld naar art. 3.6 Iwt, dat op onderdelen afwijkt van art. 17a Wwft — zie het Loyens & Loeff-blok in de node <em>"Achtergrondschets"</em>. Houd beleid, procedures en IT-inrichting voldoende modulair om tijdig te kunnen overschakelen zonder volledige herinrichting, en volg actief de parlementaire behandeling van de Iwt.</li>
+    </ul>
+
+    <div class="mh">Fase 1 — Ontvangst en verificatie van het verzoek</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>1.1 Ontvangst:</strong> Het verzoek komt binnen via het meldportaal van FIU-Nederland (zelfde kanaal als art. 17 Wwft-verzoeken). Registreer het verzoek direct in het case management systeem. Sla het schriftelijke FIU-verzoek daarnaast als zelfstandig document op in het EDR-dossier: het vormt de wettelijke grondslag voor het handelen van de instelling en is essentieel bewijs richting FIU, DNB, OM of de civiele rechter (vgl. art. 20c Wwft).</li>
+      <li><strong>1.2 Termijnregistratie:</strong> Registreer direct bij ontvangst de door de FIU opgegeven termijn. Deze bedraagt maximaal vijf werkdagen, of maximaal tien werkdagen bij een buitenlands FIU-verzoek, maar kan ook korter zijn. Stel een signalering in zodat de termijn actief wordt bewaakt gedurende het gehele verdere proces — de transactie of het tegoed mag niet langer dan door de FIU verzocht worden aangehouden of geblokkeerd.</li>
+      <li><strong>1.3 Toedeling:</strong> Wijs het verzoek toe aan de KYC-afdeling die ook art. 17 Wwft-verzoeken behandelt. Zorg dat een KYC-medewerker met voldoende kennis van de cliënt de behandeling oppakt. Beperk de toegang tot het verzoek en de daarin vervatte informatie tot uitsluitend de medewerkers die direct betrokken zijn bij de beoordeling en uitvoering — het verzoek mag niet breed raadpleegbaar zijn binnen de instelling.</li>
+      <li><strong>1.4 Start EDR:</strong> Open een nieuwe event-driven review in het case management systeem met als trigger "FIU-verzoek art. 17a Wwft" en koppel deze aan het cliëntdossier.</li>
+    </ul>
+
+    <div class="mh">Fase 2 — Beoordeling en uitvoering van het verzoek</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>2.1 Bepaalbaarheid:</strong> Beoordeel of het verzoek voldoende concreet is om te kunnen vaststellen om welke transactie(s) en welke cliënt het gaat. Bij twijfel: escaleer naar de juridische afdeling of vraag verduidelijking aan de FIU.</li>
+      <li><strong>2.2 Identificatie van de transactie(s):</strong> Lokaliseer de transactie(s) in de bancaire systemen. Controleer of de transactie nog kan worden tegengehouden vóór uitvoering, of dat de transactie reeds is uitgevoerd (typisch bij instant payments) en het tegoed ter grootte van de transactie achteraf moet worden geblokkeerd.</li>
+      <li><strong>2.3 Escalatie bij twijfel over uitvoerbaarheid:</strong> Wanneer de KYC-medewerker twijfelt of het verzoek feitelijk of technisch (volledig) kan worden uitgevoerd — bijvoorbeeld omdat de transactie reeds is verwerkt via instant payment, het saldo ontoereikend is, of er technische belemmeringen zijn — escaleer dan naar de tweede of derde lijn en/of de juridische afdeling. Leg het escalatiemoment, de gestelde vraag en de genomen beslissing vast in de EDR. Dit voorkomt dat achteraf moet worden gereconstrueerd waarom bepaalde keuzes zijn gemaakt.</li>
+      <li><strong>2.4 Aanhouden of blokkeren:</strong> Voer de opschorting onverwijld uit — het tegenhouden van de nog niet uitgevoerde transactie, dan wel het blokkeren van een tegoed ter grootte van een reeds uitgevoerde transactie. Indien het saldo lager is dan de transactiewaarde: documenteer dit zorgvuldig (inspanningsverplichting). Leg het exacte tijdstip van uitvoering vast.</li>
+      <li><strong>2.5 Vastlegging beoordeling:</strong> Leg de beoordeling, het besluit en de redenering vast in de EDR. Het besluitvormingsproces moet achteraf reconstrueerbaar en toetsbaar zijn.</li>
+    </ul>
+
+    <div class="mh">Fase 3 — Communicatie met de cliënt</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>3.1 Informeren van de cliënt:</strong> Informeer de cliënt <strong>terstond</strong> over het feit van de opschorting (art. 17a lid 6 Wwft). Gebruik de standaardcommunicatie en deel uitsluitend het feit van de opschorting — niet de achtergrond, niet het bestaan van een melding of FIU-onderzoek. Leg de wijze, het tijdstip en de inhoud van de mededeling vast in de EDR.</li>
+      <li><strong>3.2 Reactie van de cliënt:</strong> Houd er rekening mee dat de cliënt naar aanleiding van de mededeling vragen zal stellen of een klacht zal indienen. Bereid medewerkers voor op het omgaan met dergelijke situaties, waarbij zij uitsluitend mogen verwijzen naar het feit dat de opschorting op wettelijke grondslag plaatsvindt — zonder inhoudelijke toelichting over het FIU-onderzoek. Leg ontvangen vragen, klachten en de gegeven reacties vast in de EDR.</li>
+    </ul>
+
+    <div class="mh">Fase 4 — Onderzoek en analyse cliënt</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>4.1 Verscherpte monitoring instellen:</strong> Plaats de cliënt in het transactiemonitoringsysteem op <em>verscherpte monitoring</em> gedurende de gehele opschortingsperiode. Hiermee worden vergelijkbare transacties (bedrag, afzender, begunstigde, patroon) direct gedetecteerd.</li>
+      <li><strong>4.2 Beoordeling vergelijkbare lopende transacties:</strong> Beoordeel of er gedurende de opschortingsperiode andere transacties van of naar de cliënt plaatsvinden die overeenkomsten vertonen met de opgeschorte transactie. Indien ja: beoordeel of deze transacties als ongebruikelijk moeten worden aangemerkt en onverwijld bij FIU-Nederland moeten worden gemeld op grond van art. 16 Wwft.</li>
+      <li><strong>4.3 Historische transactieanalyse:</strong> Beoordeel het transactieverleden van de cliënt aan de hand van de kenmerken van de opgeschorte transactie. Zoek naar eerdere transacties met overeenkomsten in bedrag, afzender, begunstigde, frequentie of patroon. Documenteer bevindingen.</li>
+      <li><strong>4.4 Internationale dimensie:</strong> Indien de termijn is verlengd in verband met een buitenlandse FIU (art. 17a lid 2 Wwft), besteed dan in het onderzoek specifiek aandacht aan de internationale transacties en activiteiten van de cliënt — denk aan grensoverschrijdende geldstromen, buitenlandse begunstigden, betalingsdoeleinden en eventuele exposure aan hoog-risicojurisdicties.</li>
+      <li><strong>4.5 Tussentijdse melding bij FIU:</strong> Indien uit de analyse vergelijkbare ongebruikelijke transacties naar voren komen, dien dan onverwijld een melding van een ongebruikelijke transactie in bij FIU-Nederland. Wacht hiermee niet tot het einde van de opschortingsperiode.</li>
+      <li><strong>4.6 Interne consultatie:</strong> Bij twijfel of complexiteit: consulteer de tweede lijn (compliance) en/of de juridische afdeling. Leg het advies vast in de EDR.</li>
+    </ul>
+
+    <div class="mh">Fase 4a — Uitstralingsrisico: onderzoek breder dan de cliënt zelf</div>
+    <div class="mp">Het onderzoek kan zich naar mijn mening niet beperken tot uitsluitend de cliënt waarop het FIU-verzoek betrekking heeft. Een opschortingsverzoek kan een signaal vormen dat ook breder uitstraalt binnen het cliëntennetwerk van de instelling. Mijn advies is daarom om actief te onderzoeken welke andere relaties van de instelling mogelijk zijn geraakt of verbonden zijn met de aangehouden transactie.</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>4a.1 Tegenpartijen van de cliënt:</strong> Beoordeel welke tegenpartijen in beeld komen via de aangehouden transactie — denk aan afzenders, begunstigden en doorbetalers. Onderzoek of deze tegenpartijen zelf cliënt zijn van de instelling en of er aanleiding is voor een nadere beoordeling van die relaties.</li>
+      <li><strong>4a.2 Verbonden cliënten:</strong> Onderzoek of er andere cliënten van de instelling zijn die in een verbondenheidsrelatie staan met de cliënt waarop het verzoek betrekking heeft — bijvoorbeeld via uiteindelijk belanghebbenden (UBO's), bestuurders, gezamenlijke groepsstructuren, gemeenschappelijke adressen of zakelijke samenwerkingsverbanden. Beoordeel of bij deze verbonden cliënten ook een verhoogd risico aanwezig is.</li>
+      <li><strong>4a.3 Netwerkanalyse:</strong> Maak waar mogelijk gebruik van netwerkanalyse-tooling om verbanden tussen cliënten in beeld te brengen. Documenteer welke verbanden zijn geïdentificeerd en welke vervolgacties daaruit voortvloeien.</li>
+      <li><strong>4a.4 Vervolgactie per geïdentificeerde relatie:</strong> Voor elke geïdentificeerde verbonden cliënt of derde: beoordeel of een (aanvullende) ongebruikelijke transactie-melding bij FIU-Nederland aangewezen is, of het cliëntrisicoprofiel moet worden aangepast, en of verscherpte monitoring gewenst is. Stem complexe gevallen af met compliance, legal en/of senior management.</li>
+      <li><strong>4a.5 Vastlegging:</strong> Documenteer in de EDR het uitgevoerde uitstralingsonderzoek, de geïdentificeerde verbanden en de daaruit voortvloeiende acties. Hiermee toont de instelling aan dat zij niet alleen reactief op het FIU-verzoek heeft gehandeld, maar ook proactief het bredere cliëntrisico in kaart heeft gebracht. Indien het uitstralingsonderzoek aanleiding geeft tot nader onderzoek naar een of meer andere cliënten, resulteert dit in een afzonderlijke event-driven review per cliënt naar wie het risico uitstraalt — of worden de bevindingen toegevoegd aan een reeds lopend dossier van die cliënt.</li>
+    </ul>
+
+    <div class="mh">Fase 5 — Einde opschorting</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>5.1 Beslismoment:</strong> Stel vast op welke grond de opschorting eindigt:
+        <ul style="margin-top:4px">
+          <li>Intrekkingsbericht van de FIU ontvangen → beëindiging opschorting;</li>
+          <li>Beslagbevel van OM/opsporingsdiensten ontvangen → overgang naar beslag.</li>
+        </ul>
+      </li>
+      <li><strong>5.2 Termijn nadert zonder bericht:</strong> Indien de door de FIU opgegeven termijn nadert zonder dat een intrekkingsbericht of beslagbevel is ontvangen, is mijn advies om contact op te nemen met de FIU en intern te escaleren naar de tweede of derde lijn en/of de juridische afdeling. Handel niet zelfstandig tot vrijgave of uitvoering over zonder nadere afstemming — de wet verduidelijkt niet of de opschorting van rechtswege vervalt na het verstrijken van de termijn.</li>
+      <li><strong>5.3 Bij beëindiging opschorting:</strong> Voer de beëindiging uit volgens de vastgestelde procedure. Afhankelijk van hoe het verzoek is uitgevoerd betekent dit: het vrijgeven van het geblokkeerde tegoed, dan wel het alsnog uitvoeren van de aangehouden transactie. Informeer de cliënt over de beëindiging van de opschorting en leg het tijdstip, de wijze van uitvoering en de grond voor beëindiging vast in de EDR.</li>
+      <li><strong>5.4 Bij overgang naar beslag:</strong> Activeer de escalatieprocedure. Zorg dat het tegoed niet tussentijds wordt vrijgegeven en dat de overgang naar beslag gecontroleerd verloopt. Leg de overdracht vast.</li>
+    </ul>
+
+    <div class="mh">Fase 6 — Afronding event-driven review</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>6.1 Conclusie cliëntrisico:</strong> Formuleer een conclusie over het cliëntrisico op basis van alle bevindingen uit de fasen 4 en 5. Beantwoord ten minste de volgende vragen:
+        <ul style="margin-top:4px">
+          <li>Moet het risicoprofiel van de cliënt worden aangepast (bijv. van laag/midden naar hoog)?</li>
+          <li>Zijn aanvullende beheersmaatregelen nodig?</li>
+          <li>Is er op basis van de bevindingen aanleiding om een (aanvullende) melding van een ongebruikelijke transactie te doen bij FIU-Nederland? Indien de instelling van oordeel is dat dit niet nodig is, motiveer dit dan expliciet en leg de motivering vast in de EDR.</li>
+          <li>Is voortzetting van de zakelijke relatie verantwoord, of moet exit worden overwogen?</li>
+        </ul>
+      </li>
+      <li><strong>6.2 Verscherpte monitoring handhaven:</strong> Overweeg om de verscherpte monitoring na afloop van de opschorting te handhaven, totdat het besluit over het cliëntrisico definitief is genomen en eventueel structureel is verwerkt in het cliëntprofiel.</li>
+      <li><strong>6.3 Vastlegging eindconclusie:</strong> Sluit de EDR af met een gemotiveerde eindconclusie en een actielijst voor de relatiebeheerder of de afdeling die verantwoordelijk is voor de cliëntrelatie.</li>
+      <li><strong>6.4 Bewaartermijn:</strong> Bewaar de complete EDR (inclusief het oorspronkelijke FIU-verzoek, alle vastleggingen en de eindconclusie) gedurende ten minste vijf jaar na beëindiging van de zakelijke relatie of na uitvoering van de transactie (art. 33 Wwft).</li>
+    </ul>
+
+    <div class="mh">Fase 7 — Periodieke evaluatie (continu)</div>
+    <ul class="ml" style="margin-top:6px">
+      <li><strong>7.1 Procesverbetering:</strong> Evalueer periodiek (bijv. per kwartaal) alle ontvangen art. 17a Wwft-verzoeken en de wijze waarop deze zijn afgehandeld. Identificeer structurele knelpunten in de procedures of techniek.</li>
+      <li><strong>7.2 Aanpassing beleid en techniek:</strong> Pas waar nodig de beleidsstukken, werkinstructies, training en IT-systemen aan om herhaling van knelpunten te voorkomen. Documenteer aanpassingen — DNB en het OM kunnen hiernaar vragen.</li>
+      <li><strong>7.3 Auditspoor:</strong> Onderwerp het art. 17a-proces aan periodieke interne audit door de tweede of derde lijn, zodat de instelling kan aantonen dat het proces niet alleen op papier maar ook in de praktijk effectief functioneert.</li>
+      <li><strong>7.4 Monitoring Iwt-transitie (1 juli 2026 – 10 juli 2027):</strong> Volg actief de ontwikkelingen rond art. 3.6 Iwt, dat per 10 juli 2027 art. 17a Wwft vervangt en op onderdelen afwijkt — zie het Loyens & Loeff-blok in de node <em>"Achtergrondschets"</em>. Plan ruim vóór 10 juli 2027 een gap-analyse en pas beleid, procedures, IT-inrichting en cliëntcommunicatie tijdig aan.</li>
+    </ul>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 16, 17, 17a, 20c en 33 (Stb. 2025, 333; inwerkingtredingsbesluit Stb. 2025, 414) · WED art. 1 sub 2° · Kamerstukken II 2023/24, 36 463, nr. 3 (MvT), par. 7 · <a href="https://www.fiu-nederland.nl/home/veelgestelde-vragen/veel-gestelde-vragen-over-nieuwe-wetgeving/" target="_blank" rel="noopener noreferrer">FIU-Nederland — FAQ nieuwe wetgeving</a> · Eigen analyse op basis van de adviezen bij de afzonderlijke processtappen in deze flowchart</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+function openFiuModal() {
+  document.getElementById('fiu-overlay').classList.add('open');
+}
+function closeFiuModal() {
+  document.getElementById('fiu-overlay').classList.remove('open');
+}
+function openDuurModal() {
+  document.getElementById('duur-overlay').classList.add('open');
+}
+function closeDuurModal() {
+  document.getElementById('duur-overlay').classList.remove('open');
+}
+function openInfoClientModal() {
+  document.getElementById('infoclient-overlay').classList.add('open');
+}
+function closeInfoClientModal() {
+  document.getElementById('infoclient-overlay').classList.remove('open');
+}
+function openEindeModal() {
+  document.getElementById('einde-overlay').classList.add('open');
+}
+function closeEindeModal() {
+  document.getElementById('einde-overlay').classList.remove('open');
+}
+function openVrijwaringModal() {
+  document.getElementById('vrijwaring-overlay').classList.add('open');
+}
+function closeVrijwaringModal() {
+  document.getElementById('vrijwaring-overlay').classList.remove('open');
+}
+function openToezichtModal() {
+  document.getElementById('toezicht-overlay').classList.add('open');
+}
+function closeToezichtModal() {
+  document.getElementById('toezicht-overlay').classList.remove('open');
+}
+function openWedModal() {
+  document.getElementById('wed-overlay').classList.add('open');
+}
+function closeWedModal() {
+  document.getElementById('wed-overlay').classList.remove('open');
+}
+function openEdrModal() {
+  document.getElementById('edr-overlay').classList.add('open');
+}
+function closeEdrModal() {
+  document.getElementById('edr-overlay').classList.remove('open');
+}
+document.getElementById('modal-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.getElementById('fiu-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeFiuModal();
+});
+document.getElementById('duur-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeDuurModal();
+});
+document.getElementById('infoclient-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeInfoClientModal();
+});
+document.getElementById('einde-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeEindeModal();
+});
+document.getElementById('vrijwaring-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeVrijwaringModal();
+});
+document.getElementById('toezicht-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeToezichtModal();
+});
+document.getElementById('wed-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeWedModal();
+});
+document.getElementById('edr-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeEdrModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeModal(); closeFiuModal(); closeDuurModal(); closeInfoClientModal(); closeEindeModal(); closeVrijwaringModal(); closeToezichtModal(); closeWedModal(); closeEdrModal(); }
+});
+
+// Blokkeer kopiëren, contextmenu en slepen binnen alle modals,
+// behalve binnen source-blocks (bronnen mogen wel worden gekopieerd)
+document.querySelectorAll('.modal-box').forEach(function(box) {
+  function allowInSource(e) {
+    return e.target.closest('.source-block') !== null;
+  }
+  box.addEventListener('copy', function(e) { if (!allowInSource(e)) e.preventDefault(); });
+  box.addEventListener('cut', function(e) { if (!allowInSource(e)) e.preventDefault(); });
+  box.addEventListener('contextmenu', function(e) { if (!allowInSource(e)) e.preventDefault(); });
+  box.addEventListener('dragstart', function(e) { if (!allowInSource(e)) e.preventDefault(); });
+});
+</script>
+
+</body>
+</html>
