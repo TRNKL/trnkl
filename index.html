@@ -96,10 +96,19 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 .card-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; flex-grow: 1; }
 .card-cta { font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 18px; }
 
+/* Flowcharts op maat */
+.flow-cta { margin-top: 18px; background: var(--orange-light); border: 1px solid var(--orange-border); border-radius: 14px; padding: 20px 22px; }
+.flow-cta h3 { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; letter-spacing: -0.01em; }
+.flow-cta p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.flow-cta a { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--orange-text); }
+
 /* Footer */
 footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid var(--border-light); margin-top: 8px; }
 .footer-mark { font-weight: 800; font-size: 15px; color: var(--orange); letter-spacing: -0.03em; }
 .footer-text { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; line-height: 1.6; }
+.footer-meta { font-size: 12px; color: var(--text-tertiary); margin-top: 10px; }
+.footer-meta a { color: var(--text-tertiary); text-decoration: underline; }
+.footer-meta a:hover { color: var(--orange-text); }
 </style>
 </head>
 <body>
@@ -111,6 +120,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
       <div class="nav-links">
         <a href="#flowcharts" class="nav-link">Flowcharts</a>
         <a href="#dashboards" class="nav-link">Dashboards</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </div>
     </nav>
   </div>
@@ -146,6 +156,11 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
     </div>
+    <div class="flow-cta">
+      <h3>Flowcharts op maat</h3>
+      <p>Een wet of regeling die navolgbaar moet worden? <span class="accent">TRNKL<span class="merkpunt"></span></span> werkt die stap voor stap uit in een flowchart, met operationeel en strategisch advies.</p>
+      <a href="contact.html">Neem contact op &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -167,6 +182,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
   <div class="container-narrow">
     <span class="footer-mark">TRNKL<span class="merkpunt"></span></span>
     <p class="footer-text">Atelier voor kennis en beleid. Alle uitwerkingen zijn herleidbaar tot openbare bronnen: wet- en regelgeving, parlementaire stukken en officiële statistiek.</p>
+    <p class="footer-meta">KvK 88301648 &nbsp;&middot;&nbsp; <a href="contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="disclaimer.html">Disclaimer</a></p>
   </div>
 </footer>
 
