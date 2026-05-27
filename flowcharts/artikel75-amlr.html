@@ -45,13 +45,15 @@
     }
   }
 
-  html { background: var(--bg-primary); }
   body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); min-height: 100vh; }
 
   header {
     background: var(--bg-primary); border-bottom: 0.5px solid var(--border-mid);
     padding: 14px 24px; display: flex; align-items: center; gap: 16px;
     position: sticky; top: 0; z-index: 50;
+    /* Laat de donkere header-strook ook bij uitzoomen doorlopen tot de schermranden */
+    box-shadow: 0 0 0 100vmax var(--bg-primary);
+    clip-path: inset(0 -100vmax);
   }
   .header-icon { width: 32px; height: 32px; border-radius: 8px; background: #FFF1EA; display: flex; align-items: center; justify-content: center; font-size: 16px; }
   .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
