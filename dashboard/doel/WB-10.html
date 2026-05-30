@@ -93,6 +93,8 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 .doel-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 48px 0 40px; }
 .doel-hero .doel-id { font-size: 13px; }
 .doel-hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin-top: 8px; margin-bottom: 16px; }
+.nieuw-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 6px; background: var(--orange); color: #fff; vertical-align: middle; margin-left: 8px; }
+@media (prefers-color-scheme: dark) { .nieuw-badge { color: #1e1e1c; } }
 .doel-hero .akkoord-tekst { font-size: 16px; color: var(--text-secondary); font-style: italic; padding: 14px 18px; background: rgba(255,255,255,0.6); border-left: 3px solid var(--orange); border-radius: 6px; max-width: 780px; }
 @media (prefers-color-scheme: dark) { .doel-hero .akkoord-tekst { background: rgba(58,37,32,0.6); } }
 
@@ -229,7 +231,7 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 </header>
 <section class="doel-hero"><div class="container-narrow">
 <div class="doel-id">WB-10 · Belemmeringen</div>
-<h1>Rijk minimumomstandigheden splitsen/transformeren/optoppen</h1>
+<h1>Rijk minimumomstandigheden splitsen/transformeren/optoppen <span class="nieuw-badge">Nieuw</span></h1>
 <p class="akkoord-tekst">"Het Rijk stelt minimumomstandigheden op waaronder gesplitst, getransformeerd en opgetopt moet kunnen worden."</p>
 </div></section>
 <section class="section bg-primary"><div class="container-narrow">
@@ -268,7 +270,6 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 <footer>
   <div class="container">
     <span class="accent">TRNKL<span class="merkpunt"></span></span> Politiek Dashboard · samengesteld uit openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten
-    <div style="margin-top:10px">KvK 88301648 &nbsp;&middot;&nbsp; <a href="../../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../../disclaimer.html">Disclaimer</a></div>
   </div>
 </footer>
 </body>

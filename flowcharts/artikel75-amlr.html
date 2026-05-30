@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base target="_blank" rel="noopener noreferrer">
 <title>TRNKL — Artikel 75 AMLR</title>
 
@@ -51,9 +51,6 @@
     background: var(--bg-primary); border-bottom: 0.5px solid var(--border-mid);
     padding: 14px 24px; display: flex; align-items: center; gap: 16px;
     position: sticky; top: 0; z-index: 50;
-    /* Laat de donkere header-strook ook bij uitzoomen doorlopen tot de schermranden */
-    box-shadow: 0 0 0 100vmax var(--bg-primary);
-    clip-path: inset(0 -100vmax);
   }
   .header-icon { width: 32px; height: 32px; border-radius: 8px; background: #FFF1EA; display: flex; align-items: center; justify-content: center; font-size: 16px; }
   .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
@@ -156,11 +153,6 @@
   }
 
   @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
-
-  .site-footer { padding: 28px 24px; margin-top: 40px; border-top: 0.5px solid var(--border-light); background: var(--bg-primary); text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.7; }
-  .site-footer .fmark { font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; }
-  .site-footer a { color: var(--text-tertiary); text-decoration: underline; }
-  .site-footer a:hover { color: #C2410C; }
 </style>
 </head>
 <body>
@@ -1645,6 +1637,10 @@
   </div>
 </div>
 
+<!-- DISCLAIMER -->
+<div style="font-size:11px;color:var(--text-tertiary);text-align:center;padding:12px 24px 18px;border-top:0.5px solid var(--border-light);font-style:italic;">
+  Disclaimer: Dit document is een interactieve vakpublicatie op basis van openbare Europese en Nederlandse wetgevings-, parlementaire en toezichthoudersbronnen, jurisprudentie, wetenschappelijke literatuur en vaktechnische publicaties, en dient uitsluitend ter informatie en kennisoverdracht. De praktische uitwerking en de adviezen aan instellingen betreffen een eigen analyse op basis van openbare bronnen en zijn niet gebaseerd op interne richtlijnen of werkwijzen van enige instelling. Het document weerspiegelt de stand van zaken in mei 2026 en kan op onderdelen achterhaald raken door latere AMLA-richtsnoeren, jurisprudentie of nationale wetgeving (waaronder de Iwt). Aan de inhoud kunnen geen rechten worden ontleend. Raadpleeg altijd de actuele wet- en regelgeving en een ter zake kundige juridisch, compliance- of AML/CTF-adviseur voor toepassing in de praktijk.
+</div>
 
 <!-- ============================================================ -->
 <!-- JAVASCRIPT                                                    -->
@@ -1675,12 +1671,6 @@ document.addEventListener('copy',function(e){
   }
 });
 </script>
-
-
-<footer class="site-footer">
-  <span class="fmark">TRNKL<span class="merkpunt"></span></span> &middot; Atelier voor kennis en beleid<br>
-  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a>
-</footer>
 
 </body>
 </html>

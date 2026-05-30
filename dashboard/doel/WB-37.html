@@ -93,6 +93,8 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 .doel-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 48px 0 40px; }
 .doel-hero .doel-id { font-size: 13px; }
 .doel-hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin-top: 8px; margin-bottom: 16px; }
+.nieuw-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 6px; background: var(--orange); color: #fff; vertical-align: middle; margin-left: 8px; }
+@media (prefers-color-scheme: dark) { .nieuw-badge { color: #1e1e1c; } }
 .doel-hero .akkoord-tekst { font-size: 16px; color: var(--text-secondary); font-style: italic; padding: 14px 18px; background: rgba(255,255,255,0.6); border-left: 3px solid var(--orange); border-radius: 6px; max-width: 780px; }
 @media (prefers-color-scheme: dark) { .doel-hero .akkoord-tekst { background: rgba(58,37,32,0.6); } }
 
@@ -229,7 +231,7 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 </header>
 <section class="doel-hero"><div class="container-narrow">
 <div class="doel-id">WB-37 · Betaalbaarheid</div>
-<h1>Doorstroombank of doorstroomhypotheek voor ouderen</h1>
+<h1>Doorstroombank of doorstroomhypotheek voor ouderen <span class="nieuw-badge">Nieuw</span></h1>
 <p class="akkoord-tekst">"Een doorstroombank of een aantrekkelijk hypotheekproduct voor ouderen (doorstroomhypotheek) zorgen dat stenen makkelijker in geld worden omgezet."</p>
 </div></section>
 <section class="section bg-primary"><div class="container-narrow">
@@ -247,12 +249,16 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 <section class="section"><div class="container-narrow">
 <div class="section-eyebrow">Wat de Kamer ermee deed</div>
 <h2 class="section-title">Kamerzaken die WB-37 raken</h2>
-<div class="kamerwerk-subkop">Inbreng zonder stemming</div>
+<table class="kamerstukken">
+<tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th><th>D66</th><th>VVD</th><th>CDA</th><th class="uitkomst">Uitkomst</th></tr>
+<tr class=""><td class="datum">28-05-2026</td><td>Motie</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D25747&did=2026D25747" target="_blank">Motie van het lid Steen c.s. over de introductie van een doorstroomhypotheek mogelijk maken</a></td><td>H.S. Steen (CDA)</td><td class="stem stem-onbekend">–</td><td class="stem stem-onbekend">–</td><td class="stem stem-onbekend">–</td><td class="uitkomst">Ingediend — geen stemming</td></tr>
+</table>
+<div class="kamerwerk-subkop">Overige Kamerstukken — inbreng zonder stemming</div>
 <p class="kamerwerk-sublede">Position papers, brieven, schriftelijke vragen en verzoeken die dit doel raken maar waarover de Kamer niet heeft gestemd.</p>
 <table class="kamerstukken">
 <tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th></tr>
 <tr><td class="datum">13-05-2026</td><td>Brief regering</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D22046&did=2026D22046" target="_blank">30-jaarstermijn hypotheekrenteaftrek (HRA)</a></td><td>E. Eerenberg</td></tr>
-<tr><td class="datum">13-05-2026</td><td>Brief regering</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D22315&did=2026D22315" target="_blank">Reactie op het verzoek van het lid Stultiens, gedaan tijdens de Regeling van Werkzaamheden van 12 mei 2026, in</a></td><td>E. Heinen</td></tr>
+<tr><td class="datum">13-05-2026</td><td>Brief regering</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D22315&did=2026D22315" target="_blank">Reactie op het verzoek van het lid Stultiens, gedaan tijdens de Regeling van Werkzaamheden van 12 mei 2026, inzake uitvoering van de motie van het lid Stultiens over de verruiming van de hypotheekrenteaftrek ongedaan maken</a></td><td>E. Heinen</td></tr>
 </table>
 </div></section>
 <section class="section bg-primary"><div class="container-narrow">
@@ -269,7 +275,6 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 <footer>
   <div class="container">
     <span class="accent">TRNKL<span class="merkpunt"></span></span> Politiek Dashboard · samengesteld uit openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten
-    <div style="margin-top:10px">KvK 88301648 &nbsp;&middot;&nbsp; <a href="../../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../../disclaimer.html">Disclaimer</a></div>
   </div>
 </footer>
 </body>
