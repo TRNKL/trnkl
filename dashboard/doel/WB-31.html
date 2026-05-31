@@ -120,6 +120,7 @@ table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--b
 .stem-V { color: var(--green); } .stem-T { color: var(--red); } .stem-onbekend { color: var(--text-tertiary); }
 .kamerstukken tr.aangenomen td.uitkomst { color: var(--green); font-weight: 600; }
 .kamerstukken tr.verworpen td.uitkomst { color: var(--red); font-weight: 600; }
+.kamerstukken tr.afgehandeld td.uitkomst { color: var(--text-secondary); font-weight: 600; }
 @media (max-width: 700px) { table.kamerstukken { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
 .kamerwerk-subkop { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; margin: 32px 0 4px; }
 .kamerwerk-sublede { font-size: 13px; color: var(--text-tertiary); margin-bottom: 14px; }
@@ -249,7 +250,10 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 <section class="section"><div class="container-narrow">
 <div class="section-eyebrow">Wat de Kamer ermee deed</div>
 <h2 class="section-title">Kamerzaken die WB-31 raken</h2>
-<div class="empty">Geen Kamerzaken gevonden die specifiek aan dit doel zijn gekoppeld in de huidige dataset.</div>
+<table class="kamerstukken">
+<tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th><th>D66</th><th>VVD</th><th>CDA</th><th class="uitkomst">Uitkomst</th></tr>
+<tr class="aangenomen"><td class="datum">31-03-2026</td><td>Motie</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D14007&did=2026D14007" target="_blank">Motie van de leden Grinwis en Steen over de systematiek van en uitzonderingsruimte voor passend toewijzen tegen het licht houden </a></td><td>P.A. Grinwis (ChristenUnie)</td><td class="stem stem-V">V</td><td class="stem stem-V">V</td><td class="stem stem-V">V</td><td class="uitkomst">Aangenomen</td></tr>
+</table>
 </div></section>
 <section class="section bg-primary"><div class="container-narrow">
 <div class="section-eyebrow">Duiding</div>

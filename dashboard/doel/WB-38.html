@@ -120,6 +120,7 @@ table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--b
 .stem-V { color: var(--green); } .stem-T { color: var(--red); } .stem-onbekend { color: var(--text-tertiary); }
 .kamerstukken tr.aangenomen td.uitkomst { color: var(--green); font-weight: 600; }
 .kamerstukken tr.verworpen td.uitkomst { color: var(--red); font-weight: 600; }
+.kamerstukken tr.afgehandeld td.uitkomst { color: var(--text-secondary); font-weight: 600; }
 @media (max-width: 700px) { table.kamerstukken { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
 .kamerwerk-subkop { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; margin: 32px 0 4px; }
 .kamerwerk-sublede { font-size: 13px; color: var(--text-tertiary); margin-bottom: 14px; }
@@ -248,7 +249,17 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 <section class="section"><div class="container-narrow">
 <div class="section-eyebrow">Wat de Kamer ermee deed</div>
 <h2 class="section-title">Kamerzaken die WB-38 raken</h2>
-<div class="empty">Geen Kamerzaken gevonden die specifiek aan dit doel zijn gekoppeld in de huidige dataset.</div>
+<table class="kamerstukken">
+<tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th><th>D66</th><th>VVD</th><th>CDA</th><th class="uitkomst">Uitkomst</th></tr>
+<tr class="aangenomen"><td class="datum">24-03-2026</td><td>Motie</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D12207&did=2026D12207" target="_blank">Gewijzigde motie van het lid Flach c.s. over de definitie van &quot;starters&quot; harmoniseren en het leeftijdscriterium verruimen (t.v.v. 36881-11) </a></td><td>A.J. Flach (SGP)</td><td class="stem stem-V">V</td><td class="stem stem-V">V</td><td class="stem stem-V">V</td><td class="uitkomst">Aangenomen</td></tr>
+<tr class="aangenomen"><td class="datum">24-03-2026</td><td>Motie</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D13080&did=2026D13080" target="_blank">Gewijzigde motie van het lid Mooiman c.s. over vastleggen dat ook uitstromende huurders van jongerenwoningen behoren tot de aandachtsgroep &quot;starters&quot; (t.v.v. 36881-14)</a></td><td>J. Mooiman (PVV)</td><td class="stem stem-V">V</td><td class="stem stem-V">V</td><td class="stem stem-V">V</td><td class="uitkomst">Aangenomen</td></tr>
+</table>
+<div class="kamerwerk-subkop">Overige Kamerstukken — inbreng zonder stemming</div>
+<p class="kamerwerk-sublede">Position papers, brieven, schriftelijke vragen en verzoeken die dit doel raken maar waarover de Kamer niet heeft gestemd.</p>
+<table class="kamerstukken">
+<tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th></tr>
+<tr><td class="datum">01-04-2026</td><td>Schriftelijke vragen</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D19939&did=2026D19939" target="_blank">Studentenhuisvesting</a></td><td>H.S. Steen (CDA)</td></tr>
+</table>
 </div></section>
 <section class="section bg-primary"><div class="container-narrow">
 <div class="section-eyebrow">Duiding</div>
