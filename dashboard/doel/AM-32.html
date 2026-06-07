@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AM-32 — Alleenstaande minderjarige vreemdelingen (AMV) begeleiding tot 21e i.p.v. 18e</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf9f4;
+  --bg-tertiary: #f5f4ee;
+  --bg-orange-fade: linear-gradient(135deg, #FFF8F2 0%, #FFFAF6 100%);
+  --text-primary: #1a1a18;
+  --text-secondary: #5f5e5a;
+  --text-tertiary: #888780;
+  --border-light: rgba(0,0,0,0.08);
+  --border-mid: rgba(0,0,0,0.14);
+  --orange: #FF5A1F;
+  --orange-text: #C2410C;
+  --orange-dark: #E64A0F;
+  --orange-light: #FFF1EA;
+  --orange-border: #FFE3D1;
+  --green: #2D9B6A;
+  --red: #D14B4B;
+  --yellow: #D89B2D;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1c;
+    --bg-secondary: #2a2a27;
+    --bg-tertiary: #242422;
+    --bg-orange-fade: linear-gradient(135deg, #2a201c 0%, #241e1a 100%);
+    --text-primary: #e8e6de;
+    --text-secondary: #9c9a92;
+    --text-tertiary: #94928a;
+    --border-light: rgba(255,255,255,0.06);
+    --border-mid: rgba(255,255,255,0.12);
+    --orange-light: #3a2520;
+    --orange-border: #5a3525;
+    --orange-text: #FF5A1F;
+  }
+}
+body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--orange-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border-mid); position: sticky; top: 0; z-index: 100; }
+@media (prefers-color-scheme: dark) { header { background: rgba(30,30,28,0.85); } }
+.nav { display: flex; align-items: center; padding: 14px 0; gap: 32px; }
+.nav-logo { flex-shrink: 0; }
+.nav-logo:hover { text-decoration: none; }
+.bl-mark, .bl-sub { white-space: nowrap; }
+.merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+.nav-logo .bl-mark { font-weight: 800; font-size: 22px; color: var(--orange); letter-spacing: -0.03em; }
+.nav-links { display: flex; gap: 28px; margin-left: auto; align-items: center; }
+.nav-link { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+.nav-link:hover { color: var(--text-primary); text-decoration: none; }
+.hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 56px 0 64px; }
+.hero h1 { font-size: 42px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 16px; }
+.hero h1 em { font-style: normal; color: var(--orange); }
+.hero p.lede { font-size: 17px; color: var(--text-secondary); max-width: 720px; line-height: 1.55; }
+.section { padding: 56px 0; }
+.section.bg-primary { background: var(--bg-primary); }
+.section-eyebrow { font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+.section-title { font-size: 26px; font-weight: 700; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 12px; }
+.section-lede { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; max-width: 720px; }
+
+/* Spoor-koppen */
+.spoor-header { margin-top: 40px; margin-bottom: 16px; }
+.spoor-header h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.spoor-header p { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+/* Doel-grid */
+.doel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 900px) { .doel-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .doel-grid { grid-template-columns: 1fr; } }
+.doel-card { display: block; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 18px 16px; color: inherit; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
+.doel-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-color: var(--orange-border); text-decoration: none; }
+.doel-id { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.04em; }
+.doel-titel { font-size: 14px; font-weight: 600; margin-top: 6px; line-height: 1.35; color: var(--text-primary); }
+.doel-meta { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.tag { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; background: var(--bg-tertiary); color: var(--text-secondary); }
+.tag.aangenomen { background: rgba(45,155,106,0.12); color: var(--green); }
+.tag.verworpen { background: rgba(209,75,75,0.10); color: var(--red); }
+.tag.programma { background: var(--orange-light); color: var(--orange-text); }
+.tag.eu { background: rgba(20,75,140,0.10); color: #144b8c; }
+.tag.blind { background: var(--bg-tertiary); color: var(--text-tertiary); font-style: italic; }
+.eu-blok { margin: 16px 0 0; padding: 14px 18px; background: rgba(20,75,140,0.06); border-left: 3px solid #144b8c; border-radius: 4px; font-size: 14px; line-height: 1.6; }
+.eu-blok .eu-blok-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #144b8c; margin-bottom: 8px; }
+.eu-blok .eu-blok-naam { font-weight: 700; color: var(--text-primary); }
+.eu-blok .eu-blok-tekst { color: var(--text-secondary); margin-top: 4px; }
+.eu-blok a { color: #144b8c; }
+
+.md-body { font-size: 15px; color: var(--text-secondary); line-height: 1.75; }
+.md-body h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); margin-top: 36px; margin-bottom: 14px; }
+.md-body h3 { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-top: 26px; margin-bottom: 10px; }
+.md-body p { margin-bottom: 14px; }
+.md-body ul, .md-body ol { margin: 8px 0 18px 22px; }
+.md-body li { margin-bottom: 6px; }
+.md-body code { background: var(--bg-tertiary); padding: 1px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 13px; color: var(--text-primary); }
+.md-body strong { color: var(--text-primary); }
+.md-body em { font-style: italic; }
+.md-body a { color: var(--orange-text); }
+.md-body table.md-table { border-collapse: collapse; margin: 14px 0 22px; width: 100%; font-size: 14px; }
+.md-body table.md-table th { text-align: left; font-weight: 700; color: var(--text-primary); padding: 8px 10px; border-bottom: 1px solid var(--border-mid); background: var(--bg-tertiary); }
+.md-body table.md-table td { padding: 8px 10px; border-bottom: 0.5px solid var(--border-light); vertical-align: top; }
+
+/* Detail-pagina */
+.doel-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 48px 0 40px; }
+.doel-hero .doel-id { font-size: 13px; }
+.doel-hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin-top: 8px; margin-bottom: 16px; }
+.nieuw-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 6px; background: var(--orange); color: #fff; vertical-align: middle; margin-left: 8px; }
+@media (prefers-color-scheme: dark) { .nieuw-badge { color: #1e1e1c; } }
+.doel-hero .akkoord-tekst { font-size: 16px; color: var(--text-secondary); font-style: italic; padding: 14px 18px; background: rgba(255,255,255,0.6); border-left: 3px solid var(--orange); border-radius: 6px; max-width: 780px; }
+@media (prefers-color-scheme: dark) { .doel-hero .akkoord-tekst { background: rgba(58,37,32,0.6); } }
+
+/* Programma-blok */
+.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 700px) { .prog-grid { grid-template-columns: 1fr; } }
+.prog-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 14px; }
+.prog-partij { font-size: 13px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.02em; margin-bottom: 6px; }
+.prog-status { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-bottom: 8px; }
+.prog-status.behouden { background: rgba(45,155,106,0.14); color: var(--green); }
+.prog-status.afgezwakt { background: rgba(216,155,45,0.14); color: var(--yellow); }
+.prog-status.gesneuveld { background: rgba(209,75,75,0.12); color: var(--red); }
+.prog-status.uniek-coalitie { background: var(--bg-tertiary); color: var(--text-secondary); }
+.prog-tekst { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.prog-toelichting { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 6px; }
+
+/* Kamerstukken */
+table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--bg-secondary); border-radius: 10px; overflow: hidden; }
+.kamerstukken th, .kamerstukken td { padding: 10px 12px; text-align: left; border-bottom: 0.5px solid var(--border-light); font-size: 13px; vertical-align: top; }
+.kamerstukken td.datum { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kamerstukken th { background: var(--bg-tertiary); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); }
+.kamerstukken td.stem { font-family: var(--font-mono); font-size: 12px; text-align: center; font-weight: 700; }
+.stem-V { color: var(--green); } .stem-T { color: var(--red); } .stem-onbekend { color: var(--text-tertiary); }
+.kamerstukken tr.aangenomen td.uitkomst { color: var(--green); font-weight: 600; }
+.kamerstukken tr.verworpen td.uitkomst { color: var(--red); font-weight: 600; }
+.kamerstukken tr.afgehandeld td.uitkomst { color: var(--text-secondary); font-weight: 600; }
+@media (max-width: 700px) { table.kamerstukken { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
+.kamerwerk-subkop { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; margin: 32px 0 4px; }
+.kamerwerk-sublede { font-size: 13px; color: var(--text-tertiary); margin-bottom: 14px; }
+
+/* Lege staat */
+.empty { padding: 28px; background: var(--bg-secondary); border: 1px dashed var(--border-mid); border-radius: 10px; color: var(--text-tertiary); text-align: center; font-size: 13px; }
+
+/* Duiding */
+.duiding-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.duiding-card.is-verworpen { background: var(--bg-primary); border-style: dashed; border-color: var(--border-mid); }
+.duiding-card-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.duiding-type-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; border: 1px solid transparent; }
+.duiding-type-badge.afzwakking { background: rgba(209,75,75,0.12); color: var(--red); }
+.duiding-type-badge.blokkade { background: rgba(209,75,75,0.12); color: var(--red); }
+.duiding-type-badge.aanscherping { background: var(--orange-light); color: var(--orange-text); }
+.duiding-type-badge.bevestiging { background: rgba(45,155,106,0.14); color: var(--green); }
+.duiding-type-badge.eigen-partij-gap { background: var(--text-primary); color: var(--bg-primary); }
+.duiding-type-badge.muted { background: transparent; color: var(--text-tertiary); border-color: var(--border-mid); }
+.duiding-status { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; }
+.duiding-status.aangenomen { background: rgba(45,155,106,0.14); color: var(--green); }
+.duiding-status.verworpen { background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-mid); }
+.duiding-effect { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding: 10px 13px; background: var(--bg-secondary); border-left: 2px solid var(--border-mid); border-radius: 0 6px 6px 0; }
+.duiding-zaak { font-size: 12px; color: var(--text-tertiary); margin-bottom: 8px; }
+.duiding-zaak a { color: var(--text-tertiary); text-decoration: underline; }
+.duiding-notitie-tekst { font-size: 14px; color: var(--text-primary); line-height: 1.65; }
+.duiding-bron { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--border-light); }
+
+/* Begroting-blok */
+.begroting-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; }
+.begroting-naam { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.begroting-artikel { font-size: 11px; color: var(--text-tertiary); margin-bottom: 12px; }
+.begroting-bar { height: 7px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
+.begroting-bar-fill { height: 100%; background: var(--orange); }
+.begroting-cijfers { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; color: var(--text-primary); }
+.begroting-cijfers em { font-style: normal; color: var(--text-tertiary); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 6px; }
+.begroting-verschil { color: var(--text-secondary); }
+.begroting-bron { font-size: 11px; color: var(--text-tertiary); font-style: italic; margin-top: 6px; }
+
+/* Externe toetsing */
+.toets-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.toets-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.toets-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border-mid); }
+.toets-instantie { font-size: 12px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.02em; }
+.toets-titel { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 8px; }
+.toets-tekst { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+.toets-reactie { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding: 10px 13px; background: var(--bg-secondary); border-left: 2px solid var(--border-mid); border-radius: 0 6px 6px 0; }
+.toets-reactie-kop { font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; margin-right: 6px; }
+.toets-bron { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--border-light); }
+.toets-bron a { color: var(--text-tertiary); text-decoration: underline; }
+
+/* Indicator-blok */
+.indicator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .indicator-grid { grid-template-columns: 1fr; } }
+.indicator-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 18px; }
+.indicator-naam { font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.indicator-uitleg { font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px; }
+.indicator-bron { font-size: 10px; color: var(--text-tertiary); margin-bottom: 10px; }
+.indicator-bron a { color: var(--text-tertiary); text-decoration: underline; }
+.indicator-laatste { font-size: 24px; font-weight: 700; color: var(--orange); letter-spacing: -0.01em; line-height: 1; }
+.indicator-laatste small { font-size: 11px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; margin-left: 6px; }
+.indicator-periode { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+.indicator-bronvergelijking { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-light); max-width: 760px; }
+.indicator-bronvergelijking strong { color: var(--text-primary); }
+.indicator-bronvergelijking a { color: var(--text-secondary); text-decoration: underline; }
+.indicator-referentie { margin-top: 10px; padding: 8px 10px; background: var(--orange-light); border-radius: 6px; font-size: 12px; }
+.indicator-referentie .ref-norm { color: var(--text-secondary); }
+.indicator-referentie .ref-gap { font-weight: 700; }
+.ref-gap.onder { color: var(--red); }
+.ref-gap.boven { color: var(--green); }
+.cbs-interpretatie { font-size: 14px; color: var(--text-secondary); line-height: 1.65; padding: 16px 18px; background: var(--bg-secondary); border-left: 3px solid var(--orange); border-radius: 6px; margin-bottom: 28px; }
+.cbs-interpretatie p { margin: 0 0 10px; }
+.cbs-interpretatie p:last-child { margin-bottom: 0; }
+.indicator-historie { margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--border-light); display: flex; flex-direction: column; gap: 4px; }
+.indicator-historie-row { display: flex; justify-content: space-between; font-size: 12px; }
+.indicator-historie-row span:first-child { color: var(--text-tertiary); }
+.indicator-historie-row span:last-child { font-family: var(--font-mono); color: var(--text-secondary); }
+
+/* Portal */
+.portal-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 60px 0 52px; }
+.hero-logo { margin-bottom: 28px; line-height: 1; }
+.hero-logo .bl-mark { display: block; font-weight: 800; font-size: 62px; color: var(--orange); letter-spacing: -0.03em; line-height: 1; }
+.hero-logo .bl-sub { display: block; font-weight: 700; font-size: 15px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.22em; margin-top: 12px; }
+@media (max-width: 520px) { .hero-logo .bl-mark { font-size: 46px; } .hero-logo .bl-sub { font-size: 12px; letter-spacing: 0.18em; } }
+@media (prefers-color-scheme: dark) { .hero-logo .bl-sub { color: var(--text-secondary); } }
+.portal-titel { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 10px 0 18px; }
+.portal-lede { font-size: 17px; color: var(--text-secondary); line-height: 1.6; max-width: 720px; }
+.thema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 4px; }
+.thema-tile { display: block; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 22px 24px; }
+.thema-tile.live { border-color: var(--orange-border); }
+.thema-tile.live:hover { border-color: var(--orange); text-decoration: none; }
+.thema-tile h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+.thema-tile .thema-meta { font-size: 13px; color: var(--text-tertiary); margin-top: 5px; }
+.thema-tile .thema-cta { font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 16px; }
+.thema-tile.binnenkort { opacity: 0.6; }
+.thema-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 6px; margin-top: 16px; background: var(--bg-tertiary); color: var(--text-tertiary); }
+
+footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; border-top: 0.5px solid var(--border-light); font-size: 12px; color: var(--text-tertiary); text-align: center; }
+.accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="../../index.html" class="nav-logo"><span class="bl-mark">TRNKL<span class="merkpunt"></span></span></a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Dashboard</a>
+        <a href="../methode-asielmigratie.html" class="nav-link">Methode</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<section class="doel-hero"><div class="container-narrow">
+<div class="doel-id">AM-32 · Asielketen</div>
+<h1>Alleenstaande minderjarige vreemdelingen (AMV) begeleiding tot 21e i.p.v. 18e</h1>
+<p class="akkoord-tekst">&ldquo;De kwetsbare groepen in de opvang — zoals LHBTI+&#x27;ers, kinderen en bekeerlingen — gaan we meer beschermen. Wie de opvang voor hen onveilig maakt, wordt sneller onder verscherpt toezicht geplaatst en afgewezen voor een verblijfsvergunning. Kwetsbare alleenstaande minderjarige vluchtelingen worden waar nodig begeleid tot hun 21e in plaats van hun 18e, om zo te voorkomen dat jonge asielzoekers vervallen in overlast gevend of crimineel gedrag.&rdquo;</p>
+</div></section>
+<section class="section bg-primary"><div class="container-narrow">
+<div class="section-eyebrow">Europees kader</div>
+<h2 class="section-title">Wat het Europese recht hierover zegt</h2>
+<div class="eu-blok">
+<div class="eu-blok-eyebrow">EU-instrument</div>
+<div class="eu-blok-naam">Artikel 24 EU-Handvest (rechten van het kind) <span style="color:var(--text-tertiary); font-weight:400">— Artikel 24 van het Handvest van de grondrechten van de Europese Unie</span></div>
+<div class="eu-blok-tekst">Rechten van het kind, met name het belang van het kind als eerste overweging bij maatregelen die hen aangaan.</div>
+<div class="eu-blok-tekst" style="margin-top:8px"><a href="https://eur-lex.europa.eu/eli/treaty/char_2012/oj" target="_blank" rel="noopener">Bron raadplegen &rarr;</a></div>
+</div>
+<div class="eu-blok">
+<div class="eu-blok-eyebrow">EU-instrument</div>
+<div class="eu-blok-naam">Opvangrichtlijn (recast) <span style="color:var(--text-tertiary); font-weight:400">— Richtlijn over normen voor de opvang van personen die om internationale bescherming verzoeken (recast, deel van pakket)</span></div>
+<div class="eu-blok-tekst">Stelt minimumnormen voor materiële opvang (huisvesting, voedsel, zorg, werkrecht na wachtperiode) en voor de bescherming van kwetsbare aanvragers.</div>
+<div class="eu-blok-tekst" style="margin-top:8px"><a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=celex:32013L0033" target="_blank" rel="noopener">Bron raadplegen &rarr;</a></div>
+</div>
+</div></section>
+<section class="section"><div class="container-narrow">
+<div class="section-eyebrow">Wat de coalitiepartijen in hun programma's schreven</div>
+<h2 class="section-title">Programma-posities en hun lot in het akkoord</h2>
+<div class="empty">Geen van D66 / VVD / CDA had op dit doel een expliciete programma-positie. Dit is een &lsquo;uniek-coalitie&rsquo;-doel — synthese tijdens onderhandelingen.</div>
+</div></section>
+<section class="section"><div class="container-narrow">
+<div class="section-eyebrow">Wat de Kamer ermee deed</div>
+<h2 class="section-title">Kamerzaken die AM-32 raken</h2>
+<div class="kamerwerk-subkop">Inbreng zonder stemming</div>
+<p class="kamerwerk-sublede">Position papers, brieven, schriftelijke vragen en verzoeken die dit doel raken maar waarover de Kamer niet heeft gestemd.</p>
+<table class="kamerstukken">
+<tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th></tr>
+<tr><td class="datum">01-04-2026</td><td>Brief regering</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D15255&did=2026D15255" target="_blank">Publicatie besluit op Woo-verzoek inzake overlast en criminaliteit Syrische alleenstaande minderjarige vreemdelingen</a></td><td>G. van den Brink</td></tr>
+</table>
+</div></section>
+<section class="section bg-secondary"><div class="container-narrow">
+<div class="section-eyebrow">Voortgang en context</div>
+<h2 class="section-title">Wat de cijfers zeggen</h2>
+<p class="section-lede">Externe data uit CBS Statline, Eurostat, COA en IND die dit doel raakt. Cijfers van verschillende bronnen kunnen voor dezelfde grootheid iets afwijken — <a href="#bronvergelijking-noot">zie toelichting onderaan</a>.</p>
+<div class="indicator-grid">
+<div class="indicator-card"><div class="indicator-naam">Alleenstaande minderjarige asielzoekers Nederland (IND maandelijks)</div><div class="indicator-uitleg">Alleenstaande minderjarige asielzoekers (AMV) zonder begeleidende ouder of voogd.</div><div class="indicator-bron"><a href="https://ind.nl/en/about-us/statistics-and-publications/asylum-trends" target="_blank">IND Asylum Trends</a></div><div class="indicator-laatste">195<small>personen</small></div><div class="indicator-periode">Periode: apr 2026</div><div class="indicator-historie"><div class="indicator-historie-row"><span>mrt 2026</span><span>183</span></div><div class="indicator-historie-row"><span>feb 2026</span><span>127</span></div><div class="indicator-historie-row"><span>jan 2026</span><span>119</span></div></div></div>
+<div class="indicator-card"><div class="indicator-naam">COA instroom AMV (jaarlijks)</div><div class="indicator-uitleg">Aantal alleenstaande minderjarige vreemdelingen (AMV) dat per jaar instroomt in COA-opvang. Schaalmeter voor de AMV-begeleidingsketen.</div><div class="indicator-bron"><a href="https://www.coa.nl/nl/lijst/instroom-en-uitstroom" target="_blank">COA instroom &amp; uitstroom</a></div><div class="indicator-laatste">4.386<small>personen</small></div><div class="indicator-periode">Periode: 2025</div><div class="indicator-historie"><div class="indicator-historie-row"><span>2024</span><span>4.771</span></div><div class="indicator-historie-row"><span>2023</span><span>6.261</span></div><div class="indicator-historie-row"><span>2022</span><span>4.449</span></div></div></div>
+<div class="indicator-card"><div class="indicator-naam">Alleenstaande minderjarige vreemdelingen (AMV) — Alleenstaande minderjarige vreemdelingen</div><div class="indicator-uitleg">Een alleenstaande minderjarige vreemdeling is een vreemdeling die de leeftijd van achttien jaar nog niet heeft bereikt en waarvan de ouder(s) of wettelijk voogd(en) niet al in Nederland aanwezig is/zijn of samen met…</div><div class="indicator-bron"><a href="https://opendata.cbs.nl/#/CBS/nl/dataset/82045NED/table" target="_blank">CBS Statline 82045NED</a></div><div class="indicator-laatste">3.510<small>personen</small></div><div class="indicator-periode">Periode: 2025</div><div class="indicator-historie"><div class="indicator-historie-row"><span>2024</span><span>3.935</span></div><div class="indicator-historie-row"><span>2023</span><span>5.805</span></div><div class="indicator-historie-row"><span>2022</span><span>4.205</span></div></div></div>
+</div>
+<p class="indicator-bronvergelijking" id="bronvergelijking-noot"><strong>Over de bronnen.</strong> De cijfers hierboven komen uit CBS, COA, IND. Bij dezelfde grootheid (zoals asielaanvragen of eerste-aanleg-beslissingen) kunnen de getallen iets afwijken: Eurostat hanteert EU-brede definities, CBS Statline volgt het Nederlandse statistische kader, en IND en COA rapporteren vanuit hun eigen administratie. Telmoment, peildatum en omschrijving verschillen per bron. Voor uitleg per bron: zie de <a href="../methode-asielmigratie.html#7-bronvergelijking-waarom-dezelfde-grootheid-bij-verschillende-bronnen-iets-anders-kan-zijn">methodepagina</a>.</p>
+</div></section>
+<footer>
+  <div class="container">
+    <span class="accent">TRNKL<span class="merkpunt"></span></span> Politiek Dashboard · samengesteld uit openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten
+  </div>
+</footer>
+</body>
+</html>

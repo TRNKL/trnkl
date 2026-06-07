@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styleguide — Asiel &amp; migratie</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf9f4;
+  --bg-tertiary: #f5f4ee;
+  --bg-orange-fade: linear-gradient(135deg, #FFF8F2 0%, #FFFAF6 100%);
+  --text-primary: #1a1a18;
+  --text-secondary: #5f5e5a;
+  --text-tertiary: #888780;
+  --border-light: rgba(0,0,0,0.08);
+  --border-mid: rgba(0,0,0,0.14);
+  --orange: #FF5A1F;
+  --orange-text: #C2410C;
+  --orange-dark: #E64A0F;
+  --orange-light: #FFF1EA;
+  --orange-border: #FFE3D1;
+  --green: #2D9B6A;
+  --red: #D14B4B;
+  --yellow: #D89B2D;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1c;
+    --bg-secondary: #2a2a27;
+    --bg-tertiary: #242422;
+    --bg-orange-fade: linear-gradient(135deg, #2a201c 0%, #241e1a 100%);
+    --text-primary: #e8e6de;
+    --text-secondary: #9c9a92;
+    --text-tertiary: #94928a;
+    --border-light: rgba(255,255,255,0.06);
+    --border-mid: rgba(255,255,255,0.12);
+    --orange-light: #3a2520;
+    --orange-border: #5a3525;
+    --orange-text: #FF5A1F;
+  }
+}
+body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--orange-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border-mid); position: sticky; top: 0; z-index: 100; }
+@media (prefers-color-scheme: dark) { header { background: rgba(30,30,28,0.85); } }
+.nav { display: flex; align-items: center; padding: 14px 0; gap: 32px; }
+.nav-logo { flex-shrink: 0; }
+.nav-logo:hover { text-decoration: none; }
+.bl-mark, .bl-sub { white-space: nowrap; }
+.merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+.nav-logo .bl-mark { font-weight: 800; font-size: 22px; color: var(--orange); letter-spacing: -0.03em; }
+.nav-links { display: flex; gap: 28px; margin-left: auto; align-items: center; }
+.nav-link { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+.nav-link:hover { color: var(--text-primary); text-decoration: none; }
+.hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 56px 0 64px; }
+.hero h1 { font-size: 42px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 16px; }
+.hero h1 em { font-style: normal; color: var(--orange); }
+.hero p.lede { font-size: 17px; color: var(--text-secondary); max-width: 720px; line-height: 1.55; }
+.section { padding: 56px 0; }
+.section.bg-primary { background: var(--bg-primary); }
+.section-eyebrow { font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+.section-title { font-size: 26px; font-weight: 700; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 12px; }
+.section-lede { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; max-width: 720px; }
+
+/* Spoor-koppen */
+.spoor-header { margin-top: 40px; margin-bottom: 16px; }
+.spoor-header h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.spoor-header p { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+/* Doel-grid */
+.doel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 900px) { .doel-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .doel-grid { grid-template-columns: 1fr; } }
+.doel-card { display: block; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 18px 16px; color: inherit; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
+.doel-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-color: var(--orange-border); text-decoration: none; }
+.doel-id { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.04em; }
+.doel-titel { font-size: 14px; font-weight: 600; margin-top: 6px; line-height: 1.35; color: var(--text-primary); }
+.doel-meta { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.tag { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; background: var(--bg-tertiary); color: var(--text-secondary); }
+.tag.aangenomen { background: rgba(45,155,106,0.12); color: var(--green); }
+.tag.verworpen { background: rgba(209,75,75,0.10); color: var(--red); }
+.tag.programma { background: var(--orange-light); color: var(--orange-text); }
+.tag.eu { background: rgba(20,75,140,0.10); color: #144b8c; }
+.tag.blind { background: var(--bg-tertiary); color: var(--text-tertiary); font-style: italic; }
+.eu-blok { margin: 16px 0 0; padding: 14px 18px; background: rgba(20,75,140,0.06); border-left: 3px solid #144b8c; border-radius: 4px; font-size: 14px; line-height: 1.6; }
+.eu-blok .eu-blok-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #144b8c; margin-bottom: 8px; }
+.eu-blok .eu-blok-naam { font-weight: 700; color: var(--text-primary); }
+.eu-blok .eu-blok-tekst { color: var(--text-secondary); margin-top: 4px; }
+.eu-blok a { color: #144b8c; }
+
+.md-body { font-size: 15px; color: var(--text-secondary); line-height: 1.75; }
+.md-body h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); margin-top: 36px; margin-bottom: 14px; }
+.md-body h3 { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-top: 26px; margin-bottom: 10px; }
+.md-body p { margin-bottom: 14px; }
+.md-body ul, .md-body ol { margin: 8px 0 18px 22px; }
+.md-body li { margin-bottom: 6px; }
+.md-body code { background: var(--bg-tertiary); padding: 1px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 13px; color: var(--text-primary); }
+.md-body strong { color: var(--text-primary); }
+.md-body em { font-style: italic; }
+.md-body a { color: var(--orange-text); }
+.md-body table.md-table { border-collapse: collapse; margin: 14px 0 22px; width: 100%; font-size: 14px; }
+.md-body table.md-table th { text-align: left; font-weight: 700; color: var(--text-primary); padding: 8px 10px; border-bottom: 1px solid var(--border-mid); background: var(--bg-tertiary); }
+.md-body table.md-table td { padding: 8px 10px; border-bottom: 0.5px solid var(--border-light); vertical-align: top; }
+
+/* Detail-pagina */
+.doel-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 48px 0 40px; }
+.doel-hero .doel-id { font-size: 13px; }
+.doel-hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin-top: 8px; margin-bottom: 16px; }
+.nieuw-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 6px; background: var(--orange); color: #fff; vertical-align: middle; margin-left: 8px; }
+@media (prefers-color-scheme: dark) { .nieuw-badge { color: #1e1e1c; } }
+.doel-hero .akkoord-tekst { font-size: 16px; color: var(--text-secondary); font-style: italic; padding: 14px 18px; background: rgba(255,255,255,0.6); border-left: 3px solid var(--orange); border-radius: 6px; max-width: 780px; }
+@media (prefers-color-scheme: dark) { .doel-hero .akkoord-tekst { background: rgba(58,37,32,0.6); } }
+
+/* Programma-blok */
+.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 700px) { .prog-grid { grid-template-columns: 1fr; } }
+.prog-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 14px; }
+.prog-partij { font-size: 13px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.02em; margin-bottom: 6px; }
+.prog-status { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-bottom: 8px; }
+.prog-status.behouden { background: rgba(45,155,106,0.14); color: var(--green); }
+.prog-status.afgezwakt { background: rgba(216,155,45,0.14); color: var(--yellow); }
+.prog-status.gesneuveld { background: rgba(209,75,75,0.12); color: var(--red); }
+.prog-status.uniek-coalitie { background: var(--bg-tertiary); color: var(--text-secondary); }
+.prog-tekst { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.prog-toelichting { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 6px; }
+
+/* Kamerstukken */
+table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--bg-secondary); border-radius: 10px; overflow: hidden; }
+.kamerstukken th, .kamerstukken td { padding: 10px 12px; text-align: left; border-bottom: 0.5px solid var(--border-light); font-size: 13px; vertical-align: top; }
+.kamerstukken td.datum { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kamerstukken th { background: var(--bg-tertiary); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); }
+.kamerstukken td.stem { font-family: var(--font-mono); font-size: 12px; text-align: center; font-weight: 700; }
+.stem-V { color: var(--green); } .stem-T { color: var(--red); } .stem-onbekend { color: var(--text-tertiary); }
+.kamerstukken tr.aangenomen td.uitkomst { color: var(--green); font-weight: 600; }
+.kamerstukken tr.verworpen td.uitkomst { color: var(--red); font-weight: 600; }
+.kamerstukken tr.afgehandeld td.uitkomst { color: var(--text-secondary); font-weight: 600; }
+@media (max-width: 700px) { table.kamerstukken { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
+.kamerwerk-subkop { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; margin: 32px 0 4px; }
+.kamerwerk-sublede { font-size: 13px; color: var(--text-tertiary); margin-bottom: 14px; }
+
+/* Lege staat */
+.empty { padding: 28px; background: var(--bg-secondary); border: 1px dashed var(--border-mid); border-radius: 10px; color: var(--text-tertiary); text-align: center; font-size: 13px; }
+
+/* Duiding */
+.duiding-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.duiding-card.is-verworpen { background: var(--bg-primary); border-style: dashed; border-color: var(--border-mid); }
+.duiding-card-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.duiding-type-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; border: 1px solid transparent; }
+.duiding-type-badge.afzwakking { background: rgba(209,75,75,0.12); color: var(--red); }
+.duiding-type-badge.blokkade { background: rgba(209,75,75,0.12); color: var(--red); }
+.duiding-type-badge.aanscherping { background: var(--orange-light); color: var(--orange-text); }
+.duiding-type-badge.bevestiging { background: rgba(45,155,106,0.14); color: var(--green); }
+.duiding-type-badge.eigen-partij-gap { background: var(--text-primary); color: var(--bg-primary); }
+.duiding-type-badge.muted { background: transparent; color: var(--text-tertiary); border-color: var(--border-mid); }
+.duiding-status { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; }
+.duiding-status.aangenomen { background: rgba(45,155,106,0.14); color: var(--green); }
+.duiding-status.verworpen { background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-mid); }
+.duiding-effect { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding: 10px 13px; background: var(--bg-secondary); border-left: 2px solid var(--border-mid); border-radius: 0 6px 6px 0; }
+.duiding-zaak { font-size: 12px; color: var(--text-tertiary); margin-bottom: 8px; }
+.duiding-zaak a { color: var(--text-tertiary); text-decoration: underline; }
+.duiding-notitie-tekst { font-size: 14px; color: var(--text-primary); line-height: 1.65; }
+.duiding-bron { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--border-light); }
+
+/* Begroting-blok */
+.begroting-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; }
+.begroting-naam { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.begroting-artikel { font-size: 11px; color: var(--text-tertiary); margin-bottom: 12px; }
+.begroting-bar { height: 7px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
+.begroting-bar-fill { height: 100%; background: var(--orange); }
+.begroting-cijfers { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; color: var(--text-primary); }
+.begroting-cijfers em { font-style: normal; color: var(--text-tertiary); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 6px; }
+.begroting-verschil { color: var(--text-secondary); }
+.begroting-bron { font-size: 11px; color: var(--text-tertiary); font-style: italic; margin-top: 6px; }
+
+/* Externe toetsing */
+.toets-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.toets-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.toets-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; display: inline-block; background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border-mid); }
+.toets-instantie { font-size: 12px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.02em; }
+.toets-titel { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 8px; }
+.toets-tekst { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+.toets-reactie { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding: 10px 13px; background: var(--bg-secondary); border-left: 2px solid var(--border-mid); border-radius: 0 6px 6px 0; }
+.toets-reactie-kop { font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; margin-right: 6px; }
+.toets-bron { font-size: 12px; color: var(--text-tertiary); font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--border-light); }
+.toets-bron a { color: var(--text-tertiary); text-decoration: underline; }
+
+/* Indicator-blok */
+.indicator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .indicator-grid { grid-template-columns: 1fr; } }
+.indicator-card { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 10px; padding: 16px 18px; }
+.indicator-naam { font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.indicator-uitleg { font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px; }
+.indicator-bron { font-size: 10px; color: var(--text-tertiary); margin-bottom: 10px; }
+.indicator-bron a { color: var(--text-tertiary); text-decoration: underline; }
+.indicator-laatste { font-size: 24px; font-weight: 700; color: var(--orange); letter-spacing: -0.01em; line-height: 1; }
+.indicator-laatste small { font-size: 11px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; margin-left: 6px; }
+.indicator-periode { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+.indicator-bronvergelijking { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-light); max-width: 760px; }
+.indicator-bronvergelijking strong { color: var(--text-primary); }
+.indicator-bronvergelijking a { color: var(--text-secondary); text-decoration: underline; }
+.indicator-referentie { margin-top: 10px; padding: 8px 10px; background: var(--orange-light); border-radius: 6px; font-size: 12px; }
+.indicator-referentie .ref-norm { color: var(--text-secondary); }
+.indicator-referentie .ref-gap { font-weight: 700; }
+.ref-gap.onder { color: var(--red); }
+.ref-gap.boven { color: var(--green); }
+.cbs-interpretatie { font-size: 14px; color: var(--text-secondary); line-height: 1.65; padding: 16px 18px; background: var(--bg-secondary); border-left: 3px solid var(--orange); border-radius: 6px; margin-bottom: 28px; }
+.cbs-interpretatie p { margin: 0 0 10px; }
+.cbs-interpretatie p:last-child { margin-bottom: 0; }
+.indicator-historie { margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--border-light); display: flex; flex-direction: column; gap: 4px; }
+.indicator-historie-row { display: flex; justify-content: space-between; font-size: 12px; }
+.indicator-historie-row span:first-child { color: var(--text-tertiary); }
+.indicator-historie-row span:last-child { font-family: var(--font-mono); color: var(--text-secondary); }
+
+/* Portal */
+.portal-hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 60px 0 52px; }
+.hero-logo { margin-bottom: 28px; line-height: 1; }
+.hero-logo .bl-mark { display: block; font-weight: 800; font-size: 62px; color: var(--orange); letter-spacing: -0.03em; line-height: 1; }
+.hero-logo .bl-sub { display: block; font-weight: 700; font-size: 15px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.22em; margin-top: 12px; }
+@media (max-width: 520px) { .hero-logo .bl-mark { font-size: 46px; } .hero-logo .bl-sub { font-size: 12px; letter-spacing: 0.18em; } }
+@media (prefers-color-scheme: dark) { .hero-logo .bl-sub { color: var(--text-secondary); } }
+.portal-titel { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 10px 0 18px; }
+.portal-lede { font-size: 17px; color: var(--text-secondary); line-height: 1.6; max-width: 720px; }
+.thema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 4px; }
+.thema-tile { display: block; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 22px 24px; }
+.thema-tile.live { border-color: var(--orange-border); }
+.thema-tile.live:hover { border-color: var(--orange); text-decoration: none; }
+.thema-tile h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+.thema-tile .thema-meta { font-size: 13px; color: var(--text-tertiary); margin-top: 5px; }
+.thema-tile .thema-cta { font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 16px; }
+.thema-tile.binnenkort { opacity: 0.6; }
+.thema-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 6px; margin-top: 16px; background: var(--bg-tertiary); color: var(--text-tertiary); }
+
+footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; border-top: 0.5px solid var(--border-light); font-size: 12px; color: var(--text-tertiary); text-align: center; }
+.accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo"><span class="bl-mark">TRNKL<span class="merkpunt"></span></span></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Dashboard</a>
+        <a href="methode-asielmigratie.html" class="nav-link">Methode</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<section class="hero"><div class="container-narrow">
+<h1>Styleguide — <em>Asiel &amp; migratie</em></h1>
+<p class="lede">Welke termen we wel, niet en met voorbehoud gebruiken op het thema Asiel &amp; migratie, en waarom. Geldig vanaf 27-05-2026.</p>
+</div></section>
+<section class="section bg-primary"><div class="container-narrow">
+<div class="md-body">
+<p><strong>Doel:</strong> vastleggen welke termen we wel, niet en met voorbehoud gebruiken op het thema Asiel &amp; migratie, en waarom. Op dit thema is bijna geen woord neutraal; zonder afspraken vooraf moet ik per doelpagina opnieuw kiezen, en dan glijden formuleringen op een gegeven moment richting de dominante politieke kleur van het bronmateriaal dat ik die dag in handen heb. Deze afspraken zijn een hulpmiddel om dat te voorkomen, geen sluitend systeem.</p>
+<p><strong>Reikwijdte:</strong> alle dashboard-teksten op het thema (themapagina, doelpagina&#x27;s, methode, externe-toetsing-teksten, kaart-bijschriften, social-tekst). Niet voor: letterlijke citaten uit het akkoord, programma&#x27;s, Kamerstukken, jurisprudentie of adviezen — die blijven verbatim.</p>
+<p><strong>Geldig vanaf:</strong> 27-05-2026. Bij wijziging: notitie hier, peildatum aanpassen.</p>
+<h2 id="1-algemene-lijn">1. Algemene lijn</h2>
+<p>Drie principes, in volgorde:</p>
+<ol>
+<li><strong>Voorrang voor de juridische of administratieve term.</strong> Als IND, COA, KMar, EUR-Lex, Vw 2000 of een Nederlandstalige uitvoeringsinstantie het ding bij een vaste naam noemt, gebruiken wij die naam. Dit verschuift het gewicht van <em>politieke kleur</em> naar <em>traceerbare definitie</em>. Voorbeeld: &quot;asielaanvraag&quot; (IND-term) boven &quot;asielverzoek&quot; of &quot;asielclaim&quot;.</li>
+<li><strong>Strikt onderscheid tussen statistiek-naam en frame.</strong> Een vakterm die in een officiële statistiek als kolomkop staat (zoals &quot;asielinstroom&quot; bij de IND), gebruiken we als statistiek-naam, met bron. Als we het verschijnsel zélf beschrijven, kiezen we de neutralere formulering (&quot;aankomende asielzoekers&quot;, &quot;personen die asiel aanvragen&quot;). Eén woord, twee functies — uit elkaar houden.</li>
+<li><strong>Personen vóór categorieën.</strong> Als een term zowel een proces als een persoon kan aanduiden, kies de procesvorm. &quot;Uitzetting&quot; (handeling) boven &quot;uitgezette vreemdeling&quot; (etiket op iemand). Reden: de mens staat los van de procedure die op die mens van toepassing is.</li>
+</ol>
+<p>De bovenliggende TRNKL-norm blijft gelden: waarneming en gevolgtrekking gescheiden, niet-oordelend, herleidbaar tot openbare bronnen, geen em-dashes in social-tekst, niet-handelen met koppelteken, verkiezingsprogramma&#x27;s met apostrof, geen overclaim.</p>
+<h2 id="2-personen-juridische-categorieën-niet-door-elkaar-gebruiken">2. Personen — juridische categorieën, niet door elkaar gebruiken</h2>
+<p>Vier categorieën, vier verschillende juridische posities. Door elkaar gebruiken is een feitelijke fout, geen stijlkwestie.</p>
+<table class="md-table">
+<tr><th>Term</th><th>Status</th><th>Wanneer gebruiken</th></tr>
+<tr><td>asielzoeker</td><td>tijdens de IND-procedure</td><td>iemand die een aanvraag heeft ingediend en op een beslissing wacht</td></tr>
+<tr><td>vluchteling</td><td>erkend onder artikel 1A Vluchtelingenverdrag (Genève, 1951)</td><td>de juridische categorie zelf, of iemand die internationaal als zodanig is erkend</td></tr>
+<tr><td>statushouder</td><td>in Nederland een asielvergunning verkregen (regulier of subsidiair)</td><td>NL-context, na de vergunningverlening</td></tr>
+<tr><td>ontheemde</td><td>onder de Richtlijn Tijdelijke Bescherming (RTPD 2001/55/EG)</td><td>Oekraïners en vergelijkbare groepen onder Europese collectieve bescherming</td></tr>
+<tr><td>vreemdeling</td><td>Vw 2000-term: niet-Nederlander</td><td>overkoepelende juridische term, vooral als de status onbekend of irrelevant is</td></tr>
+<tr><td>nareiziger</td><td>familielid in gezinshereniging na asielstatus</td><td>gezinsherenigingsprocedure (artikel 29 lid 2 Vw 2000)</td></tr>
+<tr><td>arbeidsmigrant / kennismigrant</td><td>reguliere migratie met arbeid als titel</td><td>duidelijk economisch domein, niet asiel</td></tr>
+</table>
+<p>Niet gebruiken voor personen: &quot;illegaal&quot; (waardeoordeel), &quot;gelukszoeker&quot; (waardeoordeel), &quot;vreemdelingenstroom&quot; (depersonificerend), &quot;kansarme asielzoeker&quot; buiten directe IND-context.</p>
+<p>Wel gebruiken voor de <em>toestand</em> van verblijf zonder titel: &quot;onrechtmatig verblijvende vreemdeling&quot; (Vw-term) of &quot;vreemdeling zonder verblijfsrecht&quot;. De toestand mag een naam hebben, de persoon krijgt niet een toestand als label.</p>
+<h2 id="3-beleids-en-procesterminologie">3. Beleids- en procesterminologie</h2>
+<p>Per geladen term: hoe wij het gebruiken, met de reden.</p>
+<p><strong>Asielinstroom / instroom.</strong> Officiële IND-statistieknaam (&quot;Asielinstroom maandbericht&quot;). <em>Wel</em> als verwijzing naar die statistiek met bron. <em>Niet</em> als framing van het verschijnsel in onze eigen lopende tekst. Gebruik daar: &quot;het aantal asielaanvragen&quot;, &quot;aankomende asielzoekers&quot;, &quot;het aantal personen dat in Nederland asiel aanvraagt&quot;. In citaten van politici of beleidsstukken: letterlijk laten staan, attributie vermeld.</p>
+<p><strong>Opvang.</strong> Juridische term (COA &quot;voorziet in opvang&quot;). Geen vervangend woord nodig. Onderscheid bewaren tussen reguliere opvang, noodopvang en crisisnoodopvang — dit zijn drie verschillende juridische regimes.</p>
+<p><strong>Uitzetting.</strong> Vw 2000 spreekt van &quot;uitzetting&quot; (hoofdstuk 6); dit is de juridische term voor gedwongen vertrek na een afwijzende beschikking. <em>Wel</em> gebruiken voor de gedwongen handeling. Voor de bredere categorie: &quot;vertrek&quot; (overkoepelend), &quot;vrijwillige terugkeer&quot; (specifiek de DT&amp;V/IOM-route). Niet vermengen — wie de DT&amp;V-route loopt is niet uitgezet.</p>
+<p><strong>Veilig land.</strong> Twee verschillende juridische begrippen die regelmatig door elkaar lopen. Altijd voluit:</p>
+<ul>
+<li><em>Veilig land van herkomst</em> (artikel 30b Vw 2000) — er bestaat een nationale en een EU-lijst. Effect: versnelde procedure, lagere bewijslast voor de IND.</li>
+<li><em>Veilig derde land</em> (artikel 30a Vw 2000, Dublin/AMMR) — een land waarheen verwezen kan worden omdat de aanvrager daar bescherming had kunnen krijgen.</li>
+</ul>
+<p>In eigen tekst nooit &quot;veilig land&quot; zonder bepaling; in citaten letterlijk laten.</p>
+<p><strong>Irreguliere migratie.</strong> EU-/IOM-term voor migratie zonder geldige titel. Gebruik dit als overkoepelende fenomeenbeschrijving boven &quot;illegale migratie&quot;. Voor het individu: &quot;vreemdeling zonder verblijfsrecht&quot; of &quot;onrechtmatig verblijvende vreemdeling&quot; (Vw-term).</p>
+<p><strong>Wet gemeentelijke taak mogelijk maken asielopvang.</strong> Niet &quot;spreidingswet&quot; gebruiken in eigen tekst — ook niet als verkorting na een eerste formele vermelding. De informele naam frame&#x27;t één onderdeel (verdeling over gemeenten) alsof dat de hele wet is, en het is geen juridische term. In citaten van politici, partijen of media staat &quot;spreidingswet&quot; letterlijk; dan attributie vermelden. Bij eerste vermelding op een pagina kort toelichten: &quot;de wet die gemeenten verplicht asielopvang mogelijk te maken (per 1 februari 2024 in werking)&quot;.</p>
+<p><strong>Asielnoodmaatregelen / asielcrisis.</strong> Politieke framing. Gebruik in eigen tekst de procedurele of cijfermatige formulering (&quot;de wachttijden bij de IND&quot;, &quot;de bezetting van de COA-opvang&quot;) en attribueer &quot;crisis&quot; of &quot;noodmaatregelen&quot; aan de bron die dat zo noemt.</p>
+<p><strong>Doormigratie / secundaire migratie.</strong> EU-jargon voor verplaatsing binnen de Unie na binnenkomst in een ander lidstaat (Dublin-context). Gebruik &quot;secundaire migratie&quot; als technische term; bij eerste vermelding korte uitleg.</p>
+<p><strong>Kansrijk / kansarm.</strong> IND-jargon voor de procedurele eerste inschatting. Gebruik alleen waar het direct nodig is en altijd met de bron en met uitleg (&quot;in de IND-categorie &#x27;kansrijke aanvragen&#x27;, waar de honoreringskans hoog is&quot;). Het is geen oordeel over de aanvrager.</p>
+<p><strong>Terugkeer.</strong> Overkoepelende term (vrijwillig &amp; gedwongen). Concreet maken bij gebruik: &quot;vrijwillige terugkeer&quot;, &quot;gedwongen vertrek na uitzetting&quot;. &quot;Terugkeerbeleid&quot; is een gangbare beleidsterm en kan blijven.</p>
+<p><strong>Statushouder huisvesten / uitplaatsen.</strong> &quot;Uitplaatsing&quot; is COA-vakterm voor de overgang van AZC naar gemeentelijke huisvesting na statusverlening. Te gebruiken; in eerste vermelding kort toelichten.</p>
+<p><strong>Grip / grenzen aan migratie.</strong> Politieke framing — niet overnemen in eigen tekst. In citaten letterlijk.</p>
+<p><strong>Tweestatusstelsel.</strong> Beleidsterm voor het onderscheid tussen Verdragsvluchteling (A-status) en subsidiair beschermden (B-status). Sinds 2014 werkt Nederland met een enkelvoudige status; voorstellen tot herinvoering zijn een politiek dossier. Te gebruiken; bij eerste vermelding een zin context.</p>
+<h2 id="4-het-migratie-en-asielpact-en-het-bredere-europees-kader">4. Het Migratie- en Asielpact en het bredere Europees kader</h2>
+<p>De nationale beleidsruimte op dit thema wordt structureel begrensd door supranationaal recht. Dat is geen mening, dat is een vaststelling die het materiaal in de juiste verhouding plaatst. Onze terminologie moet die laag herkenbaar houden. Het Migratie- en Asielpact is daarbinnen het zwaarstwegende kader voor de komende kabinetsperiode: aangenomen in 2024, in werking gefaseerd vanaf 2026, en raakt het grootste deel van de procedure-gerichte doelen in dit hoofdstuk.</p>
+<p><strong>Migratie- en Asielpact (Pact on Migration and Asylum).</strong> Officiële Nederlandse naam in Kamerstukken en EUR-Lex. Aangenomen door het Europees Parlement op 10 april 2024 en door de Raad op 14 mei 2024. Gepubliceerd in het Publicatieblad van de EU mei 2024. De vijf hoofdinstrumenten (verordeningnummers geverifieerd tegen EUR-Lex, peildatum 27-05-2026):</p>
+<ul>
+<li><em>Asielprocedureverordening</em> (APR — Verordening (EU) 2024/1348), van toepassing vanaf 12 juni 2026; vervangt de Asielprocedurerichtlijn 2013/32/EU per 11 juli 2026.</li>
+<li><em>Asiel- en migratiebeheerverordening</em> (AMMR — Verordening (EU) 2024/1351), opvolger van Dublin III, gefaseerd in werking vanaf juni 2026.</li>
+<li><em>Screeningverordening</em> (Verordening (EU) 2024/1356).</li>
+<li><em>Eurodac-verordening, herziening</em> (Verordening (EU) 2024/1358).</li>
+<li><em>Asiel- en migratiecrisisverordening</em> (Verordening (EU) 2024/1359).</li>
+</ul>
+<p>Naast de vijf maken de herziene Opvangrichtlijn (recast) en Kwalificatieverordening deel uit van het pakket. <strong>Bij elk doel waar het pact raakt: de specifieke verordening noemen, niet &quot;het pact&quot; als geheel</strong> — dat is de zwaarste valkuil op dit thema (zie sectie 7).</p>
+<p><strong>Dublin-verordening.</strong> Bij eerste vermelding voluit: <em>Dublin III, Verordening (EU) nr. 604/2013</em>. Daarna &quot;Dublin&quot; mag. De AMMR vervangt Dublin gefaseerd vanaf juni 2026; vermeld dit waar relevant.</p>
+<p><strong>Artikel 3 EVRM (non-refoulement).</strong> Voluit bij eerste vermelding. Het verbod is absoluut (geen uitzondering, geen afweging tegen ander belang) — dat is feitelijk, niet politiek; mag in eigen tekst staan, geattribueerd aan de tekst van het artikel en de standaardlijn van het EHRM.</p>
+<p><strong>Vluchtelingenverdrag van Genève (1951) &amp; Protocol (1967).</strong> Voluit bij eerste vermelding op een pagina. Artikel 1A: de vluchtelingendefinitie. Artikel 33: non-refoulement (parallel aan, niet identiek met, artikel 3 EVRM).</p>
+<p><strong>EU-Grondrechtenhandvest, artikel 18 (recht op asiel) en artikel 19 (verbod uitzetting).</strong> Voluit waar het direct geldt.</p>
+<p><strong>Frontex.</strong> Voluit bij eerste vermelding: <em>Europees Grens- en kustwachtagentschap (Frontex)</em>. Daarna &quot;Frontex&quot; mag.</p>
+<p><strong>UNHCR.</strong> Voluit bij eerste vermelding: <em>Hoge Commissaris voor de Vluchtelingen van de Verenigde Naties (UNHCR)</em>. Daarna &quot;UNHCR&quot; mag.</p>
+<h2 id="5-cijfer-conventies">5. Cijfer-conventies</h2>
+<p>Asielcijfers zijn brongevoelig. Verschillende instanties tellen verschillend: een aanvraag is iets anders dan een persoon, een eerste asielaanvraag is iets anders dan een herhaalde, een aankomst in NL is iets anders dan een ingediende aanvraag.</p>
+<ul>
+<li><strong>Altijd bron &amp; peildatum &amp; definitie.</strong> &quot;IND, Asielinstroom, eerste asielaanvragen, 2025, peildatum ...&quot; — niet enkel &quot;Aantal asielzoekers 2025: ...&quot;.</li>
+<li><strong>Definitie meeleveren bij eerste gebruik op een pagina.</strong> &quot;Eerste asielaanvragen (exclusief nareis en herhaalde aanvragen, telling per persoon)&quot;.</li>
+<li><strong>Eurostat naast IND.</strong> Bij internationale vergelijking de Eurostat-reeks gebruiken (vergelijkbare definitie tussen lidstaten) en in een voetnoot vermelden dat de NL-cijfers per definitie kunnen afwijken van de IND-publicatie.</li>
+<li><strong>UNHCR voor mondiale context, niet voor NL-detail.</strong> UNHCR-cijfers zijn vooral schattingen op landniveau en vluchtelingenpopulaties wereldwijd; voor NL-procedures zijn IND/COA/KMar leidend.</li>
+<li><strong>CBS migratiecijfers</strong> dekken alle migratie (asiel &amp; regulier &amp; EU &amp; retour), niet alleen asiel. Onderscheid zichtbaar maken.</li>
+</ul>
+<h2 id="6-cijferpijplijn-welke-cijfers-verschijnen-waar-en-waarom">6. Cijferpijplijn — welke cijfers verschijnen waar, en waarom</h2>
+<p>Bij elk AM-doel toont het dashboard een blok &quot;Voortgang en context&quot;. De cijfers daarin zijn geen redactionele keuze per cijfer, maar het resultaat van een vaste pijplijn die we hieronder beschrijven. Doel: dezelfde regels voor elk doel, geen kers-pluk, navolgbaar tot de oorspronkelijke CBS-, Eurostat-, COA- of IND-tabel.</p>
+<p><strong>Welke bronnen.</strong> Vier categorieën, in deze prioriteitsvolgorde wanneer ze samen voor één doel beschikbaar zijn:</p>
+<ol>
+<li><strong>Eurostat</strong> (asielaanvragen, eerste-aanleg-beslissingen, Dublin-overdrachten, terugkeer, tijdelijke bescherming). Gebruikt voor doelen waar EU-vergelijking inhoudelijk meer zegt dan de NL-cijfers alleen — vooral AM-00, AM-02, AM-03, AM-08.</li>
+<li><strong>IND-maandbericht</strong> (Asylum Trends): eerste asielaanvragen, herhaalde aanvragen, nareizigers, beslissingen, doorlooptijd. Voor procedure-doelen (AM-12 t/m AM-15) en de instroom-meting (AM-10, AM-11).</li>
+<li><strong>COA-bezetting</strong>: reguliere opvang, noodopvang, crisisnoodopvang, AMV-opvang, RTPD. Voor opvang-doelen (AM-27 t/m AM-30, AM-32, AM-57).</li>
+<li><strong>CBS Statline</strong>: asielverzoeken &amp; nareizigers, AMV, terugkeer/uitzetting-statistiek, immi-/emigratie, naturalisaties. Voor het hele AM-thema, vaak met langere historie dan IND/Eurostat.</li>
+</ol>
+<p><strong>Koppeling aan een AM-doel.</strong> Elke indicator heeft in onze database een veld <code>relevante_doelen</code> — een komma-gescheiden lijst van AM-codes waar de indicator inhoudelijk op slaat. Wij vullen die handmatig op basis van wat de bron meet en wat het doel afspreekt, niet op basis van wat een doel &quot;interessant&quot; maakt. Een cijfer over uitzettingen verschijnt dus op AM-24 (&quot;overlastgevers in vreemdelingenbewaring en uitzetten&quot;) omdat het doel exact daarover gaat, niet omdat we daar veel verkeer verwachten.</p>
+<p><strong>Filteren bij de bron.</strong> Een CBS-tabel zoals &quot;Asielverzoeken en nareizigers; nationaliteit, geslacht en leeftijd&quot; bevat per maand één rij per combinatie van geslacht, leeftijdsklasse en nationaliteit — al snel duizenden rijen. Wij filteren bij het ophalen altijd op de CBS-totaalcodes (geslacht = totaal mannen + vrouwen, leeftijd = totaal, nationaliteit = totaal), zodat er per periode één schoon getal overblijft. Uitsplitsing naar nationaliteit of leeftijd doen we bewust niet op de standaard-doelpagina; wie naar de detail-uitsplitsing wil, vindt die rechtstreeks op CBS via de bron-link op de card.</p>
+<p><strong>Sub-cards per topic.</strong> Eén CBS-tabel kan meerdere meetwaarden bevatten — &quot;Asielverzoeken en nareizigers&quot; heeft bijvoorbeeld vier topics: eerste asielverzoeken, volgende asielverzoeken, totaal asielverzoeken, nareizigers. Elk van die topics wordt een aparte card. De titel en de korte uitleg-zin op de card zijn verbatim overgenomen uit CBS&#x27; eigen metadata (<code>DataProperties</code> → <code>Title</code> en <code>Description</code>, eerste zin). Wij hertypen die niet om te voorkomen dat onze formulering iets toevoegt of wegneemt.</p>
+<p><strong>Maximum per doel.</strong> Het cijferblok per doel toont maximaal acht cards. Komen er meer indicators in aanmerking, dan vallen de minst specifieke af volgens de prioriteit hierboven (Eurostat → IND → COA → CBS). Op AM-00 (&quot;vier kernkoersen&quot;, referentiepunt) is de cap minder relevant omdat dit doel als overzichtspagina dient en bewust breder mag zijn.</p>
+<p><strong>Periode-aanduiding.</strong> CBS, Eurostat, COA en IND hanteren elk eigen periode-formaten (&quot;2025JJ00&quot;, &quot;2026MM04&quot;, &quot;2024-K2&quot;). Het dashboard zet die om naar leesbare vorm: een jaar als &quot;2025&quot;, een maand als &quot;apr 2026&quot;, een kwartaal als &quot;2026 Q2&quot;. De ruwe code blijft in de database staan voor herleidbaarheid.</p>
+<p><strong>Wat we niet doen.</strong> We koppelen geen interpretatie aan een cijfer op de card. Geen &quot;een lichte daling&quot;, geen &quot;boven de doelwaarde&quot;. Een trend zien blijft aan de lezer. Waar onafhankelijke instanties (Adviesraad Migratie, Algemene Rekenkamer, Inspectie J&amp;V, WODC) een oordeel of risico-constatering hebben gepubliceerd dat het doel raakt, staat dat in een apart blok &quot;Externe toetsing&quot; op dezelfde pagina — met de instantie als bron en geciteerde tekst.</p>
+<p><strong>Wat niet via CBS kan.</strong> Een aantal doelen leunt op statistiek die CBS niet (open) publiceert: vreemdelingenbewaring (DJI), grensaanhouding (KMar), politie-inzet bij aanmeldcentra (Politie), opvangbezetting (COA-website), IND-doorlooptijd in detail (IND-maandbericht). Voor die doelen leunen we op de andere bron-scripts of, waar geen kwantitatieve bron bestaat, op de externe-toetsing-laag.</p>
+<h2 id="7-bronvergelijking-waarom-dezelfde-grootheid-bij-verschillende-bronnen-iets-anders-kan-zijn">7. Bronvergelijking — waarom dezelfde grootheid bij verschillende bronnen iets anders kan zijn</h2>
+<p>Op een AM-doelpagina staan vaak cijfers naast elkaar uit Eurostat, CBS Statline, IND of COA. Voor dezelfde grootheid — bijvoorbeeld &quot;asielaanvragen in 2025&quot; of &quot;eerste-aanleg-beslissingen in 2026 Q1&quot; — kunnen die getallen iets uit elkaar lopen. Dat is geen fout en we corrigeren het niet. Hieronder de zes verklaringen die in vrijwel elk geval een rol spelen.</p>
+<ul>
+<li><strong>Telmoment.</strong> Een asielaanvraag passeert verschillende stappen — aanmelding bij AVIM, indiening bij IND, registratie, eerste gehoor, beslissing, beroep — en elke bron tikt op een ander moment. De IND telt bij indiening, Eurostat bij registratie als applicant, CBS hanteert per tabel weer een eigen peilmoment. Dat geeft een verschuiving van enkele dagen tot twee weken, die in jaartotalen gladstrijkt maar in maand- of kwartaalcijfers zichtbaar wordt.</li>
+<li><strong>Definitie van aanvraag.</strong> Een eerste asielaanvraag is iets anders dan een opvolgende (na eerdere afwijzing), en beide zijn iets anders dan een nareisverzoek (gezinslid komt later onder een al toegekende status). CBS publiceert vaak alleen eerste aanvragen, IND splitst eerste, opvolgend en nareis, Eurostat toont op het dashboard van TRNKL totaal aanvragen (eerste + opvolgend) onder de applicant-dimensie TOTAL. Wie het ene cijfer met het andere wil vergelijken, moet eerst weten welk van die drie onder de motorkap zit.</li>
+<li><strong>Persoon versus aanvraag.</strong> Eén aanvraag is gekoppeld aan één persoon, maar één persoon kan in een jaar meerdere aanvragen indienen (afwijzing → nieuwe procedure). Voor de vraag &quot;hoeveel personen vragen asiel aan?&quot; en &quot;hoeveel procedures lopen er?&quot; levert dat verschillende uitkomsten, ook bij dezelfde bron.</li>
+<li><strong>Stock versus flow.</strong> Stock = aantal personen met een bepaalde status op een peildatum, bijvoorbeeld RTPD-beneficiairen einde april 2026. Flow = aantal gebeurtenissen in een periode, bijvoorbeeld asielaanvragen in mei 2026. Beide soorten cijfers staan op het dashboard en de periode-aanduiding maakt het onderscheid zichtbaar — een peilmoment (&quot;2026-04&quot;) leest als een momentopname, een periode (&quot;mei 2026&quot;) als een stroom over die periode.</li>
+<li><strong>Nationaliteits-afbakening.</strong> Voor de groep zonder EU- of EFTA-nationaliteit gebruikt CBS de term <em>niet-EU/EFTA-onderdaan</em>, de Vreemdelingenwet de term <em>derdelander</em>, en Eurostat <em>third-country national</em>. Op het dashboard hanteren we consequent de CBS-term — direct te begrijpen Nederlands, geen wettelijk jargon — maar de drie verwijzen naar dezelfde groep: personen zonder de nationaliteit van een EU-lidstaat, IJsland, Liechtenstein, Noorwegen of Zwitserland.</li>
+<li><strong>EU27-context, geen verdeelsleutel.</strong> Bij doelen met een Europese dimensie (AM-02, AM-08) staat naast het NL-cijfer een Eurostat-EU27-totaal: alle 27 lidstaten samen, waar Nederland onderdeel van uitmaakt. Dat is bewust een schaal-cijfer, geen ratio &quot;NL ÷ EU27&quot;. Een verdeelsleutel suggereren ligt in het politieke domein — eerlijke verdeling, solidariteitsmechanisme, opt-outs — en hoort bij het beleidsoordeel, niet bij de cijfers.</li>
+</ul>
+<p><strong>Wat we doen bij conflicterende cijfers.</strong> Eurostat-NL en CBS kunnen voor dezelfde maand verschillende getallen geven. We kiezen er niet één, we verbergen het verschil niet, en we voegen geen redactioneel rekenkundig gemiddelde toe. Beide cijfers staan op de doelpagina, met bronvermelding en periode. Het verschil valt nagenoeg altijd binnen de bandbreedte die de zes verklaringen hierboven beschrijven, en de lezer kan dat zelf nagaan via de bron-link op elke card. Verbergen of weglaten zou een redactionele keuze zijn die in het beleidsdomein van de lezer ligt, niet in het onze.</p>
+<h2 id="8-citaten-en-attributie">8. Citaten en attributie</h2>
+<ul>
+<li><strong>Citaat verbatim, met bron.</strong> Wat een politicus, bewindspersoon of programmatekst zegt, blijft staan zoals het er staat — ook als de framing in onze styleguide vermijdbaar zou zijn.</li>
+<li><strong>Niet stilzwijgend hervertalen.</strong> Een citaat met &quot;instroom indammen&quot; wordt niet door ons overgenomen als &quot;aankomsten beperken&quot;; we citeren of we parafraseren, en in een parafrase staat wat de spreker bedoelde, niet onze ingrediënten.</li>
+<li><strong>Quote-then-attribute.</strong> Eerst het citaat, daarna bron &amp; datum &amp; vindplaats. Geen wikkel van interpretatie ervoor.</li>
+<li><strong>Programma-citaten:</strong> verkiezingsprogramma&#x27;s (met apostrof). Per partij de letterlijke passage; mappings naar doelen via dezelfde status-taxonomie als bij Wonen (behouden, afgezwakt, gesneuveld).</li>
+</ul>
+<h2 id="8-veelvoorkomende-valkuilen">8. Veelvoorkomende valkuilen</h2>
+<p><strong>Verwarring asielzoeker / vluchteling / statushouder.</strong> Een statushouder is geen asielzoeker meer. Een asielzoeker is geen vluchteling tot de IND-procedure dat heeft vastgesteld. Een Oekraïense ontheemde is geen asielzoeker (andere rechtsbasis: RTPD, niet de Asielprocedureverordening).</p>
+<p><strong>&quot;Veilig land&quot; zonder bepaling.</strong> Twee verschillende juridische begrippen. Altijd &quot;van herkomst&quot; of &quot;derde land&quot; toevoegen.</p>
+<p><strong>&quot;Spreidingswet&quot; in eigen tekst.</strong> Niet gebruiken. Alleen <em>Wet gemeentelijke taak mogelijk maken asielopvang</em>. In citaten van politici, partijen of media letterlijk; in onze parafrase nooit.</p>
+<p><strong>Pact-instrumenten over één kam.</strong> &quot;Het Migratiepact verplicht...&quot;: welke verordening? De APR, AMMR, screening, Eurodac en crisis-verordening hebben elk een eigen reikwijdte. Generieke pact-uitspraken zijn bijna altijd ongelukkig.</p>
+<p><strong>Dublin als werkwoord.</strong> &quot;Gedublineerd worden&quot; hoort in jargon, niet in eigen tekst. Schrijf: &quot;overdracht naar de verantwoordelijke lidstaat onder Dublin III&quot;.</p>
+<p><strong>&quot;Gesloten grens&quot;.</strong> Geen juridisch begrip in de NL/EU-context; Schengen kent wel tijdelijke herinvoering van grenscontroles (Schengengrenscode artikel 25 e.v.). Gebruik die formulering.</p>
+<p><strong>Cijfer zonder definitie.</strong> Het verschil tussen &quot;eerste asielaanvragen&quot;, &quot;totaal asielaanvragen&quot;, &quot;asielinstroom&quot; (IND-noemer, breder dan eerste), &quot;personen in COA-opvang&quot; en &quot;verleende asielvergunningen&quot; loopt al snel op tot tientallen procenten. Definitie meeleveren is geen pedanterie; zonder definitie is het cijfer niet vergelijkbaar.</p>
+<h2 id="9-toetssteen-vóór-publicatie">9. Toetssteen vóór publicatie</h2>
+<p>Per doelpagina, vóór livegang, drie korte vragen:</p>
+<ol>
+<li>Staat er een term met politieke kleur in onze eigen tekst (dus buiten citaten)? Zo ja, is die hier de juiste juridische of administratieve term, of is er een neutralere die hetzelfde betekent?</li>
+<li>Heeft elk cijfer een bron, peildatum en definitie?</li>
+<li>Wordt onderscheid bewaard tussen asielzoeker / vluchteling / statushouder / ontheemde / vreemdeling waar dat ertoe doet?</li>
+</ol>
+<p>Bij twijfel: zacht formuleren, geen overclaim, of als open vraag laten staan in plaats van als constatering.</p>
+</div>
+</div></section>
+<footer>
+  <div class="container">
+    <span class="accent">TRNKL<span class="merkpunt"></span></span> Politiek Dashboard · samengesteld uit openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten
+  </div>
+</footer>
+</body>
+</html>
