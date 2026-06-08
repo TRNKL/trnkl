@@ -142,6 +142,7 @@ table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--b
 .kamerstukken tr.verworpen td.uitkomst { color: var(--red); font-weight: 600; }
 .kamerstukken tr.afgehandeld td.uitkomst { color: var(--text-secondary); font-weight: 600; }
 @media (max-width: 700px) { table.kamerstukken { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
+@media (max-width: 700px) { .md-body table.md-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
 .kamerwerk-subkop { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; margin: 32px 0 4px; }
 .kamerwerk-sublede { font-size: 13px; color: var(--text-tertiary); margin-bottom: 14px; }
 
@@ -256,7 +257,7 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 </header>
 <section class="doel-hero"><div class="container-narrow">
 <div class="doel-id">WB-23 · Bouwen</div>
-<h1>Investeren in realisatiestimulans en woningbouwimpuls; NPLV borgen</h1>
+<h1>Investeren in realisatiestimulans en woningbouwimpuls; NPLV borgen <span class="nieuw-badge">Nieuw</span></h1>
 <p class="akkoord-tekst">"We investeren in de realisatiestimulans en woningbouwimpuls en borgen het NPLV (Nationaal Programma Leefbaarheid en Veiligheid)."</p>
 </div></section>
 <section class="section bg-primary"><div class="container-narrow">
@@ -278,10 +279,15 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 <section class="section"><div class="container-narrow">
 <div class="section-eyebrow">Wat de Kamer ermee deed</div>
 <h2 class="section-title">Kamerzaken die WB-23 raken</h2>
-<div class="kamerwerk-subkop">Inbreng zonder stemming</div>
+<table class="kamerstukken">
+<tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th><th>D66</th><th>VVD</th><th>CDA</th><th class="uitkomst">Uitkomst</th></tr>
+<tr class="afgehandeld"><td class="datum">04-06-2026</td><td>Motie</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D27156&did=2026D27156" target="_blank">Motie van het lid Nobel c.s. over bij herstructurering en nieuwbouw nadrukkelijk inzetten op de toevoeging van middenhuurwoningen in NPLV-gebieden </a></td><td>J.N.J. Nobel (VVD)</td><td class="stem stem-onbekend">–</td><td class="stem stem-onbekend">–</td><td class="stem stem-onbekend">–</td><td class="uitkomst">Overgenomen</td></tr>
+</table>
+<div class="kamerwerk-subkop">Overige Kamerstukken — inbreng zonder stemming</div>
 <p class="kamerwerk-sublede">Position papers, brieven, schriftelijke vragen en verzoeken die dit doel raken maar waarover de Kamer niet heeft gestemd.</p>
 <table class="kamerstukken">
 <tr><th>Datum</th><th>Soort</th><th>Onderwerp</th><th>Indiener</th></tr>
+<tr><td class="datum">28-05-2026</td><td>Brief regering</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D25413&did=2026D25413" target="_blank">Bekendmaking uitkomsten achtste tranche Woningbouwimpuls (Wbi) en tweede tranche Woningbouwversnelling Metropoolregio Eindhoven (WMRE)</a></td><td>E. Boekholt-O’Sullivan</td></tr>
 <tr><td class="datum">15-04-2026</td><td>Brief regering</td><td><a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2026D17738&did=2026D17738" target="_blank">Voortgang Woondealafspraken</a></td><td>E. Boekholt-O’Sullivan</td></tr>
 </table>
 </div></section>
