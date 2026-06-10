@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+<base target="_blank" rel="noopener noreferrer">
+<title>TRNKL — Integriteitsrisico's in de gemeentelijk gefinancierde zorg en ondersteuning</title>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Integriteitsrisico's in de gemeentelijk gefinancierde zorg en ondersteuning">
+<meta property="og:description" content="Interactieve flowchart · het zorgstelsel · drie gemeentelijke zorgdomeinen · grondslag → keten → verantwoording → praktijk & integriteitsrisicoanalyse">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #faf9f4;
+    --bg-tertiary: #f5f4ee;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --border-light: rgba(0,0,0,0.10);
+    --border-mid: rgba(0,0,0,0.18);
+    --border-strong: rgba(0,0,0,0.28);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c;
+      --bg-secondary: #2a2a27;
+      --bg-tertiary: #242422;
+      --text-primary: #e8e6de;
+      --text-secondary: #9c9a92;
+      --text-tertiary: #6b6960;
+      --border-light: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.22);
+    }
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  header {
+    background: var(--bg-primary);
+    border-bottom: 0.5px solid var(--border-mid);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 0 0 100vmax var(--bg-primary);
+    clip-path: inset(0 -100vmax);
+  }
+  .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .header-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+  .brand-mark { font-size: 21px; font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; line-height: 1; text-decoration: none; white-space: nowrap; }
+  .brand-mark:hover { opacity: 0.7; }
+  .merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+  .header-rule { width: 1px; height: 26px; background: var(--border-mid); flex: 0 0 auto; }
+
+  .canvas-wrap {
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .n8n-node { display: flex; flex-direction: column; align-items: center; cursor: pointer; user-select: none; }
+  .node-box {
+    border-radius: 10px;
+    border: 1.5px solid var(--border-mid);
+    background: var(--bg-primary);
+    display: flex; align-items: center; gap: 9px;
+    padding: 10px 14px;
+    width: 300px;
+    transition: border-color .15s, transform .12s, box-shadow .12s;
+    position: relative; cursor: pointer;
+  }
+  .n8n-node:hover .node-box { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .node-icon-wrap { width: 32px; height: 32px; min-width: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .node-text { flex: 1; min-width: 0; }
+  .node-name { font-size: 12px; font-weight: 500; color: var(--text-primary); line-height: 1.35; }
+  .node-type { font-size: 10px; color: var(--text-secondary); margin-top: 2px; line-height: 1.3; }
+
+  .node-badge { position: absolute; top: -9px; left: 50%; transform: translateX(-50%); font-size: 9px; border-radius: 20px; padding: 2px 9px; white-space: nowrap; font-weight: 600; letter-spacing: .03em; }
+
+  .info-dot {
+    position: absolute; top: -9px; right: -9px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--bg-secondary); border: 1px solid var(--border-mid);
+    font-size: 11px; font-weight: 500; color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10;
+    transition: background .12s, border-color .12s, color .12s;
+  }
+  .info-dot:hover { background: #E6F1FB; border-color: #185FA5; color: #185FA5; }
+
+  /* ----- Org-chart connectoren ----- */
+  .v-line { width: 2px; background: var(--border-mid); margin: 0 auto; }
+  .branch-row { display: flex; justify-content: center; align-items: flex-start; gap: 28px; }
+  .branch-col { display: flex; flex-direction: column; align-items: center; }
+  .bus-wrap { display: flex; justify-content: center; }
+  .bus { position: relative; height: 22px; }
+
+  /* ----- Zorggebied-node (categorie) ----- */
+  .zg-node { user-select: none; cursor: pointer; }
+  .zg-box {
+    border-radius: 10px; border: 1.5px solid #FF5A1F; background: var(--bg-primary);
+    display: flex; align-items: center; gap: 9px; padding: 10px 13px; width: 248px;
+    transition: transform .12s, box-shadow .12s; position: relative;
+  }
+  .zg-node:hover .zg-box { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(255,90,31,0.12); }
+  .zg-icon { width: 32px; height: 32px; min-width: 32px; border-radius: 8px; background: #FFF1EA; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .zg-text { flex: 1; min-width: 0; }
+  .zg-name { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+  .zg-rank { font-size: 9px; color: var(--text-secondary); margin-top: 2px; }
+
+  /* ----- Stap-node (deep dive) ----- */
+  .inst-node { user-select: none; cursor: pointer; }
+  .inst-box {
+    border-radius: 10px; border: 1.5px solid #1D9E75; background: var(--bg-primary);
+    display: flex; align-items: center; gap: 8px; padding: 9px 12px; width: 248px;
+    transition: transform .12s, box-shadow .12s; position: relative;
+  }
+  .inst-node:hover .inst-box { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(29,158,117,0.12); }
+  .inst-icon { width: 30px; height: 30px; min-width: 30px; border-radius: 7px; background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .inst-text { flex: 1; min-width: 0; }
+  .inst-name { font-size: 11px; font-weight: 500; color: var(--text-primary); line-height: 1.3; }
+  .inst-step { font-size: 9px; color: var(--text-tertiary); margin-top: 2px; line-height: 1.3; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+  /* ----- Modals ----- */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.45); align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px;
+    max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto;
+    padding: 22px 24px 28px; position: relative;
+    /* tekstselectie standaard toegestaan; de JS-schakelaar BLOKKEER_KOPIEREN zet dit bij publicatie weer dicht */
+  }
+  .modal-close { position: absolute; top: 14px; right: 16px; font-size: 20px; cursor: pointer; background: none; border: none; color: var(--text-secondary); line-height: 1; }
+  .modal-close:hover { color: var(--text-primary); }
+  .modal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; padding-right: 26px; line-height: 1.4; }
+  .modal-kicker { font-size: 10px; font-weight: 600; color: #C2410C; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+  .mh { font-size: 10px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; margin: 16px 0 6px; }
+  .mp { font-size: 12px; color: var(--text-primary); line-height: 1.75; }
+  .mtag { display: inline-block; font-size: 10px; border-radius: 4px; padding: 2px 8px; margin: 2px 3px 2px 0; background: #E6F1FB; color: #0C447C; }
+  .mtag.g { background: #E1F5EE; color: #085041; }
+  .mtag.p { background: #EEEDFE; color: #3C3489; }
+  .mtag.o { background: #FFF3E0; color: #7A3200; }
+  .mtag.r { background: #FCEBEB; color: #791F1F; }
+  .ml { font-size: 12px; color: var(--text-primary); line-height: 1.75; padding-left: 16px; }
+  .ml li { margin-bottom: 2px; }
+
+  .modal-section { margin-top: 22px; padding-top: 18px; border-top: 0.5px solid var(--border-light); }
+  .modal-section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+  .modal-section-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; line-height: 1.4; }
+  .modal-section-sub { font-size: 10px; color: var(--text-secondary); margin-bottom: 10px; }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+  .compare-col { background: var(--bg-secondary); border-radius: 8px; padding: 10px 12px; border: 0.5px solid var(--border-light); }
+  .compare-col-title { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+  .compare-col ul { font-size: 11px; line-height: 1.7; padding-left: 14px; color: var(--text-primary); }
+
+  .info-banner { background: #FFF3E0; border: 1px solid #F5D9A8; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 11px; color: #7A3200; line-height: 1.65; }
+  .info-banner strong { font-weight: 600; }
+  .pgb-banner { background: #EEEDFE; border: 1px solid #C9C5F0; border-radius: 8px; padding: 10px 14px; margin: 12px 0; font-size: 11px; color: #3C3489; line-height: 1.65; }
+  .pgb-banner strong { font-weight: 700; }
+
+  /* ----- Tabellen (zorgstelsel + risicomatrix) ----- */
+  .dtable { width: 100%; border-collapse: collapse; margin: 8px 0 4px; font-size: 11px; }
+  .dtable th, .dtable td { border: 0.5px solid var(--border-light); padding: 6px 8px; text-align: left; vertical-align: top; line-height: 1.5; }
+  .dtable th { background: var(--bg-tertiary); font-weight: 600; color: var(--text-secondary); font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+  .prio-r { color: #791F1F; font-weight: 700; white-space: nowrap; }
+  .prio-o { color: #7A3200; font-weight: 700; white-space: nowrap; }
+  .prio-y { color: #8a6d00; font-weight: 700; white-space: nowrap; }
+  @media (prefers-color-scheme: dark) { .prio-y { color: #d9c178; } }
+
+  /* ----- Checklists & signalen ----- */
+  .checklist { list-style: none; padding-left: 2px; font-size: 12px; line-height: 1.7; color: var(--text-primary); }
+  .checklist li { position: relative; padding-left: 22px; margin-bottom: 4px; }
+  .checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--text-tertiary); font-size: 13px; }
+  .flag-list { list-style: none; padding-left: 2px; font-size: 12px; line-height: 1.7; color: var(--text-primary); }
+  .flag-list li { position: relative; padding-left: 22px; margin-bottom: 5px; }
+  .flag-list li::before { content: "\2691"; position: absolute; left: 0; color: #C2410C; font-size: 12px; }
+
+  .source-block { margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--border-light); user-select: text; -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; }
+  .source-label { font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+  .source-text { font-size: 10px; color: var(--text-secondary); line-height: 1.6; }
+  .source-text a { color: #185FA5; text-decoration: none; }
+  .source-text a:hover { text-decoration: underline; }
+
+  .hint { font-size: 11px; color: var(--text-tertiary); padding: 8px 24px 14px; text-align: center; }
+
+  @media (max-width: 820px) {
+    /* Houd de drie zorgdomeinen naast elkaar; scroll horizontaal binnen de rij
+       zodat de pagina-achtergrond niet meeschuift. */
+    .branch-row {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-self: stretch;
+      gap: 14px;
+      margin-left: -24px;
+      margin-right: -24px;
+      padding: 4px 24px 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+      overscroll-behavior-x: contain;
+    }
+    .branch-col {
+      flex: 0 0 auto;
+      width: min(84vw, 300px);
+      margin-bottom: 0;
+      scroll-snap-align: center;
+    }
+    .bus { display: none; }
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+
+  .site-footer { padding: 28px 24px; margin-top: 40px; border-top: 0.5px solid var(--border-light); background: var(--bg-primary); text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.7; }
+  .site-footer .fmark { font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; }
+  .site-footer a { color: var(--text-tertiary); text-decoration: underline; }
+  .site-footer a:hover { color: #C2410C; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" target="_self" class="brand-mark" title="Naar de homepage">TRNKL<span class="merkpunt"></span></a>
+  <div class="header-rule"></div>
+  <div>
+    <div class="header-title">Integriteitsrisico's in de gemeentelijk gefinancierde zorg en ondersteuning</div>
+    <div class="header-sub">Het zorgstelsel · drie gemeentelijke zorgdomeinen · grondslag → keten → verantwoording → praktijk & integriteitsrisicoanalyse</div>
+  </div>
+</header>
+
+<div class="canvas-wrap" style="flex-direction:column;align-items:center">
+  <div class="hint">Klik op <span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-mid);font-size:11px;font-weight:500;color:var(--text-secondary);vertical-align:middle;margin:0 2px;cursor:default">i</span> of op een node voor meer informatie</div>
+
+  <!-- HOOFDNODE -->
+  <div class="n8n-node" style="margin-top:24px">
+    <div class="node-box" style="border-color:#FF5A1F" onclick="openM('achtergrond')">
+      <div class="node-badge" style="background:#FFF1EA;color:#C2410C">ACHTERGRONDINFORMATIE</div>
+      <button class="info-dot" onclick="event.stopPropagation();openM('achtergrond')" title="Het volledige zorgstelsel & geldstromen">i</button>
+      <div class="node-icon-wrap" style="background:#FFF1EA">🏛️</div>
+      <div class="node-text">
+        <div class="node-name">Achtergrond: zorgstelsel &amp; zorgfraude</div>
+        <div class="node-type">Stelsel · geldstromen · verantwoording · fraudetypologie · detectie · meldwijzer</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-line" style="height:26px"></div>
+
+  <!-- SAMENHANG-NODE (domeinoverstijgend) -->
+  <div class="n8n-node">
+    <div class="node-box" style="border-color:#185FA5" onclick="openM('samenhang')">
+      <div class="node-badge" style="background:#E6F1FB;color:#0C447C">DOMEINOVERSTIJGEND</div>
+      <button class="info-dot" onclick="event.stopPropagation();openM('samenhang')" title="Hoe de drie domeinen samenhangen">i</button>
+      <div class="node-icon-wrap" style="background:#E6F1FB">🕸️</div>
+      <div class="node-text">
+        <div class="node-name">Samenhang: domeinoverstijgende netwerken</div>
+        <div class="node-type">Eén netwerk · meerdere domeinen · meerdere gemeenten</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-line" style="height:26px"></div>
+
+  <!-- Bus naar drie kolommen (uitgelijnd op kolomcentra 116 / 376 / 636) -->
+  <div class="bus-wrap">
+    <div class="bus" style="width:752px">
+      <div style="position:absolute;top:0;left:116px;width:520px;height:2px;background:var(--border-mid)"></div>
+      <div style="position:absolute;top:0;left:115px;width:2px;height:22px;background:var(--border-mid)"></div>
+      <div style="position:absolute;top:0;left:375px;width:2px;height:22px;background:var(--border-mid)"></div>
+      <div style="position:absolute;top:0;left:635px;width:2px;height:22px;background:var(--border-mid)"></div>
+    </div>
+  </div>
+
+  <!-- DRIE ZORGDOMEINEN, ELK MET 4 STAP-NODES -->
+  <div class="branch-row">
+
+    <!-- ===== KOLOM 1 — JEUGDZORG ===== -->
+    <div class="branch-col">
+      <div class="zg-node">
+        <div class="zg-box" onclick="openM('zg-jeugd')">
+          <div class="node-badge" style="background:#FCEBEB;color:#791F1F">ZORGDOMEIN</div>
+          <button class="info-dot" onclick="event.stopPropagation();openM('zg-jeugd')" title="Waarom risicovol?">i</button>
+          <div class="zg-icon">🧒</div>
+          <div class="zg-text"><div class="zg-name">Jeugdzorg</div><div class="zg-rank">Jeugdwet · gemeente</div></div>
+        </div>
+      </div>
+      <div class="v-line" style="height:26px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('jeugd-grond')"><button class="info-dot" onclick="event.stopPropagation();openM('jeugd-grond')" title="Open">i</button><div class="inst-icon">⚖️</div><div class="inst-text"><div class="inst-step">Stap 1</div><div class="inst-name">Wettelijke grondslag</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('jeugd-keten')"><button class="info-dot" onclick="event.stopPropagation();openM('jeugd-keten')" title="Open">i</button><div class="inst-icon">🔗</div><div class="inst-text"><div class="inst-step">Stap 2</div><div class="inst-name">Keten &amp; rollen</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('jeugd-verant')"><button class="info-dot" onclick="event.stopPropagation();openM('jeugd-verant')" title="Open">i</button><div class="inst-icon">📋</div><div class="inst-text"><div class="inst-step">Stap 3</div><div class="inst-name">Hoe wordt het verantwoord?</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" style="border-color:#C2410C" onclick="openM('jeugd-praktijk')"><button class="info-dot" onclick="event.stopPropagation();openM('jeugd-praktijk')" title="Open">i</button><div class="inst-icon" style="background:#FFF1EA">🔍</div><div class="inst-text"><div class="inst-step">Stap 4</div><div class="inst-name">Praktijk, fraudesignalen &amp; risicoanalyse</div></div></div></div>
+    </div>
+
+    <!-- ===== KOLOM 2 — BESCHERMD WONEN ===== -->
+    <div class="branch-col">
+      <div class="zg-node">
+        <div class="zg-box" onclick="openM('zg-bw')">
+          <div class="node-badge" style="background:#FCEBEB;color:#791F1F">ZORGDOMEIN</div>
+          <button class="info-dot" onclick="event.stopPropagation();openM('zg-bw')" title="Waarom risicovol?">i</button>
+          <div class="zg-icon">🏠</div>
+          <div class="zg-text"><div class="zg-name">Beschermd wonen &amp; opvang</div><div class="zg-rank">Wmo 2015 · gemeente</div></div>
+        </div>
+      </div>
+      <div class="v-line" style="height:26px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('bw-grond')"><button class="info-dot" onclick="event.stopPropagation();openM('bw-grond')" title="Open">i</button><div class="inst-icon">⚖️</div><div class="inst-text"><div class="inst-step">Stap 1</div><div class="inst-name">Wettelijke grondslag</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('bw-keten')"><button class="info-dot" onclick="event.stopPropagation();openM('bw-keten')" title="Open">i</button><div class="inst-icon">🔗</div><div class="inst-text"><div class="inst-step">Stap 2</div><div class="inst-name">Keten &amp; rollen</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('bw-verant')"><button class="info-dot" onclick="event.stopPropagation();openM('bw-verant')" title="Open">i</button><div class="inst-icon">📋</div><div class="inst-text"><div class="inst-step">Stap 3</div><div class="inst-name">Hoe wordt het verantwoord?</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" style="border-color:#C2410C" onclick="openM('bw-praktijk')"><button class="info-dot" onclick="event.stopPropagation();openM('bw-praktijk')" title="Open">i</button><div class="inst-icon" style="background:#FFF1EA">🔍</div><div class="inst-text"><div class="inst-step">Stap 4</div><div class="inst-name">Praktijk, fraudesignalen &amp; risicoanalyse</div></div></div></div>
+    </div>
+
+    <!-- ===== KOLOM 3 — BEGELEIDING & DAGBESTEDING ===== -->
+    <div class="branch-col">
+      <div class="zg-node">
+        <div class="zg-box" onclick="openM('zg-bg')">
+          <div class="node-badge" style="background:#FCEBEB;color:#791F1F">ZORGDOMEIN</div>
+          <button class="info-dot" onclick="event.stopPropagation();openM('zg-bg')" title="Waarom risicovol?">i</button>
+          <div class="zg-icon">🤝</div>
+          <div class="zg-text"><div class="zg-name">Begeleiding &amp; dagbesteding</div><div class="zg-rank">Wmo 2015 · gemeente</div></div>
+        </div>
+      </div>
+      <div class="v-line" style="height:26px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('bg-grond')"><button class="info-dot" onclick="event.stopPropagation();openM('bg-grond')" title="Open">i</button><div class="inst-icon">⚖️</div><div class="inst-text"><div class="inst-step">Stap 1</div><div class="inst-name">Wettelijke grondslag</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('bg-keten')"><button class="info-dot" onclick="event.stopPropagation();openM('bg-keten')" title="Open">i</button><div class="inst-icon">🔗</div><div class="inst-text"><div class="inst-step">Stap 2</div><div class="inst-name">Keten &amp; rollen</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('bg-verant')"><button class="info-dot" onclick="event.stopPropagation();openM('bg-verant')" title="Open">i</button><div class="inst-icon">📋</div><div class="inst-text"><div class="inst-step">Stap 3</div><div class="inst-name">Hoe wordt het verantwoord?</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" style="border-color:#C2410C" onclick="openM('bg-praktijk')"><button class="info-dot" onclick="event.stopPropagation();openM('bg-praktijk')" title="Open">i</button><div class="inst-icon" style="background:#FFF1EA">🔍</div><div class="inst-text"><div class="inst-step">Stap 4</div><div class="inst-name">Praktijk, fraudesignalen &amp; risicoanalyse</div></div></div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= MODALS ================= -->
+<!-- ===== MODAL: ACHTERGROND (VOLLEDIG ZORGSTELSEL) ===== -->
+<div class="modal-overlay" id="ov-achtergrond">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('achtergrond')">&#x2715;</button>
+    <div class="modal-title">Het zorgstelsel en de anatomie van zorgfraude</div>
+    <div class="modal-kicker">Achtergrondschets &amp; kennisbasis</div>
+
+    <!-- 1. Het stelsel in vogelvlucht -->
+    <div class="modal-section">
+      <div class="modal-section-title">1. Het stelsel in vogelvlucht</div>
+      <div class="modal-section-sub">Diverse ministeries en alle 342 gemeenten — met schotten ertussen</div>
+      <div class="mp">De zorg in Nederland is verdeeld over meerdere wetten en financieringsstromen, georganiseerd onder verantwoordelijkheid van zowel de rijksoverheid als de gemeenten. Bij het stelsel zijn diverse ministeries en <strong>alle 342 gemeenten</strong> betrokken, met aanzienlijke overlap en "schotten" tussen de wetten. De hoofdindeling: de <strong>Zorgverzekeringswet (Zvw)</strong> dekt de curatieve zorg voor alle ingezetenen; de <strong>Wet langdurige zorg (Wlz)</strong> dekt zware, langdurige zorg; de <strong>Wet maatschappelijke ondersteuning 2015 (Wmo 2015)</strong> en de <strong>Jeugdwet</strong> zijn gedecentraliseerd naar de gemeenten; en specifieke groepen vallen onder aparte regelingen. Deze flowchart richt zich op de twee gemeentelijke domeinen (Wmo 2015 en Jeugdwet). Daarbinnen zijn drie zorgdomeinen uitgewerkt — <strong>jeugdzorg</strong>, <strong>beschermd wonen &amp; opvang</strong> en <strong>begeleiding &amp; dagbesteding</strong>. Die keuze rust op twee gronden: het zijn <em>gemeentelijk gefinancierde</em> domeinen (de afbakening), en binnen die afbakening komen zij in toezicht- en onderzoeksrapporten herhaaldelijk als integriteitsgevoelig naar voren (de selectie). Het is nadrukkelijk <strong>geen gerangschikte "top 3"</strong>: er is geen strikte onderlinge volgorde, de drie zijn als gelijkwaardige zorgdomeinen behandeld.</div>
+    </div>
+
+    <!-- 2. De vier hoofdwetten -->
+    <div class="modal-section">
+      <div class="modal-section-title">2. De vier hoofdwetten</div>
+      <div class="modal-section-sub">Wat wordt vergoed, en door wie uitgevoerd?</div>
+
+      <div class="mh">Zorgverzekeringswet (Zvw) — Rijk · zorgverzekeraars</div>
+      <div class="mp">Verplichte basisverzekering voor alle ingezetenen; premie deels door werkgevers, deels door burgers, met zorgtoeslag voor lage inkomens. Vergoed: huisartsenzorg, medisch-specialistische (ziekenhuis)zorg, geestelijke gezondheidszorg (basis en specialistisch), farmaceutische zorg, fysiotherapie (beperkt, bij chronische aandoeningen), kraamzorg en verloskundige zorg, tandheelkunde voor kinderen t/m 17, hulpmiddelen, medisch-specialistische revalidatie, dieetadvisering en stoppen-met-rokenprogramma's.</div>
+
+      <div class="mh">Wet langdurige zorg (Wlz) — Rijk · zorgkantoren / Centraal Administratie Kantoor (CAK)</div>
+      <div class="mp">Voor mensen met een blijvende, zware zorgbehoefte. Vergoed: verpleeghuiszorg, gehandicaptenzorg (lichamelijk en verstandelijk), langdurige geestelijke gezondheidszorg (GGZ), intensieve persoonlijke verzorging en verpleging thuis, en behandeling/begeleiding in instellingen.</div>
+
+      <div class="mh">Wet maatschappelijke ondersteuning (Wmo 2015) — gemeenten</div>
+      <div class="mp">Gericht op zelfredzaamheid en participatie van volwassenen; gemeenten hebben beleidsvrijheid, waardoor het aanbod per gemeente verschilt. Vergoed: huishoudelijke hulp, begeleiding en dagbesteding, beschermd wonen, woningaanpassingen, vervoersvoorzieningen, mantelzorgondersteuning en maatschappelijke opvang/vrouwenopvang.</div>
+
+      <div class="mh">Jeugdwet — gemeenten</div>
+      <div class="mp">Gemeenten zijn verantwoordelijk voor de jeugdhulp, jeugdbescherming en jeugdreclassering voor jongeren tot 18 jaar (verlengbaar tot 23). Het gaat om opgroei- en opvoedproblemen, psychische problemen en beperkingen; niet álle zorg voor minderjarigen valt eronder — somatische zorg loopt via de Zvw en zeer zware, blijvende zorg via de Wlz. Vergoed: jeugd-GGZ, jeugdhulp en gezinsondersteuning, jeugdbescherming en -reclassering, specialistische jeugdzorg, en pleegzorg/residentiële zorg.</div>
+    </div>
+
+    <!-- 3. Overige overheidsgefinancierde zorg -->
+    <div class="modal-section">
+      <div class="modal-section-title">3. Overige zorg en zorggerelateerde regelingen</div>
+      <div class="modal-section-sub">Aparte regelingen en uitvoerders naast de vier hoofdwetten</div>
+      <ul class="ml" style="margin-top:4px">
+        <li><strong>Publieke gezondheidszorg</strong> — uitgevoerd door de Gemeentelijke Gezondheidsdienst (GGD) en het Rijksinstituut voor Volksgezondheid en Milieu (RIVM): infectieziektebestrijding, Rijksvaccinatieprogramma, bevolkingsonderzoeken (borst-, darm-, baarmoederhalskanker), jeugdgezondheidszorg (consultatiebureaus) en seksuele gezondheid. Deels gemeentelijk gefinancierd (GGD-taken, jeugdgezondheidszorg en de uitvoering van het Rijksvaccinatieprogramma, via het gemeentefonds), deels door het Rijk (RIVM en de bevolkingsonderzoeken).</li>
+        <li><strong>Forensische zorg</strong> (Ministerie van Justitie en Veiligheid, J&amp;V): psychiatrische zorg bij een strafrechtelijke maatregel — terbeschikkingstelling (tbs) of plaatsing in een inrichting voor stelselmatige daders (ISD) — en forensische poliklinische behandeling.</li>
+        <li><strong>Defensiezorg</strong> (Ministerie van Defensie): medische zorg voor militairen en veteranen; psychische nazorg via het Landelijk Zorgsysteem voor Veteranen (waarin o.a. ARQ participeert).</li>
+        <li><strong>Zorg voor asielzoekers:</strong> basismedische en tandheelkundige zorg en GGZ, gefinancierd door het Centraal Orgaan opvang asielzoekers (COA) op grond van de Regeling Zorg Asielzoekers (RZA).</li>
+        <li><strong>Arbozorg (werkgevers):</strong> bedrijfsgezondheidszorg, verzuimbegeleiding en re-integratie op grond van de Arbeidsomstandighedenwet.</li>
+        <li><strong>Verslavingszorg:</strong> behandeling (klinisch en ambulant) via de Zvw, langdurige zorg via de Wlz; begeleiding, opvang en herstelondersteuning via de Wmo.</li>
+        <li><strong>Oorlogsgetroffenen (SVB):</strong> uitkeringen op grond van de Wet uitkeringen vervolgingsslachtoffers 1940–1945 (Wuv) en de Wet uitkeringen burger-oorlogsslachtoffers 1940–1945 (Wubo).</li>
+      </ul>
+
+      <div class="mh">Overzicht per wet/regeling</div>
+      <table class="dtable">
+        <thead><tr><th>Wet / regeling</th><th>Uitvoerder</th><th>Doelgroep</th></tr></thead>
+        <tbody>
+          <tr><td>Zorgverzekeringswet (Zvw)</td><td>Zorgverzekeraars</td><td>Alle ingezetenen</td></tr>
+          <tr><td>Wet langdurige zorg (Wlz)</td><td>Zorgkantoren / CAK</td><td>Blijvend zware zorgvraag</td></tr>
+          <tr><td><strong>Wmo 2015</strong></td><td><strong>Gemeenten</strong></td><td>Zelfredzaamheid volwassenen</td></tr>
+          <tr><td><strong>Jeugdwet</strong></td><td><strong>Gemeenten</strong></td><td>Kinderen t/m 17 jaar (verlengbaar tot 23)</td></tr>
+          <tr><td>Publieke gezondheidszorg</td><td>GGD / RIVM</td><td>Gehele bevolking</td></tr>
+          <tr><td>Forensische zorg</td><td>Min. Justitie en Veiligheid</td><td>Justitiabelen</td></tr>
+          <tr><td>Defensiezorg</td><td>Ministerie van Defensie</td><td>Militairen / veteranen</td></tr>
+          <tr><td>Zorg asielzoekers (RZA)</td><td>COA</td><td>Asielzoekers</td></tr>
+          <tr><td>Arbozorg</td><td>Werkgevers / arbodiensten</td><td>Werknemers</td></tr>
+          <tr><td>Verslavingszorg</td><td>Zvw + Gemeenten (Wmo)</td><td>Mensen met verslaving</td></tr>
+          <tr><td>Wuv / Wubo</td><td>SVB</td><td>Oorlogsgetroffenen WOII</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. Geldstromen -->
+    <div class="modal-section">
+      <div class="modal-section-title">4. Hoe lopen de geldstromen in het gemeentelijke domein?</div>
+      <div class="modal-section-sub">Van rijksbegroting via het Gemeentefonds naar de aanbieder — en de plaats van het persoonsgebonden budget (pgb)</div>
+      <div class="mh">Van Rijk naar gemeente</div>
+      <div class="mp">Sinds de decentralisaties van 2015 (Jeugdwet, Wmo 2015 en Participatiewet) lopen de middelen voor Wmo en Jeugd via het <strong>Gemeentefonds</strong>. Bij de overheveling ging in 2015 circa <strong>€10,2 mrd</strong> mee via de integratie-uitkering Sociaal domein (€3,8 mrd Jeugd, €3,5 mrd Wmo, €2,9 mrd Participatiewet). Die integratie-uitkering is opgegaan in de <strong>algemene uitkering</strong>: de gemeente ontvangt het geld op basis van (sinds 2016) objectieve verdeelmodellen en mag het — binnen de wettelijke kaders — <strong>vrij besteden</strong>. Er is dus geen geoormerkt zorgbudget.</div>
+      <div class="mh">Van gemeente naar aanbieder — twee routes</div>
+      <div class="mp">Bij <strong>zorg in natura (ZIN)</strong> contracteert de gemeente aanbieders en betaalt zij rechtstreeks op declaratiebasis. Bij het <strong>persoonsgebonden budget (pgb)</strong> krijgt de cliënt een budget; de betaling loopt niet via de cliënt maar via het <strong>trekkingsrecht</strong> bij de Sociale Verzekeringsbank (SVB), die op declaratie aan de zorgverlener uitbetaalt.</div>
+
+      <div class="mh">Geldstroom en lekken in beeld</div>
+      <div class="mp" style="margin-bottom:6px">Dit beeld geldt voor <strong>alle drie de domeinen</strong> — alleen het accent verschilt: winstextractie en onderaanneming spelen vooral bij <strong>jeugdzorg</strong>, de pgb-route bij <strong>begeleiding &amp; dagbesteding</strong>, en de huur-route bij <strong>beschermd wonen</strong>.</div>
+      <div style="margin:8px 0 4px">
+        <div style="display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;justify-content:center">
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid var(--border-mid);border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Rijk / VWS</div><div style="font-size:9.5px;color:var(--text-secondary)">begroting</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid var(--border-mid);border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Gemeentefonds</div><div style="font-size:9.5px;color:var(--text-secondary)">algemene uitkering</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid var(--border-mid);border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Gemeente</div><div style="font-size:9.5px;color:var(--text-secondary)">inkoop / beschikking</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:128px;border:1.5px solid #C2410C;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Aanbieder</div><div style="font-size:9.5px;color:var(--text-secondary)">ZIN of pgb (via SVB)</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid var(--border-mid);border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Cliënt</div><div style="font-size:9.5px;color:var(--text-secondary)">de zorg</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:6px">Let op: de gecontracteerde <strong>aanbieder</strong> hierboven kan zelf bonafide zijn, maar besteedt de uitvoering soms uit aan een onderaannemer of tussenpersoon — soms malafide — die de wettelijke screening (diploma, VOG) ontloopt en buiten het directe zicht van de gemeente blijft.</div>
+        <div class="mp" style="margin-top:10px;text-align:center;font-weight:600">Twee even belangrijke, domeinspecifieke varianten op deze geldstroom:</div>
+        <div style="font-size:10px;color:#3C3489;text-align:center;margin-top:8px;font-weight:600">① Pgb (vooral begeleiding &amp; dagbesteding) — het geld loopt via de cliënt en vaak een tussenpersoon:</div>
+        <div style="display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:4px">
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid #C9C5F0;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Cliënt</div><div style="font-size:9.5px;color:var(--text-secondary)">budgethouder (pgb)</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid #C9C5F0;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">SVB</div><div style="font-size:9.5px;color:var(--text-secondary)">trekkingsrecht</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:140px;border:1.5px solid #C2410C;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Bemiddelaar / uitzendbureau</div><div style="font-size:9.5px;color:var(--text-secondary)">tussenpersoon</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid #C9C5F0;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Zorgverlener</div><div style="font-size:9.5px;color:var(--text-secondary)">zzp'er of medewerker</div></div>
+        </div>
+        <div style="font-size:10px;color:#085041;text-align:center;margin-top:10px;font-weight:600">② Wonen + zorg (beschermd wonen) — zorggeld lekt weg via de huur:</div>
+        <div style="display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:4px">
+          <div style="flex:1;min-width:90px;max-width:128px;border:1px solid #A8DFC9;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Cliënt</div><div style="font-size:9.5px;color:var(--text-secondary)">bewoner &amp; huurder</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:140px;border:1px solid #A8DFC9;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Aanbieder</div><div style="font-size:9.5px;color:var(--text-secondary)">zorgverlener én verhuurder</div></div>
+          <div style="display:flex;align-items:center;color:var(--text-tertiary);font-weight:700">→</div>
+          <div style="flex:1;min-width:90px;max-width:140px;border:1.5px solid #C2410C;border-radius:8px;padding:8px 6px;text-align:center;background:var(--bg-primary)"><div style="font-size:11px;font-weight:600;color:var(--text-primary)">Gelieerde vastgoed-bv</div><div style="font-size:9.5px;color:var(--text-secondary)">int de (hoge) huur</div></div>
+        </div>
+
+        <div style="border:1px solid #F0C9B0;background:#FFF3E0;border-radius:8px;padding:10px 12px;margin-top:12px">
+          <div style="font-size:10px;font-weight:700;color:#7A3200;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Waar lekt het geld weg?</div>
+          <div style="font-size:11px;color:#7A3200;line-height:1.65">
+            <div style="margin-bottom:4px">⚑ <strong>Spookzorg</strong> — gedeclareerd, maar niet (of minder) geleverd <span style="opacity:.75">· bij: aanbieder → cliënt</span></div>
+            <div style="margin-bottom:4px">⚑ <strong>Winstextractie</strong> — winst de zorg uit via vastgoed-, holding- of schoonmaak-bv's <span style="opacity:.75">· bij: aanbieder</span></div>
+            <div style="margin-bottom:4px">⚑ <strong>Pgb-zelfdeclaratie</strong> — budgethouder of bemiddelaar vult de uren zelf in via de SVB <span style="opacity:.75">· bij: pgb-route</span></div>
+            <div style="margin-bottom:4px">⚑ <strong>Tussenpersoon buiten toezicht</strong> — bemiddelaar/uitzendbureau valt buiten het IGJ-toezicht: valse diploma's, onderbetaling <span style="opacity:.75">· bij: bemiddelaar</span></div>
+            <div style="margin-bottom:4px">⚑ <strong>Onderaanneming</strong> — legitieme hoofdaannemer besteedt uit aan een malafide onderaannemer <span style="opacity:.75">· bij: aanbieder</span></div>
+            <div>⚑ <strong>Huurafroming</strong> — zorggeld weggesluisd via (te) hoge huur aan een eigen vastgoed-bv <span style="opacity:.75">· bij: wonen + zorg</span></div>
+          </div>
+        </div>
+        <div style="font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:6px">Vereenvoudigde weergave; de rode vlaggen markeren waar publiek zorggeld in de praktijk weglekt.</div>
+      </div>
+      <div class="pgb-banner">
+        <strong>Het pgb als dwarsdoorsnijdend risico.</strong> Het pgb is een financieringsvorm, geen zorgsoort, maar het is in de fraudesignalen sterk <strong>oververtegenwoordigd</strong>. Volgens het Informatie Knooppunt Zorgfraude (IKZ) betrof in 2023 circa <strong>21% van alle fraudesignalen</strong> pgb-gefinancierde zorg (in 2022 nog 32%); binnen de Wmo loopt dat op tot ruim 45% — terwijl het pgb maar een klein deel van het totale zorgvolume vormt. Het risico keert daarom terug in elk van de drie zorgdomeinen hierna — lees per domein het paarse pgb-blok in de praktijkmodal.
+      </div>
+      <div class="mh">Wat het kost</div>
+      <div class="mp">De totale zorguitgaven onder de begroting van het Ministerie van Volksgezondheid, Welzijn en Sport (VWS) — inclusief de premiegefinancierde zorg (Zvw en Wlz) — bedragen ruim <strong>€110 mrd</strong> (2025). De kosten van de <strong>jeugdzorg</strong> stegen van circa <strong>€3,6 mrd (2015) naar ~€8,1 mrd (2024)</strong> — gemiddeld ~9% per jaar; met geraamde tekorten van €628 mln (2023) en ~€828 mln (2024). De Wmo-uitgaven aan <strong>beschermd wonen</strong> bedragen circa <strong>€1,7 mrd</strong>.</div>
+    </div>
+
+    <!-- 5. Verantwoording & toezicht -->
+    <div class="modal-section">
+      <div class="modal-section-title">5. Hoe wordt het verantwoord en wie houdt toezicht?</div>
+      <div class="modal-section-sub">Van gemeentelijke jaarrekening tot kwaliteits- en fraudetoezicht</div>
+      <div class="mp">De gemeente verantwoordt de bestede zorggelden in haar <strong>jaarrekening</strong> (accountantscontrole op getrouwheid én rechtmatigheid); het Rijk monitort via de <strong>IV3-informatievoorziening (Informatie voor derden)</strong> en Centraal Bureau voor de Statistiek (CBS). Het toezicht is verdeeld: voor de <strong>Wmo</strong> wijst elke gemeente een <strong>Wmo-toezichthouder</strong> aan (vaak de GGD); voor de <strong>Jeugdwet</strong> houdt de <strong>Inspectie Gezondheidszorg en Jeugd (IGJ)</strong> toezicht op kwaliteit. Fraudesignalen worden gebundeld bij het <strong>Informatie Knooppunt Zorgfraude (IKZ)</strong>.</div>
+      <div class="mh">Wat het IKZ ziet (signalen 2023)</div>
+      <div class="mp">In 2023 deelden de IKZ-partners <strong>338 signalen</strong> over 293 aanbieders. De verdeling naar wet (een signaal kan meerdere wetten betreffen, dus de aantallen tellen niet op tot 338):</div>
+      <table class="dtable">
+        <thead><tr><th>Wet / financiering</th><th>Signalen 2023</th><th>Toelichting</th></tr></thead>
+        <tbody>
+          <tr><td>Zorgverzekeringswet (Zvw)</td><td>144</td><td>Meeste signalen; o.a. wijkverpleging</td></tr>
+          <tr><td>Wet langdurige zorg (Wlz)</td><td>72</td><td>Intramurale en intensieve zorg</td></tr>
+          <tr><td><strong>Wmo 2015</strong> (gemeente)</td><td>70</td><td>Begeleiding, dagbesteding, beschermd wonen</td></tr>
+          <tr><td><strong>Jeugdwet</strong> (gemeente)</td><td>26</td><td>Vooral zorg in natura</td></tr>
+        </tbody>
+      </table>
+      <div class="mp" style="margin-top:6px">Bij <strong>37</strong> signalen waren meerdere wetten betrokken — meestal de Wmo én de Jeugdwet (begeleiding, jeugdhulp en/of huishoudelijke hulp).</div>
+      <div class="mp" style="margin-top:8px">Binnen de Wmo speelt in ruim <strong>45%</strong> van de signalen pgb-gefinancierde zorg een rol; over alle signalen heen is dat 21% (2023, tegen 32% in 2022). Het gemeentelijke domein is daarbij vermoedelijk <strong>ondervertegenwoordigd</strong>: de Vereniging van Nederlandse Gemeenten (VNG) stopte in 2023 tijdelijk met het delen van persoonsgegevens wegens twijfel over de grondslag onder de Algemene verordening gegevensbescherming (AVG), en eenmanszaken en vof's vielen buiten de registratie van rechtspersonen. De afname betekent niet dat er minder zorgfraude is: volgens het IKZ komt de daling vooral doordat partners — met name gemeenten — minder signalen aanleverden.</div>
+      <div class="mh">Nieuwe en aangekondigde wetgeving tegen integriteitsrisico's (2025–)</div>
+      <div class="mp">De <strong>Wet bevorderen samenwerking en rechtmatige zorg</strong> (Wbsrz, dossier 35.515) trad op 1 januari 2025 in werking: wettelijke basis voor het IKZ en een <strong>Waarschuwingsregister Zorgfraude</strong> met gegevensuitwisseling tussen gemeenten, verzekeraars en toezichthouders. Het <strong>wetsvoorstel Wet integere bedrijfsvoering zorg- en jeugdhulpaanbieders</strong> (Wibz, dossier 36.686) — begin 2025 bij de Tweede Kamer ingediend en nog niet aangenomen — beoogt de gronden om een aanbiedersvergunning te weigeren of in te trekken te verruimen en winstuitkering aan voorwaarden te binden. De <strong>Wet verbetering beschikbaarheid jeugdzorg</strong> (dossier 36.546) — aangenomen door de Eerste Kamer op 7 oktober 2025, inwerkingtreding 1 januari 2026 — verplicht jeugdhulpaanbieders en gecertificeerde instellingen tot een interne toezichthouder, transparante bedrijfsvoering en openbare jaarverantwoording, met een rol voor de Nederlandse Zorgautoriteit (NZa).</div>
+    </div>
+
+    <!-- 6. Fraudetypologie -->
+    <div class="modal-section">
+      <div class="modal-section-title">6. De anatomie van zorgfraude — typologie</div>
+      <div class="modal-section-sub">Naar het onderzoek "Een wereld te winnen. Over zorgfraude" (LokaleZaken i.o.v. VNG Naleving, 2020)</div>
+
+      <div class="mh">Wanneer wordt een fout fraude?</div>
+      <div class="mp">Fraude onderscheidt zich van een fout door drie elementen die samen aanwezig moeten zijn: <strong>(1) regelovertreding, (2) wederrechtelijk voordeel en (3) bewust handelen (opzet)</strong>. Frauduleuze zorg is bovendien <em>aanbod-gestuurd</em>: niet de hulpvraag maar het verdienmodel staat centraal — gericht op het uitmelken of fingeren van zorgbehoeften, met kwetsbare cliënten die gebrekkige zorg accepteren.</div>
+      <div class="mp" style="margin-top:10px"><strong>"Fraude" is op zichzelf geen strafbepaling</strong> in het Wetboek van Strafrecht (Sr) — het is een verzamelterm. Strafrechtelijk wordt het vervolgd via specifieke delicten waarin bedrog of opzet centraal staat: <strong>valsheid in geschrifte</strong> (art. 225 Sr), <strong>oplichting</strong> (art. 326 Sr), <strong>verduistering</strong> (art. 321 Sr) en <strong>witwassen</strong> (art. 420bis Sr). In het zorgdomein wordt daarnaast bestuurs- en civielrechtelijk opgetreden — herziening, intrekking en terugvordering (art. 2.3.10 en 2.4.1 Wmo 2015). De Regeling Jeugdwet definieert een fraude-onderzoek aan de hand van valsheid in geschrifte, bedrog, benadeling van rechthebbenden of verduistering ten nadele van de gemeente.</div>
+
+      <div class="mh">Drie verschijningsvormen</div>
+      <ul class="ml" style="margin-top:4px">
+        <li><strong>Netwerkfraude</strong> — aanbieders die (lijken te zijn) opgericht om te frauderen, opererend vanuit een kleine kring vertrouwelingen, vaak verweven met de boven- én onderwereld (drugs, witwassen, uitbuiting). Het meest georganiseerde en zichtbare type, dat de ernstigste (menselijke) slachtoffers maakt.</li>
+        <li><strong>Organisatiefraude</strong> — op zich legitiem opgezette bedrijven die hun organisatie benutten om systematisch te veel of onrechtmatig te declareren; kleine bedragen per cliënt, maar groot totaal bij hoog volume.</li>
+        <li><strong>Informele fraude</strong> — gezinnen of kleine kringen met gefingeerde, "informele" pgb-zorg, waarbij het zorggeld het bruto jaarinkomen van de betrokkenen benadert of overstijgt.</li>
+      </ul>
+
+      <div class="mh">Zes fraudestrategieën</div>
+      <div class="mp">Het onderzoek ordent de werkwijze in zes strategieën, die per domein terugkomen in de praktijkmodals: (1) <strong>cliënten zoeken in de sociale omgeving</strong> (afhankelijk of meeprofiterend); (2) <strong>frauderen in een kleine coalitie</strong> met kennis van het zorgsysteem; (3) <strong>verhullende bedrijfsconstructies</strong> (holdings, vastgoed-, schoonmaak-bv's); (4) <strong>meebewegen en sanctieminimalisatie</strong> (niet opvallen, aansturen op schikking); (5) <strong>strategische verplaatsing</strong> tussen bedrijf, domein en gebied — inclusief faillissement-en-doorstart; en (6) <strong>de kaasschaaf</strong> (gering bedrag per cliënt, groot totaal). Deze strategieën worden in de praktijk uitgewerkt in <strong>63 concrete tactieken</strong>, geordend in tien categorieën.</div>
+
+      <div class="mh">Tien categorieën fraudetactieken</div>
+      <ol class="ml" style="margin-top:4px">
+        <li><strong>Strategisch declareren</strong> — o.a. op-coderen (een duurdere prestatie declareren dan geleverd).</li>
+        <li><strong>Ronselen en beïnvloeden van cliënten</strong> — cliënten instrueren wat zij tegen de gemeente verklaren, premies voor het aanbrengen van cliënten, lokken met huisvesting, dreigen met huisuitzetting.</li>
+        <li><strong>Ontoereikende zorg</strong> — te veel uren declareren, te grote groepen, "nietszeggende dagbesteding", verschuilen achter slecht controleerbare zorgplannen.</li>
+        <li><strong>Valse gronden</strong> — vervalsen van documenten, diploma's en urenlijsten.</li>
+        <li><strong>Zware indicaties misbruiken</strong> — alleen inschrijven op zware productvarianten of indicaties verzwaren zonder de zorg op te schalen.</li>
+        <li><strong>Verborgen geldstromen</strong> — en te hoge beloningen voor bestuurders.</li>
+        <li><strong>Rommelen met personeel</strong> — te laag opgeleid personeel (zelfs stagiairs), uitzendkrachten onderbetalen.</li>
+        <li><strong>Afschuiven van de schuld</strong> — kritiek op tarieven, personeel de schuld geven, administratie "kwijtraken".</li>
+        <li><strong>Relatiebeheer met de gemeente</strong> — de gemeente opzadelen met problemen bij stopzetten, lastige vragen vermijden.</li>
+        <li><strong>Onder de radar blijven</strong> — opereren in verschillende zorgdomeinen of gemeenten.</li>
+      </ol>
+
+      <div class="info-banner"><strong>Waarom handhaving stokt — de gelegenheidsstructuur:</strong> ruime, vage normen (wat ís "voldoende" begeleiding of "zinvolle" dagbesteding?), een zwakke poortwachtersfunctie, weinig opsporingscapaciteit, het <em>dubbele-opzetvereiste</em> (bij de Wmo moet opzet eerst op cliëntniveau worden aangetoond voordat bij de aanbieder kan worden teruggevorderd) een gefragmenteerd uitvoeringsnetwerk en blokkades in de informatie-uitwisseling geven de fraudeur een tactisch voordeel.</div>
+
+      <div class="mh">Van signaal naar oordeel — weeg, niet afvink</div>
+      <div class="mp">Een enkel signaal is zelden bewijs. Bijna elk signaal heeft ook een <strong>legitieme verklaring</strong>, en het is juist de bedoeling dat de lezer leert afwegen in plaats van afvinken:</div>
+      <table class="dtable">
+        <thead><tr><th>Signaal</th><th>Kan onschuldig zijn omdat…</th><th>Wordt zorgwekkend als…</th></tr></thead>
+        <tbody>
+          <tr><td>Hoge winstmarge</td><td>een incidentele meevaller of eenmalige bate de marge opdrijft</td><td>de marge meerdere jaren ongewoon hoog is (bijvoorbeeld &gt;10%, ruim boven de gangbare 3%) en wordt uitgekeerd als dividend i.p.v. geherinvesteerd</td></tr>
+          <tr><td>Declaraties op het plafond</td><td>de cliëntpopulatie zwaar is en de zorg daadwerkelijk is geleverd</td><td>uren feitelijk onmogelijk zijn of urenregistratie en zorgplan ontbreken</td></tr>
+          <tr><td>Snelle groei</td><td>er een reëel tekort aan aanbod is dat wordt opgevuld</td><td>groei samengaat met cliëntverloop, onbevoegd personeel of ondoorzichtige structuren</td></tr>
+          <tr><td>Wonen én zorg bij één partij</td><td>kleinschalig wonen soms zo is georganiseerd</td><td>de cliënt afhankelijk wordt gemaakt en huur uit het zorgbudget lijkt te lopen</td></tr>
+        </tbody>
+      </table>
+      <div class="mp" style="margin-top:8px">De kern: het gaat om de <strong>optelsom van signalen</strong>, de mate waarin ze <strong>onverklaarbaar</strong> zijn, én — voor de stap van "fout" naar "fraude" — of er sprake is van <strong>opzet</strong>. Vraag door, zoek onderbouwing en leg vast; trek geen conclusie op één waarneming. Dit weegprincipe vormt het uitgangspunt voor de Flowtool Zorg.</div>
+    </div>
+
+    <!-- 7. Omvang & handhaving -->
+    <div class="modal-section">
+      <div class="modal-section-title">7. Omvang, schade en handhaving</div>
+      <div class="modal-section-sub">Hoe groot is het probleem, en waarom is de pakkans laag?</div>
+      <div class="mp">De exacte omvang is <strong>onbekend</strong>. Het Openbaar Ministerie (OM) hanteert een veelgenoemde <strong>raming van ~€10 miljard per jaar</strong> (circa 10% van de ~€100 mld zorguitgaven); het kabinet benadrukt uitdrukkelijk dat hiervoor <strong>geen sluitende onderbouwing</strong> bestaat. Een Europese koepelraming (EHFCN) gaat uit van 3–8% van het zorgbudget dat jaarlijks verloren gaat aan fraude en corruptie — toegepast op de Nederlandse zorguitgaven grofweg €3–8 mld per jaar.</div>
+      <div class="mp" style="margin-top:10px">De Algemene Rekenkamer concludeerde in <em>"Een zorgelijk gebrek aan daadkracht"</em> (2022) dat de bestrijding "in de praktijk niet of nauwelijks werkt": zelfs bij de sterkste fraudesignalen worden nauwelijks resultaten geboekt, en als fraude wél is aangetoond, stopt de fraudeur er meestal niet mee. De strafrechtelijke capaciteit is beperkt — de recherche zorgfraude levert jaarlijks slechts <strong>~16 tot 22 zaken</strong> aan bij het OM. Tegelijk keerden zorgbedrijven volgens Pointer tussen 2020–2022 bijna <strong>€200 mln dividend</strong> uit.</div>
+      <div class="mp" style="margin-top:10px">Het instrumentarium wordt versterkt: de <strong>Wbsrz</strong> (twee onderdelen: het Waarschuwingsregister Zorgfraude én een wettelijke basis voor het IKZ, 1 januari 2025), een <strong>vergunningplicht</strong> voor nieuwe zorgaanbieders (amendement-Bushoff, 1 januari 2025), ruimere inzet van de <strong>Wet Bibob (Wet bevordering integriteitsbeoordelingen door het openbaar bestuur)</strong> (in 2025 tot dusver 6 onderzoeken door het CIBG tegenover 2 in 2024) en — via het Aanvullend Zorg- en Welzijnsakkoord — structurele middelen oplopend tot <strong>€50 mln per jaar vanaf 2030</strong>. VWS bereidt daarnaast een Wmg-wijziging (Wet marktordening gezondheidszorg) voor om de NZa bestuursrechtelijk te laten handhaven op <strong>"spooknota's"</strong> (verwacht in 2026).</div>
+
+      <div class="mh">Kabinetspakket zorgfraude (juni 2026)</div>
+      <div class="mp">Op <strong>8 juni 2026</strong> kondigde het kabinet een "stevig pakket" maatregelen aan tegen zorgfraude en ondermijnende criminaliteit, expliciet ingegeven door de <em>verschuiving van individuele fraude naar georganiseerde misdaad</em> in de zorg. De hoofdlijnen:</div>
+      <ul class="ml" style="margin-top:4px">
+        <li><strong>Strenger aan de poort:</strong> een wetsvoorstel met versterkte toetredingseisen en een duidelijke norm voor alle nieuwe en herstartende aanbieders gefinancierd uit Zvw, Wlz, Jeugdwet en <strong>pgb</strong>. Voor de <strong>Wmo 2015</strong> wordt nog uitgewerkt welke normen voor welke (zeer uiteenlopende) typen aanbieders gaan gelden, met nadruk op kwaliteit, rechtmatigheid en integriteit.</li>
+        <li><strong>Vergunningplicht uitbreiden</strong> naar <em>alle</em> zorgaanbieders — inclusief solisten en onderaannemers — en een verplichte <strong>Verklaring Omtrent het Gedrag (VOG)</strong> voor bestuurders, eigenaren en toezichthouders.</li>
+        <li><strong>Meer Bibob en fysieke controles:</strong> structurele, risicogerichte inzet van de Wet Bibob en meer controles ter plaatse bij (risicovolle) nieuwe en herstartende aanbieders.</li>
+        <li><strong>Betere gegevensdeling:</strong> aanvullende regelgeving om tijdens lopende fraudeonderzoeken informatie uit te wisselen tussen gemeenten, verzekeraars, zorgkantoren en opsporing; J&amp;V verkent een grondslag om <strong>politiegegevens</strong> te delen binnen de Taskforce Integriteit Zorgsector (TIZ).</li>
+        <li><strong>Extra opsporings- en handhavingscapaciteit</strong> voor de recherche zorgfraude (Arbeidsinspectie) en het Functioneel Parket, plus uitbreiding van het bestuursrechtelijk toezicht — bekostigd uit het Aanvullend Zorg- en Welzijnsakkoord (AZWA) (oplopend tot €50 mln/jaar).</li>
+      </ul>
+
+      <div class="mh">De handhavingsketen en haar capaciteit</div>
+      <div class="mp">Signalen lopen van de zorgaanbieder via toezichthouders (Wmo-toezicht/GGD, IGJ, NZa) en het <strong>IKZ</strong> naar opsporing (Nederlandse Arbeidsinspectie, Fiscale Inlichtingen- en Opsporingsdienst (FIOD)) en het Openbaar Ministerie. De partijen werken samen in de <strong>Taskforce Integriteit Zorgsector</strong> (NZa, Zorgverzekeraars Nederland, IGJ, Arbeidsinspectie, FIOD, Belastingdienst, Centrum Indicatiestelling Zorg (CIZ) en VNG). De capaciteit is echter beperkt: de recherche zorgfraude levert jaarlijks slechts <strong>16 tot 22 strafzaken</strong> aan bij het Functioneel Parket; het aantal signalen is structureel groter dan de beschikbare capaciteit. Het IKZ ontving tot 1 september 2025 al <strong>440 signalen</strong> (meer dan in heel 2024), maar ruim de helft van de gemeenten is pas aangesloten. Strafrecht is bovendien "ultimum remedium": door het grijze gebied in de regels leiden zaken vaak tot vrijspraak bij gebrek aan aantoonbare opzet, wat de nadruk verlegt naar de bestuurs- en civielrechtelijke "voorkant".</div>
+      <div class="mp" style="margin-top:10px">Ook gemeentelijk knelt de capaciteit. De VNG raamde dat circa <strong>€85 mln</strong> nodig is — gemiddeld zo'n 2 fte per gemeente — enkel voor toezicht. Koplopers investeren fors (Almelo reserveerde <strong>€350.000</strong> voor extra toezichthouders en juridische capaciteit en voert rechtszaken om jurisprudentie op te bouwen), maar zulke zaken duren jaren en kosten tonnen. Tegelijk blokkeren privacyregels dat een in de ene gemeente betrapte aanbieder bij buurgemeenten wordt gemeld, waardoor "gemeentenhoppen" mogelijk blijft — precies het gat dat het Waarschuwingsregister moet dichten.</div>
+
+      <div class="mh">De cliënt als slachtoffer</div>
+      <div class="mp">Integriteitsschendingen treffen niet alleen de publieke kas maar ook de cliënt. Het onderzoek "Een wereld te winnen" en de RIEC-analyses (Regionaal Informatie- en Expertisecentrum) beschrijven cliënten die niet weten dat te hoog wordt gefactureerd, die uit afhankelijkheid of angst (om hun woonplek of dagbesteding kwijt te raken) mindere zorg accepteren, die met cadeaus — reisjes, luxe goederen — worden gepaaid, en die worden uitgebuit: <strong>criminele uitbuiting</strong> (henneptoppen knippen), <strong>arbeidsuitbuiting</strong> (te zware "dagbesteding") en zelfs <strong>seksuele uitbuiting</strong>. Het slachtofferperspectief is daarmee een zelfstandige reden om te handhaven — naast de financiële schade.</div>
+
+      <div class="mh">Detectiemethoden: data-analyse en de menselijke controle</div>
+      <div class="mp">Omdat papieren verantwoording vaak "klopt", verschuift het opsporen van fraude steeds meer naar <strong>data-analyse</strong>. Wetenschappelijk wordt dit benaderd als <em>anomaliedetectie</em>: het vinden van zeldzame, afwijkende patronen in declaratie- en urendata. De uitdaging is dat fraude sterk <strong>ondervertegenwoordigd</strong> is — een zeer klein deel van alle transacties (sterke <em>class imbalance</em>) — en dat betrouwbaar gelabelde fraudegevallen schaars zijn. Onderzoekers combineren daarom <strong>ongesuperviseerde</strong> technieken (o.a. Isolation Forest, autoencoders, association rule mining) met <strong>gesuperviseerde/hybride</strong> modellen (bv. LSTM + Transformer), en gebruiken "pseudo-labels" om het labeltekort te overbruggen — onder meer toegepast op Nederlandse (langdurige) zorg- en GGZ-declaraties.</div>
+      <div class="mp" style="margin-top:10px">Techniek vervangt het menselijk oordeel echter niet. Onderzoek naar de <strong>fraude-detectievaardigheid van de controlerend accountant</strong> laat zien dat een professioneel-kritische houding en gericht doorvragen nodig blijven; modellen leveren signalen, mensen wegen ze. Praktisch onderbouwen deze methoden de signalen in de praktijkmodals (declaraties op het plafond, onmogelijke uur-volumes, lage personeelslast t.o.v. omzet) — en zij vormen het fundament onder de geplande, vrij raadpleegbare <strong>Flowtool Zorg</strong>, die de gebruiker langs deze indicatoren leidt zonder dat persoonsgegevens worden gedeeld.</div>
+    </div>
+
+    <!-- 8. Meldwijzer -->
+    <div class="modal-section">
+      <div class="modal-section-title">8. Meldwijzer — wat te doen bij een vermoeden</div>
+      <div class="modal-section-sub">Een vermoeden is geen beschuldiging; volg een zorgvuldig, navolgbaar pad</div>
+      <ol class="ml" style="margin-top:4px">
+        <li><strong>Leg vast.</strong> Noteer concrete, feitelijke waarnemingen (data, declaraties, gesprekken) — geen aannames of conclusies. Documenteer de optelsom van signalen.</li>
+        <li><strong>Escaleer intern.</strong> Meld bij de tweede/derde lijn, de contractmanager of de juridische afdeling; handel niet op eigen houtje.</li>
+        <li><strong>Schakel het toezicht in.</strong> Voor de Wmo de <strong>Wmo-toezichthouder</strong> (veelal GGD); voor de Jeugdwet en kwaliteits-/veiligheidskwesties de <strong>IGJ</strong>.</li>
+        <li><strong>Deel het signaal.</strong> Via de gemeente naar het <strong>IKZ</strong> en — bij een gerechtvaardigd vermoeden — het <strong>Waarschuwingsregister Zorgfraude</strong> (Wbsrz).</li>
+        <li><strong>Bij acute onveiligheid:</strong> bij huiselijk geweld of kindermishandeling <strong>Veilig Thuis</strong>, en bij (vermoedens van) uitbuiting of mensenhandel — van cliënten óf medewerkers — direct de <strong>politie</strong>.</li>
+        <li><strong>Bescherm jezelf als melder.</strong> Raadpleeg de interne meldregeling of het <strong>Huis voor Klokkenluiders</strong> voordat je extern meldt.</li>
+      </ol>
+      <div class="info-banner"><strong>Let op:</strong> deel uitsluitend wat nodig en proportioneel is, en houd rekening met privacyregels — de juiste route loopt via de daarvoor aangewezen instanties, niet via openbaarmaking.</div>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Eigen bewerking van het overzicht "Door de overheid gefinancierde zorg in Nederland" · Wmo 2015 (Stb. 2014, 280), o.a. art. 2.3.10 en 2.4.1 (herziening/intrekking/terugvordering) · Jeugdwet (Stb. 2014, 105) · <a href="https://vng.nl/sites/default/files/2020-09/200630-onderzoek-zorgfraude-publieksversie.pdf" target="_blank" rel="noopener noreferrer">LokaleZaken/VNG — Een wereld te winnen (2020)</a> · <a href="https://www.rekenkamer.nl/actueel/nieuws/2022/04/14/aanpak-zorgfraude-is-vooral-vergaderen" target="_blank" rel="noopener noreferrer">Algemene Rekenkamer — Een zorgelijk gebrek aan daadkracht (2022)</a> · <a href="https://www.tweedekamer.nl/kamerstukken/kamervragen/detail?id=2024Z12311&did=2024D29700" target="_blank" rel="noopener noreferrer">TK — Kamervragen OM-raming €10 mld (2024)</a> · <a href="https://www.tweedekamer.nl/kamerstukken/brieven_regering/detail?id=2025Z18695&did=2025D43390" target="_blank" rel="noopener noreferrer">TK — Extra middelen aanpak zorgfraude (2025)</a> · <a href="https://kwiz.nl/hoe-werkt-de-financiering-van-het-sociaal-domein/" target="_blank" rel="noopener noreferrer">KWIZ — Financiering sociaal domein</a> · <a href="https://www.rijksfinancien.nl/memorie-van-toelichting/2025/OWB/XVI" target="_blank" rel="noopener noreferrer">Rijksbegroting XVI VWS 2025</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wbsrz (35.515)</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/36546_wet_verbetering" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wet verbetering beschikbaarheid jeugdzorg (36.546)</a> · <a href="https://www.nlarbeidsinspectie.nl/opsporingsdienst/zorgfraude" target="_blank" rel="noopener noreferrer">Nederlandse Arbeidsinspectie — Opsporingsdienst Zorgfraude</a> · <a href="https://www.nza.nl/over-de-nza/ons-toezicht/t/taskforce-integriteit-zorg" target="_blank" rel="noopener noreferrer">NZa — Taskforce Integriteit Zorg</a> · <a href="https://pointer.kro-ncrv.nl/om-niet-in-staat-zorgfraude-voldoende-te-bestrijden-jaarlijks-wordt-er-voor-10-miljard-gefraudeerd" target="_blank" rel="noopener noreferrer">Pointer — OM over capaciteit en €10 mld</a> · <a href="https://www.rijksoverheid.nl/documenten/rapporten/2024/04/30/rapport-signalen-fraude-in-de-zorg-2023" target="_blank" rel="noopener noreferrer">IKZ — Signalen fraude in de zorg 2023 (signaalverdeling)</a> · <a href="https://www.vpro.nl/argos/lees/onderwerpen/artikelen/2022/boeven-bijverdiensten-in-de-zorg-gemeenten-tandeloos.html" target="_blank" rel="noopener noreferrer">Argos — Boeven beunen bij in de zorg (gemeentelijke capaciteit)</a> · <a href="https://www.rijksoverheid.nl/actueel/nieuws/2026/06/08/stevig-pakket-aan-maatregelen-in-aanpak-zorgfraude" target="_blank" rel="noopener noreferrer">Rijksoverheid — Kabinetspakket zorgfraude (8 juni 2026)</a> · <a href="https://www.rijksoverheid.nl/documenten/kamerstukken/2025/03/31/aanpak-fraude-en-criminaliteit-in-de-zorgketen" target="_blank" rel="noopener noreferrer">VWS — Kamerbrief aanpak fraude en criminaliteit in de zorgketen (2025)</a> · <a href="https://arxiv.org/pdf/2507.01924" target="_blank" rel="noopener noreferrer">arXiv — anomaliedetectie GGZ-declaraties</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11046758/" target="_blank" rel="noopener noreferrer">PMC — zorgverzekeringsfraude via data mining</a> · <a href="https://mab-online.nl/article/35766/" target="_blank" rel="noopener noreferrer">MAB — fraude-detectievaardigheid van de accountant</a> · <a href="https://www.ede.nl/fileadmin/ede.nl/afbeeldingen/Nieuws/2023/Fenomeenanalyse_criminele_zzp-ers_in_de_zorg.pdf" target="_blank" rel="noopener noreferrer">RIEC Oost — Criminele zzp'ers in de zorg (onderaanneming &amp; bemiddelingsbureaus)</a> · <a href="https://vng.nl/rubrieken/onderwerpen/wmo-2015-en-jeugdwet-toezicht-en-handhaving" target="_blank" rel="noopener noreferrer">VNG — Wmo/Jeugdwet toezicht &amp; handhaving (controle op (onder)aannemers)</a> · <a href="https://www.cbs.nl/nl-nl/nieuws/2020/41/lokale-overheid-sterk-afhankelijk-van-rijksfinanciering/decentralisaties-sociaal-domein-2015" target="_blank" rel="noopener noreferrer">CBS — Decentralisaties sociaal domein 2015</a> · <a href="https://www.openaccessgovernment.org/corruption-healthcare-europe/25701/" target="_blank" rel="noopener noreferrer">EHFCN — raming 3–8% van het zorgbudget</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/36686_wet_integere_bedrijfsvoering" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wibz (wetsvoorstel 36.686)</a> · <a href="https://pointer.kro-ncrv.nl/zorgcowboys-worden-nog-nauwelijks-aangepakt-verdacht-hoge-winst-meer-dividend-en-minder-controle" target="_blank" rel="noopener noreferrer">Pointer — Zorgcowboys (dividend ~€200 mln)</a> · <a href="https://www.jeugdautoriteit.nl/site/binaries/site-content/collections/documents/2024/10/08/stand-van-de-jeugdzorg-2024/De+Stand+van+de+Jeugdzorg+2024.pdf" target="_blank" rel="noopener noreferrer">Jeugdautoriteit — Stand van de Jeugdzorg 2024 (kosten)</a> · <a href="https://vng.nl/nieuws/gemeenten-kampen-met-oplopende-tekorten-in-jeugdzorg" target="_blank" rel="noopener noreferrer">VNG — Oplopende tekorten jeugdzorg (€628/828 mln)</a> · <a href="https://rijksvaccinatieprogramma.nl/professionals/richtlijnen/uitvoering/2-wettelijke-kaders-organisatie-indicatie-en-financiering" target="_blank" rel="noopener noreferrer">Rijksvaccinatieprogramma — financiering (RVP/JGZ)</a> · Wet publieke gezondheid (Wpg) · <a href="https://www.nationaledrugmonitor.nl/wetgeving-en-beleid-verslavingszorg/" target="_blank" rel="noopener noreferrer">Nationale Drug Monitor — verslavingszorg</a> · <a href="https://www.ikz.nl/actueel/nieuws/2019/11/12/misstanden-bij-beschermd-en-begeleid-wonen" target="_blank" rel="noopener noreferrer">IKZ — Fraude en zorgverwaarlozing bij beschermd/begeleid wonen (2019)</a> · Wetboek van Strafrecht art. 225 (valsheid in geschrifte), 326 (oplichting), 321 (verduistering), 420bis (witwassen) · Regeling Jeugdwet (definitie zorgfraude)</div>
+    </div>
+  </div>
+</div>
+<!-- ===== MODAL: SAMENHANG (DOMEINOVERSTIJGEND) ===== -->
+<div class="modal-overlay" id="ov-samenhang">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('samenhang')">&#x2715;</button>
+    <div class="modal-title">Samenhang: domeinoverstijgende netwerken</div>
+    <div class="modal-kicker">Waarom de drie domeinen niet los van elkaar staan</div>
+
+    <div class="mh">In het kort</div>
+    <div class="mp">De drie domeinen worden hierna apart uitgewerkt, maar in de praktijk houden de zwaarste integriteitsrisico's zich niet aan die grenzen. Eén en dezelfde aanbieder of het netwerk daarachter is vaak <strong>tegelijk actief in meerdere domeinen</strong> (jeugdzorg, beschermd wonen én begeleiding) en <strong>meerdere gemeenten</strong>. Wie alleen naar één domein of één gemeente kijkt, ziet maar een stukje van het geheel.</div>
+
+    <div class="mh">Eén netwerk, meerdere domeinen</div>
+    <div class="mp">De Algemene Rekenkamer beschreef in 2022 een <strong>netwerk van zorgbedrijven dat tegelijk actief was in wijkverpleging, jeugdzorg én beschermd wonen</strong> en — ondanks signalen sinds 2014 — jarenlang bleef doordraaien. Het Informatie Knooppunt Zorgfraude (IKZ) en de Regionaal Informatie- en Expertisecentra (RIEC's) zien dezelfde patronen: een web van bv's (zorg, vastgoed, horeca, schoonmaak), bestuurd via familieleden en <strong>katvangers</strong>, met geld dat tussen de vennootschappen heen en weer wordt geheveld.</div>
+
+    <div class="mh">Waarom de versnippering dit in de hand werkt</div>
+    <div class="mp">Het stelsel zelf maakt verplaatsen lonend. Met 342 gemeenten, elk met eigen inkoop en toezicht, en privacyregels die het delen van signalen bemoeilijken, kan een in de ene gemeente of het ene domein betrapte aanbieder eenvoudig elders opnieuw beginnen — desnoods na een <strong>faillissement-en-doorstart</strong>. Het onderzoek <em>"Een wereld te winnen"</em> benoemt dit als een zelfstandige fraudestrategie: <strong>strategische verplaatsing tussen bedrijf, domein en gebied</strong>. Het Openbaar Ministerie (OM) spreekt van "spinnenwebben" en waarschuwt dat toezicht en opsporing nog te veel op losse aanbieders zijn ingericht in plaats van op netwerken.</div>
+
+    <div class="info-banner"><strong>Wat dit betekent voor signalering:</strong> beoordeel een aanbieder niet alleen binnen het eigen domein of de eigen gemeente. Toets de bestuurders, gelieerde rechtspersonen en eerdere faillissementen breed (KvK, Bibob), en deel signalen via het Waarschuwingsregister Zorgfraude (Wbsrz) — juist dat register is bedoeld om het "gemeentenhoppen" en domein-springen te doorbreken.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.rekenkamer.nl/actueel/nieuws/2022/04/14/aanpak-zorgfraude-is-vooral-vergaderen" target="_blank" rel="noopener noreferrer">Algemene Rekenkamer — Een zorgelijk gebrek aan daadkracht (2022)</a> · <a href="https://www.bureauft.nl/media/fnlbyfag/ikz-verwevenheid-zorg-criminaliteit-eindrapport.pdf" target="_blank" rel="noopener noreferrer">IKZ &amp; RIEC — Verwevenheid zorg en criminaliteit</a> · <a href="https://www.ikz.nl/wp-content/uploads/2025/01/JaarrapportageSignalenfraudeindezorg2023.pdf" target="_blank" rel="noopener noreferrer">IKZ — Signalen fraude in de zorg 2023 (bv-structuren)</a> · <a href="https://vng.nl/sites/default/files/2020-09/200630-onderzoek-zorgfraude-publieksversie.pdf" target="_blank" rel="noopener noreferrer">LokaleZaken/VNG — Een wereld te winnen (strategie 5)</a> · <a href="https://www.ftm.nl/artikelen/openbaar-ministerie-kan-zorgfraude-niet-aan" target="_blank" rel="noopener noreferrer">FTM/OM — spinnenwebben &amp; netwerken</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Wbsrz (35.515) — Waarschuwingsregister</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DOMEIN 1 — JEUGDZORG (waarom geselecteerd) ===== -->
+<div class="modal-overlay" id="ov-zg-jeugd">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('zg-jeugd')">&#x2715;</button>
+    <div class="modal-title">Jeugdzorg (Jeugdwet)</div>
+    <div class="modal-kicker">Gemeentelijk zorgdomein — waarom dit domein is geselecteerd</div>
+
+    <div style="background:var(--bg-secondary);border:0.5px solid var(--border-light);border-radius:8px;padding:10px 12px;margin-bottom:6px">
+      <div class="mh" style="margin-top:0">In het kort</div>
+      <div class="mp">De gemeente betaalt de hulp aan kinderen en gezinnen met problemen. Het risico: zorgbedrijven die ongewoon veel winst maken, of hulp declareren die niet of nauwelijks is geleverd. Geld dat bedoeld is voor kwetsbare jongeren verdwijnt zo — en kinderen dreigen slechtere of geen hulp te krijgen.</div>
+    </div>
+
+    <div class="mh">De kern van het risico</div>
+    <div class="mp">De jeugdzorg combineert sinds de decentralisatie van 2015 <strong>sterk stijgende uitgaven, ruimte voor bovenmatige winstneming en gebrekkige transparantie</strong>. De kosten stegen van circa €3,6 mrd (2015) naar ~€8,1 mrd (2024) — gemiddeld ~9% per jaar — terwijl gemeenten tekorten van honderden miljoenen rapporteerden (€628 mln in 2023, ~€828 mln in 2024). Tegelijk maakten 342 gemeenten ieder hun eigen inkoopafspraken: een kleine, gespecialiseerde aanbieder moest soms met tientallen gemeenten apart contracteren (specialistische zorg wordt sinds 2026 regionaal ingekocht), terwijl grote commerciële partijen schaalvoordeel en onderhandelingsmacht opbouwen.</div>
+
+    <div class="mh">De bewijsbasis</div>
+    <div class="mp">Het onderzoeksproject <em>"Jeugdzorg in het Rood"</em> van Follow the Money (11 redacties, 19 journalisten) analyseerde de jaarrekeningen van vrijwel alle jeugdzorgaanbieders: een aanzienlijk deel van de commerciële aanbieders behaalde <strong>winstmarges boven 10%</strong>, terwijl in de zorg een marge van twee à drie procent doorgaans al als goed geldt. Vervolgonderzoek (A-INSIGHTS) liet zien dat de gemiddelde winstgevendheid in 2024 op <strong>2,3%</strong> lag (1% in 2023) en dat juist de grootste aanbieders financieel sterker werden: hun solvabiliteit bedroeg bijna 40% — het dubbele van de gezonde norm van 20% — waardoor <strong>ruim €600 mln</strong> aan eigen vermogen in feite "stilstaat". Pointer signaleerde sinds 2020 honderden mogelijke "zorgcowboys"; sectorbreed werd tussen 2020 en 2022 bijna <strong>€200 mln dividend</strong> uitgekeerd in plaats van geherinvesteerd. Op rendement gerichte investeerders kochten kleinere aanbieders op tot "jeugdzorgreuzen".</div>
+
+    <div class="mh">Wat toezichthouders zien</div>
+    <div class="mp">De Algemene Rekenkamer onderzocht in 2022 veertien zaken met de sterkste fraudesignalen, verspreid over wijkverpleging, jeugdzorg én beschermd wonen, en concludeerde dat de aanpak in de praktijk "niet of nauwelijks werkt". In de RIEC-fenomeenanalyse (Regionaal Informatie- en Expertisecentrum) is <em>ambulante jeugdzorg</em> (27 van 87 dossiers) na gehandicaptenbegeleiding de meest voorkomende zorgsoort onder criminele zzp'ers. De Inspectie Gezondheidszorg en Jeugd (IGJ) zag meldingen van valse diploma's en VOG's (Verklaring Omtrent het Gedrag) verdubbelen; de Stichting Kwaliteitsregister Jeugd (SKJ) trof in 2025 bij het merendeel van de erkende EVC-aanbieders (Erkenning van Verworven Competenties) onregelmatigheden aan. Jeugdwet-signalen bij het Informatie Knooppunt Zorgfraude (IKZ) (26 in 2023) gaan vooral over <strong>zorg in natura</strong>: niet-geleverde zorg, zorgverwaarlozing, onvoldoende kwaliteit en inzet van onbevoegd personeel.</div>
+
+    <div class="info-banner">
+      <strong>Waarom juist dit domein:</strong> nergens anders komen zoveel risicofactoren samen — miljardenvolume, commerciële winstprikkels, complexe concernstructuren, versnipperde inkoop én een kwetsbare doelgroep die zelf geen regie voert. Daardoor is zowel de inkoop als het toezicht structureel in het nadeel.
+    </div>
+
+    <div class="mp" style="margin-top:6px">Werk de vier stappen hieronder af — <em>grondslag → keten → verantwoording → praktijk</em> — om voor dit domein zelf een integriteitsrisicoanalyse te kunnen maken.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.ftm.nl/collectief-jeugdzorg" target="_blank" rel="noopener noreferrer">FTM — Jeugdzorg in het Rood</a> · <a href="https://www.ftm.nl/artikelen/overnamegekte-leidt-tot-jeugdzorgreuzen" target="_blank" rel="noopener noreferrer">FTM — Overnamegekte leidt tot jeugdzorgreuzen</a> · <a href="https://vng.nl/sites/default/files/2024-11/eindrapport-uitgavenonderzoek-jeugdzorg-2023-2024.pdf" target="_blank" rel="noopener noreferrer">VNG — Uitgavenonderzoek jeugdzorg 2023 &amp; 2024</a> · <a href="https://www.jeugdautoriteit.nl/publicaties/de-stand-van-de-jeugdzorg/1.-de-kosten-van-de-jeugdzorg" target="_blank" rel="noopener noreferrer">Jeugdautoriteit — Kosten van de jeugdzorg</a> · <a href="https://www.binnenlandsbestuur.nl/sociaal/jeugdzorg-2024-meer-omzet-meer-winst-minder-transparantie" target="_blank" rel="noopener noreferrer">A-INSIGHTS — Jeugdzorganalyse 2024</a> · <a href="https://pointer.kro-ncrv.nl/onderzoeken/jeugdzorg-in-het-rood" target="_blank" rel="noopener noreferrer">Pointer — Zorgcowboys &amp; dividend</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DOMEIN 2 — BESCHERMD WONEN (waarom geselecteerd) ===== -->
+<div class="modal-overlay" id="ov-zg-bw">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('zg-bw')">&#x2715;</button>
+    <div class="modal-title">Beschermd wonen &amp; maatschappelijke opvang (Wmo 2015)</div>
+    <div class="modal-kicker">Gemeentelijk zorgdomein — waarom dit domein is geselecteerd</div>
+
+    <div style="background:var(--bg-secondary);border:0.5px solid var(--border-light);border-radius:8px;padding:10px 12px;margin-bottom:6px">
+      <div class="mh" style="margin-top:0">In het kort</div>
+      <div class="mp">De gemeente betaalt onderdak met begeleiding voor mensen met bijvoorbeeld psychische problemen, een verslaving of zonder woning. Omdat dezelfde aanbieder vaak óók de huisbaas is, raken bewoners sterk afhankelijk. In de ergste gevallen worden zij uitgebuit — gedwongen werk, soms prostitutie — terwijl zorggeld in de zakken van de aanbieder verdwijnt.</div>
+    </div>
+
+    <div class="mh">De kern van het risico</div>
+    <div class="mp">Beschermd en begeleid wonen combineert twee risicoverhogende factoren: een <strong>uiterst kwetsbare cliëntpopulatie</strong> (psychiatrie, verslaving, dakloosheid, licht verstandelijke beperking (LVB)) en een verstrengeling van <strong>zorg, huisvesting en geld</strong> in handen van dezelfde aanbieder. De cliënt is daardoor drievoudig afhankelijk — voor zijn zorg, zijn dak boven het hoofd én (bij persoonsgebonden budget (pgb)) zijn budgetbeheer — wat melden riskant maakt en toezicht moeilijk.</div>
+
+    <div class="mh">De bewijsbasis — IKZ-themarapport (Informatie Knooppunt Zorgfraude)</div>
+    <div class="mp">Het IKZ onderzocht fraude en zorgverwaarlozing bij beschermd en begeleid wonen (2015–medio 2019): naar schatting <strong>2.300 kwetsbare cliënten per jaar</strong> ontvangen zorg van aanbieders waarbij fraude en/of zorgverwaarlozing wordt vermoed, met circa <strong>€100 mln</strong> zorggeld gemoeid. Gesignaleerd: mishandeling, intimidatie en dwang (tot prostitutie), dreiging met uitzetting, cliënten die in een pand van de aanbieder wonen, het afgeven van bankpas/zorgpas/DigiD, en aanbieders zonder zorgachtergrond met soms criminele banden (drugs, mensenhandel, faillissementsfraude).</div>
+
+    <div class="mh">Verwevenheid met georganiseerde criminaliteit</div>
+    <div class="mp">Uit de casusanalyse van IKZ &amp; Regionaal Informatie- en Expertisecentrum (RIEC) (22 zorgorganisaties in Twente): bij <strong>15 van de 22</strong> een verband met hennepteelt — kwekerijen op de zorglocatie of in woningen van cliënten/eigenaar — en <strong>drie aanbieders zetten cliënten in om hennep te knippen</strong> (criminele uitbuiting). Daders zijn doorgaans <em>eerst crimineel, daarna de zorg in</em>: de zorg is een "eenvoudige extra inkomstenbron" met lage pakkans. Zorggeld wordt afgeroomd via <strong>hoge huursommen</strong> voor het wonen, zodat de zorg-bv geen woekerwinst lijkt te maken. De Rekenkamer beschreef een netwerk dat tegelijk actief was in wijkverpleging, jeugdzorg én beschermd wonen en — ondanks signalen sinds 2014 — jarenlang doordraaide.</div>
+
+    <div class="info-banner">
+      <strong>Stelselwijziging vergroot de urgentie:</strong> beschermd wonen wordt doorgedecentraliseerd van circa 43 centrumgemeenten naar álle gemeenten, gekoppeld aan een woonplaatsbeginsel. Die in 2019 afgesproken overgang is meermaals uitgesteld — het wetsvoorstel ligt nog bij de Tweede Kamer en is nog niet in werking. Zodra zij doorgaat, komt het toezicht bij veel meer, en vaak kleinere, gemeenten te liggen.
+    </div>
+
+    <div class="mp" style="margin-top:6px">Werk de vier stappen hieronder af — <em>grondslag → keten → verantwoording → praktijk</em> — om voor dit domein zelf een integriteitsrisicoanalyse te kunnen maken.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.ikz.nl/actueel/nieuws/2019/11/12/misstanden-bij-beschermd-en-begeleid-wonen" target="_blank" rel="noopener noreferrer">IKZ — Misstanden bij beschermd en begeleid wonen</a> · <a href="https://www.ftm.nl/artikelen/misstanden-beschermd-wonen-ikz" target="_blank" rel="noopener noreferrer">FTM — Binnen de muren is het niet veilig</a> · <a href="https://www.skipr.nl/nieuws/woonzorginitiatieven-bron-van-fraude-en-verwaarlozing/" target="_blank" rel="noopener noreferrer">Skipr — Woonzorginitiatieven</a> · <a href="https://www.cpb.nl/sites/default/files/omnidownload/cpb-policy-brief-2019-10-decentrale-bekostiging-beschermd-wonen.pdf" target="_blank" rel="noopener noreferrer">CPB — Decentrale bekostiging beschermd wonen</a> · <a href="https://www.ikz.nl/actueel/nieuws/2021/01/14/onderzoek-verwevenheid-criminaliteit-en-zorg" target="_blank" rel="noopener noreferrer">IKZ &amp; RIEC — Verwevenheid zorg &amp; criminaliteit (2021)</a> · <a href="https://www.rekenkamer.nl/publicaties/rapporten/2022/04/14/een-zorg-gebrek-aan-daadkracht" target="_blank" rel="noopener noreferrer">Algemene Rekenkamer (2022)</a> · <a href="https://vng.nl/artikelen/faq-uitstel-woonplaatsbeginsel-bw" target="_blank" rel="noopener noreferrer">VNG — Woonplaatsbeginsel beschermd wonen (uitstel)</a> · <a href="https://pointer.kro-ncrv.nl/criminele-praktijken-binnen-de-twentse-zorg" target="_blank" rel="noopener noreferrer">Pointer — Criminele praktijken Twentse zorg</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DOMEIN 3 — BEGELEIDING & DAGBESTEDING (waarom geselecteerd) ===== -->
+<div class="modal-overlay" id="ov-zg-bg">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('zg-bg')">&#x2715;</button>
+    <div class="modal-title">Begeleiding &amp; dagbesteding (Wmo 2015)</div>
+    <div class="modal-kicker">Gemeentelijk zorgdomein — waarom dit domein is geselecteerd</div>
+
+    <div style="background:var(--bg-secondary);border:0.5px solid var(--border-light);border-radius:8px;padding:10px 12px;margin-bottom:6px">
+      <div class="mh" style="margin-top:0">In het kort</div>
+      <div class="mp">De gemeente betaalt begeleiding en dagbesteding voor mensen die hulp nodig hebben om mee te kunnen doen. Of die hulp écht is geleverd, is moeilijk te controleren. Daardoor wordt er makkelijk meer gedeclareerd dan geleverd ("spookzorg"), vaak via een persoonsgebonden budget dat iemand anders namens de cliënt beheert.</div>
+    </div>
+
+    <div class="mh">De kern van het risico</div>
+    <div class="mp">Individuele begeleiding en dagbesteding behoren al jaren tot de zorgsoorten waarover het Informatie Knooppunt Zorgfraude (IKZ) de <strong>meeste fraudesignalen</strong> deelt — binnen het gemeentelijke domein steevast bovenaan. Drie factoren versterken elkaar: de prestatie is <strong>moeilijk objectiveerbaar</strong> (hoeveel begeleiding is "geleverd"? wat is "zinvolle" dagbesteding?), de <strong>toetredingsdrempel is laag</strong> (geen vergunning of BIG-registratie (Beroepen in de Individuele Gezondheidszorg) vereist), en het <strong>persoonsgebonden budget (pgb)</strong> maakt declaratie zonder feitelijke levering relatief eenvoudig.</div>
+
+    <div class="mh">De bewijsbasis</div>
+    <div class="mp">In de RIEC-fenomeenanalyse (Regionaal Informatie- en Expertisecentrum) is <em>individuele begeleiding</em> (34 signalen) de meest voorkomende zorgsoort in fraudesignalen over zzp'ers, vóór wijkverpleging (25) en beschermd wonen (8). Van de 87 onderzochte zorg-zzp'ers had <strong>32% recente veroordelingen</strong> (samen 192 antecedenten). De dominante fraudevorm is <strong>spookzorg</strong>: zorg die wordt gedeclareerd maar niet (of minder, of slechter) geleverd; in het IKZ-rapport 2023 betreft de grootste categorie (27%) "meer of andere zorg declareren dan geleverd of meer zorg vragen dan nodig". Daarnaast: te hoge indicatiestelling, vervalste handtekeningen/diploma's, omkoping, intimidatie, misbruik van DigiD's en het <strong>ronselen van cliënten</strong> — soms voor witwassen of drugssmokkel.</div>
+
+    <div class="mh">Waarom het pgb hier zo gevoelig is</div>
+    <div class="mp">Binnen de Wet maatschappelijke ondersteuning (Wmo) gaat het vaak om <strong>pgb-gefinancierde zorg</strong>, beheerd door een gemachtigde of bemiddelingsbureau namens een cliënt met beperkte regie. Omdat de budgethouder de uren zelf in de SVB-omgeving (Sociale Verzekeringsbank) invult, is "zorg op papier" eenvoudig. De Dolia-zaak (thuiszorg/pgb; €7,5 mln gedeclareerd, slechts ~11% naar zorg besteed, 170.000 gedeclareerde uren tegen ~38.000 leverbare) en de arbeidsmigranten-constructie (pgb, Zvw/Wlz; €132.000/jaar, €12.000/maand naar een familiebedrijf) illustreren hoe groot de bedragen kunnen worden.</div>
+
+    <div class="info-banner">
+      <strong>Lage toetredingsdrempel:</strong> waar voor medische zorg vaak een BIG-registratie of vergunning geldt, kan vrijwel iedereen zich als aanbieder van begeleiding of dagbesteding presenteren. Het IKZ ziet aanbieders die na een faillissement elders met een nieuwe rechtspersoon opnieuw beginnen.
+    </div>
+
+    <div class="mp" style="margin-top:6px">Werk de vier stappen hieronder af — <em>grondslag → keten → verantwoording → praktijk</em> — om voor dit domein zelf een integriteitsrisicoanalyse te kunnen maken.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.ikz.nl/wp-content/uploads/2025/01/JaarrapportageSignalenfraudeindezorg2023.pdf" target="_blank" rel="noopener noreferrer">IKZ — Signalen fraude in de zorg 2023</a> · <a href="https://www.binnenlandsbestuur.nl/sociaal/meer-signalen-zorgfraude-wmo-en-jeugdhulp" target="_blank" rel="noopener noreferrer">Binnenlands Bestuur — Meer signalen Wmo en jeugdhulp</a> · <a href="https://www.stimulansz.nl/hoe-zit-dat-pgb-fraude-in-de-wmo-2015/" target="_blank" rel="noopener noreferrer">Stimulansz — Pgb-fraude in de Wmo 2015</a> · <a href="https://repub.eur.nl/pub/79833/Rapport-rechtmatige-zorg-definitief.pdf" target="_blank" rel="noopener noreferrer">Fenger e.a. (EUR) — Naar rechtmatige zorg in het sociale domein</a> · <a href="https://eenvandaag.avrotros.nl/artikelen/arbeidsinspectie-onderzoekt-mogelijk-misbruik-van-arbeidsmigranten-in-pgb-fraudeconstructie-we-moesten-24-uur-per-dag-beschikbaar-zijn-160013" target="_blank" rel="noopener noreferrer">EenVandaag — arbeidsmigranten-pgb-constructie</a> · <a href="https://www.rtlnieuws.nl/nieuws/nederland/artikel/4877526/zorgfraude-broers-utrecht-dolia-thuiszorg" target="_blank" rel="noopener noreferrer">OM/RTL — Dolia Thuiszorg</a></div>
+    </div>
+  </div>
+</div>
+<!-- ===== JEUGD — STAP 1: GRONDSLAG ===== -->
+<div class="modal-overlay" id="ov-jeugd-grond">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('jeugd-grond')">&#x2715;</button>
+    <div class="modal-title">Wettelijke grondslag</div>
+    <div class="modal-kicker">Jeugdzorg · stap 1 van 4</div>
+
+    <div class="mh">Reikwijdte: wat valt onder de Jeugdwet?</div>
+    <div class="mp">De Jeugdwet (in werking 1 januari 2015) bundelt vrijwel alle hulp aan jeugdigen die voorheen onder de Algemene Wet Bijzondere Ziektekosten (AWBZ), Zorgverzekeringswet (Zvw) en provinciale jeugdzorg viel. Het begrip <strong>jeugdhulp</strong> omvat drie clusters: hulp bij <em>opgroei- en opvoedproblemen</em>, <em>psychische problemen en stoornissen</em> (de jeugd-GGZ) en ondersteuning van jeugdigen met een <em>beperking</em> (begeleiding, persoonlijke verzorging, kortdurend verblijf). In beginsel geldt de wet voor jeugdigen <strong>tot 18 jaar</strong>; via <strong>verlengde jeugdhulp</strong> kan jeugdhulp die vóór het 18e jaar is gestart (of waarvan vóór het 18e is bepaald dat zij nodig is) doorlopen tot uiterlijk <strong>23 jaar</strong> wanneer de gemeente voortzetting nodig acht — mits die hulp niet onder een ander wettelijk kader (Zvw/Wet langdurige zorg (Wlz)/Wet maatschappelijke ondersteuning (Wmo)) valt.</div>
+
+    <div class="mh">De jeugdhulpplicht (art. 2.3)</div>
+    <div class="mp"><span class="mtag g">Jeugdwet, art. 2.3 &amp; 2.6</span> De gemeente heeft een <strong>jeugdhulpplicht</strong> (art. 2.3): zij moet een passende voorziening treffen zodra een jeugdige of ouder ondersteuning nodig heeft die hij niet op eigen kracht of met zijn netwerk kan organiseren. Op grond van art. 2.6 is zij daarnaast verantwoordelijk voor een kwalitatief en kwantitatief toereikend aanbod van jeugdhulp én van gecertificeerde instellingen voor kinderbeschermingsmaatregelen en jeugdreclassering. Welke gemeente verantwoordelijk (en financieel aansprakelijk) is, volgt sinds 1 januari 2022 uit het <strong>woonplaatsbeginsel</strong>: de gemeente waar de jeugdige volgens de Basisregistratie Personen (BRP) woont, of — bij verblijf — de gemeente van herkomst.</div>
+
+    <div class="mh">Vrijwillig én gedwongen kader</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Jeugdhulp</strong> — vrijwillig kader, via de gemeentelijke toegang of een wettelijke verwijzer.</li>
+      <li><strong>Jeugdbescherming</strong> — gedwongen kader: de kinderrechter legt op verzoek van de Raad voor de Kinderbescherming een maatregel op (ondertoezichtstelling, art. 1:255 BW, of gezagsbeëindiging, art. 1:266 BW), uitgevoerd door een gecertificeerde instelling (GI).</li>
+      <li><strong>Jeugdreclassering</strong> — begeleiding en toezicht in het justitiële kader, eveneens door een GI.</li>
+      <li><strong>Gesloten jeugdhulp</strong> — vrijheidsbenemend verblijf, alleen met een <strong>machtiging van de kinderrechter</strong> (art. 6.1.2 Jeugdwet); de zwaarste interventie, met eigen rechtswaarborgen.</li>
+    </ul>
+
+    <div class="mh">Toegang en verwijzers</div>
+    <div class="mp"><span class="mtag g">Jeugdwet, art. 2.6 lid 1 sub g</span> Naast de gemeentelijke toegang (wijk-/jeugdteam) zijn ook de <strong>huisarts, de jeugdarts en de medisch specialist</strong> wettelijke verwijzers naar jeugdhulp. Die dubbele route waarborgt toegang, maar bemoeilijkt de gemeentelijke regie en kostenbeheersing — en kan een aangrijppunt vormen voor oneigenlijke verwijzingen (zie de keten- en praktijkmodal).</div>
+
+    <div class="mh">Het kwaliteitsregime</div>
+    <div class="mp">De Jeugdwet stelt stevige kwaliteitseisen aan aanbieders en professionals: de norm van <strong>verantwoorde hulp</strong> (veilig, doeltreffend, doelmatig en cliëntgericht), de <strong>norm van verantwoorde werktoedeling</strong> met inzet van <strong>SKJ-geregistreerde (Stichting Kwaliteitsregister Jeugd)</strong> professionals, een verplichte <strong>Verklaring Omtrent het Gedrag (VOG)</strong>, de <strong>meldcode</strong> huiselijk geweld en kindermishandeling, en het melden van calamiteiten en geweld aan de Inspectie Gezondheidszorg en Jeugd (IGJ). Cliënten hebben recht op een onafhankelijke <strong>vertrouwenspersoon</strong> (AKJ/Jeugdstem), op klachtrecht en op medezeggenschap via een cliëntenraad.</div>
+
+    <div class="mh">Toezicht en verankering</div>
+    <div class="mp">De gemeente legt de toegang en voorzieningen vast in een <strong>verordening</strong>. Het kwaliteitstoezicht ligt bij de <strong>IGJ</strong> (samen met de Inspectie Justitie en Veiligheid voor jeugdbescherming en -reclassering). De <span class="mtag g">Wet verbetering beschikbaarheid jeugdzorg (36.546)</span> — in werking sinds 1 januari 2026 — voegt daar eisen aan bedrijfsvoering, een interne toezichthouder, openbare jaarverantwoording en een rol voor de Nederlandse Zorgautoriteit (NZa) aan toe; de eisen aan transparante bedrijfsvoering en openbare jaarverantwoording gelden vanaf 1 januari 2027. De <strong>Hervormingsagenda Jeugd (2023)</strong> beoogt de reikwijdte en de kosten te beheersen.</div>
+
+    <div class="mh">Handhavingsinstrumenten aan de poort</div>
+    <div class="mp"><span class="mtag g">Jeugdwet art. 2.9</span> verplicht de gemeente in haar verordening regels te stellen voor rechtmatigheidstoezicht. Jeugdhulpaanbieders vallen onder de <strong>meldplicht</strong> van de Wet toetreding zorgaanbieders (Wtza); de Wtza-vergunningplicht — sinds 1 januari 2025 via het amendement-Bushoff uitgebreid naar kleine zorgaanbieders — geldt echter niet voor zuivere jeugdhulpaanbieders. Wel kan de <strong>Wet Bibob (Wet bevordering integriteitsbeoordelingen door het openbaar bestuur)</strong> worden toegepast bij jeugdzorgsubsidies en open-house-inkoop. Het <strong>wetsvoorstel Wet integere bedrijfsvoering zorg- en jeugdhulpaanbieders (Wibz)</strong> beoogt de gronden om een vergunning te weigeren of in te trekken te verruimen.</div>
+
+    <div class="info-banner"><strong>Waarom dit eerst?</strong> De grondslag bepaalt wie waarvoor verantwoordelijk is en welke normen gelden. Zonder dit kader is niet vast te stellen wanneer een declaratie, indicatie of constructie <em>onrechtmatig</em> is — de basis voor elke integriteitsrisicoanalyse.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Jeugdwet, art. 2.3, 2.6, 2.9, 4.1.1 en 6.1.2 (Stb. 2014, 105) · art. 1:255 BW (OTS) en art. 1:266 BW (gezagsbeëindiging) · <a href="https://www.stimulansz.nl/jeugdwet-jeugdhulp-gemeenten/" target="_blank" rel="noopener noreferrer">Stimulansz — Jeugdwet: inzet jeugdhulp</a> · <a href="https://www.stimulansz.nl/verlengde-jeugdhulp/" target="_blank" rel="noopener noreferrer">Stimulansz — Verlengde jeugdhulp (18–23)</a> · <a href="https://www.nji.nl/kennis/impact-maken-met-jeugdbeleid/jeugdwet" target="_blank" rel="noopener noreferrer">NJi — Jeugdwet</a> · <a href="https://skjeugd.nl/gemeenten-werkgevers/norm-verantwoorde-werktoedeling/" target="_blank" rel="noopener noreferrer">SKJ — Norm verantwoorde werktoedeling</a> · <a href="https://www.regelhulp.nl/onderwerpen/jeugdwet/vertrouwenspersonen-jeugd" target="_blank" rel="noopener noreferrer">Regelhulp/AKJ — Vertrouwenspersoon jeugd</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/36546_wet_verbetering" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wet verbetering beschikbaarheid jeugdzorg (36.546)</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/36686_wet_integere_bedrijfsvoering" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wibz (36.686)</a> · <a href="https://www.rijksoverheid.nl/onderwerpen/kwaliteit-van-de-zorg/vraag-en-antwoord/welke-zorg--en-jeugdhulpaanbieders-moeten-zich-in-2022-verplicht-melden" target="_blank" rel="noopener noreferrer">Rijksoverheid — Wtza-meldplicht jeugdhulp</a> · <a href="https://www.vbk.nl/legalupdate/wet-bibob-nu-ook-toepasbaar-bij-open-house-inkoopprocedures-het-sociaal-domein" target="_blank" rel="noopener noreferrer">VBK — Bibob bij open house (sociaal domein)</a> · <a href="https://www.voordejeugdenhetgezin.nl/hervormingsagenda-jeugd" target="_blank" rel="noopener noreferrer">Hervormingsagenda Jeugd (2023)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JEUGD — STAP 2: KETEN ===== -->
+<div class="modal-overlay" id="ov-jeugd-keten">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('jeugd-keten')">&#x2715;</button>
+    <div class="modal-title">Keten &amp; rollen</div>
+    <div class="modal-kicker">Jeugdzorg · stap 2 van 4</div>
+
+    <div class="mh">Wie speelt welke rol?</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Gemeente / wijk- of jeugdteam:</strong> de spil van het vrijwillige kader. Het wijk-/jeugdteam doet de vraagverheldering, kan zelf lichte hulp bieden en beoordeelt of een individuele voorziening nodig is; de gemeente koopt de hulp in, geeft de beschikking af en draagt de kosten.</li>
+      <li><strong>Huisarts, jeugdarts, medisch specialist:</strong> óók wettelijk verwijzer (art. 2.6 lid 1 g Jeugdwet), buiten de gemeentelijke toegang om. De gemeente moet die verwijzing honoreren en betalen, met weinig grip op de omvang — wat de regie en kostenbeheersing bemoeilijkt, vooral richting jeugd-GGZ.</li>
+      <li><strong>Veilig Thuis:</strong> het regionale advies- en meldpunt huiselijk geweld en kindermishandeling (AMHK, Wmo 2015). Het onderzoekt meldingen, schat de veiligheid in en geleidt door naar vrijwillige jeugdhulp of — bij ernstige onveiligheid — naar de Raad voor de Kinderbescherming.</li>
+      <li><strong>Raad voor de Kinderbescherming (RvdK):</strong> doet onafhankelijk onderzoek wanneer de ontwikkeling of veiligheid van een kind ernstig in het geding is, en verzoekt zo nodig de kinderrechter om een maatregel. In dat verzoek draagt de Raad (in overleg met gemeente en GI) een passende gecertificeerde instelling voor.</li>
+      <li><strong>Kinderrechter:</strong> toetst het verzoek en beslist over de maatregel (ondertoezichtstelling, gezagsbeëindiging) of machtiging (uithuisplaatsing, gesloten jeugdhulp). Alleen de rechter kan in het ouderlijk gezag ingrijpen — het zwaarste, gedwongen deel van de keten.</li>
+      <li><strong>Gecertificeerde instelling (GI):</strong> voert de maatregel en de jeugdreclassering uit en wijst een jeugdbeschermer toe. Binnen de maatregel bepaalt de GI welke jeugdhulp nodig is (art. 3.5 Jeugdwet); de hulp zelf levert zij niet — zij stuurt aan.</li>
+      <li><strong>Jeugdregio (regionale inkoop):</strong> op grond van de Wet verbetering beschikbaarheid jeugdzorg gaan gemeenten specialistische jeugdzorg, jeugdbescherming en jeugdreclassering regionaal inkopen, om continuïteit en beschikbaarheid van schaarse, zware zorg te borgen.</li>
+      <li><strong>Jeugdhulpaanbieders:</strong> leveren de feitelijke hulp — van solopraktijk of zzp'er tot grote, soms door investeerders overgenomen concerns. Zij declareren bij de gemeente (zorg in natura) of bij de budgethouder (pgb), waardoor het integriteitsrisico per type aanbieder verschilt.</li>
+      <li><strong>Sociale Verzekeringsbank (SVB):</strong> beheert bij de pgb-route het trekkingsrecht. De budgethouder krijgt het geld niet zelf in handen; de SVB betaalt declaraties van de ingekochte hulp namens hem — een controlepunt in de geldstroom.</li>
+      <li><strong>Toezicht:</strong> Inspectie Gezondheidszorg en Jeugd (IGJ) op de kwaliteit en veiligheid van de hulp; Nederlandse Zorgautoriteit (NZa) op stelsel, beschikbaarheid (early warning) en — gefaseerd — de financiële bedrijfsvoering, sinds 1 januari 2026 met overname van de taken van de voormalige Jeugdautoriteit; Informatie Knooppunt Zorgfraude (IKZ) verzamelt en verrijkt fraudesignalen en deelt die met de partners.</li>
+    </ul>
+
+    <div class="mh">Het knooppunt: verwijsroutes en inkoop</div>
+    <div class="mp">Twee structuurkenmerken maken deze keten kwetsbaar. Ten eerste de <strong>gespreide verwijsroutes</strong>: naast de gemeentelijke toegang mogen ook de huisarts, de jeugdarts en de medisch specialist rechtstreeks verwijzen (art. 2.6 lid 1 g Jeugdwet), waardoor de gemeente niet alle instroom in de hand heeft. Ten tweede de <strong>inkoop</strong>: voor lichtere jeugdhulp contracteert elk van de 342 gemeenten afzonderlijk (specialistische zorg wordt sinds 2026 regionaal ingekocht), vaak met <strong>hoofd- en onderaannemers</strong>. Door die onderaanneming groeit de afstand tussen de inkopende gemeente en de partij die de zorg feitelijk levert — en kan daarmee de ruimte voor oneigenlijk gebruik toenemen.</div>
+
+    <div class="mh">Toezichtgaten in de keten</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Zorgbemiddelings- en uitzendbureaus</strong> vallen meestal buiten het IGJ-toezicht (geen zorgaanbieder) en bij de Arbeidsinspectie primair onder arbeidsrecht — terwijl juist via die bureaus zzp'ers met <strong>valse diploma's/VOG's (Verklaring Omtrent het Gedrag)</strong> worden ingehuurd. De screeningsplicht (vergewisplicht, art. 4 Wkkgz; voor jeugdhulp de VOG-plicht van art. 4.1.6 Jeugdwet) ligt bij de inhurende aanbieder, maar wordt in de praktijk ten onrechte bij het bureau gelegd.</li>
+      <li><strong>"Gemeentenhoppen":</strong> wie in de ene gemeente wordt betrapt, kan elders ongestoord verdergaan — gemeenten mogen elkaar door privacyregels nauwelijks waarschuwen (het Waarschuwingsregister uit de Wet bevorderen samenwerking en rechtmatige zorg (Wbsrz), sinds 2025, moet dit verhelpen).</li>
+      <li><strong>Toezicht op individuen, niet op netwerken:</strong> IGJ, NZa en strafrecht richten zich op losse aanbieders, terwijl de fraude via "spinnenwebben" van bv's loopt.</li>
+    </ul>
+
+    <div class="info-banner"><strong>Waar in de keten ontstaat risico?</strong> De gespreide verwijsroutes (gemeente én artsen) maken sturing lastig; de afstand tussen inkoper (gemeente) en uitvoerder (aanbieder/onderaannemer) is groot; en bij onderaanneming verdwijnt het zicht op wie de zorg feitelijk levert. Dat zijn de schakels om in stap 4 gericht te controleren.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.rijksoverheid.nl/onderwerpen/jeugdbescherming/maatregelen-jeugdbescherming" target="_blank" rel="noopener noreferrer">Rijksoverheid — Maatregelen jeugdbescherming</a> · <a href="https://www.nji.nl/effectieve-jeugdhulp/wet-en-regelgeving" target="_blank" rel="noopener noreferrer">NJi — Wet- en regelgeving jeugdhulp</a> · <a href="https://www.stimulansz.nl/jeugdwet-jeugdhulp-gemeenten/" target="_blank" rel="noopener noreferrer">Stimulansz — Inzet jeugdhulp gemeenten</a> · <a href="https://www.tweedekamer.nl/kamerstukken/kamervragen/detail?id=2024Z12311&did=2024D29700" target="_blank" rel="noopener noreferrer">TK/OM — gemeentenhoppen &amp; toezichtgaten bemiddelingsbureaus</a> · <a href="https://www.ede.nl/fileadmin/ede.nl/afbeeldingen/Nieuws/2023/Fenomeenanalyse_criminele_zzp-ers_in_de_zorg.pdf" target="_blank" rel="noopener noreferrer">RIEC Oost — Criminele zzp'ers (inhuur via bureaus)</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/36546_wet_verbetering" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wet verbetering beschikbaarheid jeugdzorg (36.546)</a> · <a href="https://www.binnenlandsbestuur.nl/sociaal/jeugdzorg-2024-meer-omzet-meer-winst-minder-transparantie" target="_blank" rel="noopener noreferrer">A-INSIGHTS — Jeugdzorganalyse 2024</a> · <a href="https://www.igj.nl/onderwerpen/themas-in-het-toezicht/controleren-arbeidsverleden" target="_blank" rel="noopener noreferrer">IGJ — Vergewisplicht (art. 4 Wkkgz)</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Wbsrz (35.515) — Waarschuwingsregister</a> · <a href="https://www.ftm.nl/artikelen/openbaar-ministerie-kan-zorgfraude-niet-aan" target="_blank" rel="noopener noreferrer">FTM — OM &amp; spinnenwebben</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JEUGD — STAP 3: VERANTWOORDING ===== -->
+<div class="modal-overlay" id="ov-jeugd-verant">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('jeugd-verant')">&#x2715;</button>
+    <div class="modal-title">Hoe wordt het verantwoord?</div>
+    <div class="modal-kicker">Jeugdzorg · stap 3 van 4</div>
+
+    <div class="mh">Inkoop en declaratie</div>
+    <div class="mp">De gemeente verantwoordt de jeugduitgaven in haar jaarrekening (accountantscontrole op rechtmatigheid). Aanbieders verantwoorden volgens het gemeentelijke contract via een van de drie uitvoeringsvarianten: inspanningsgericht (per product/tijdseenheid), outputgericht (per behaald resultaat) of taakgericht (een vast budget voor een populatie of taak, zónder verantwoording op cliëntniveau). Een structureel knelpunt: lang niet elke aanbieder deponeerde zijn jaarrekening correct, en de inhoud werd niet inhoudelijk getoetst.</div>
+
+    <div class="mh">Nieuwe transparantie-eisen</div>
+    <div class="mp"><span class="mtag g">Wet verbetering beschikbaarheid jeugdzorg</span> verplicht jeugdhulpaanbieders en GI's tot een <strong>interne toezichthouder, transparante bedrijfsvoering en openbare jaarverantwoording</strong> (begroting, balans, resultatenrekening met toelichting). De <strong>Nederlandse Zorgautoriteit (NZa)</strong> krijgt daarbij een rol in vroegsignalering, stelselonderzoek en continuïteitsbewaking (de taken van de voormalige Jeugdautoriteit). Het afzonderlijke wetsvoorstel <strong>Wibz</strong> wil daarbovenop normen stellen voor transacties met verbonden partijen en voorwaarden aan winstuitkering.</div>
+
+    <div class="mh">Verantwoordingsinstrumenten in beeld</div>
+    <ul class="ml" style="margin-top:4px">
+      <li>Gemeentelijke jaarrekening + accountantsverklaring (rechtmatigheid sociaal domein).</li>
+      <li>Productieverantwoording en accountantsproduct van de aanbieder (landelijk accountantsprotocol).</li>
+      <li>Openbare jaarverantwoording aanbieder (DigiMV / jaarverantwoordingzorg.nl).</li>
+      <li>Contract- en leveranciersmonitoring door de gemeente.</li>
+    </ul>
+
+    <div class="mh">Detectie via data-analyse</div>
+    <div class="mp">Omdat papieren verantwoording vaak "klopt", verschuift de controle naar <strong>data-analyse op declaratie- en urenpatronen</strong>: aanbieders die structureel op het maximum declareren, onmogelijke volumes (de Dolia-zaak: 170.000 gedeclareerde uren tegen ~38.000 leverbare), of een opvallend lage personeelslast ten opzichte van de omzet. Wetenschappelijk wordt fraude geframed als <em>anomaliedetectie</em>: zeldzame patronen die afwijken van normaal declaratiegedrag. Sinds 2025 kunnen gemeenten en verzekeraars signalen delen via het <strong>Informatie Knooppunt Zorgfraude (IKZ) en het Waarschuwingsregister (Wbsrz)</strong> — al daalde het aantal gedeelde signalen tijdelijk door een strenge AVG-interpretatie (Algemene verordening gegevensbescherming).</div>
+
+    <div class="info-banner"><strong>Waarom dit telt voor de risicoanalyse:</strong> de verantwoordingsstukken zijn de <em>data</em> waarop u in stap 4 patronen en uitschieters detecteert. Hoe beter de verantwoording is geregeld, hoe eerder onrechtmatigheid zichtbaar wordt.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.dirkzwager.nl/kennis/artikelen/wet-verbetering-beschikbaarheid-jeugdzorg-blog-5-eisen-aan-de-bedrijfsvoering-en-jaarverantwoording-jeugdhulpaanbieders" target="_blank" rel="noopener noreferrer">Dirkzwager — Eisen aan bedrijfsvoering en jaarverantwoording</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/36546_wet_verbetering" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wet verbetering beschikbaarheid jeugdzorg</a> · <a href="https://vng.nl/sites/default/files/2024-11/eindrapport-uitgavenonderzoek-jeugdzorg-2023-2024.pdf" target="_blank" rel="noopener noreferrer">VNG — Uitgavenonderzoek jeugdzorg</a> · <a href="https://kpmg.com/nl/nl/home/insights/2025/02/bestrijding-van-zorgfraude-door-gemeenten.html" target="_blank" rel="noopener noreferrer">KPMG — data-analyse op declaraties</a> · <a href="https://pointer.kro-ncrv.nl/zorgcowboys-worden-nog-nauwelijks-aangepakt-verdacht-hoge-winst-meer-dividend-en-minder-controle" target="_blank" rel="noopener noreferrer">Pointer — signalen 613→338, dividend</a> · <a href="https://arxiv.org/pdf/2507.01924" target="_blank" rel="noopener noreferrer">arXiv — anomaliedetectie declaraties</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Wbsrz (35.515)</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/36686_wet_integere_bedrijfsvoering" target="_blank" rel="noopener noreferrer">Eerste Kamer — Wibz (36.686)</a> · <a href="https://www.rtlnieuws.nl/nieuws/nederland/artikel/4877526/zorgfraude-broers-utrecht-dolia-thuiszorg" target="_blank" rel="noopener noreferrer">OM/RTL — Dolia Thuiszorg (pgb-fraude)</a> · <a href="https://www.istandaarden.nl/binaries/content/assets/istandaarden/iwmo/handreiking-uitvoeringsvarianten-iwmo-en-ijw.pdf" target="_blank" rel="noopener noreferrer">i-Sociaal Domein — Uitvoeringsvarianten iWmo/iJw</a> · <a href="https://www.jaarverantwoordingzorg.nl" target="_blank" rel="noopener noreferrer">jaarverantwoordingzorg.nl — DigiMV</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JEUGD — STAP 4: PRAKTIJK & RISICOANALYSE ===== -->
+<div class="modal-overlay" id="ov-jeugd-praktijk">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('jeugd-praktijk')">&#x2715;</button>
+    <div class="modal-title">Praktijk, fraudesignalen &amp; integriteitsrisicoanalyse</div>
+    <div class="modal-kicker">Jeugdzorg · stap 4 van 4</div>
+
+    <div class="mh">Hoe ziet het eruit in de praktijk?</div>
+    <div class="mp">Het risico zit vooral in <strong>bovenmatige winstneming en ondoorzichtige constructies</strong>: marges boven 10%, overnames door op rendement gerichte investeerders, en structuren (holdings, vastgoed-bv's, onderlinge verrekeningen) die de geldstroom vertroebelen. Daarnaast: oneigenlijke productkeuze (zwaardere zorg declareren dan nodig), <strong>afroming</strong> (selecteren van lichtere, lonende cliënten) en aanbieders die na faillissement elders doorstarten.</div>
+
+    <div class="mh">Concrete zaken &amp; cijfers</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Familiebestuur zonder registratie (Rb. Zeeland-West-Brabant, 17 okt. 2024):</strong> de feitelijk leidinggevende van een jeugdhulpstichting plaatste familieleden in het bestuur, had alleen zelf controle over de bankrekening en was niet SKJ-geregistreerd (Stichting Kwaliteitsregister Jeugd). De stichting declareerde in bijna twee jaar <strong>ruim €150.000 meer dan geleverd</strong>; er was géén urenregistratie en opbrengsten werden deels privé besteed. Straf: 15 maanden cel (5 voorwaardelijk).</li>
+      <li><strong>Diploma- en EVC-fraude (Erkenning van Verworven Competenties):</strong> de Inspectie Gezondheidszorg en Jeugd (IGJ) zag de meldingen over valse diploma's/certificaten verdubbelen — in 2022 <strong>95 meldingen van een vals diploma plus 11 valse VOG's (Verklaring Omtrent het Gedrag)</strong>, vaak bij zzp'ers die via een bemiddelingsbureau worden ingehuurd. In februari 2023 stonden 8 verdachten voor de politierechter (7 veroordeeld); de inspectie sprak van "nog maar het topje van de ijsberg". De Stichting Kwaliteitsregister Jeugd (SKJ) startte in 2025 een onderzoek waarbij bij het merendeel van de erkende EVC-aanbieders onregelmatigheden bleken; de resultaten zijn op 29 oktober 2025 bekendgemaakt (in 30% van de dossiers ernstige onregelmatigheden), en per 9 januari 2026 is de EVC-standaard "vakbekwame hbo jeugd- en gezinsprofessional" ingetrokken.</li>
+      <li><strong>Criminele zzp'ers:</strong> in de RIEC-fenomeenanalyse (Regionaal Informatie- en Expertisecentrum) is <em>ambulante jeugdzorg</em> (27 van 87 dossiers) na gehandicaptenbegeleiding de meest voorkomende zorgsoort; <strong>32% van de onderzochte zzp'ers</strong> had recente veroordelingen.</li>
+      <li><strong>Netwerk over meerdere domeinen (Rekenkamer 2022):</strong> één netwerk van zorgbedrijven was tegelijk actief in wijkverpleging, jeugdzorg én beschermd wonen en bleef — ondanks signalen sinds 2014 — jarenlang doordraaien.</li>
+      <li><strong>Wegsluismethoden (Pointer):</strong> winst de zorg uit halen via dividend naar bv's van de directie, investeren in vastgoed, of "ongeloofwaardig hoge kosten voor kantoorartikelen". Oud-minister De Jonge noemde de hoge winsten en dividenduitkeringen "maatschappelijk onverantwoord".</li>
+    </ul>
+
+    <div class="mh">Stap A — breng het speelveld in kaart</div>
+    <ul class="checklist" style="margin-top:4px">
+      <li>Met welke aanbieders heb ik te maken — en om welke producten, bedragen en geldstromen gaat het?</li>
+      <li>Wie zijn de eigenaren/bestuurders, en welke (holding- of vastgoed)structuur zit erachter?</li>
+      <li>Zijn er recente wijzigingen in eigenaarschap, overnames of nieuwe rechtspersonen?</li>
+      <li>Wordt er onderaannemerschap gebruikt, en wie levert de zorg dan feitelijk?</li>
+      <li>Zijn er eerdere signalen, klachten of meldingen over de aanbieder?</li>
+    </ul>
+
+    <div class="mh">Stap B — hoe herken je fraude in de keten?</div>
+    <div class="mp" style="margin-bottom:6px">De RIEC-signalenherkenning, toegespitst op jeugdzorg — bruikbaar voor iedereen die met deze geldstromen te maken heeft: gemeente, toezichthouder (IGJ/NZa), accountant of de compliance-medewerker van een bank die in een KYC-onderzoek de transacties beoordeelt. Eén signaal is zelden bewijs; het gaat om de <em>optelsom</em> en het patroon.</div>
+    <ul class="flag-list" style="margin-top:4px">
+      <li><strong>Declaratiegedrag:</strong> declaraties structureel op of rond het contractplafond, afwijkend veel zware/dure producten, hoge bezetting, of een omzet die niet past bij het aantal (bevoegde) medewerkers.</li>
+      <li><strong>Zorg-op-papier:</strong> trajecten zonder behandelplan, voortgangsrapportage, urenregistratie of contactmomenten; jeugdigen/ouders die de hulp of de hulpverlener niet herkennen.</li>
+      <li><strong>Onbevoegd of vals gekwalificeerd personeel:</strong> hulpverleners zonder SKJ-registratie, valse diploma's/VOG's of dubieuze EVC-trajecten; veel inhuur via bemiddelingsbureaus.</li>
+      <li><strong>Hoge winst &amp; vermogen:</strong> winstmarge structureel boven de gangbare 3% (zeker &gt;10%), dividend of bestuurdersbeloning die niet bij de zorgomvang past.</li>
+      <li><strong>Ondoorzichtige structuur:</strong> netwerk van bv's/holdings, vastgoed-, schoonmaak- of management-bv's, geld dat heen en weer wordt geheveld, transacties met gelieerde partijen.</li>
+      <li><strong>Familie/katvangers in het bestuur:</strong> familieleden of stromannen als bestuurder terwijl één persoon de bankrekening beheert.</li>
+      <li><strong>Antecedenten bestuurders:</strong> eerdere veroordelingen of betrokkenheid bij andere criminaliteit (toets via Bibob).</li>
+      <li><strong>Faillissement-en-doorstart:</strong> bestuurders die failliet gaan/uitschrijven bij de Kamer van Koophandel (KvK) zodra een onderzoek start en elders met een nieuwe rechtspersoon dezelfde werkwijze voortzetten.</li>
+      <li><strong>Afroming &amp; verwijsanomalieën:</strong> selecteren van lichtere, lonende cliënten; ongebruikelijk veel zelfverwijzingen of verwijzingen naar gelieerde aanbieders.</li>
+      <li><strong>Snelle groei / cliëntverloop:</strong> explosieve groei van cliëntaantallen of opvallend verloop zonder verklaring.</li>
+      <li><strong>Zelfverrijking:</strong> luxe levensstijl of (lease)voertuigen die niet stroken met een reguliere zorgonderneming.</li>
+    </ul>
+    <div class="mp" style="margin-top:6px">Naar mijn mening hebben de <strong>structuur-</strong> en <strong>faillissement-en-doorstartsignalen</strong> de grootste impact: daar zit de georganiseerde, domeinoverstijgende fraude — ook al ligt de kans (frequentie) lager dan bij administratiefouten.</div>
+
+    <div class="mh">Stap C — risicomatrix (voorbeeld)</div>
+    <table class="dtable">
+      <thead><tr><th>Risico</th><th>Kans</th><th>Impact</th><th>Prioriteit</th><th>Maatregel</th></tr></thead>
+      <tbody>
+        <tr><td>Bovenmatige winstneming via constructies</td><td>Hoog</td><td>Hoog</td><td class="prio-r">🔴 Urgent</td><td>Jaarverantwoording + transacties gelieerde partijen toetsen</td></tr>
+        <tr><td>Oneigenlijke productkeuze / opschaling</td><td>Hoog</td><td>Hoog</td><td class="prio-r">🔴 Urgent</td><td>Data-analyse declaratiepatronen; dossiercontrole</td></tr>
+        <tr><td>Afroming lichtere cliënten</td><td>Middel</td><td>Hoog</td><td class="prio-o">🟠 Hoog</td><td>Monitoring cliëntmix per aanbieder</td></tr>
+        <tr><td>Doorstart na faillissement</td><td>Middel</td><td>Hoog</td><td class="prio-o">🟠 Hoog</td><td>Bibob/screening + Waarschuwingsregister</td></tr>
+        <tr><td>Administratiefouten</td><td>Hoog</td><td>Laag</td><td class="prio-y">🟡 Middel</td><td>Steekproefcontroles</td></tr>
+      </tbody>
+    </table>
+
+    <div class="pgb-banner">
+      <strong>Pgb-risico in dit domein.</strong> Ook jeugdhulp loopt soms via persoonsgebonden budget (pgb) (begeleiding/dagbesteding van een kind), beheerd door een ouder of gemachtigde. Risico: een budgetbeheerder of bemiddelingsbureau dat declareert voor nauwelijks geleverde hulp, of dat de cliënt aan een eigen, gelieerde aanbieder bindt. Toets pgb-vaardigheid en let op gemachtigden die meerdere budgetten beheren.
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan de professional</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li>Lever en declareer alleen wat aantoonbaar is geleverd en teken niet mee voor uren of trajecten die niet te verantwoorden zijn — dit geldt voor wie zorg levert, registreert of aftekent.</li>
+        <li>Kijk door de constructie heen: raadpleeg de openbare jaarverantwoording en wees alert op marges, vastgoed-/holdingstructuren en transacties met gelieerde partijen.</li>
+        <li>Bewaak de juiste zorgzwaarte en cliëntmix; signaleer afroming.</li>
+        <li>Let op risicovolle overgangen: rond de 18e verjaardag — de overgang van de Jeugdwet naar de Wmo, Zvw of Wlz en de verlengde jeugdhulp tot 23 — is naar mijn mening extra alertheid geboden, omdat trajecten en declaraties daar oneigenlijk kunnen doorlopen of dubbel kunnen worden geclaimd.</li>
+        <li>Ken de meldroutes: intern, naar de IGJ, en via de gemeente naar het Informatie Knooppunt Zorgfraude (IKZ)/Waarschuwingsregister (Wbsrz). Voor financiële poortwachters loopt de melding van ongebruikelijke transacties via FIU-Nederland (Wet ter voorkoming van witwassen en financieren van terrorisme, Wwft). Raadpleeg bij twijfel uw eigen meldregeling of het Huis voor Klokkenluiders.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Risicoanalyse-aanpak naar model van de bijlage "Integriteitsrisicoanalyse WMO" · <a href="https://www.ftm.nl/collectief-jeugdzorg" target="_blank" rel="noopener noreferrer">FTM — Jeugdzorg in het Rood</a> · <a href="https://www.ikz.nl/wp-content/uploads/2025/01/JaarrapportageSignalenfraudeindezorg2023.pdf" target="_blank" rel="noopener noreferrer">IKZ — Signalen fraude in de zorg 2023</a> · <a href="https://www.toezichtsociaaldomein.nl/documenten/vragen-en-antwoorden/wat-wordt-van-een-gemeente-verwacht-wanneer-er-vermoedelijk-sprake-is-van-fraude-in-de-jeugdhulp" target="_blank" rel="noopener noreferrer">Toezicht Sociaal Domein — Fraude in de jeugdhulp</a> · <a href="https://kpmg.com/nl/nl/home/insights/2025/02/bestrijding-van-zorgfraude-door-gemeenten.html" target="_blank" rel="noopener noreferrer">KPMG — Bestrijding zorgfraude door gemeenten (2025; incl. Rb. Zeeland-West-Brabant 17-10-2024, ECLI:NL:RBZWB:2024:7054)</a> · <a href="https://www.ede.nl/fileadmin/ede.nl/afbeeldingen/Nieuws/2023/Fenomeenanalyse_criminele_zzp-ers_in_de_zorg.pdf" target="_blank" rel="noopener noreferrer">RIEC Oost — Criminele zzp'ers in de zorg (2023)</a> · <a href="https://www.rekenkamer.nl/actueel/nieuws/2022/04/14/aanpak-zorgfraude-is-vooral-vergaderen" target="_blank" rel="noopener noreferrer">Algemene Rekenkamer (2022)</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Wbsrz (35.515)</a> · <a href="https://skjeugd.nl/resultaten-steekproef-evc-onderzoek/" target="_blank" rel="noopener noreferrer">SKJ — Resultaten steekproef EVC-onderzoek (2025)</a> · <a href="https://www.tweedekamer.nl/kamerstukken/kamervragen/detail?id=2024D39754" target="_blank" rel="noopener noreferrer">TK — antwoorden De Jonge over zorgcowboys</a> · <a href="https://www.rechtspraak.nl/Organisatie-en-contact/Organisatie/Rechtbanken/Rechtbank-Rotterdam/Nieuws/Paginas/Straffen-voor-valse-zorgdiploma-en-VOG.aspx" target="_blank" rel="noopener noreferrer">Rechtspraak Rotterdam — valse zorgdiploma's (feb 2023)</a> · <a href="https://www.igj.nl/actueel/nieuws/2023/02/21/oproep-inspectie-aan-zorg-en-jeugdhulp-let-op-valse-diplomas-en-vogs" target="_blank" rel="noopener noreferrer">IGJ — valse diploma's/VOG &amp; vergewisplicht</a> · <a href="https://pointer.kro-ncrv.nl/zorgcowboys-worden-nog-nauwelijks-aangepakt-verdacht-hoge-winst-meer-dividend-en-minder-controle" target="_blank" rel="noopener noreferrer">Pointer — zorgcowboys &amp; wegsluismethoden</a> · <a href="https://www.fiu-nederland.nl" target="_blank" rel="noopener noreferrer">FIU-Nederland — Wwft-melding</a></div>
+    </div>
+  </div>
+</div>
+<!-- ===== BW — STAP 1: GRONDSLAG ===== -->
+<div class="modal-overlay" id="ov-bw-grond">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bw-grond')">&#x2715;</button>
+    <div class="modal-title">Wettelijke grondslag</div>
+    <div class="modal-kicker">Beschermd wonen &amp; opvang · stap 1 van 4</div>
+
+    <div class="mh">Reikwijdte: wat is beschermd wonen &amp; opvang?</div>
+    <div class="mp"><span class="mtag g">Wmo 2015, art. 1.1.1</span> Onder de <strong>Wet maatschappelijke ondersteuning 2015 (Wmo 2015)</strong> is <em>beschermd wonen</em> het wonen in een accommodatie van een instelling met bijbehorend toezicht en begeleiding, gericht op zelfredzaamheid, participatie en stabilisatie van mensen met psychische of psychosociale problematiek die zich niet op eigen kracht kunnen handhaven. <em>Maatschappelijke opvang</em> biedt onderdak en begeleiding aan mensen zonder vaste woon- of verblijfplaats; vrouwenopvang is daarnaast een aparte categorie (opvang in verband met huiselijk geweld). De zwaarste, blijvende geestelijke gezondheidszorg (GGZ) is sinds 2021 juist naar de Wet langdurige zorg (Wlz) overgeheveld — een "schot" dat in de praktijk afbakeningsvragen oproept.</div>
+
+    <div class="mh">De maatwerkplicht en het proces</div>
+    <div class="mp"><span class="mtag g">Wmo 2015, art. 2.3.2 / 2.3.5</span> Na een melding doet de gemeente <strong>onderzoek</strong> (binnen zes weken) naar de behoefte, de eigen kracht en het netwerk van de cliënt, en beslist daarna bij <strong>beschikking</strong> (binnen twee weken na de aanvraag) op een maatwerkvoorziening. De voorziening wordt geleverd in natura of als <strong>persoonsgebonden budget (pgb)</strong>. Voor beschermd wonen met verblijf en voor de opvang geldt geen abonnementstarief maar een <strong>inkomensafhankelijke eigen bijdrage</strong>, geïnd door het Centraal Administratie Kantoor (CAK). Het vaste abonnementstarief geldt alleen voor ambulante Wmo-ondersteuning.</div>
+
+    <div class="mh">Centrumgemeenten, doordecentralisatie &amp; woonplaatsbeginsel</div>
+    <div class="mp">Historisch lag de verantwoordelijkheid bij circa 43 <strong>centrumgemeenten</strong>. Het voornemen is beschermd wonen <strong>door te decentraliseren</strong> naar álle gemeenten, gekoppeld aan een <strong>woonplaatsbeginsel</strong> dat de eigen gemeente verantwoordelijk maakt voor haar inwoners — ook wanneer een cliënt voor beschermd wonen naar een andere gemeente verhuist. Die overgang is echter meermaals uitgesteld; het wetsvoorstel ligt nog bij de Tweede Kamer en is nog niet in werking.</div>
+
+    <div class="mh">Vormen van de voorziening</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Beschermd wonen</strong> — verblijf met 24-uurs toezicht en begeleiding in een accommodatie van de aanbieder.</li>
+      <li><strong>Beschermd thuis</strong> — de ambulante variant: begeleiding in de eigen woning, passend bij de beweging naar "ambulantisering".</li>
+      <li><strong>Maatschappelijke opvang &amp; vrouwenopvang</strong> — kortdurend onderdak en begeleiding bij dak- of thuisloosheid of huiselijk geweld.</li>
+    </ul>
+
+    <div class="mh">Het kwaliteitsregime</div>
+    <div class="mp"><span class="mtag g">Wmo 2015, hoofdstuk 3</span> De voorziening moet van <strong>goede kwaliteit</strong> zijn — veilig, doeltreffend, doelmatig en cliëntgericht (art. 3.1). Aanbieders kunnen worden verplicht een <strong>Verklaring Omtrent het Gedrag (VOG)</strong> te overleggen (art. 3.5), moeten met de <strong>meldcode</strong> huiselijk geweld en kindermishandeling werken (art. 3.3) en <strong>calamiteiten en geweld melden</strong> bij de toezichthoudende ambtenaar (art. 3.4). Cliënten hebben recht op een klachtregeling en op medezeggenschap (beide art. 3.2).</div>
+
+    <div class="mh">Toezicht en verankering</div>
+    <div class="mp">De gemeente legt het beleid vast in een <strong>beleidsplan</strong> (art. 2.1.2) en een <strong>verordening</strong> (art. 2.1.3) en wijst een <strong>Wmo-toezichthouder</strong> aan (art. 6.1), in de praktijk vaak de Gemeentelijke Gezondheidsdienst (GGD). Het Wmo-toezicht ligt bij de gemeente; de Inspectie Gezondheidszorg en Jeugd (IGJ) komt alleen in beeld waar een aanbieder óók zorg onder de Wet kwaliteit, klachten en geschillen zorg (Wkkgz) levert (zoals GGZ-behandeling) — bij beschermd wonen trekken beide toezichthouders wel steeds vaker samen op.</div>
+
+    <div class="mh">Handhavingsinstrumenten aan de poort</div>
+    <div class="mp">De <strong>vergunningplicht</strong> voor nieuwe zorgaanbieders (Wtza, sinds 1 januari 2025) geldt alleen voor aanbieders die zorg onder de Wkkgz leveren, niet voor zuivere Wmo-aanbieders. Wel kan de <strong>Wet Bibob</strong> (Wet bevordering integriteitsbeoordelingen door het openbaar bestuur) — sinds 1 oktober 2022 ook bij (semi-)open-house-inkoop — worden ingezet. Het <strong>wetsvoorstel Wet integere bedrijfsvoering zorg- en jeugdhulpaanbieders (Wibz)</strong> beoogt de weigerings- en intrekkingsgronden voor de aanbiedersvergunning te verruimen. Het kabinetspakket van juni 2026 werkt voor Wmo-aanbieders nog uit welke toetredingsnormen gaan gelden, en stelt een VOG verplicht voor bestuurders, eigenaren en toezichthouders.</div>
+
+    <div class="info-banner"><strong>Waarom dit eerst?</strong> Art. 2.1.3 Wmo maakt het tegengaan van misbruik tot een wettelijke opdracht — niet vrijblijvend. Samen met de kwaliteits- en toezichtbepalingen vormt dit de basis waarop de gemeente in stap 4 screening, controle en Bibob-onderzoek mag inzetten.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wmo 2015, art. 1.1.1, 2.1.2, 2.1.3, 2.3.2, 2.3.5, 3.1–3.5 en 6.1 (Stb. 2014, 280) · Gemeentewet · Wet Bibob · <a href="https://maxius.nl/wet-maatschappelijke-ondersteuning-2015/artikel2.3.2" target="_blank" rel="noopener noreferrer">Wmo 2015 — art. 2.3.2 (onderzoek)</a> · <a href="https://cqp.nl/thema/doordecentralicatie-mo-en-bw/" target="_blank" rel="noopener noreferrer">Doordecentralisatie MO en BW + woonplaatsbeginsel</a> · <a href="https://www.tweedekamer.nl/kamerstukken/detail?id=2023D00815&did=2023D00815" target="_blank" rel="noopener noreferrer">TK — woonplaatsbeginsel beschermd wonen</a> · <a href="https://www.cpb.nl/sites/default/files/omnidownload/cpb-policy-brief-2019-10-decentrale-bekostiging-beschermd-wonen.pdf" target="_blank" rel="noopener noreferrer">CPB — Decentrale bekostiging beschermd wonen</a> · <a href="https://www.rijksoverheid.nl/actueel/nieuws/2026/06/08/stevig-pakket-aan-maatregelen-in-aanpak-zorgfraude" target="_blank" rel="noopener noreferrer">Rijksoverheid — Kabinetspakket zorgfraude (2026)</a> · <a href="https://www.houthoff.com/nl/insights/news/sound-operational-practices-in-care-and-youth-services-bill/" target="_blank" rel="noopener noreferrer">Houthoff — Wibz</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BW — STAP 2: KETEN ===== -->
+<div class="modal-overlay" id="ov-bw-keten">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bw-keten')">&#x2715;</button>
+    <div class="modal-title">Keten &amp; rollen</div>
+    <div class="modal-kicker">Beschermd wonen &amp; opvang · stap 2 van 4</div>
+
+    <div class="mh">Wie speelt welke rol?</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Gemeente / centrumgemeente:</strong> beoordeelt de aanvraag, geeft de beschikking af, koopt de voorziening in en draagt de kosten. Voor beschermd wonen ligt dit nu nog vaak bij de centrumgemeente; met de voorgenomen doordecentralisatie verschuift het naar álle gemeenten.</li>
+      <li><strong>Aanbieder beschermd/begeleid wonen:</strong> levert wonen én zorg, vaak in een eigen of gelieerd pand. Door die dubbelrol lopen huur en zorggeld door dezelfde hand — wat de cliënt extra afhankelijk maakt en ruimte biedt om geld via de huur weg te sluizen.</li>
+      <li><strong>Cliënt:</strong> kwetsbaar (psychiatrie, verslaving, dakloosheid) en vaak in een afhankelijke positie. Omdat zorg, huisvesting en soms budgetbeheer bij dezelfde aanbieder liggen, is melden riskant — wat misstanden lang onzichtbaar kan houden.</li>
+      <li><strong>Centraal Administratie Kantoor (CAK):</strong> stelt de eigen bijdrage vast en int deze. Voor beschermd wonen met verblijf is dat een inkomensafhankelijke bijdrage (geen abonnementstarief).</li>
+      <li><strong>Wmo-toezichthouder</strong> (Wet maatschappelijke ondersteuning, Wmo), veelal de Gemeentelijke Gezondheidsdienst (GGD): houdt namens de gemeente toezicht op kwaliteit en rechtmatigheid. De Inspectie Gezondheidszorg en Jeugd (IGJ) houdt geen Wmo-toezicht en komt alleen in beeld waar een aanbieder óók zorg onder de Wet kwaliteit, klachten en geschillen zorg (Wkkgz) levert (zoals GGZ-behandeling).</li>
+      <li><strong>Woningcorporatie / verhuurder:</strong> soms gelieerd aan de aanbieder. Een gelieerde verhuurder maakt het mogelijk hoge huursommen te rekenen en zo zorggeld af te romen, terwijl de zorg-bv geen woekerwinst lijkt te maken.</li>
+      <li><strong>Sociale Verzekeringsbank (SVB):</strong> betaalt bij persoonsgebonden budget (pgb) uit via het trekkingsrecht. De budgethouder krijgt het geld niet zelf in handen; de SVB betaalt declaraties namens hem — een controlepunt in de geldstroom.</li>
+    </ul>
+
+    <div class="mh">De verstrengeling van wonen, zorg en geld</div>
+    <div class="mp">Het bepalende structuurkenmerk van dit domein is dat één partij vaak <strong>zorgverlener, verhuurder én — bij een pgb — feitelijk budgetbeheerder</strong> is. De cliënt is daardoor drievoudig afhankelijk: voor zijn zorg, zijn woonplek én zijn geld. Aanbieders huisvesten cliënten geregeld in een eigen of gelieerd pand, waarbij <strong>hoge huursommen</strong> als afroommechanisme dienen en vastgoed-bv's de geldstroom aan het zicht onttrekken. Die verwevenheid maakt melden riskant voor de cliënt en het toezicht moeilijk.</div>
+
+    <div class="mh">Toezichtgaten in de keten</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Verstrengeling wonen–zorg–geld:</strong> als de aanbieder ook verhuurder is, controleert hij de huisvesting én de geldstroom én — bij pgb — vaak de budgetadministratie.</li>
+      <li><strong>Versnipperd toezicht:</strong> bij doordecentralisatie verschuift het toezicht naar veel kleinere gemeenten; sommige hebben nog niet eens een toezichthouder aangewezen, andere moeten in hun eentje tientallen tot honderden aanbieders controleren.</li>
+      <li><strong>Katvangers &amp; netwerken:</strong> bestuurders met antecedenten verschuilen zich achter stromannen en een web van bv's (zorg, vastgoed, horeca), waardoor de werkelijke begunstigde buiten beeld blijft.</li>
+    </ul>
+
+    <div class="info-banner"><strong>Waar in de keten ontstaat risico?</strong> De gevaarlijkste schakel is de <em>verstrengeling</em> van zorg, wonen en geld bij één partij: de aanbieder is zorgverlener, huisbaas én — bij pgb — feitelijk budgetbeheerder. De cliënt is daardoor drievoudig afhankelijk. Dat is precies wat in stap 4 ontvlochten en gecontroleerd moet worden — door de gemeente of een andere poortwachter (toezichthouder, accountant, bank-compliance).</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.gemeente.nu/sociaal/wmo/aanbieders-beschermd-wonen-maken-misbruik-van-clienten/" target="_blank" rel="noopener noreferrer">Gemeente.nu — Aanbieders maken misbruik van cliënten</a> · <a href="https://ggdgelderlandzuid.nl/professionals/maatschappelijke-zorg/wmo-toezicht/" target="_blank" rel="noopener noreferrer">GGD — Wmo-toezicht</a> · <a href="https://www.ikz.nl/actueel/nieuws/2019/11/12/misstanden-bij-beschermd-en-begeleid-wonen" target="_blank" rel="noopener noreferrer">IKZ — Misstanden bij beschermd en begeleid wonen</a> · <a href="https://www.bureauft.nl/media/fnlbyfag/ikz-verwevenheid-zorg-criminaliteit-eindrapport.pdf" target="_blank" rel="noopener noreferrer">IKZ &amp; RIEC — Verwevenheid (katvangers, bv-netwerken)</a> · <a href="https://www.ftm.nl/artikelen/openbaar-ministerie-kan-zorgfraude-niet-aan" target="_blank" rel="noopener noreferrer">FTM/OM — versnipperd toezicht</a> · <a href="https://www.igj.nl/onderwerpen/informatie-voor-gemeenten-en-wmo-toezichthouders" target="_blank" rel="noopener noreferrer">IGJ — Wmo-toezicht</a> · <a href="https://vng.nl/artikelen/faq-uitstel-woonplaatsbeginsel-bw" target="_blank" rel="noopener noreferrer">VNG — Woonplaatsbeginsel beschermd wonen</a> · <a href="https://vng.nl/artikelen/eigen-bijdrage-beschermd-wonen" target="_blank" rel="noopener noreferrer">CAK/VNG — Eigen bijdrage beschermd wonen</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BW — STAP 3: VERANTWOORDING ===== -->
+<div class="modal-overlay" id="ov-bw-verant">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bw-verant')">&#x2715;</button>
+    <div class="modal-title">Hoe wordt het verantwoord?</div>
+    <div class="modal-kicker">Beschermd wonen &amp; opvang · stap 3 van 4</div>
+
+    <div class="mh">Beschikking, contract en pgb-verantwoording (persoonsgebonden budget)</div>
+    <div class="mp">De voorziening rust op een beschikking met omschreven omvang en doel. Bij zorg in natura declareert de aanbieder volgens contract; bij pgb verloopt de betaling via het trekkingsrecht van de Sociale Verzekeringsbank (SVB); de inhoudelijke verantwoording en rechtmatigheidscontrole liggen bij de gemeente, die aanvullend onderzoek kan instellen wanneer de rechtmatigheid niet kan worden vastgesteld.</div>
+
+    <div class="mh">Toezicht en controle</div>
+    <div class="mp">De <strong>Wmo-toezichthouder (Wet maatschappelijke ondersteuning)</strong> (veelal Gemeentelijke Gezondheidsdienst (GGD)) controleert kwaliteit en rechtmatigheid; de gemeente toetst via contractbeheer en de jaarrekening (accountantscontrole rechtmatigheid sociaal domein). CPB en Informatie Knooppunt Zorgfraude (IKZ) wijzen erop dat de <strong>historische, niet-objectieve bekostiging</strong> en het versnipperde toezicht de verantwoording in dit domein kwetsbaar maken — zeker nu het toezicht naar veel meer gemeenten verschuift.</div>
+
+    <div class="mh">Verantwoordingsinstrumenten in beeld</div>
+    <ul class="ml" style="margin-top:4px">
+      <li>Beschikking + ondersteuningsplan met omvang en doelen.</li>
+      <li>Pgb-zorgovereenkomst en SVB-budgetverantwoording (trekkingsrecht).</li>
+      <li>Rapportages en kwaliteitsonderzoek van de Wmo-toezichthouder.</li>
+      <li>Contract- en leveranciersmonitoring; signalen van cliënten en omgeving.</li>
+    </ul>
+
+    <div class="mh">Detectie via data-analyse</div>
+    <div class="mp">Naast kwaliteitstoezicht ter plaatse loont <strong>data-analyse</strong>: een lage personeelslast ten opzichte van de omzet, hoge huur aan een gelieerde vastgoed-bv, of bestuurdersbeloningen en dividend die niet bij de zorgomvang passen. Het IKZ &amp; Regionaal Informatie- en Expertisecentrum (RIEC) zagen bij ondermijnde aanbieders een "opvallend lage personeelskosten in relatie tot de omzet" als indicator dat gedeclareerde zorg niet is geleverd. Signalen kunnen sinds 2025 via het <strong>IKZ en het Waarschuwingsregister (Wbsrz)</strong> worden gedeeld.</div>
+
+    <div class="info-banner"><strong>Voor de risicoanalyse:</strong> omdat wonen en zorg verstrengeld zijn, moet de verantwoording óók de huur- en eigendomsrelatie zichtbaar maken — anders blijft een belangrijke geldstroom buiten beeld.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wmo 2015, art. 2.3.6 en 2.4.1 (terugvordering) · <a href="https://ggdgelderlandzuid.nl/professionals/maatschappelijke-zorg/wmo-toezicht/" target="_blank" rel="noopener noreferrer">GGD — Wmo-toezicht</a> · <a href="https://repub.eur.nl/pub/79833/Rapport-rechtmatige-zorg-definitief.pdf" target="_blank" rel="noopener noreferrer">Fenger e.a. (EUR) — Naar rechtmatige zorg</a> · <a href="https://www.cpb.nl/sites/default/files/omnidownload/cpb-policy-brief-2019-10-decentrale-bekostiging-beschermd-wonen.pdf" target="_blank" rel="noopener noreferrer">CPB — Bekostiging beschermd wonen</a> · <a href="https://www.bureauft.nl/media/fnlbyfag/ikz-verwevenheid-zorg-criminaliteit-eindrapport.pdf" target="_blank" rel="noopener noreferrer">IKZ &amp; RIEC — lage personeelslast t.o.v. omzet</a> · <a href="https://kpmg.com/nl/nl/home/insights/2025/02/bestrijding-van-zorgfraude-door-gemeenten.html" target="_blank" rel="noopener noreferrer">KPMG — data-analyse</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Wbsrz (35.515)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BW — STAP 4: PRAKTIJK & RISICOANALYSE ===== -->
+<div class="modal-overlay" id="ov-bw-praktijk">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bw-praktijk')">&#x2715;</button>
+    <div class="modal-title">Praktijk, fraudesignalen &amp; integriteitsrisicoanalyse</div>
+    <div class="modal-kicker">Beschermd wonen &amp; opvang · stap 4 van 4</div>
+
+    <div class="mh">Hoe ziet het eruit in de praktijk?</div>
+    <div class="mp">Hier raakt het integriteitsrisico de <strong>cliënt zelf</strong>. Uit het IKZ-themarapport (Informatie Knooppunt Zorgfraude): aanbieders declareren meer zorg dan geleverd; cliënten moeten bankpas, zorgpas en DigiD afgeven; er is intimidatie, dwang (tot prostitutie) en dreiging met uitzetting; toezicht in de woningen ontbreekt; en een deel van de aanbieders heeft geen zorgachtergrond, soms met banden met drugshandel, mensenhandel of faillissementsfraude. Naar schatting 2.300 kwetsbare cliënten en €100 mln per jaar.</div>
+
+    <div class="mh">Concrete zaken &amp; cijfers</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Verwevenheid met criminaliteit (IKZ &amp; Regionaal Informatie- en Expertisecentrum (RIEC), 22 zorgorganisaties in Twente):</strong> bij <strong>15 van de 22</strong> organisaties werd een verband met hennepteelt gevonden — kwekerijen op de zorglocatie, in woningen van cliënten of van de eigenaar; <strong>drie aanbieders zetten cliënten in voor het knippen van hennep</strong> (criminele uitbuiting). Bij een deel kwamen daarnaast witwassen, belasting- en uitkeringsfraude, seksuele uitbuiting, mensensmokkel, illegaal wapenbezit, illegaal gokken en zelfs lidmaatschap van een Outlaw Motorcycle Gang in beeld. Daders zijn doorgaans <em>eerst crimineel, daarna de zorg in</em>: de zorg is een "eenvoudige extra inkomstenbron" met lage pakkans.</li>
+      <li><strong>Vastgoedhuur als afroommechanisme ("Een wereld te winnen"):</strong> bij netwerkfraude wordt zorggeld weggesluisd via <strong>hoge huursommen</strong> voor beschermd wonen of dagbesteding — de zorg-bv lijkt geen woekerwinst te maken, terwijl sleutelfiguren in het netwerk het geld via vastgoed opstrijken.</li>
+      <li><strong>Failliet, vastgoedboeren cashen (FTM, 2024):</strong> bij een woonzorgketen werden panden als "zorghotels" met winst doorverkocht via lucratieve huurcontracten — één pand voor €750.000 huur per jaar over 20 jaar — terwijl de zorg faalde en het bedrijf failliet ging.</li>
+      <li><strong>Katvangers:</strong> de werkelijke leidinggevenden met antecedenten blijven buiten beeld doordat stromannen als bestuurder worden ingezet.</li>
+      <li><strong>Antecedenten bij bestuurders:</strong> uit IKZ-onderzoek (2019) naar bestuurders van verdachte aanbieders bleek bij <strong>ongeveer de helft</strong> een eerdere veroordeling; een papieren antecedentencheck (VOG) is daarom "niet afdoende".</li>
+      <li><strong>Woongroep als criminele hub:</strong> de RIEC-analyse beschrijft begeleiders in woongroepen die zelf dealen of cliënten voor hen laten dealen, en cliënten die in de woonvorm verslaafd raakten. Zorg-zzp'ers met een goede informatiepositie bij kwetsbare bewoners werden ook gelinkt aan vermogensdelicten.</li>
+      <li><strong>Hoge omzet, weinig zorg:</strong> ondermijnde aanbieders combineren een relatief hoge omzet en hoge cliëntindicaties met opvallend lage personeelskosten — een aanwijzing dat de gedeclareerde zorg niet (volledig) is geleverd.</li>
+    </ul>
+
+    <div class="mh">Stap A — breng het speelveld in kaart</div>
+    <ul class="checklist" style="margin-top:4px">
+      <li>Met welke aanbieders van beschermd/begeleid wonen heb ik te maken, en om welke bedragen en geldstromen gaat het?</li>
+      <li>Bezit de aanbieder (of een gelieerde partij) ook het pand waarin cliënten wonen?</li>
+      <li>Wie zijn de bestuurders; hebben zij een zorgachtergrond of eerdere faillissementen?</li>
+      <li>Beheren cliënten hun eigen bankpas en DigiD, of de aanbieder/gemachtigde?</li>
+      <li>Zijn er signalen van cliënten, buren, politie of Veilig Thuis?</li>
+    </ul>
+
+    <div class="mh">Stap B — hoe herken je fraude en misstanden in de keten?</div>
+    <div class="mp" style="margin-bottom:6px">De RIEC-signalenherkenning, toegespitst op beschermd wonen &amp; opvang — bruikbaar voor iedereen die met deze geldstromen te maken heeft: gemeente, toezichthouder (Wmo-toezicht/GGD), accountant of de compliance-medewerker van een bank die in een KYC-onderzoek de transacties beoordeelt. Eén signaal is zelden bewijs; het gaat om de <em>optelsom</em>.</div>
+    <ul class="flag-list" style="margin-top:4px">
+      <li><strong>Veiligheid &amp; misbruik van cliënten:</strong> spreek cliënten apart; let op angst, intimidatie, dreiging met uitzetting, en tekenen van criminele, arbeids- of seksuele uitbuiting.</li>
+      <li><strong>Cliënt voert geen regie:</strong> afgegeven bankpas, zorgpas of DigiD; de aanbieder of een gemachtigde beheert de financiën; onverklaarde geldstromen.</li>
+      <li><strong>Vervlechting wonen–zorg:</strong> dezelfde partij (of een gelieerde verhuurder) is huisbaas én zorgverlener; <strong>hoge huur</strong> die feitelijk uit het zorgbudget wordt voldaan en als afroommechanisme dient.</li>
+      <li><strong>Zorg-op-papier:</strong> declaraties zonder begeleidingsplan, presentielijsten of waarneembare begeleiding ter plaatse; opvallend lage personeelslast t.o.v. de omzet.</li>
+      <li><strong>Onveilige woonsituatie:</strong> minimaal toezicht, drank/drugs in de panden, overbewoning, gebrekkig onderhoud; overlast in de buurt.</li>
+      <li><strong>Verwevenheid met criminaliteit:</strong> aanwijzingen voor hennepteelt/drugs op of rond de locatie, criminelen die in relatie tot het bureau worden gezien.</li>
+      <li><strong>Achtergrond &amp; structuur:</strong> bestuurders zonder zorgachtergrond, met antecedenten of via katvangers; netwerk van bv's met vastgoed/horeca; geld dat heen en weer wordt geheveld.</li>
+      <li><strong>Hoge winst &amp; zelfverrijking:</strong> marge structureel boven 3%, dividend, luxe levensstijl/voertuigen.</li>
+      <li><strong>Faillissement-en-doorstart:</strong> aanbieder die failliet gaat en elders met dezelfde werkwijze opduikt.</li>
+      <li><strong>Snelle groei / cliëntverloop:</strong> snelle uitbreiding van bedden of opvallende wisseling van bewoners.</li>
+    </ul>
+    <div class="mp" style="margin-top:6px">Naar mijn mening hebben de <strong>veiligheids- en uitbuitingssignalen</strong> en de <strong>wonen–zorg-vervlechting</strong> de grootste impact: daar raakt de fraude de cliënt direct.</div>
+
+    <div class="mh">Stap C — risicomatrix (voorbeeld)</div>
+    <table class="dtable">
+      <thead><tr><th>Risico</th><th>Kans</th><th>Impact</th><th>Prioriteit</th><th>Maatregel</th></tr></thead>
+      <tbody>
+        <tr><td>Uitbuiting / dwang kwetsbare cliënt</td><td>Middel</td><td>Zeer hoog</td><td class="prio-r">🔴 Urgent</td><td>Cliëntcontact apart; Veilig Thuis/politie</td></tr>
+        <tr><td>Spookzorg / overdeclaratie</td><td>Hoog</td><td>Hoog</td><td class="prio-r">🔴 Urgent</td><td>Dossiercontrole + onaangekondigd locatiebezoek</td></tr>
+        <tr><td>Woon-zorgverstrengeling</td><td>Hoog</td><td>Zeer hoog</td><td class="prio-r">🔴 Urgent</td><td>Eigendoms-/huurrelatie uitvragen en ontvlechten</td></tr>
+        <tr><td>Ondermijning / witwassen</td><td>Laag</td><td>Zeer hoog</td><td class="prio-o">🟠 Hoog</td><td>Wet Bibob (Wet bevordering integriteitsbeoordelingen door het openbaar bestuur) toepassen</td></tr>
+        <tr><td>Aanbieder zonder zorgachtergrond</td><td>Middel</td><td>Hoog</td><td class="prio-o">🟠 Hoog</td><td>Screening + contracteisen/VOG</td></tr>
+      </tbody>
+    </table>
+
+    <div class="pgb-banner">
+      <strong>Pgb-risico in dit domein.</strong> Het persoonsgebonden budget (pgb) is hier extra gevaarlijk omdat de cliënt vaak niet pgb-vaardig is en de aanbieder feitelijk het budget beheert — soms via een afgegeven DigiD of een gelieerde gemachtigde. Zo controleert de aanbieder zorg, geld én huisvesting. Let op cliënten die hun bankpas/DigiD niet zelf beheren en op woon-zorgcombinaties waarbij huur uit het zorgbudget lijkt te lopen.
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan de professional</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li>Stel de cliënt centraal, niet de aanbieder; spreek cliënten apart en neem signalen serieus.</li>
+        <li>Naar mijn mening is ontvlechting hier de belangrijkste stap: zolang dezelfde partij huisbaas én zorgverlener is, blijft de cliënt klem zitten. Ontvlecht daarom zorg en wonen, en wees extra kritisch bij die dubbelrol.</li>
+        <li>Screen bij toegang (achtergrond, kwalificaties, faillissementen) en benut de Wet Bibob; het wetsvoorstel Wibz (Wet integere bedrijfsvoering zorg- en jeugdhulpaanbieders) zou die weigerings-/intrekkingsgronden verder verruimen zodra het van kracht is.</li>
+        <li>Meld onveiligheid direct bij Veilig Thuis, de Wmo-toezichthouder (Wet maatschappelijke ondersteuning) en zo nodig de politie; de Inspectie Gezondheidszorg en Jeugd (IGJ) alleen waar een Wkkgz-zorgcomponent speelt. Voor financiële poortwachters loopt de melding van ongebruikelijke transacties via FIU-Nederland (Wet ter voorkoming van witwassen en financieren van terrorisme, Wwft). Teken nooit voor zorg die niet aantoonbaar is geleverd — dit geldt voor wie zorg levert, registreert of aftekent.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Risicoanalyse-aanpak naar model van de bijlage "Integriteitsrisicoanalyse WMO" · <a href="https://www.ikz.nl/actueel/nieuws/2019/11/12/misstanden-bij-beschermd-en-begeleid-wonen" target="_blank" rel="noopener noreferrer">IKZ — Misstanden bij beschermd en begeleid wonen</a> · <a href="https://www.ftm.nl/artikelen/misstanden-beschermd-wonen-ikz" target="_blank" rel="noopener noreferrer">FTM — Binnen de muren is het niet veilig</a> · <a href="https://www.bureauft.nl/media/fnlbyfag/ikz-verwevenheid-zorg-criminaliteit-eindrapport.pdf" target="_blank" rel="noopener noreferrer">IKZ &amp; RIEC — Verwevenheid zorg en criminaliteit</a> · <a href="https://vng.nl/sites/default/files/2023-01/Factsheet%20Zorgcriminaliteit.pdf" target="_blank" rel="noopener noreferrer">VNG/RIEC — Factsheet Zorgcriminaliteit</a> · <a href="https://www.rekenkamer.nl/actueel/nieuws/2022/04/14/aanpak-zorgfraude-is-vooral-vergaderen" target="_blank" rel="noopener noreferrer">Algemene Rekenkamer (2022)</a> · Wet Bibob · <a href="https://www.houthoff.com/nl/insights/news/sound-operational-practices-in-care-and-youth-services-bill/" target="_blank" rel="noopener noreferrer">Houthoff — Wibz</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Wbsrz (35.515)</a> · <a href="https://www.ftm.nl/artikelen/ouderenzorgbedrijf-failliet-vastgoedboeren-cashen-miljoenen" target="_blank" rel="noopener noreferrer">FTM — Vastgoedhandelaren cashen (zorghotels, 2024)</a> · <a href="https://vng.nl/sites/default/files/2020-09/200630-onderzoek-zorgfraude-publieksversie.pdf" target="_blank" rel="noopener noreferrer">LokaleZaken/VNG — "Een wereld te winnen"</a> · <a href="https://www.fiu-nederland.nl" target="_blank" rel="noopener noreferrer">FIU-Nederland — Wwft-melding</a> · <a href="https://www.ikz.nl/actueel/nieuws/2019/11/12/misstanden-bij-beschermd-en-begeleid-wonen" target="_blank" rel="noopener noreferrer">IKZ — Antecedentenonderzoek bestuurders (2019)</a></div>
+    </div>
+  </div>
+</div>
+<!-- ===== BG — STAP 1: GRONDSLAG ===== -->
+<div class="modal-overlay" id="ov-bg-grond">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bg-grond')">&#x2715;</button>
+    <div class="modal-title">Wettelijke grondslag</div>
+    <div class="modal-kicker">Begeleiding &amp; dagbesteding · stap 1 van 4</div>
+
+    <div class="mh">Reikwijdte: wat is begeleiding &amp; dagbesteding?</div>
+    <div class="mp"><span class="mtag g">Wmo 2015, art. 1.1.1</span> Onder de <strong>Wet maatschappelijke ondersteuning 2015 (Wmo 2015)</strong> omvat <em>begeleiding</em> activiteiten gericht op het bevorderen of behouden van zelfredzaamheid en participatie van mensen met een beperking of met psychische, psychosociale of cognitieve problematiek. <em>Dagbesteding</em> (groepsbegeleiding) biedt een structurele, zinvolle tijdsbesteding met begeleiding. De <strong>toetredingsdrempel is laag</strong>: anders dan in de medische zorg geldt hier geen vergunningplicht op grond van de Wet toetreding zorgaanbieders (Wtza) en geen registratie in het register Beroepen in de Individuele Gezondheidszorg (BIG).</div>
+
+    <div class="mh">De maatwerkplicht en het proces</div>
+    <div class="mp"><span class="mtag g">Wmo 2015, art. 2.3.2 / 2.3.5</span> Na een melding doet de gemeente <strong>onderzoek</strong> (binnen zes weken) naar de behoefte, de eigen kracht en het netwerk, en beslist daarna bij <strong>beschikking</strong> (binnen twee weken na de aanvraag). De gemeente kiest in beginsel de <strong>goedkoopst adequate</strong> oplossing. Voor de eigen bijdrage geldt het <strong>abonnementstarief</strong>, geïnd door het Centraal Administratie Kantoor (CAK).</div>
+
+    <div class="mh">Twee leveringsvormen: in natura of pgb</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Zorg in natura (ZIN)</strong> — de gemeente contracteert de aanbieder en betaalt rechtstreeks op declaratiebasis.</li>
+      <li><strong>Persoonsgebonden budget (pgb)</strong> — <span class="mtag g">art. 2.3.6</span> de cliënt koopt zelf zorg in; dit mag alleen als hij <strong>pgb-vaardig</strong> is, gemotiveerd voor een pgb kiest en de kwaliteit gewaarborgd is. Betaling loopt via het <strong>trekkingsrecht</strong> bij de Sociale Verzekeringsbank (SVB).</li>
+    </ul>
+
+    <div class="mh">Tegengaan van misbruik &amp; terugvordering</div>
+    <div class="mp"><span class="mtag g">Wmo 2015, art. 2.1.3</span> verplicht de gemeente in haar verordening regels op te nemen tegen onterechte ontvangst en misbruik; <span class="mtag g">art. 2.3.10</span> maakt herzien en intrekken mogelijk en <span class="mtag g">art. 2.4.1</span> biedt de grondslag voor <strong>terugvordering</strong>. Een bekende horde is het <strong>dubbele-opzetvereiste</strong>: opzet moet eerst op <em>cliëntniveau</em> worden aangetoond voordat bij de — vaak juist initiërende — aanbieder kan worden teruggevorderd. Het kabinet bereidt voor dit vereiste te <strong>schrappen</strong>.</div>
+
+    <div class="mh">Het kwaliteitsregime</div>
+    <div class="mp"><span class="mtag g">Wmo 2015, hoofdstuk 3</span> De voorziening moet van <strong>goede kwaliteit</strong> zijn — veilig, doeltreffend, doelmatig en cliëntgericht (art. 3.1). Aanbieders kunnen worden verplicht een <strong>Verklaring Omtrent het Gedrag (VOG)</strong> te overleggen (art. 3.5), moeten met de <strong>meldcode</strong> werken (art. 3.3) en <strong>calamiteiten en geweld melden</strong> bij de toezichthoudende ambtenaar (art. 3.4); cliënten hebben recht op een klachtregeling en op medezeggenschap (beide art. 3.2). Doordat begeleiding een weinig objectiveerbare prestatie is, leunt de kwaliteitsborging sterk op deze administratieve waarborgen.</div>
+
+    <div class="mh">Toezicht en verankering</div>
+    <div class="mp">De gemeente legt het beleid vast in een <strong>beleidsplan</strong> (art. 2.1.2) en een <strong>verordening</strong> (art. 2.1.3) en wijst een <strong>Wmo-toezichthouder</strong> aan (art. 6.1), in de praktijk vaak de Gemeentelijke Gezondheidsdienst (GGD); bij vermoedens van fraude kan de <strong>sociale recherche</strong> onderzoek doen.</div>
+
+    <div class="mh">Handhavingsinstrumenten aan de poort</div>
+    <div class="mp">De <strong>vergunningplicht</strong> voor nieuwe zorgaanbieders (Wtza, sinds 1 januari 2025) geldt alleen voor aanbieders die zorg onder de Wkkgz leveren, niet voor zuivere Wmo-aanbieders. Wel is de <strong>Wet Bibob</strong> (Wet bevordering integriteitsbeoordelingen door het openbaar bestuur) inzetbaar bij Wmo-subsidies en open-house-inkoop. Het <strong>wetsvoorstel Wet integere bedrijfsvoering zorg- en jeugdhulpaanbieders (Wibz)</strong> beoogt de weigerings- en intrekkingsgronden te verruimen. Het kabinetspakket van juni 2026 wil de vergunningplicht uitbreiden naar <strong>solisten en onderaannemers</strong> en een VOG verplichten voor bestuurders, eigenaren en toezichthouders.</div>
+
+    <div class="info-banner"><strong>Waarom dit eerst?</strong> "Goedkoopst adequaat", de pgb-voorwaarden en de terugvorderingsgrondslag bepalen wanneer een indicatie te zwaar of een declaratie onrechtmatig is. Samen met de kwaliteits- en toezichtbepalingen vormt dit het kader waarop de gemeente in stap 4 kan handhaven.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wmo 2015, art. 1.1.1, 2.1.2, 2.1.3, 2.3.2, 2.3.5, 2.3.6, 2.3.10, 2.4.1, 3.1–3.5 en 6.1 (Stb. 2014, 280) · Gemeentewet · Wet Bibob · Wet toetreding zorgaanbieders (Wtza) · <a href="https://maxius.nl/wet-maatschappelijke-ondersteuning-2015/artikel2.3.6" target="_blank" rel="noopener noreferrer">Wmo 2015 — art. 2.3.6 (pgb)</a> · <a href="https://www.schulinck.nl/opinie/opinie-wmo-fraude-de-sociale-recherche-en-terugvordering/" target="_blank" rel="noopener noreferrer">Schulinck — Wmo-fraude en terugvordering</a> · <a href="https://www.stimulansz.nl/hoe-zit-dat-pgb-fraude-in-de-wmo-2015/" target="_blank" rel="noopener noreferrer">Stimulansz — Pgb-fraude in de Wmo 2015</a> · <a href="https://www.tweedekamer.nl/kamerstukken/kamervragen/detail?id=2024Z12311&did=2024D29700" target="_blank" rel="noopener noreferrer">TK/OM — dubbele-opzetvereiste &amp; vergunningplicht</a> · <a href="https://www.rijksoverheid.nl/actueel/nieuws/2026/06/08/stevig-pakket-aan-maatregelen-in-aanpak-zorgfraude" target="_blank" rel="noopener noreferrer">Rijksoverheid — Kabinetspakket zorgfraude (2026)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BG — STAP 2: KETEN ===== -->
+<div class="modal-overlay" id="ov-bg-keten">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bg-keten')">&#x2715;</button>
+    <div class="modal-title">Keten &amp; rollen</div>
+    <div class="modal-kicker">Begeleiding &amp; dagbesteding · stap 2 van 4</div>
+
+    <div class="mh">Wie speelt welke rol?</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Gemeente / wijkteam / Wmo-consulent (Wet maatschappelijke ondersteuning):</strong> doet het onderzoek (vraagverheldering, eigen kracht, netwerk), indiceert en geeft de beschikking af. Omdat begeleiding moeilijk objectiveerbaar is, is juist de indicatiestelling hier gevoelig — een te zware indicatie vergroot de ruimte voor overdeclaratie.</li>
+      <li><strong>Aanbieder begeleiding/dagbesteding:</strong> levert de ondersteuning. De lage toetredingsdrempel (geen Wtza-vergunning, geen BIG-registratie (Beroepen in de Individuele Gezondheidszorg)) maakt dat vrijwel iedereen zich als aanbieder kan presenteren — wat de poort kwetsbaar maakt voor onbevoegde of malafide partijen.</li>
+      <li><strong>Pgb-budgethouder en/of gemachtigde / bemiddelingsbureau:</strong> beheert het budget en koopt zorg in. Voert een gemachtigde of bureau dat namens een cliënt met beperkte regie, dan is dit de gevoeligste schakel: declaratie zonder feitelijke levering ligt op de loer.</li>
+      <li><strong>Sociale Verzekeringsbank (SVB):</strong> betaalt bij persoonsgebonden budget (pgb) uit via het trekkingsrecht op declaratie. De budgethouder krijgt het geld niet zelf in handen; de SVB betaalt de zorgverlener namens hem — een controlepunt in de geldstroom.</li>
+      <li><strong>Wmo-toezichthouder (veelal Gemeentelijke Gezondheidsdienst (GGD)) en sociale recherche:</strong> de Wmo-toezichthouder houdt namens de gemeente toezicht op kwaliteit en rechtmatigheid; bij concrete fraudevermoedens doet de sociale recherche onderzoek, met terugvordering als sluitstuk.</li>
+    </ul>
+
+    <div class="mh">Drie manieren waarop een zzp'er in de keten zit</div>
+    <div class="mp">De RIEC-fenomeenanalyse (Regionaal Informatie- en Expertisecentrum) onderscheidt drie inhuurroutes, met oplopende ondoorzichtigheid: (1) een <strong>rechtstreeks contract</strong> met de gemeente; (2) als <strong>onderaannemer</strong> van een gecontracteerde hoofdaannemer; of (3) <strong>via een intermediair</strong> — een uitzend-, bemiddelings- of detacheringsbureau, waarbij er géén direct contract met de zorgaanbieder bestaat. Bij route 3 is het zicht op wie de zorg feitelijk levert het kleinst, terwijl de wettelijke screeningsplicht (diploma, Verklaring Omtrent het Gedrag (VOG)) tóch bij de inhurende zorgaanbieder blijft liggen.</div>
+
+    <div class="mh">Toezichtgaten in de keten</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Budgethouder declareert zelf:</strong> bij pgb vult de budgethouder of gemachtigde de uren zelf in de SVB-omgeving in, en kan zo invullen wat goed uitkomt. Een aangekondigd huisbezoek waar de administratie op papier klopt, levert dan weinig op.</li>
+      <li><strong>Bemiddelingsbureaus buiten beeld:</strong> bureaus die zzp'ers plaatsen vallen meestal buiten het IGJ-toezicht (Inspectie Gezondheidszorg en Jeugd), terwijl daar valse diploma's en onderbetaling samenkomen.</li>
+      <li><strong>"Kat op het spek":</strong> als dezelfde partij indiceert én de zorg levert, ontbreekt functiescheiding — "dan vraag je eigenlijk om fraude" (OM).</li>
+    </ul>
+
+    <div class="info-banner"><strong>Waar in de keten ontstaat risico?</strong> De combinatie van een <em>lage toetredingsdrempel</em>, een <em>moeilijk objectiveerbare prestatie</em> en een <em>gemachtigde die namens een kwetsbare cliënt het budget beheert</em> maakt deze keten bijzonder fraudegevoelig. Richt de controle in stap 4 op de bemiddelaar/gemachtigde en op de feitelijke levering.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.stimulansz.nl/fraude-wmo-jeugdzorg-en-participatiewet/" target="_blank" rel="noopener noreferrer">Stimulansz — Fraude Wmo, Jeugdzorg en Pw</a> · <a href="https://ggdgelderlandzuid.nl/professionals/maatschappelijke-zorg/wmo-toezicht/" target="_blank" rel="noopener noreferrer">GGD — Wmo-toezicht</a> · <a href="https://www.ikz.nl/wp-content/uploads/2025/01/JaarrapportageSignalenfraudeindezorg2023.pdf" target="_blank" rel="noopener noreferrer">IKZ — Signalen fraude in de zorg 2023</a> · <a href="https://eenvandaag.avrotros.nl/artikelen/arbeidsinspectie-onderzoekt-mogelijk-misbruik-van-arbeidsmigranten-in-pgb-fraudeconstructie-we-moesten-24-uur-per-dag-beschikbaar-zijn-160013" target="_blank" rel="noopener noreferrer">EenVandaag — budgethouder vult uren zelf in</a> · <a href="https://www.ftm.nl/artikelen/openbaar-ministerie-kan-zorgfraude-niet-aan" target="_blank" rel="noopener noreferrer">FTM/OM — "kat op het spek"</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BG — STAP 3: VERANTWOORDING ===== -->
+<div class="modal-overlay" id="ov-bg-verant">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bg-verant')">&#x2715;</button>
+    <div class="modal-title">Hoe wordt het verantwoord?</div>
+    <div class="modal-kicker">Begeleiding &amp; dagbesteding · stap 3 van 4</div>
+
+    <div class="mh">Declaratie en pgb-verantwoording (persoonsgebonden budget)</div>
+    <div class="mp">Bij zorg in natura declareert de aanbieder geleverde uren of dagdelen volgens contract. Bij pgb verloopt de betaling via het trekkingsrecht van de Sociale Verzekeringsbank (SVB); de rechtmatigheidscontrole ligt bij de gemeente. Kan zij niet vaststellen of het budget rechtmatig is besteed, dan kan zij aanvullend onderzoek doen en ten onrechte ontvangen bedragen <strong>terugvorderen</strong> (art. 2.4.1 Wet maatschappelijke ondersteuning (Wmo)).</div>
+
+    <div class="mh">De kernmoeilijkheid</div>
+    <div class="mp">Begeleiding is een <strong>weinig objectiveerbare prestatie</strong>: "geleverd of niet" is achteraf lastig te bewijzen. Verantwoording leunt daarom sterk op de zorgovereenkomst, de urenregistratie/presentie en het contact met de cliënt zelf — juist de stukken die bij spookzorg ontbreken of zijn vervalst.</div>
+
+    <div class="mh">Verantwoordingsinstrumenten in beeld</div>
+    <ul class="ml" style="margin-top:4px">
+      <li>Beschikking + ondersteuningsplan (omvang, doelen, frequentie).</li>
+      <li>Pgb-zorgovereenkomst en SVB-budgetverantwoording (trekkingsrecht).</li>
+      <li>Urenregistratie / presentielijsten dagbesteding.</li>
+      <li>Cliënttevredenheidsonderzoek als controlemiddel; signalen van cliënten.</li>
+    </ul>
+
+    <div class="mh">Detectie via data-analyse &amp; cliëntcontact</div>
+    <div class="mp">KPMG adviseert gemeenten <strong>realtime data-analyse</strong> op gedeclareerde uren — een sterk signaal is dat declaraties vrijwel altijd op het maximum staan en niet in verhouding tot de geleverde zorg. Bij het pgb is de <strong>SVB-urenregistratie</strong> kwetsbaar omdat de budgethouder/gemachtigde die zelf invult. Direct <strong>cliëntcontact</strong> is daarom een vroege alarmbel: herkent de cliënt de zorgverlener en de geleverde uren? Signalen kunnen sinds 2025 via het <strong>Informatie Knooppunt Zorgfraude (IKZ) en het Waarschuwingsregister (Wbsrz)</strong> worden gedeeld.</div>
+
+    <div class="info-banner"><strong>Voor de risicoanalyse:</strong> omdat de prestatie zelf moeilijk meetbaar is, draait detectie hier op <em>patronen in declaraties</em> en op <em>direct cliëntcontact</em> — niet op de papieren verantwoording alleen.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wmo 2015, art. 2.3.6 en 2.4.1 · <a href="https://www.schulinck.nl/opinie/opinie-wmo-fraude-de-sociale-recherche-en-terugvordering/" target="_blank" rel="noopener noreferrer">Schulinck — Wmo-fraude en terugvordering</a> · <a href="https://vng.nl/onderwerpenindex/sociaal-domein/fraudepreventie-wmojeugd/nieuws/aan-de-slag-met-fraudesignalen-wmojeugdwet" target="_blank" rel="noopener noreferrer">VNG — Fraudesignalen Wmo/Jeugdwet</a> · <a href="https://kpmg.com/nl/nl/home/insights/2025/02/bestrijding-van-zorgfraude-door-gemeenten.html" target="_blank" rel="noopener noreferrer">KPMG — declaraties op maximum</a> · <a href="https://eenvandaag.avrotros.nl/artikelen/arbeidsinspectie-onderzoekt-mogelijk-misbruik-van-arbeidsmigranten-in-pgb-fraudeconstructie-we-moesten-24-uur-per-dag-beschikbaar-zijn-160013" target="_blank" rel="noopener noreferrer">EenVandaag — SVB-urenregistratie</a> · <a href="https://arxiv.org/pdf/2507.01924" target="_blank" rel="noopener noreferrer">arXiv — anomaliedetectie</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BG — STAP 4: PRAKTIJK & RISICOANALYSE ===== -->
+<div class="modal-overlay" id="ov-bg-praktijk">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('bg-praktijk')">&#x2715;</button>
+    <div class="modal-title">Praktijk, fraudesignalen &amp; integriteitsrisicoanalyse</div>
+    <div class="modal-kicker">Begeleiding &amp; dagbesteding · stap 4 van 4</div>
+
+    <div class="mh">Hoe ziet het eruit in de praktijk?</div>
+    <div class="mp">De dominante fraudevorm is <strong>spookzorg</strong>: declareren zonder (volledige) levering. Daarnaast: te hoge indicatiestelling, minder of slechtere zorg dan gedeclareerd, omkoping, intimidatie, en het ronselen van cliënten — soms voor witwassen of drugssmokkel. Het Informatie Knooppunt Zorgfraude (IKZ) ziet aanbieders die na faillissement onder een nieuwe rechtspersoon doorgaan. Begeleiding individueel en dagbesteding staan hierdoor structureel hoog in de fraudesignalen — in de RIEC-analyse (Regionaal Informatie- en Expertisecentrum) is <em>individuele begeleiding</em> zelfs de meest voorkomende zorgsoort in fraudesignalen over zzp'ers.</div>
+
+    <div class="mh">Concrete zaken &amp; cijfers</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Dolia Zorg (Utrecht):</strong> drie broers declareerden tussen 2014–2018 in totaal <strong>€7,5 mln</strong> bij Sociale Verzekeringsbank (SVB), verzekeraars en gemeenten voor zorg aan ruim 130 cliënten. Het Openbaar Ministerie (OM) stelt dat slechts circa <strong>11% van het pgb-geld (persoonsgebonden budget) daadwerkelijk aan zorg is besteed</strong>: ze declareerden dagbesteding en individuele begeleiding die niet of deels werd geleverd. De volumes waren feitelijk onmogelijk — <strong>170.000 gedeclareerde uren</strong> waar er realistisch ~38.000 leverbaar waren. Geëist: celstraffen tot vijf jaar en een beroepsverbod.</li>
+      <li><strong>Arbeidsmigranten in pgb-constructie (EenVandaag, 2025):</strong> bij een Wlz-pgb (Wet langdurige zorg) van <strong>€132.000/jaar</strong> factureerde het "zorgbedrijf" van een familielid maandelijks €12.000, terwijl de zorg werd geleverd door zes onderbetaalde migrantes (€900–€1.700/mnd). De budgethouder vulde in de SVB-omgeving <strong>naar believen uren in</strong>; de controle bleef beperkt tot een papieren toets.</li>
+      <li><strong>"Nietszeggende dagbesteding":</strong> een vaste tactiek uit "Een wereld te winnen" — te grote groepen, geen zinvolle activiteit, verschuilen achter slecht controleerbare zorgplannen.</li>
+      <li><strong>Identiteits- en diplomafraude bij zzp'ers (RIEC):</strong> zzp'ers die op meerdere locaties tegelijk "werken" door vrienden onder hun naam te laten draaien — 13 van de onderzochte zzp'ers gaven samen <strong>32 keer</strong> een rijbewijs als verloren/gestolen op. Online diploma's zijn voor enkele honderden euro's te koop, inclusief nep-DUO-verificatie.</li>
+      <li><strong>Het toezichtgat (citaat zorgkantoor CZ):</strong> "Er is een aangekondigd huisbezoek geweest, maar als alles op papier klopt, kunnen wij weinig doen… we weten dat er ook voor grote bedragen gefraudeerd wordt en onze mogelijkheden om dat te controleren zijn beperkt."</li>
+      <li><strong>Historische pgb-cijfers (NZa, AWBZ-tijdperk (Algemene Wet Bijzondere Ziektekosten)):</strong> bij 14.570 huisbezoeken werd in 7% een fraudevermoeden gemeld; tweederde van de budgethouders bleek onvoldoende competent om het budget te beheren. <em>(Cijfers van vóór de decentralisatie — illustratief voor de structurele pgb-kwetsbaarheid.)</em></li>
+    </ul>
+
+    <div class="info-banner"><strong>Detectie met data-analyse:</strong> omdat de prestatie moeilijk te verifiëren is, wordt fraude wetenschappelijk benaderd als <em>anomaliedetectie</em> — het opsporen van zeldzame, afwijkende declaratiepatronen (fraude vormt een zeer klein deel van alle transacties). De Dolia-zaak toont het principe: de verhouding tussen gedeclareerde en feitelijk leverbare uren (170.000 vs ~38.000) was feitelijk onmogelijk.</div>
+
+    <div class="mh">Stap A — breng het speelveld in kaart</div>
+    <ul class="checklist" style="margin-top:4px">
+      <li>Met welke aanbieders/zorgvormen (begeleiding, dagbesteding) heb ik te maken, en om welke bedragen en geldstromen gaat het?</li>
+      <li>Welk aandeel loopt via pgb, en wie beheert die budgetten (gemachtigde/bemiddelaar)?</li>
+      <li>Treedt één bemiddelaar of gemachtigde op voor meerdere budgethouders?</li>
+      <li>Wie zijn de eigenaren/bestuurders; eerdere faillissementen of doorstarts?</li>
+      <li>Zijn er eerdere signalen of klachten over de aanbieder?</li>
+    </ul>
+
+    <div class="mh">Stap B — hoe herken je fraude in de keten?</div>
+    <div class="mp" style="margin-bottom:6px">De RIEC-signalenherkenning, toegespitst op begeleiding &amp; dagbesteding — bruikbaar voor iedereen die met deze geldstromen te maken heeft: gemeente, toezichthouder (Wmo-toezicht/GGD), accountant of de compliance-medewerker van een bank die in een KYC-onderzoek de transacties beoordeelt. Eén signaal is zelden bewijs; het gaat om de <em>optelsom</em>.</div>
+    <ul class="flag-list" style="margin-top:4px">
+      <li><strong>Declaratiepatronen:</strong> data-analyse op uitschieters, declaraties die (vrijwel) altijd het budgetplafond raken, identieke uren over veel cliënten, of feitelijk onmogelijke volumes (vgl. Dolia: 170.000 vs ~38.000 uur).</li>
+      <li><strong>Ontbrekende onderbouwing:</strong> geen zorgovereenkomst, urenregistratie of presentielijst; "nietszeggende" dagbesteding met te grote groepen.</li>
+      <li><strong>Cliënt kent zorgverlener niet:</strong> budgethouders die hun aanbieder niet kennen, de zorg niet herkennen, of zijn geïnstrueerd wat zij tegen de gemeente moeten verklaren.</li>
+      <li><strong>Bemiddelaar-concentratie:</strong> één gemachtigde/bureau dat voor veel budgethouders declareert en de DigiD/administratie beheert; uren door de budgethouder zelf ingevuld in de SVB-omgeving.</li>
+      <li><strong>Ronselen &amp; afhankelijkheid:</strong> cliënten geworven met cadeaus of huisvesting, of onder druk gezet; inzet van cliënten voor witwassen of drugs.</li>
+      <li><strong>Onderbetaald/onbevoegd personeel:</strong> ongeschoold personeel, uitzendkrachten of arbeidsmigranten onder het minimumloon; valse diploma's/VOG's (Verklaring Omtrent het Gedrag) via een bemiddelingsbureau.</li>
+      <li><strong>Hoge winst &amp; zelfverrijking:</strong> marge structureel boven 3%, dividend, luxe levensstijl/voertuigen die niet bij de onderneming passen.</li>
+      <li><strong>Ondoorzichtige structuur:</strong> facturering via een gelieerd "zorgbedrijf" van een familielid; netwerk van bv's; contante uitkeringen aan budgethouders.</li>
+      <li><strong>Doorstart-patroon:</strong> bestuurders die na faillissement met een nieuwe rechtspersoon terugkeren (KvK + Waarschuwingsregister).</li>
+      <li><strong>Antecedenten:</strong> eerdere veroordelingen van de aanbieder/zzp'er (toets via Bibob).</li>
+    </ul>
+    <div class="mp" style="margin-top:6px">Naar mijn mening hebben de <strong>declaratiepatronen</strong> (feitelijk onmogelijke volumes, structureel het budgetplafond) en de <strong>bemiddelaar-concentratie</strong> hier de grootste signaalwaarde: daar zit de kern van de spookzorg.</div>
+
+    <div class="mh">Stap C — risicomatrix (voorbeeld)</div>
+    <table class="dtable">
+      <thead><tr><th>Risico</th><th>Kans</th><th>Impact</th><th>Prioriteit</th><th>Maatregel</th></tr></thead>
+      <tbody>
+        <tr><td>Spookzorg</td><td>Hoog</td><td>Hoog</td><td class="prio-r">🔴 Urgent</td><td>Dossiercontrole + cliëntcontact</td></tr>
+        <tr><td>Declaratiefraude (meer uren)</td><td>Hoog</td><td>Hoog</td><td class="prio-r">🔴 Urgent</td><td>Data-analyse declaraties</td></tr>
+        <tr><td>Cliëntmisleiding</td><td>Middel</td><td>Hoog</td><td class="prio-o">🟠 Hoog</td><td>Cliënttevredenheidsonderzoek</td></tr>
+        <tr><td>Belangenverstrengeling indicatie</td><td>Middel</td><td>Hoog</td><td class="prio-o">🟠 Hoog</td><td>Integriteitsverklaring; functiescheiding</td></tr>
+        <tr><td>Ondermijning / witwassen</td><td>Laag</td><td>Zeer hoog</td><td class="prio-o">🟠 Hoog</td><td>Wet Bibob (Wet bevordering integriteitsbeoordelingen door het openbaar bestuur) toepassen</td></tr>
+        <tr><td>Administratiefouten</td><td>Hoog</td><td>Laag</td><td class="prio-y">🟡 Middel</td><td>Steekproefcontroles</td></tr>
+      </tbody>
+    </table>
+
+    <div class="pgb-banner">
+      <strong>Pgb-risico in dit domein.</strong> Hier is het pgb-risico het meest geconcentreerd: een groot deel van de Wmo-fraude (Wet maatschappelijke ondersteuning) betreft pgb-gefinancierde begeleiding, vaak beheerd door een gemachtigde of bemiddelingsbureau namens een cliënt met beperkte regie. Patronen: één bemiddelaar voor veel cliënten, budgethouders die hun zorgverlener niet kennen, declaraties op het budgetplafond, en zorg zonder zorgovereenkomst of urenregistratie. Beoordeel pgb-vaardigheid vooraf en verstrek bij twijfel een kortdurend pgb ter evaluatie.
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan de professional</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li>Registreer feitelijk geleverde zorg en declareer nooit meer of anders dan geleverd — dit geldt voor wie zorg levert, registreert of aftekent.</li>
+        <li>Toets pgb-vaardigheid en de gemachtigde; wees alert op bemiddelaars die voor meerdere budgethouders optreden.</li>
+        <li>Indiceer op de werkelijke hulpvraag; werk niet mee aan opgeblazen indicaties. Naar mijn mening is functiescheiding tussen indiceren en leveren hier de belangrijkste waarborg: laat wie de hulpvraag vaststelt niet ook de zorg leveren.</li>
+        <li>Volg het terugvorderings- en meldpad (Wmo-toezicht, via de gemeente naar IKZ/Waarschuwingsregister); voor financiële poortwachters loopt de melding van ongebruikelijke transacties via FIU-Nederland (Wet ter voorkoming van witwassen en financieren van terrorisme, Wwft). Documenteer bezwaren en raadpleeg de meldregeling/het Huis voor Klokkenluiders.</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Risicoanalyse-aanpak naar model van de bijlage "Integriteitsrisicoanalyse WMO" · <a href="https://www.stimulansz.nl/hoe-zit-dat-pgb-fraude-in-de-wmo-2015/" target="_blank" rel="noopener noreferrer">Stimulansz — Pgb-fraude Wmo 2015</a> · <a href="https://www.ikz.nl/wp-content/uploads/2025/01/JaarrapportageSignalenfraudeindezorg2023.pdf" target="_blank" rel="noopener noreferrer">IKZ — Signalen fraude in de zorg 2023</a> · <a href="https://www.schulinck.nl/opinie/opinie-wmo-fraude-de-sociale-recherche-en-terugvordering/" target="_blank" rel="noopener noreferrer">Schulinck — Wmo-fraude en terugvordering</a> · <a href="https://www.ftm.nl/artikelen/pgb-een-snoepwinkel-voor-fraudeurs" target="_blank" rel="noopener noreferrer">FTM — PGB: een snoepwinkel voor fraudeurs (Dolia-zaak)</a> · <a href="https://eenvandaag.avrotros.nl/artikelen/arbeidsinspectie-onderzoekt-mogelijk-misbruik-van-arbeidsmigranten-in-pgb-fraudeconstructie-we-moesten-24-uur-per-dag-beschikbaar-zijn-160013" target="_blank" rel="noopener noreferrer">EenVandaag — Arbeidsmigranten in pgb-constructie</a> · <a href="https://www.ede.nl/fileadmin/ede.nl/afbeeldingen/Nieuws/2023/Fenomeenanalyse_criminele_zzp-ers_in_de_zorg.pdf" target="_blank" rel="noopener noreferrer">RIEC Oost — Criminele zzp'ers in de zorg</a> · <a href="https://kpmg.com/nl/nl/home/insights/2025/02/bestrijding-van-zorgfraude-door-gemeenten.html" target="_blank" rel="noopener noreferrer">KPMG — Bestrijding zorgfraude door gemeenten</a> · <a href="https://puc.overheid.nl/nza/doc/PUC_3518_22/" target="_blank" rel="noopener noreferrer">NZa — Thematisch onderzoek pgb-fraude</a> · <a href="https://arxiv.org/pdf/2507.01924" target="_blank" rel="noopener noreferrer">arXiv — anomaliedetectie op declaraties</a> · <a href="https://www.eerstekamer.nl/wetsvoorstel/35515_wet_bevorderen_samenwerking" target="_blank" rel="noopener noreferrer">Wbsrz (35.515)</a> · <a href="https://www.fiu-nederland.nl" target="_blank" rel="noopener noreferrer">FIU-Nederland — Wwft-melding</a> · <a href="https://vng.nl/sites/default/files/2020-09/200630-onderzoek-zorgfraude-publieksversie.pdf" target="_blank" rel="noopener noreferrer">LokaleZaken/VNG — "Een wereld te winnen"</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openM(id){ document.getElementById('ov-'+id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeM(id){ document.getElementById('ov-'+id).classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('.modal-overlay').forEach(function(ov){
+  ov.addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; } });
+});
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ document.querySelectorAll('.modal-overlay.open').forEach(function(ov){ ov.classList.remove('open'); }); document.body.style.overflow=''; }
+});
+// === Kopieerbeveiliging ===
+// Eén schakelaar. Zet op TRUE vóór publicatie om kopiëren, plakken en tekstselectie in de
+// modals te blokkeren (bronvermeldingen blijven altijd kopieerbaar). Op TRUE gezet bij
+// publicatie (10 juni 2026), na afronding van de revisie.
+const BLOKKEER_KOPIEREN = true;
+if (BLOKKEER_KOPIEREN) {
+  document.querySelectorAll('.modal-box').forEach(function(box){
+    box.style.userSelect = 'none'; box.style.webkitUserSelect = 'none';
+    function allowInSource(e){ return e.target.closest('.source-block')!==null; }
+    box.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  });
+}
+</script>
+
+<footer class="site-footer">
+  <span class="fmark">TRNKL<span class="merkpunt"></span></span> &middot; Atelier voor kennis en beleid<br>
+  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+<title>TRNKL — Flowtool Zorg · zelfevaluatie integriteitssignalen</title>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flowtool Zorg — zelfevaluatie integriteitssignalen">
+<meta property="og:description" content="Interactieve zelfevaluatie · drie gemeentelijke zorgdomeinen · speelveld → signalen → patroon & vervolgstappen · 100% in de browser, zonder persoonsgegevens">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #faf9f4;
+    --bg-tertiary: #f5f4ee;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --border-light: rgba(0,0,0,0.10);
+    --border-mid: rgba(0,0,0,0.18);
+    --border-strong: rgba(0,0,0,0.28);
+    --tool-accent: #FF5A1F;
+    --tool-accent-bg: #FFF1EA;
+    --tool-accent-deep: #C2410C;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c;
+      --bg-secondary: #2a2a27;
+      --bg-tertiary: #242422;
+      --text-primary: #e8e6de;
+      --text-secondary: #9c9a92;
+      --text-tertiary: #6b6960;
+      --border-light: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.22);
+      --tool-accent: #ff7a47;
+      --tool-accent-bg: rgba(255,90,31,0.16);
+      --tool-accent-deep: #f0b48d;
+    }
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  header {
+    background: var(--bg-primary);
+    border-bottom: 0.5px solid var(--border-mid);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 0 0 100vmax var(--bg-primary);
+    clip-path: inset(0 -100vmax);
+  }
+  .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .header-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+  .brand-mark { font-size: 21px; font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; line-height: 1; text-decoration: none; white-space: nowrap; }
+  .brand-mark:hover { opacity: 0.7; }
+  .merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+  .header-rule { width: 1px; height: 26px; background: var(--border-mid); flex: 0 0 auto; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 24px 48px; }
+
+  /* ----- Stepper ----- */
+  .stepper { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 6px 0 26px; flex-wrap: wrap; }
+  .step-dot { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-tertiary); }
+  .step-dot .dot { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--border-mid); background: var(--bg-primary); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--text-tertiary); }
+  .step-dot.active { color: var(--tool-accent-deep); }
+  .step-dot.active .dot { border-color: var(--tool-accent); background: var(--tool-accent-bg); color: var(--tool-accent-deep); }
+  .step-dot.done .dot { border-color: #1D9E75; background: #E1F5EE; color: #085041; }
+  .step-link { width: 18px; height: 1.5px; background: var(--border-mid); }
+  @media (prefers-color-scheme: dark) {
+    .step-dot.done .dot { background: rgba(29,158,117,0.2); color: #7fd0b2; border-color: #1D9E75; }
+  }
+
+  /* ----- Cards / panels ----- */
+  .panel {
+    background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px;
+    padding: 22px 24px 26px; margin-bottom: 18px;
+  }
+  .panel-kicker { font-size: 10px; font-weight: 700; color: var(--tool-accent-deep); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+  .panel-title { font-size: 17px; font-weight: 600; color: var(--text-primary); line-height: 1.35; margin-bottom: 6px; }
+  .panel-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 4px; }
+  .mh { font-size: 10px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; margin: 18px 0 6px; }
+  .mp { font-size: 12.5px; color: var(--text-primary); line-height: 1.75; }
+  .ml { font-size: 12.5px; color: var(--text-primary); line-height: 1.75; padding-left: 16px; }
+  .ml li { margin-bottom: 3px; }
+
+  .avg-banner { background: #E1F5EE; border: 1px solid #A8DFC9; border-radius: 8px; padding: 11px 14px; margin: 12px 0 0; font-size: 11.5px; color: #085041; line-height: 1.65; }
+  .avg-banner strong { font-weight: 700; }
+  .warn-banner { background: #FFF3E0; border: 1px solid #F5D9A8; border-radius: 8px; padding: 11px 14px; margin: 12px 0 0; font-size: 11.5px; color: #7A3200; line-height: 1.65; }
+  .warn-banner strong { font-weight: 700; }
+  .principe-banner { background: var(--tool-accent-bg); border: 1px solid var(--tool-accent); border-radius: 8px; padding: 11px 14px; margin: 12px 0 0; font-size: 11.5px; color: var(--tool-accent-deep); line-height: 1.65; }
+  .principe-banner strong { font-weight: 700; }
+  @media (prefers-color-scheme: dark) {
+    .avg-banner { background: rgba(29,158,117,0.14); border-color: rgba(29,158,117,0.4); color: #9fd9c0; }
+    .warn-banner { background: rgba(194,65,12,0.13); border-color: rgba(194,65,12,0.4); color: #f0b48d; }
+  }
+
+  /* ----- Domeinkeuze ----- */
+  .domein-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
+  .domein-card {
+    border: 1.5px solid var(--border-mid); border-radius: 10px; background: var(--bg-primary);
+    padding: 14px 16px; cursor: pointer; text-align: left; width: 100%;
+    display: flex; gap: 12px; align-items: flex-start; font-family: var(--font);
+    transition: border-color .15s, transform .12s, box-shadow .12s;
+  }
+  .domein-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: #FF5A1F; }
+  .domein-icon { width: 36px; height: 36px; min-width: 36px; border-radius: 8px; background: #FFF1EA; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .domein-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+  .domein-wet { font-size: 10px; color: var(--text-secondary); margin: 2px 0 6px; }
+  .domein-desc { font-size: 11.5px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ----- Vragen (Stap A & B) ----- */
+  .q-card { border: 0.5px solid var(--border-light); border-radius: 10px; background: var(--bg-primary); padding: 16px 18px; margin-bottom: 12px; }
+  .q-num { font-size: 9px; font-weight: 700; color: var(--text-tertiary); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+  .q-title { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.4; margin-bottom: 4px; }
+  .q-vraag { font-size: 12.5px; color: var(--text-primary); line-height: 1.7; margin-bottom: 10px; }
+  .q-meta { font-size: 11.5px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 6px; }
+  .q-meta strong { color: var(--text-primary); font-weight: 600; }
+  .q-toggle {
+    font-size: 11px; font-weight: 500; color: var(--text-secondary);
+    background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 20px;
+    cursor: pointer; padding: 5px 13px; font-family: var(--font); margin-bottom: 10px;
+    transition: border-color .12s, color .12s;
+  }
+  .q-toggle::before { content: "▸"; margin-right: 6px; font-size: 9px; color: var(--tool-accent); display: inline-block; transition: transform .15s; }
+  .q-toggle.open::before { transform: rotate(90deg); }
+  .q-toggle:hover { border-color: var(--tool-accent); color: var(--tool-accent-deep); }
+  .q-detail { display: none; border-left: 2px solid var(--border-light); padding-left: 12px; margin: 4px 0 10px; }
+  .q-detail.open { display: block; }
+  .q-detail .lbl { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin: 8px 0 2px; }
+  .lbl.waarom { color: #C2410C; }
+  .lbl.voorbeeld { color: var(--text-secondary); }
+  .lbl.nuance { color: #085041; }
+  @media (prefers-color-scheme: dark) { .lbl.nuance { color: #7fd0b2; } }
+
+  .opts { display: flex; flex-wrap: wrap; gap: 7px; }
+  .opt {
+    font-size: 11.5px; font-weight: 500; border-radius: 20px; padding: 6px 13px; cursor: pointer;
+    border: 1.5px solid var(--border-mid); background: var(--bg-primary); color: var(--text-secondary);
+    font-family: var(--font); transition: all .12s;
+  }
+  .opt:hover { border-color: var(--tool-accent); color: var(--tool-accent-deep); }
+  .opt.sel-0 { border-color: #1D9E75; background: #E1F5EE; color: #085041; font-weight: 600; }
+  .opt.sel-1 { border-color: var(--border-strong); background: var(--bg-tertiary); color: var(--text-primary); font-weight: 600; }
+  .opt.sel-2 { border-color: #C2410C; background: #FFF3E0; color: #7A3200; font-weight: 600; }
+  .opt.sel-3 { border-color: #791F1F; background: #FCEBEB; color: #791F1F; font-weight: 600; }
+  @media (prefers-color-scheme: dark) {
+    .opt.sel-0 { background: rgba(29,158,117,0.18); color: #9fd9c0; }
+    .opt.sel-2 { background: rgba(194,65,12,0.16); color: #f0b48d; }
+    .opt.sel-3 { background: rgba(121,31,31,0.25); color: #e89b9b; }
+  }
+
+  .impact-chip { display: inline-block; font-size: 9px; font-weight: 700; border-radius: 4px; padding: 2px 7px; margin-left: 6px; vertical-align: 1px; letter-spacing: .03em; }
+  .impact-zh { background: #FCEBEB; color: #791F1F; }
+  .impact-h { background: #FFF3E0; color: #7A3200; }
+  .impact-m { background: var(--bg-tertiary); color: var(--text-secondary); }
+  @media (prefers-color-scheme: dark) {
+    .impact-zh { background: rgba(121,31,31,0.25); color: #e89b9b; }
+    .impact-h { background: rgba(194,65,12,0.16); color: #f0b48d; }
+  }
+
+  /* ----- Navigatieknoppen ----- */
+  .nav-row { display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; }
+  .btn {
+    font-family: var(--font); font-size: 12.5px; font-weight: 600; border-radius: 8px; padding: 10px 20px; cursor: pointer;
+    border: 1.5px solid var(--border-mid); background: var(--bg-primary); color: var(--text-primary);
+    transition: all .12s;
+  }
+  .btn:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+  .btn.primary { background: #FF5A1F; border-color: #FF5A1F; color: #fff; }
+  .btn.primary:hover { background: #e84f17; }
+  .btn.ghost { border-color: transparent; color: var(--text-secondary); }
+  .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+  /* ----- Uitkomst ----- */
+  .urgentie-box { border-radius: 10px; padding: 16px 18px; margin: 14px 0; border: 1.5px solid; }
+  .urg-veilig { border-color: #791F1F; background: #FCEBEB; }
+  .urg-hoog { border-color: #C2410C; background: #FFF3E0; }
+  .urg-verhoogd { border-color: #C9A227; background: #FFF9E3; }
+  .urg-beperkt { border-color: #1D9E75; background: #E1F5EE; }
+  .urg-geen { border-color: var(--border-mid); background: var(--bg-tertiary); }
+  .urg-onderzoek { border-color: var(--border-strong); background: var(--bg-tertiary); }
+  .urg-onderzoek .urgentie-label { color: var(--text-secondary); }
+  .urgentie-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
+  .urg-veilig .urgentie-label { color: #791F1F; }
+  .urg-hoog .urgentie-label { color: #7A3200; }
+  .urg-verhoogd .urgentie-label { color: #7a6200; }
+  .urg-beperkt .urgentie-label { color: #085041; }
+  .urg-geen .urgentie-label { color: var(--text-secondary); }
+  .urgentie-box .mp { font-size: 12px; }
+  @media (prefers-color-scheme: dark) {
+    .urg-veilig { background: rgba(121,31,31,0.18); }
+    .urg-hoog { background: rgba(194,65,12,0.13); }
+    .urg-verhoogd { background: rgba(201,162,39,0.12); }
+    .urg-beperkt { background: rgba(29,158,117,0.13); }
+    .urg-veilig .urgentie-label { color: #e89b9b; }
+    .urg-hoog .urgentie-label { color: #f0b48d; }
+    .urg-verhoogd .urgentie-label { color: #d9c178; }
+    .urg-beperkt .urgentie-label { color: #9fd9c0; }
+  }
+
+  .res-list { list-style: none; font-size: 12px; line-height: 1.7; }
+  .res-list li { position: relative; padding-left: 22px; margin-bottom: 6px; }
+  .res-list li::before { position: absolute; left: 0; font-size: 12px; }
+  .res-list.duidelijk li::before { content: "\2691"; color: #791F1F; }
+  .res-list.mogelijk li::before { content: "\2691"; color: #C2410C; }
+  .res-list.onbekend li::before { content: "?"; color: var(--text-tertiary); font-weight: 700; }
+  .res-list .res-note { display: block; font-size: 11px; color: var(--text-secondary); }
+
+  .meld-list { font-size: 12.5px; color: var(--text-primary); line-height: 1.75; padding-left: 18px; }
+  .meld-list li { margin-bottom: 7px; }
+
+  .dtable { width: 100%; border-collapse: collapse; margin: 8px 0 4px; font-size: 11px; }
+  .dtable th, .dtable td { border: 0.5px solid var(--border-light); padding: 6px 8px; text-align: left; vertical-align: top; line-height: 1.5; }
+  .dtable th { background: var(--bg-tertiary); font-weight: 600; color: var(--text-secondary); font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+
+  .hint { font-size: 11px; color: var(--text-tertiary); padding: 4px 0 12px; text-align: center; }
+
+  .progress-note { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; }
+
+  .site-footer { padding: 28px 24px; margin-top: 40px; border-top: 0.5px solid var(--border-light); background: var(--bg-primary); text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.7; }
+  .site-footer .fmark { font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; }
+  .site-footer a { color: var(--text-tertiary); text-decoration: underline; }
+  .site-footer a:hover { color: #C2410C; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 18px 14px 40px; }
+    .panel { padding: 18px 16px 22px; }
+    .step-dot span.steplabel { display: none; }
+    header { padding: 12px 14px; gap: 10px; }
+    .header-sub { display: none; }
+  }
+
+  /* ----- Print (export van de eigen reflectie) ----- */
+  @media print {
+    header, .stepper, .nav-row, .hint, .no-print, .site-footer { display: none !important; }
+    body { background: #fff; color: #000; }
+    .panel { border: none; padding: 0; }
+    .wrap { max-width: 100%; padding: 0; }
+    a { color: #000; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" class="brand-mark" title="Naar de homepage">TRNKL<span class="merkpunt"></span></a>
+  <div class="header-rule"></div>
+  <div style="flex:1">
+    <div class="header-title">Flowtool Zorg — zelfevaluatie integriteitssignalen</div>
+    <div class="header-sub">Drie gemeentelijke zorgdomeinen · speelveld → signalen → patroon &amp; vervolgstappen · volledig in de browser</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stepper" id="stepper"></div>
+  <div id="app"></div>
+</div>
+
+<footer class="site-footer">
+  <span class="fmark">TRNKL<span class="merkpunt"></span></span> &middot; Atelier voor kennis en beleid<br>
+  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a>
+</footer>
+
+<script>
+/* ============================================================
+   Flowtool Zorg — TRNKL
+   100% client-side. Geen server, geen API-calls, geen tracking,
+   geen cookies, geen opslag. Alle invoer leeft uitsluitend in
+   het geheugen van deze pagina en verdwijnt bij het sluiten
+   van de tab. Inhoud herleidbaar tot de TRNKL-flowchart
+   "Integriteitsrisico's in de gemeentelijk gefinancierde zorg
+   en ondersteuning" (flowcharts/integriteit-zorg.html).
+   ============================================================ */
+
+// ---------- INHOUD (bron: integriteit-zorg.html) ----------
+
+const DOMEINEN = {
+  jeugd: {
+    naam: "Jeugdzorg",
+    wet: "Jeugdwet · gemeente",
+    icoon: "🧒",
+    kort: "De gemeente betaalt de hulp aan kinderen en gezinnen met problemen. Het risico: zorgbedrijven die ongewoon veel winst maken, of hulp declareren die niet of nauwelijks is geleverd. Geld dat bedoeld is voor kwetsbare jongeren verdwijnt zo — en kinderen dreigen slechtere of geen hulp te krijgen.",
+    kern: "Miljardenvolume, commerciële winstprikkels, complexe concernstructuren, versnipperde inkoop én een kwetsbare doelgroep die zelf geen regie voert. Het risico zit vooral in bovenmatige winstneming, ondoorzichtige constructies, oneigenlijke productkeuze, afroming en doorstarts na faillissement.",
+    mening: "Naar mijn mening hebben de structuur- en faillissement-en-doorstartsignalen de grootste impact: daar zit de georganiseerde, domeinoverstijgende fraude — ook al ligt de kans (frequentie) lager dan bij administratiefouten.",
+    toezicht: "Voor de Jeugdwet houdt de Inspectie Gezondheidszorg en Jeugd (IGJ) toezicht op kwaliteit en veiligheid."
+  },
+  bw: {
+    naam: "Beschermd wonen & opvang",
+    wet: "Wmo 2015 · gemeente",
+    icoon: "🏠",
+    kort: "De gemeente betaalt onderdak met begeleiding voor mensen met bijvoorbeeld psychische problemen, een verslaving of zonder woning. Omdat dezelfde aanbieder vaak óók de huisbaas is, raken bewoners sterk afhankelijk. In de ergste gevallen worden zij uitgebuit — gedwongen werk, soms prostitutie — terwijl zorggeld in de zakken van de aanbieder verdwijnt.",
+    kern: "Een uiterst kwetsbare cliëntpopulatie én verstrengeling van zorg, huisvesting en geld bij dezelfde aanbieder. De cliënt is drievoudig afhankelijk — voor zorg, woonplek en (bij pgb) budgetbeheer — wat melden riskant maakt en toezicht moeilijk.",
+    mening: "Naar mijn mening hebben de veiligheids- en uitbuitingssignalen en de wonen–zorg-vervlechting de grootste impact: daar raakt de fraude de cliënt direct.",
+    toezicht: "Het toezicht ligt bij de Wmo-toezichthouder (veelal de GGD); de IGJ komt alleen in beeld waar óók zorg onder de Wkkgz wordt geleverd (zoals GGZ-behandeling)."
+  },
+  bg: {
+    naam: "Begeleiding & dagbesteding",
+    wet: "Wmo 2015 · gemeente",
+    icoon: "🤝",
+    kort: "De gemeente betaalt begeleiding en dagbesteding voor mensen die hulp nodig hebben om mee te kunnen doen. Of die hulp écht is geleverd, is moeilijk te controleren. Daardoor wordt er makkelijk meer gedeclareerd dan geleverd (“spookzorg”), vaak via een persoonsgebonden budget dat iemand anders namens de cliënt beheert.",
+    kern: "Drie factoren versterken elkaar: de prestatie is moeilijk objectiveerbaar, de toetredingsdrempel is laag (geen vergunning of BIG-registratie vereist) en het pgb maakt declaratie zonder feitelijke levering relatief eenvoudig. Spookzorg is de dominante fraudevorm.",
+    mening: "Mijns inziens hebben de declaratiepatronen (feitelijk onmogelijke volumes, structureel het budgetplafond) en de bemiddelaar-concentratie hier de grootste signaalwaarde: daar zit de kern van de spookzorg.",
+    toezicht: "Het toezicht ligt bij de Wmo-toezichthouder (veelal de GGD); bij concrete fraudevermoedens kan de sociale recherche onderzoek doen."
+  }
+};
+
+// Stap A — speelveldvragen (reflectie, geen data-invoer)
+const SPEELVELD = {
+  jeugd: [
+    "Met welke aanbieders is er te maken — en om welke producten, bedragen en geldstromen gaat het?",
+    "Wie zijn de eigenaren/bestuurders, en welke (holding- of vastgoed)structuur zit erachter?",
+    "Zijn er recente wijzigingen in eigenaarschap, overnames of nieuwe rechtspersonen?",
+    "Wordt er onderaannemerschap gebruikt, en wie levert de zorg dan feitelijk?",
+    "Zijn er eerdere signalen, klachten of meldingen over de aanbieder?"
+  ],
+  bw: [
+    "Met welke aanbieders van beschermd/begeleid wonen is er te maken, en om welke bedragen en geldstromen gaat het?",
+    "Bezit de aanbieder (of een gelieerde partij) ook het pand waarin cliënten wonen?",
+    "Wie zijn de bestuurders; hebben zij een zorgachtergrond of eerdere faillissementen?",
+    "Beheren cliënten hun eigen bankpas en DigiD, of de aanbieder/gemachtigde?",
+    "Zijn er signalen van cliënten, buren, politie of Veilig Thuis?"
+  ],
+  bg: [
+    "Met welke aanbieders/zorgvormen (begeleiding, dagbesteding) is er te maken, en om welke bedragen en geldstromen gaat het?",
+    "Welk aandeel loopt via pgb, en wie beheert die budgetten (gemachtigde/bemiddelaar)?",
+    "Treedt één bemiddelaar of gemachtigde op voor meerdere budgethouders?",
+    "Wie zijn de eigenaren/bestuurders; eerdere faillissementen of doorstarts?",
+    "Zijn er eerdere signalen of klachten over de aanbieder?"
+  ]
+};
+
+/* Stap B — signalen per domein (RIEC-signalenherkenning uit de flowchart).
+   impact: 3 = zeer hoog, 2 = hoog, 1 = middel (naar de Stap C-risicomatrix).
+   veilig: true = veiligheids-/uitbuitingssignaal → altijd urgent advies.
+   cat: categorie voor de patroonanalyse. */
+const SIGNALEN = {
+  jeugd: [
+    { id:"j1", cat:"geld", impact:2, titel:"Declaratiegedrag",
+      vraag:"Liggen declaraties structureel op of rond het contractplafond, worden afwijkend veel zware/dure producten gedeclareerd, of past de omzet niet bij het aantal (bevoegde) medewerkers?",
+      waarom:"Omdat papieren verantwoording vaak “klopt”, zijn juist declaratie- en urenpatronen de plek waar overdeclaratie en spookzorg zichtbaar worden — denk aan feitelijk onmogelijke volumes.",
+      voorbeeld:"Declaraties met feitelijk onmogelijke volumes zijn de sterkste aanwijzing; een jeugdhulpstichting declareerde in bijna twee jaar ruim €150.000 meer dan geleverd (Rb. Zeeland-West-Brabant, 2024).",
+      nuance:"Een zware cliëntpopulatie kan hoge declaraties verklaren — mits de zorg daadwerkelijk en aantoonbaar is geleverd." },
+    { id:"j2", cat:"papier", impact:2, titel:"Zorg-op-papier",
+      vraag:"Zijn er trajecten zonder behandelplan, voortgangsrapportage, urenregistratie of contactmomenten — of jeugdigen/ouders die de hulp of de hulpverlener niet herkennen?",
+      waarom:"Bij zorg-op-papier bestaat de zorg administratief wél maar feitelijk niet (of minder). Het ontbreken van basale onderbouwing is daarvoor de kernaanwijzing.",
+      voorbeeld:"In dezelfde zaak (Rb. Zeeland-West-Brabant, 2024) ontbrak élke urenregistratie — de gedeclareerde zorg bestond goeddeels alleen op papier.",
+      nuance:"Administratie kan ook achterlopen door werkdruk of een systeemwissel. Vraag de stukken op voordat er een conclusie wordt getrokken." },
+    { id:"j3", cat:"personen", impact:2, titel:"Onbevoegd of vals gekwalificeerd personeel",
+      vraag:"Werken er hulpverleners zonder SKJ-registratie, zijn er aanwijzingen voor valse diploma's/VOG's of dubieuze EVC-trajecten, of loopt veel inhuur via bemiddelingsbureaus?",
+      waarom:"De IGJ zag meldingen van valse diploma's en VOG's verdubbelen (95 meldingen van een vals diploma plus 11 valse VOG's in 2022), vaak bij zzp'ers die via een bemiddelingsbureau worden ingehuurd — veelal buiten het zicht van het toezicht.",
+      voorbeeld:"In februari 2023 stonden 8 verdachten voor de politierechter (7 veroordeeld); de inspectie sprak van “nog maar het topje van de ijsberg”.",
+      nuance:"Een registratie kan in aanvraag zijn en inhuur via bureaus is op zich gangbaar. Controleer de registers en wie feitelijk gescreend heeft, voordat het signaal gewicht krijgt." },
+    { id:"j4", cat:"geld", impact:2, titel:"Hoge winst & vermogen",
+      vraag:"Is de winstmarge structureel hoger dan de gangbare ~3% (zeker boven 10%), of passen dividend of bestuurdersbeloning niet bij de zorgomvang?",
+      waarom:"Onderzoek (FTM “Jeugdzorg in het Rood”) liet zien dat een aanzienlijk deel van de commerciële aanbieders marges boven 10% behaalde; sectorbreed werd 2020–2022 bijna €200 mln dividend uitgekeerd in plaats van geherinvesteerd.",
+      voorbeeld:"Winst werd de zorg uit gehaald via dividend naar bv's van de directie, vastgoed, of “ongeloofwaardig hoge kosten voor kantoorartikelen” (Pointer).",
+      nuance:"Een incidentele meevaller kan de marge in één jaar opdrijven. Het wordt zorgwekkend als de marge meerdere jaren ongewoon hoog is én wordt uitgekeerd in plaats van geherinvesteerd." },
+    { id:"j5", cat:"structuur", impact:2, titel:"Ondoorzichtige structuur",
+      vraag:"Is er een netwerk van bv's/holdings — vastgoed-, schoonmaak- of management-bv's — waarbij geld heen en weer wordt geheveld of transacties met gelieerde partijen lopen?",
+      waarom:"Verhullende bedrijfsconstructies zijn een herkende fraudestrategie: ze vertroebelen de geldstroom, zodat winstextractie en gelieerde transacties buiten beeld blijven.",
+      voorbeeld:"Eén netwerk van zorgbedrijven was tegelijk actief in wijkverpleging, jeugdzorg én beschermd wonen en bleef — ondanks signalen sinds 2014 — jarenlang doordraaien (Rekenkamer 2022).",
+      nuance:"Een holdingstructuur is op zichzelf legaal en gebruikelijk. Het signaal weegt pas zwaar bij onverklaarbare geldstromen tussen gelieerde partijen." },
+    { id:"j6", cat:"personen", impact:2, titel:"Familie of katvangers in het bestuur",
+      vraag:"Staan familieleden of stromannen als bestuurder geregistreerd, terwijl feitelijk één persoon de zeggenschap en de bankrekening beheert?",
+      waarom:"Katvangers houden de werkelijke begunstigde — soms met antecedenten — buiten beeld van screening en toezicht.",
+      voorbeeld:"Een feitelijk leidinggevende plaatste familieleden in het bestuur en had als enige controle over de bankrekening; straf: 15 maanden cel, waarvan 5 voorwaardelijk (Rb. Zeeland-West-Brabant, 2024).",
+      nuance:"Familiebedrijven komen in de zorg ook bonafide voor. Bepalend is wie féitelijk de zeggenschap en het geld beheert." },
+    { id:"j7", cat:"personen", impact:2, titel:"Antecedenten bestuurders",
+      vraag:"Zijn er eerdere veroordelingen of aanwijzingen voor betrokkenheid bij andere criminaliteit bij bestuurders of feitelijk leidinggevenden?",
+      waarom:"In de RIEC-fenomeenanalyse had 32% van de onderzochte zorg-zzp'ers recente veroordelingen; ambulante jeugdzorg is daarin een veelvoorkomende zorgsoort.",
+      voorbeeld:"Toetsing kan via de Wet Bibob en openbare bronnen (KvK, faillissementsregister).",
+      nuance:"Eén antecedent zegt niet alles: relevantie, ernst en recentheid wegen mee — precies wat een Bibob-toets doet." },
+    { id:"j8", cat:"structuur", impact:2, titel:"Faillissement-en-doorstart",
+      vraag:"Zijn er bestuurders die failliet gaan of zich bij de KvK uitschrijven zodra een onderzoek start, en elders met een nieuwe rechtspersoon dezelfde werkwijze voortzetten?",
+      waarom:"Strategische verplaatsing tussen bedrijf, domein en gebied is een herkende fraudestrategie; het Waarschuwingsregister (Wbsrz) is juist bedoeld om dit “gemeentenhoppen” te doorbreken.",
+      voorbeeld:"Het Rekenkamer-netwerk draaide ondanks signalen sinds 2014 jarenlang door, over domeinen en gemeenten heen.",
+      nuance:"Een doorstart kan ook een legitieme herstart na tegenslag zijn. Het patroon van herhaling — zelfde werkwijze, nieuwe rechtspersoon — maakt het verdacht." },
+    { id:"j9", cat:"geld", impact:2, titel:"Afroming & verwijsanomalieën",
+      vraag:"Worden vooral lichtere, lonende cliënten geselecteerd, of zijn er ongebruikelijk veel zelfverwijzingen of verwijzingen naar gelieerde aanbieders?",
+      waarom:"Afroming (cherry-picking) en gestuurde verwijzingen maximaliseren de marge ten koste van cliënten met een zwaardere hulpvraag.",
+      voorbeeld:"Monitoring van de cliëntmix per aanbieder is de bijbehorende controlemaatregel uit de risicomatrix.",
+      nuance:"Specialisatie kan een afwijkende cliëntmix verklaren. Vergelijk met het contract en met vergelijkbare aanbieders." },
+    { id:"j10", cat:"structuur", impact:1, titel:"Snelle groei / cliëntverloop",
+      vraag:"Is er explosieve groei van cliëntaantallen of opvallend verloop zonder duidelijke verklaring?",
+      waarom:"Frauduleuze zorg is aanbod-gestuurd: niet de hulpvraag maar het verdienmodel staat centraal — snelle, onverklaarde groei past daarbij.",
+      voorbeeld:"Op rendement gerichte investeerders kochten kleinere aanbieders op tot “jeugdzorgreuzen” (FTM).",
+      nuance:"Een reëel tekort aan aanbod kan groei verklaren. Het wordt zorgwekkend als groei samengaat met cliëntverloop, onbevoegd personeel of ondoorzichtige structuren." },
+    { id:"j11", cat:"personen", impact:1, titel:"Zelfverrijking",
+      vraag:"Is er een luxe levensstijl of zijn er (lease)voertuigen die niet stroken met een reguliere zorgonderneming?",
+      waarom:"Weggesluisd zorggeld wordt vaak zichtbaar in privébesteding — een klassiek RIEC-signaal.",
+      voorbeeld:"In de zaak van de jeugdhulpstichting (2024) werden opbrengsten deels privé besteed.",
+      nuance:"Privévermogen kan een andere herkomst hebben. Dit signaal is alleen in de optelsom betekenisvol, nooit op zichzelf." },
+    { id:"j12", cat:"client", impact:2, titel:"Pgb-beheer door derden",
+      vraag:"Declareert een budgetbeheerder of bemiddelingsbureau voor nauwelijks geleverde hulp, of bindt deze de cliënt aan een eigen, gelieerde aanbieder? Beheert één gemachtigde meerdere budgetten?",
+      waarom:"Ook jeugdhulp loopt soms via pgb, beheerd door een ouder of gemachtigde. Omdat de uren in de SVB-omgeving door de budgethouder(szijde) zelf worden ingevuld, is “zorg op papier” eenvoudig.",
+      voorbeeld:"Het pgb is in fraudesignalen sterk oververtegenwoordigd: in 2023 betrof circa 21% van alle fraudesignalen pgb-gefinancierde zorg (IKZ), terwijl het pgb maar een klein deel van het totale zorgvolume vormt.",
+      nuance:"Budgetbeheer door een ouder of professionele gemachtigde is op zich legitiem. Toets pgb-vaardigheid en let op gemachtigden met meerdere budgetten én banden met de aanbieder." }
+  ],
+  bw: [
+    { id:"b1", cat:"client", impact:3, veilig:true, titel:"Veiligheid & misbruik van cliënten",
+      vraag:"Zijn er — bij cliënten die apart gesproken worden — tekenen van angst, intimidatie, dreiging met uitzetting, of van criminele, arbeids- of seksuele uitbuiting?",
+      waarom:"Hier raakt het integriteitsrisico de cliënt direct: het IKZ signaleerde mishandeling, intimidatie en dwang (tot prostitutie) bij beschermd en begeleid wonen.",
+      voorbeeld:"Drie aanbieders in Twente zetten cliënten in om hennep te knippen — criminele uitbuiting (IKZ & RIEC).",
+      nuance:"Angst of onrust kan ook bij de problematiek van de cliënt horen. Spreek cliënten apart en vraag bij twijfel advies — Veilig Thuis adviseert ook zonder melding." },
+    { id:"b2", cat:"client", impact:3, titel:"Cliënt voert geen regie",
+      vraag:"Hebben cliënten hun bankpas, zorgpas of DigiD afgegeven, beheert de aanbieder of een gemachtigde de financiën, of zijn er onverklaarde geldstromen rond cliënten?",
+      waarom:"Wie zorg, geld én huisvesting van de cliënt controleert, maakt melden riskant en misstanden onzichtbaar — de kern van de drievoudige afhankelijkheid in dit domein.",
+      voorbeeld:"Het IKZ-themarapport beschrijft cliënten die bankpas, zorgpas en DigiD moesten afgeven.",
+      nuance:"Soms is budgetbeheer formeel en correct geregeld (bewindvoering). Zorgwekkend wordt het als de zórgaanbieder zelf — of een daaraan gelieerde partij — het beheer voert." },
+    { id:"b3", cat:"structuur", impact:3, titel:"Vervlechting wonen–zorg",
+      vraag:"Is dezelfde partij (of een gelieerde verhuurder) huisbaas én zorgverlener, en lijkt een hoge huur feitelijk uit het zorgbudget te worden voldaan?",
+      waarom:"Hoge huursommen aan een gelieerde vastgoed-bv zijn een afroommechanisme: de zorg-bv lijkt geen woekerwinst te maken, terwijl het geld via het vastgoed wegloopt.",
+      voorbeeld:"Bij een woonzorgketen werden panden als “zorghotels” doorverkocht met lucratieve huurcontracten — één pand voor €750.000 huur per jaar over 20 jaar — terwijl de zorg faalde (FTM 2024).",
+      nuance:"Kleinschalig wonen is soms legitiem zo georganiseerd. Het wordt zorgwekkend als de cliënt afhankelijk wordt gemaakt en de huur uit het zorgbudget lijkt te lopen." },
+    { id:"b4", cat:"papier", impact:2, titel:"Zorg-op-papier",
+      vraag:"Zijn er declaraties zonder begeleidingsplan, presentielijsten of waarneembare begeleiding ter plaatse — of valt een opvallend lage personeelslast ten opzichte van de omzet op?",
+      waarom:"IKZ & RIEC zagen bij ondermijnde aanbieders “opvallend lage personeelskosten in relatie tot de omzet” als indicator dat gedeclareerde zorg niet is geleverd.",
+      voorbeeld:"Ondermijnde aanbieders combineren een hoge omzet en hoge cliëntindicaties met opvallend lage personeelskosten.",
+      nuance:"Efficiënte bedrijfsvoering kan lage kosten deels verklaren. De combinatie met hoge indicaties en ontbrekende begeleiding ter plaatse maakt het signaal zwaar." },
+    { id:"b5", cat:"client", impact:2, titel:"Onveilige woonsituatie",
+      vraag:"Is er minimaal toezicht in de panden, zijn er drank/drugs, overbewoning of gebrekkig onderhoud — of structurele overlast in de buurt?",
+      waarom:"Een onveilige woonsituatie wijst erop dat het gedeclareerde toezicht en de begeleiding er feitelijk niet (voldoende) zijn — en raakt de cliënt direct.",
+      voorbeeld:"Het IKZ-themarapport: toezicht in de woningen ontbrak bij verdachte aanbieders; naar schatting gaat het om 2.300 kwetsbare cliënten en €100 mln per jaar.",
+      nuance:"Incidenten komen ook bij bonafide aanbieders voor. Het gaat om een structureel patroon, niet om één voorval." },
+    { id:"b6", cat:"structuur", impact:3, titel:"Verwevenheid met criminaliteit",
+      vraag:"Zijn er aanwijzingen voor hennepteelt of drugshandel op of rond de locatie, of worden criminelen in relatie tot de aanbieder gezien?",
+      waarom:"Bij 15 van de 22 onderzochte zorgorganisaties in Twente werd een verband met hennepteelt gevonden; daders zijn doorgaans eerst crimineel en gaan daarna de zorg in — als “eenvoudige extra inkomstenbron” met lage pakkans.",
+      voorbeeld:"Kwekerijen op de zorglocatie of in woningen van cliënten/eigenaar; daarnaast witwassen, uitkeringsfraude en mensensmokkel in beeld (IKZ & RIEC).",
+      nuance:"Criminaliteit in de búúrt is nog geen verwevenheid. Het gaat om concrete aanwijzingen rond de locatie, de bestuurders of het netwerk van de aanbieder." },
+    { id:"b7", cat:"personen", impact:2, titel:"Achtergrond & structuur",
+      vraag:"Hebben bestuurders geen zorgachtergrond, antecedenten of opereren zij via katvangers — en zit er een netwerk van bv's (vastgoed, horeca) achter waarin geld heen en weer wordt geheveld?",
+      waarom:"Uit IKZ-onderzoek (2019) bleek bij ongeveer de helft van de bestuurders van verdachte aanbieders een eerdere veroordeling; een papieren antecedentencheck (VOG) is daarom “niet afdoende”.",
+      voorbeeld:"Werkelijke leidinggevenden blijven buiten beeld doordat stromannen als bestuurder worden ingezet.",
+      nuance:"Zij-instromers zonder zorgachtergrond kunnen bonafide zijn. Kijk naar feitelijke zeggenschap, kwaliteit van de zorg en de structuur erachter." },
+    { id:"b8", cat:"geld", impact:2, titel:"Hoge winst & zelfverrijking",
+      vraag:"Is de marge structureel hoger dan de gangbare ~3%, wordt er dividend uitgekeerd, of is er een luxe levensstijl die niet bij de onderneming past?",
+      waarom:"Bovenmatige winst bij een aanbieder van zorg aan kwetsbare cliënten wijst op geld dat niet aan zorg wordt besteed.",
+      voorbeeld:"Zorggeld wordt afgeroomd via hoge huursommen, zodat de zorg-bv geen woekerwinst líjkt te maken (“Een wereld te winnen”).",
+      nuance:"Een incidentele meevaller kan de marge opdrijven; het meerjarige patroon en de bestemming van de winst (dividend versus herinvestering) zijn bepalend." },
+    { id:"b9", cat:"structuur", impact:2, titel:"Faillissement-en-doorstart",
+      vraag:"Is de aanbieder eerder failliet gegaan en elders met dezelfde werkwijze opgedoken?",
+      waarom:"Strategische verplaatsing tussen bedrijf, domein en gebied is een herkende fraudestrategie; screening via Bibob en het Waarschuwingsregister is de bijbehorende maatregel.",
+      voorbeeld:"Het IKZ ziet aanbieders die na een faillissement elders met een nieuwe rechtspersoon opnieuw beginnen.",
+      nuance:"Een doorstart kan ook een legitieme herstart zijn; het herhaalde patroon maakt het verdacht." },
+    { id:"b10", cat:"structuur", impact:1, titel:"Snelle groei / cliëntverloop",
+      vraag:"Is er snelle uitbreiding van bedden of een opvallende wisseling van bewoners zonder verklaring?",
+      waarom:"Aanbod-gestuurde groei — gericht op het binnenhalen van budgetten in plaats van op de hulpvraag — gaat vaak vooraf aan kwaliteits- en rechtmatigheidsproblemen.",
+      voorbeeld:"Snelle groei was een terugkerend kenmerk in de IKZ- en RIEC-casuïstiek.",
+      nuance:"Groei kan een reëel tekort opvullen (wachtlijsten beschermd wonen). Weeg het samen met de andere signalen." },
+    { id:"b11", cat:"client", impact:2, titel:"Pgb-beheer door de aanbieder",
+      vraag:"Is de cliënt niet pgb-vaardig terwijl de aanbieder feitelijk het budget beheert — soms via een afgegeven DigiD of een gelieerde gemachtigde?",
+      waarom:"Zo controleert de aanbieder zorg, geld én huisvesting tegelijk — de maximale afhankelijkheid, en het pgb-risico in zijn zwaarste vorm.",
+      voorbeeld:"Let op cliënten die hun bankpas/DigiD niet zelf beheren en op woon-zorgcombinaties waarbij huur uit het zorgbudget lijkt te lopen.",
+      nuance:"Formeel geregeld budgetbeheer (bewindvoering, onafhankelijke gemachtigde) is legitiem; de combinatie met de aanbieder als beheerder is het signaal." }
+  ],
+  bg: [
+    { id:"g1", cat:"geld", impact:2, titel:"Declaratiepatronen",
+      vraag:"Raken declaraties (vrijwel) altijd het budgetplafond, zijn er identieke uren over veel cliënten, of feitelijk onmogelijke volumes?",
+      waarom:"Omdat de prestatie moeilijk te verifiëren is, draait detectie hier op patronen: uitschieters en onmogelijke volumes zijn de sterkste aanwijzing voor spookzorg.",
+      voorbeeld:"Dolia Zorg declareerde €7,5 mln; slechts ~11% werd aan zorg besteed — 170.000 gedeclareerde uren waar er ~38.000 leverbaar waren (OM).",
+      nuance:"Een zware populatie met maximale indicaties kan hoge declaraties verklaren — mits de zorg aantoonbaar is geleverd." },
+    { id:"g2", cat:"papier", impact:2, titel:"Ontbrekende onderbouwing",
+      vraag:"Ontbreken zorgovereenkomst, urenregistratie of presentielijsten — of is er “nietszeggende” dagbesteding met te grote groepen?",
+      waarom:"Begeleiding is een weinig objectiveerbare prestatie: “geleverd of niet” is achteraf lastig te bewijzen. Juist de stukken die dat moeten aantonen ontbreken bij spookzorg of zijn vervalst.",
+      voorbeeld:"“Nietszeggende dagbesteding” — te grote groepen, geen zinvolle activiteit, verschuilen achter slecht controleerbare zorgplannen — is een vaste tactiek uit “Een wereld te winnen”.",
+      nuance:"Administratie kan achterlopen. Vraag de stukken op en toets ze inhoudelijk voordat het signaal gewicht krijgt." },
+    { id:"g3", cat:"client", impact:2, titel:"Cliënt kent de zorgverlener niet",
+      vraag:"Zijn er budgethouders die hun aanbieder niet kennen, de zorg niet herkennen, of die geïnstrueerd lijken in wat zij tegen de beoordelaar moeten verklaren?",
+      waarom:"Direct cliëntcontact is hier de vroegste alarmbel: herkent de cliënt de zorgverlener en de geleverde uren? Zo niet, dan bestaat de zorg mogelijk alleen op papier.",
+      voorbeeld:"Cliënten worden soms geïnstrueerd wat zij tegen de gemeente moeten verklaren (“Een wereld te winnen”, tactiekcategorie 2).",
+      nuance:"Geheugen of problematiek van de cliënt kan een rol spelen. Meerdere cliënten met hetzelfde beeld maken het signaal zwaar." },
+    { id:"g4", cat:"structuur", impact:2, titel:"Bemiddelaar-concentratie",
+      vraag:"Declareert één gemachtigde of bureau voor veel budgethouders, beheert deze ook DigiD's of administratie, en worden de uren door de budgethouderszijde zelf ingevuld in de SVB-omgeving?",
+      waarom:"De gemachtigde die namens een kwetsbare cliënt het budget beheert is de gevoeligste schakel: declaratie zonder feitelijke levering ligt op de loer, en een papieren controle vangt dat niet.",
+      voorbeeld:"Bij een pgb van €132.000 per jaar (in die casus een Wlz-pgb; het mechanisme is bij Wmo-pgb's identiek) factureerde het “zorgbedrijf” van een familielid €12.000 per maand; de budgethouder vulde de uren naar believen in (EenVandaag, 2025).",
+      nuance:"Professionele bewindvoerders en gemachtigden beheren legitiem meerdere budgetten. Zorgwekkend wordt het bij banden tussen de gemachtigde en de zórgaanbieder." },
+    { id:"g5", cat:"client", impact:3, veilig:true, titel:"Ronselen & afhankelijkheid",
+      vraag:"Worden cliënten geworven met cadeaus of huisvesting, onder druk gezet — of zijn er aanwijzingen dat cliënten worden ingezet voor witwassen of drugs?",
+      waarom:"Ronselen maakt de cliënt onderdeel van het verdienmodel; in de ernstigste gevallen gaat het over in criminele uitbuiting.",
+      voorbeeld:"Het IKZ ziet ronselen van cliënten — soms voor witwassen of drugssmokkel; ook premies voor het aanbrengen van cliënten komen voor.",
+      nuance:"Actieve werving is niet per se ronselen. Druk, afhankelijkheid en tegenprestaties maken het verdacht — spreek cliënten apart." },
+    { id:"g6", cat:"personen", impact:2, titel:"Onderbetaald of onbevoegd personeel",
+      vraag:"Werkt er ongeschoold personeel, worden uitzendkrachten of arbeidsmigranten onder het minimumloon betaald, of zijn er valse diploma's/VOG's via een bemiddelingsbureau?",
+      waarom:"Bemiddelingsbureaus vallen meestal buiten het IGJ-toezicht, terwijl daar valse diploma's en onderbetaling samenkomen; de screeningsplicht blijft bij de inhurende aanbieder liggen.",
+      voorbeeld:"13 onderzochte zzp'ers gaven samen 32 keer een rijbewijs als verloren/gestolen op om op meerdere plekken te “werken”; online diploma's zijn voor enkele honderden euro's te koop (RIEC).",
+      nuance:"Veel inhuur is bij arbeidskrapte gangbaar. Bepalend is of de wettelijke screening (diploma, VOG) feitelijk en door de juiste partij is gedaan." },
+    { id:"g7", cat:"geld", impact:2, titel:"Hoge winst & zelfverrijking",
+      vraag:"Is de marge structureel hoger dan ~3%, wordt er dividend uitgekeerd, of is er een luxe levensstijl of zijn er voertuigen die niet bij de onderneming passen?",
+      waarom:"Bij een moeilijk objectiveerbare prestatie is bovenmatige winst een aanwijzing dat gedeclareerde zorg niet (volledig) is geleverd.",
+      voorbeeld:"In de Dolia-zaak werd volgens het OM slechts ~11% van het gedeclareerde pgb-geld aan zorg besteed.",
+      nuance:"Eén goed jaar is geen signaal; het meerjarige patroon en de bestemming van de winst zijn bepalend." },
+    { id:"g8", cat:"structuur", impact:2, titel:"Ondoorzichtige structuur",
+      vraag:"Loopt facturering via een gelieerd “zorgbedrijf” van een familielid, is er een netwerk van bv's, of zijn er contante uitkeringen aan budgethouders?",
+      waarom:"Gelieerde facturering en contante stromen onttrekken de werkelijke besteding van het zorggeld aan het zicht — en wijzen op kickback-constructies.",
+      voorbeeld:"De arbeidsmigranten-constructie: €12.000/maand naar het familiebedrijf, terwijl zes onderbetaalde migrantes (€900–€1.700/mnd) de zorg leverden.",
+      nuance:"Een familiebedrijf is op zichzelf legaal. Contante uitkeringen aan budgethouders en onverklaarbare gelieerde stromen zijn dat niet." },
+    { id:"g9", cat:"structuur", impact:2, titel:"Doorstart-patroon",
+      vraag:"Keren bestuurders na een faillissement met een nieuwe rechtspersoon terug met dezelfde werkwijze?",
+      waarom:"De lage toetredingsdrempel maakt opnieuw beginnen eenvoudig; het IKZ ziet aanbieders die na faillissement onder een nieuwe rechtspersoon doorgaan.",
+      voorbeeld:"Toets via KvK en — bij een gerechtvaardigd vermoeden — het Waarschuwingsregister (Wbsrz).",
+      nuance:"Een doorstart kan legitiem zijn; het herhaalde patroon met dezelfde werkwijze maakt het verdacht." },
+    { id:"g10", cat:"personen", impact:2, titel:"Antecedenten",
+      vraag:"Heeft de aanbieder of zzp'er eerdere veroordelingen?",
+      waarom:"Van de 87 onderzochte zorg-zzp'ers in de RIEC-analyse had 32% recente veroordelingen (samen 192 antecedenten); individuele begeleiding is de meest voorkomende zorgsoort in die signalen.",
+      voorbeeld:"Toetsing kan via de Wet Bibob.",
+      nuance:"Relevantie, ernst en recentheid van een antecedent wegen mee; één antecedent is geen oordeel." }
+  ]
+};
+
+const OPTIES = ["Niet aanwezig", "Weet ik niet", "Mogelijk aanwezig", "Duidelijk aanwezig"];
+const SPEELVELD_OPTIES = ["Helder in beeld", "Deels in beeld", "Nog niet in beeld"];
+const CAT_NAMEN = { geld: "Geldstromen & declaraties", papier: "Onderbouwing & administratie", personen: "Personen & kwalificaties", structuur: "Structuur & constructies", client: "Cliënt & afhankelijkheid" };
+const IMPACT_NAAM = { 3: "zeer hoge impact", 2: "hoge impact", 1: "middelgrote impact" };
+
+// ---------- STATE (alleen in het geheugen van deze pagina) ----------
+let state = { stap: 0, domein: null, speelveld: {}, signalen: {} };
+
+// ---------- RENDERING ----------
+const STAPPEN = ["Intro", "Domein", "Speelveld", "Signalen", "Uitkomst"];
+
+function esc(s){ return s; } // inhoud is eigen, statische tekst
+
+function renderStepper(){
+  const el = document.getElementById('stepper');
+  el.innerHTML = STAPPEN.map(function(naam, i){
+    const cls = i === state.stap ? 'active' : (i < state.stap ? 'done' : '');
+    const dot = i < state.stap ? '✓' : (i + 1);
+    const link = i < STAPPEN.length - 1 ? '<div class="step-link"></div>' : '';
+    return '<div class="step-dot ' + cls + '"><div class="dot">' + dot + '</div><span class="steplabel">' + naam + '</span></div>' + link;
+  }).join('');
+}
+
+function ga(n){ state.stap = n; render(); window.scrollTo({ top: 0 }); }
+
+function render(){
+  renderStepper();
+  const app = document.getElementById('app');
+  if (state.stap === 0) app.innerHTML = viewIntro();
+  else if (state.stap === 1) app.innerHTML = viewDomein();
+  else if (state.stap === 2) app.innerHTML = viewSpeelveld();
+  else if (state.stap === 3) app.innerHTML = viewSignalen();
+  else app.innerHTML = viewUitkomst();
+}
+
+// ---------- STAP 0: INTRO ----------
+function viewIntro(){
+  return '' +
+  '<div class="panel">' +
+    '<div class="panel-kicker">Flowtool Zorg · zelfevaluatie</div>' +
+    '<div class="panel-title">Onderzoek zelf of er signalen zijn die kunnen duiden op integriteitsrisico’s</div>' +
+    '<div class="mp">Deze tool helpt om binnen één van de drie gemeentelijke zorgdomeinen — <strong>jeugdzorg</strong> (Jeugdwet), <strong>beschermd wonen &amp; opvang</strong> en <strong>begeleiding &amp; dagbesteding</strong> (beide Wmo 2015) — gestructureerd na te gaan of er signalen zijn die kunnen duiden op zorgfraude, oneigenlijk gebruik, ondermijning of uitbuiting. De tool leert patronen herkennen; het is geen scorelijst die een oordeel velt.</div>' +
+    '<div class="mh">Voor wie</div>' +
+    '<div class="mp">Voor <strong>iedere professional</strong> die met deze geldstromen of cliënten te maken krijgt: gemeenteambtenaar of inkoper, Wmo-/jeugdconsulent, toezichthouder (Wmo-toezicht/GGD, IGJ, NZa), zorgaanbieder of zorgmedewerker, accountant, SVB-medewerker — én de compliance-medewerker van een bank die in een KYC- of transactiemonitoring-onderzoek de geldstromen beoordeelt. Alle vragen zijn rolneutraal geformuleerd: het gaat om wie de declaratie of geldstroom beoordeelt, niet om welke functie diegene heeft.</div>' +
+    '<div class="mh">Hoe het werkt</div>' +
+    '<ul class="ml">' +
+      '<li><strong>Kies het zorgdomein</strong> waarop de evaluatie betrekking heeft.</li>' +
+      '<li><strong>Breng het speelveld in kaart:</strong> vijf reflectievragen over aanbieders, geldstromen en structuren.</li>' +
+      '<li><strong>Loop de signalencheck door:</strong> per signaal een reflectievraag, met toelichting waaróm het een signaal kan zijn, een voorbeeld én een nuance.</li>' +
+      '<li><strong>Lees de uitkomst:</strong> een gestructureerde samenvatting van de optelsom, een indicatie van urgentie en concrete vervolg- en meldroutes.</li>' +
+    '</ul>' +
+    '<div class="principe-banner"><strong>Het kernprincipe:</strong> één signaal is zelden bewijs — het gaat om de optelsom en het patroon. Bijna elk signaal heeft ook een legitieme verklaring; deze tool helpt wegen in plaats van afvinken.</div>' +
+    '<div class="avg-banner"><strong>Privacy:</strong> deze tool werkt volledig in je browser. Er worden geen persoonsgegevens gevraagd, verzonden of opgeslagen. Vul nooit cliëntnamen, BSN, dossiernummers of andere herleidbare gegevens in — de tool vraagt er ook niet om. Niets wordt bewaard: bij het sluiten van de tab is alle invoer weg.</div>' +
+    '<div class="warn-banner"><strong>Disclaimer:</strong> de uitkomst van deze tool is geen bewijs en geen beschuldiging. Het is een hulpmiddel om te reflecteren, signalen te ordenen en — waar nodig — zorgvuldig door te verwijzen naar de juiste instantie.</div>' +
+    '<div class="nav-row"><span></span><button class="btn primary" onclick="ga(1)">Start de zelfevaluatie →</button></div>' +
+  '</div>';
+}
+
+// ---------- STAP 1: DOMEINKEUZE ----------
+function viewDomein(){
+  let cards = Object.keys(DOMEINEN).map(function(key){
+    const d = DOMEINEN[key];
+    return '<button class="domein-card" onclick="kiesDomein(\'' + key + '\')">' +
+      '<div class="domein-icon">' + d.icoon + '</div>' +
+      '<div><div class="domein-name">' + d.naam + '</div><div class="domein-wet">' + d.wet + '</div>' +
+      '<div class="domein-desc">' + d.kort + '</div></div></button>';
+  }).join('');
+  return '' +
+  '<div class="panel">' +
+    '<div class="panel-kicker">Stap 1 van 4</div>' +
+    '<div class="panel-title">Kies het zorgdomein</div>' +
+    '<div class="panel-sub">Op welk gemeentelijk zorgdomein heeft de evaluatie betrekking? De signalen in de volgende stappen zijn toegespitst op het gekozen domein.</div>' +
+    '<div class="domein-grid">' + cards + '</div>' +
+    '<div class="warn-banner"><strong>Let op de samenhang:</strong> de zwaarste integriteitsrisico’s houden zich niet aan domeingrenzen. Eén en hetzelfde netwerk is vaak tegelijk actief in meerdere domeinen en meerdere gemeenten. Beoordeel een aanbieder daarom niet alleen binnen één domein of één gemeente.</div>' +
+    '<div class="nav-row"><button class="btn ghost" onclick="ga(0)">← Terug</button><span></span></div>' +
+  '</div>';
+}
+
+function kiesDomein(key){
+  if (state.domein !== key) { state.speelveld = {}; state.signalen = {}; }
+  state.domein = key;
+  ga(2);
+}
+
+// ---------- STAP 2: SPEELVELD (Stap A) ----------
+function viewSpeelveld(){
+  const d = DOMEINEN[state.domein];
+  let vragen = SPEELVELD[state.domein].map(function(v, i){
+    let opts = SPEELVELD_OPTIES.map(function(o, j){
+      const selCls = state.speelveld[i] === j ? ' sel-' + (j === 0 ? 0 : (j === 1 ? 1 : 2)) : '';
+      return '<button class="opt' + selCls + '" onclick="zetSpeelveld(' + i + ',' + j + ')">' + o + '</button>';
+    }).join('');
+    return '<div class="q-card"><div class="q-num">Speelveldvraag ' + (i + 1) + ' van ' + SPEELVELD[state.domein].length + '</div>' +
+      '<div class="q-vraag">' + v + '</div><div class="opts">' + opts + '</div></div>';
+  }).join('');
+  const beantwoord = Object.keys(state.speelveld).length;
+  return '' +
+  '<div class="panel">' +
+    '<div class="panel-kicker">Stap 2 van 4 · ' + d.naam + '</div>' +
+    '<div class="panel-title">Breng het speelveld in kaart</div>' +
+    '<div class="panel-sub">' + d.kern + '</div>' +
+    '<div class="mp" style="margin-top:10px">Voordat signalen te wegen zijn, moet duidelijk zijn waarnaar eigenlijk wordt gekeken. Geef per vraag aan in hoeverre het antwoord helder is. Dit zijn reflectievragen — vul nergens namen, dossiers of andere gegevens in.</div>' +
+    '<div style="margin-top:16px">' + vragen + '</div>' +
+    '<div class="progress-note">' + beantwoord + ' van ' + SPEELVELD[state.domein].length + ' beantwoord. Vragen die op “nog niet in beeld” staan, komen terug in de uitkomst als eerste vervolgstap.</div>' +
+    '<div class="nav-row"><button class="btn ghost" onclick="ga(1)">← Ander domein</button>' +
+    '<button class="btn primary" onclick="ga(3)">Naar de signalencheck →</button></div>' +
+  '</div>';
+}
+
+function zetSpeelveld(i, j){ state.speelveld[i] = j; render(); }
+
+// ---------- STAP 3: SIGNALENCHECK (Stap B) ----------
+function viewSignalen(){
+  const d = DOMEINEN[state.domein];
+  const sigs = SIGNALEN[state.domein];
+  let kaarten = sigs.map(function(s, i){
+    const impactCls = s.impact === 3 ? 'impact-zh' : (s.impact === 2 ? 'impact-h' : 'impact-m');
+    const impactTxt = s.impact === 3 ? 'zeer hoge impact' : (s.impact === 2 ? 'hoge impact' : 'middelgrote impact');
+    let opts = OPTIES.map(function(o, j){
+      const selCls = state.signalen[s.id] === j ? ' sel-' + j : '';
+      return '<button class="opt' + selCls + '" onclick="zetSignaal(\'' + s.id + '\',' + j + ')">' + o + '</button>';
+    }).join('');
+    return '<div class="q-card">' +
+      '<div class="q-num">Signaal ' + (i + 1) + ' van ' + sigs.length + ' · ' + CAT_NAMEN[s.cat] + '</div>' +
+      '<div class="q-title">' + s.titel + '<span class="impact-chip ' + impactCls + '">' + impactTxt + '</span></div>' +
+      '<div class="q-vraag">' + s.vraag + '</div>' +
+      '<button class="q-toggle" id="tgl-' + s.id + '" onclick="toggleDetail(\'' + s.id + '\')">Waarom is dit een signaal? · voorbeeld · nuance</button>' +
+      '<div class="q-detail" id="det-' + s.id + '">' +
+        '<div class="lbl waarom">Waarom dit een signaal kan zijn</div><div class="q-meta">' + s.waarom + '</div>' +
+        '<div class="lbl voorbeeld">Voorbeeld</div><div class="q-meta">' + s.voorbeeld + '</div>' +
+        '<div class="lbl nuance">Nuance — kan ook onschuldig zijn</div><div class="q-meta">' + s.nuance + '</div>' +
+      '</div>' +
+      '<div class="opts">' + opts + '</div></div>';
+  }).join('');
+  const beantwoord = Object.keys(state.signalen).length;
+  const klaar = beantwoord === sigs.length;
+  return '' +
+  '<div class="panel">' +
+    '<div class="panel-kicker">Stap 3 van 4 · ' + d.naam + '</div>' +
+    '<div class="panel-title">Signalencheck</div>' +
+    '<div class="panel-sub">De signalen hieronder komen uit de RIEC-signalenherkenning, toegespitst op ' + d.naam.toLowerCase() + '. Weeg per signaal zelf: is het niet aanwezig, mogelijk of duidelijk aanwezig — of weet je het (nog) niet? Open per signaal de toelichting om te lezen waaróm het een signaal kan zijn, met een voorbeeld én een onschuldige verklaring.</div>' +
+    '<div class="principe-banner"><strong>Onthoud:</strong> één signaal is zelden bewijs. Het gaat om de optelsom en het patroon — en om de vraag of signalen verklaarbaar zijn.</div>' +
+    '<div class="mp" style="margin-top:12px">' + d.mening + '</div>' +
+    '<div style="margin-top:16px">' + kaarten + '</div>' +
+    '<div class="progress-note">' + beantwoord + ' van ' + sigs.length + ' signalen gewogen.' + (klaar ? '' : ' Weeg alle signalen om de uitkomst te kunnen tonen — “weet ik niet” is ook een antwoord.') + '</div>' +
+    '<div class="nav-row"><button class="btn ghost" onclick="ga(2)">← Terug</button>' +
+    '<button class="btn primary" onclick="ga(4)"' + (klaar ? '' : ' disabled') + '>Naar de uitkomst →</button></div>' +
+  '</div>';
+}
+
+function zetSignaal(id, j){ state.signalen[id] = j; render(); }
+function toggleDetail(id){
+  document.getElementById('det-' + id).classList.toggle('open');
+  document.getElementById('tgl-' + id).classList.toggle('open');
+}
+
+// ---------- STAP 4: UITKOMST (Stap C-logica) ----------
+function analyse(){
+  const sigs = SIGNALEN[state.domein];
+  let duidelijk = [], mogelijk = [], onbekend = [], niet = [];
+  let score = 0, max = 0, veiligAlarm = false;
+  let cats = {};
+  sigs.forEach(function(s){
+    const w = state.signalen[s.id];
+    max += 2 * s.impact;
+    if (w === 3) { duidelijk.push(s); score += 2 * s.impact; if (s.veilig) veiligAlarm = true; cats[s.cat] = true; }
+    else if (w === 2) { mogelijk.push(s); score += 1 * s.impact; cats[s.cat] = true; }
+    else if (w === 1) { onbekend.push(s); }
+    else { niet.push(s); }
+  });
+  const pct = max > 0 ? score / max : 0;
+  const nCats = Object.keys(cats).length;
+  let nivo;
+  if (veiligAlarm) nivo = 'veilig';
+  else if (duidelijk.length === 0 && mogelijk.length === 0 && onbekend.length >= 3) nivo = 'onderzoek';
+  else if (duidelijk.length === 0 && mogelijk.length === 0) nivo = 'geen';
+  else if (pct >= 0.35 || duidelijk.length >= 3) nivo = 'hoog';
+  else if (pct >= 0.12 || duidelijk.length >= 1) nivo = 'verhoogd';
+  else nivo = 'beperkt';
+  return { duidelijk: duidelijk, mogelijk: mogelijk, onbekend: onbekend, niet: niet, pct: pct, nCats: nCats, cats: cats, nivo: nivo, veiligAlarm: veiligAlarm };
+}
+
+function urgentieTekst(a){
+  const labels = {
+    veilig: 'Urgent — veiligheid eerst',
+    hoog: 'Hoge urgentie — leg vast en escaleer',
+    verhoogd: 'Verhoogde alertheid — het patroon verdient onderzoek',
+    beperkt: 'Beperkte aanwijzingen — blijf alert',
+    geen: 'Geen duidelijke aanwijzingen',
+    onderzoek: 'Nog onvoldoende beeld — onderzoek eerst de open punten'
+  };
+  let tekst;
+  if (a.nivo === 'veilig') tekst = 'Er is minstens één duidelijk veiligheids- of uitbuitingssignaal gewogen. Dat raakt de cliënt direct en gaat vóór elke verdere analyse: bij huiselijk geweld of kindermishandeling is Veilig Thuis de aangewezen route, bij (vermoedens van) uitbuiting of mensenhandel — van cliënten óf medewerkers — direct de politie. De overige signalen blijven daarnaast relevant voor het meldpad hieronder.';
+  else if (a.nivo === 'hoog') tekst = 'De optelsom van duidelijk en mogelijk aanwezige signalen is zwaar — in de logica van de risicomatrix (kans × impact) valt dit beeld in de hoogste prioriteitscategorieën. Dat is géén vaststelling van fraude: het betekent dat dit beeld het verdient om zorgvuldig te worden vastgelegd en voorgelegd via de meldroutes hieronder.';
+  else if (a.nivo === 'verhoogd') tekst = 'Er zijn signalen die — zeker in combinatie — om opheldering vragen. In de logica van de risicomatrix (kans × impact) is dit een beeld om actief te onderzoeken: zoek per signaal de verklaring, vraag onderbouwing op en leg vast wat je feitelijk waarneemt. Bedenk dat bijna elk signaal ook een legitieme verklaring kan hebben.';
+  else if (a.nivo === 'beperkt') tekst = 'De gewogen signalen zijn beperkt in aantal en gewicht. Er is op basis van deze reflectie geen aanleiding voor escalatie, maar blijf alert — juist de optelsom over langere tijd maakt patronen zichtbaar. Herhaal de check als er nieuwe waarnemingen zijn.';
+  else if (a.nivo === 'onderzoek') tekst = 'Een groot deel van de signalen staat op “weet ik niet”. Dat is geen geruststelling en geen alarm — het betekent dat het beeld nog niet compleet genoeg is om te wegen. Gebruik de onderzoeksagenda hieronder: zoek per open punt de feiten op (registers, jaarverantwoording, declaratiedata, cliëntcontact) en doorloop de check daarna opnieuw.';
+  else tekst = 'Op basis van deze reflectie zijn er geen duidelijke aanwijzingen voor integriteitsrisico’s. Dat is een momentopname, geen garantie: blijf alert op veranderingen (nieuwe bestuurders, snelle groei, ander declaratiegedrag) en herhaal de check periodiek.';
+  return { label: labels[a.nivo], tekst: tekst };
+}
+
+function viewUitkomst(){
+  const d = DOMEINEN[state.domein];
+  const a = analyse();
+  const u = urgentieTekst(a);
+  const sigs = SIGNALEN[state.domein];
+
+  // Patroon-tekst
+  let patroon;
+  if (a.duidelijk.length + a.mogelijk.length === 0) {
+    patroon = 'Er zijn geen signalen als “mogelijk” of “duidelijk aanwezig” gewogen.';
+  } else if (a.nCats >= 3) {
+    patroon = 'De gewogen signalen verspreiden zich over <strong>' + a.nCats + ' verschillende categorieën</strong> (' + Object.keys(a.cats).map(function(c){ return CAT_NAMEN[c].toLowerCase(); }).join(', ') + '). Juist die spreiding maakt de optelsom zwaarder: één verklaring dekt zelden meerdere categorieën tegelijk.';
+  } else if (a.nCats === 2) {
+    patroon = 'De gewogen signalen vallen in <strong>twee categorieën</strong> (' + Object.keys(a.cats).map(function(c){ return CAT_NAMEN[c].toLowerCase(); }).join(' en ') + '). Onderzoek of één gemeenschappelijke, legitieme verklaring beide kan dekken — zo niet, dan groeit het gewicht van de optelsom.';
+  } else {
+    patroon = 'De gewogen signalen concentreren zich in <strong>één categorie</strong> (' + Object.keys(a.cats).map(function(c){ return CAT_NAMEN[c].toLowerCase(); }).join('') + '). Eén categorie kan vaker een gemeenschappelijke, onschuldige verklaring hebben — toets die verklaring eerst.';
+  }
+
+  // Speelveld-opvolging
+  const open = SPEELVELD[state.domein].map(function(v, i){ return { v: v, w: state.speelveld[i] }; })
+    .filter(function(x){ return x.w === 2 || x.w === undefined; });
+  let speelveldHtml = '';
+  if (open.length > 0) {
+    speelveldHtml = '<div class="mh">Eerst het speelveld compleet maken</div>' +
+      '<div class="mp">Een deel van het speelveld is nog niet in beeld. Signalen zijn pas goed te wegen als deze basisvragen beantwoord zijn:</div>' +
+      '<ul class="res-list onbekend" style="margin-top:8px">' + open.map(function(x){ return '<li>' + x.v + '</li>'; }).join('') + '</ul>';
+  }
+
+  function sigLi(s, metNuance){
+    return '<li><strong>' + s.titel + '</strong> <span style="font-size:10px;color:var(--text-tertiary)">(' + CAT_NAMEN[s.cat].toLowerCase() + ' · ' + IMPACT_NAAM[s.impact] + ')</span>' +
+      (metNuance ? '<span class="res-note">Nuance: ' + s.nuance + '</span>' : '') + '</li>';
+  }
+
+  let lijsten = '';
+  if (a.duidelijk.length) lijsten += '<div class="mh">Duidelijk aanwezig (' + a.duidelijk.length + ')</div><ul class="res-list duidelijk">' + a.duidelijk.map(function(s){ return sigLi(s, false); }).join('') + '</ul>';
+  if (a.mogelijk.length) lijsten += '<div class="mh">Mogelijk aanwezig (' + a.mogelijk.length + ')</div><ul class="res-list mogelijk">' + a.mogelijk.map(function(s){ return sigLi(s, true); }).join('') + '</ul>';
+  if (a.onbekend.length) lijsten += '<div class="mh">Nog uit te zoeken (' + a.onbekend.length + ')</div><div class="mp" style="margin-bottom:6px">“Weet ik niet” is waardevolle informatie: dit is de onderzoeksagenda.</div><ul class="res-list onbekend">' + a.onbekend.map(function(s){ return sigLi(s, false); }).join('') + '</ul>';
+  if (a.niet.length === sigs.length) lijsten += '<div class="mp" style="margin-top:10px">Alle signalen zijn als “niet aanwezig” gewogen.</div>';
+
+  // Meldroutes (rolneutraal, domeinspecifiek toezicht)
+  const toezichtRoute = state.domein === 'jeugd'
+    ? 'Voor de Jeugdwet en voor kwaliteits- en veiligheidskwesties: de <strong>Inspectie Gezondheidszorg en Jeugd (IGJ)</strong>; het delen van fraudesignalen loopt via de gemeente (stap 4).'
+    : 'Voor de Wmo: de <strong>Wmo-toezichthouder</strong> (veelal de GGD). De IGJ komt alleen in beeld waar de aanbieder óók zorg onder de Wkkgz levert (zoals GGZ-behandeling).';
+
+  const meldroutes = '' +
+    '<div class="mh">Vervolg- en meldroutes — zorgvuldig en navolgbaar</div>' +
+    '<ol class="meld-list">' +
+      '<li><strong>Leg vast.</strong> Noteer concrete, feitelijke waarnemingen (data, declaraties, gesprekken) — geen aannames of conclusies. Documenteer de optelsom van signalen; deze samenvatting kan daarbij helpen (printen kan hieronder).</li>' +
+      '<li><strong>Escaleer intern.</strong> Meld bij de eigen tweede/derde lijn — leidinggevende, contractmanager, compliance of juridische afdeling. Handel niet op eigen houtje.</li>' +
+      '<li><strong>Schakel het toezicht in.</strong> ' + toezichtRoute + '</li>' +
+      '<li><strong>Deel het signaal.</strong> Via de gemeente naar het <strong>Informatie Knooppunt Zorgfraude (IKZ)</strong> en — bij een gerechtvaardigd vermoeden — het <strong>Waarschuwingsregister Zorgfraude</strong> (Wbsrz).</li>' +
+      '<li><strong>Bij acute onveiligheid:</strong> bij huiselijk geweld of kindermishandeling <strong>Veilig Thuis</strong>; bij (vermoedens van) uitbuiting of mensenhandel — van cliënten óf medewerkers — direct de <strong>politie</strong>.</li>' +
+      '<li><strong>Financiële poortwachters:</strong> voor wie onder de Wwft valt (zoals bank-compliance) loopt de melding van ongebruikelijke transacties via <strong>FIU-Nederland</strong>.</li>' +
+      '<li><strong>Bescherm jezelf als melder.</strong> Raadpleeg de interne meldregeling of het <strong>Huis voor Klokkenluiders</strong> voordat je extern meldt.</li>' +
+    '</ol>' +
+    '<div class="warn-banner"><strong>Proportionaliteit:</strong> deel uitsluitend wat nodig en proportioneel is, en houd rekening met privacyregels — de juiste route loopt via de daarvoor aangewezen instanties, niet via openbaarmaking.</div>';
+
+  return '' +
+  '<div class="panel">' +
+    '<div class="panel-kicker">Stap 4 van 4 · ' + d.naam + ' · uitkomst</div>' +
+    '<div class="panel-title">De optelsom — wat laat het patroon zien?</div>' +
+    '<div class="panel-sub">Gestructureerde samenvatting van de eigen weging. Dit is een reflectie-instrument: de uitkomst is geen bewijs en geen beschuldiging.</div>' +
+    '<div class="urgentie-box urg-' + a.nivo + '">' +
+      '<div class="urgentie-label">' + u.label + '</div>' +
+      '<div class="mp">' + u.tekst + '</div>' +
+    '</div>' +
+    '<div class="mh">Het patroon</div>' +
+    '<div class="mp">' + patroon + '</div>' +
+    lijsten +
+    speelveldHtml +
+    '<div class="mh">Toezichtkader van dit domein</div>' +
+    '<div class="mp">' + d.toezicht + '</div>' +
+    meldroutes +
+    '<div class="mh no-print">Bewaren?</div>' +
+    '<div class="mp no-print">Niets van deze reflectie wordt opgeslagen. Wil je de samenvatting bewaren of delen met de eigen tweede lijn, print deze pagina dan (of sla op als PDF via het printmenu).</div>' +
+    '<div class="nav-row">' +
+      '<button class="btn ghost" onclick="ga(3)">← Weging aanpassen</button>' +
+      '<div style="display:flex;gap:10px">' +
+        '<button class="btn" onclick="window.print()">Print / bewaar als PDF</button>' +
+        '<button class="btn" onclick="reset()">Opnieuw beginnen</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+  '<div class="hint no-print">Inhoud gebaseerd op de TRNKL-flowchart “Integriteitsrisico’s in de gemeentelijk gefinancierde zorg en ondersteuning” — zie <a href="integriteit-zorg.html" style="color:var(--tool-accent)">de flowchart</a> voor bronnen en verdieping.</div>';
+}
+
+function reset(){
+  state = { stap: 0, domein: null, speelveld: {}, signalen: {} };
+  render();
+  window.scrollTo({ top: 0 });
+}
+
+render();
+</script>
+
+</body>
+</html>
