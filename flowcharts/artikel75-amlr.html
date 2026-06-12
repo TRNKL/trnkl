@@ -50,6 +50,22 @@
     "@type": "Answer",
     "text": "In beginsel niet (art. 75 lid 5 AMLR). Er gelden vier uitzonderingen, onder meer wanneer de informatie moet worden opgenomen in een melding aan de FIU of wordt verstrekt op grond van art. 49 lid 1 AMLR."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Welke informatie mag binnen een partnerschap worden uitgewisseld?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Artikel 75 lid 3 AMLR bakent dit af. Een bijzonder punt is SAR-gerelateerde informatie: uitwisseling daarvan vereist instemming van de FIU (lid 4 onder k). De flowchart bevat een drielagige juridische analyse van dit vraagstuk."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Hoe richt je een partnerschap voor informatie-uitwisseling op?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "De flowchart bevat een stappenplan: van bestuurlijke oriëntatie en strategische positiekeuze, via de kennisgeving aan de toezichthouders, tot de inrichting van onder meer een MoU met joint-controllership-afspraken, een centraal contactpunt voor betrokkenenrechten en aangepaste privacyverklaringen."
+   }
   }
  ]
 }
@@ -1734,47 +1750,65 @@ document.addEventListener('copy',function(e){
 
 
 <style>
-.uitleg-sectie{max-width:680px;margin:0 auto;padding:48px 24px 40px;font-family:var(--font)}
-.uitleg-sectie .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
-.uitleg-sectie h2{font-size:22px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
-.uitleg-sectie p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
-.uitleg-sectie .faq-kop{font-size:22px;color:var(--text-primary);margin:28px 0 14px;letter-spacing:-.01em}
-.uitleg-sectie details{border-top:.5px solid var(--border-mid)}
-.uitleg-sectie details:last-of-type{border-bottom:.5px solid var(--border-mid)}
-.uitleg-sectie summary{display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none}
-.uitleg-sectie summary::-webkit-details-marker{display:none}
-.uitleg-sectie summary::after{content:"+";color:#FF5A1F;font-size:18px;margin-left:12px;flex-shrink:0}
-.uitleg-sectie details[open] summary::after{content:"3"}
-.uitleg-sectie .antwoord{padding:0 0 16px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
-@media (prefers-color-scheme: dark){.uitleg-sectie .kicker{color:#FF5A1F}}
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"3"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item:last-of-type{border-bottom:none}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"3"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+@media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
 </style>
 
 <section class="uitleg-sectie">
+<details class="uitleg-wrap">
+<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
+<div class="uitleg-body">
 <p class="kicker">Achtergrond</p>
 <h2>Wat regelt artikel 75 AMLR?</h2>
 <p>Artikel 75 van de Europese anti-witwasverordening (AMLR, Verordening (EU) 2024/1624) biedt een directe Europeesrechtelijke grondslag voor partnerschappen voor informatie-uitwisseling: samenwerkingsverbanden waarbinnen meldingsplichtige entiteiten informatie over cliënten en transacties kunnen uitwisselen. De verordening is op 19 juni 2024 in het Publicatieblad verschenen en wordt op 10 juli 2027 algemeen van toepassing.</p>
 <p>Deelname is aan randvoorwaarden gebonden. Wie wil deelnemen, moet dat melden bij de toezichthouder (lid 2), die het partnerschap verifieert, in voorkomend geval in overleg met de gegevensbeschermingsautoriteiten. Welke informatie en welke cliënten binnen het partnerschap vallen, is afgebakend in lid 3 en lid 4. Informatie die via het partnerschap is ontvangen, mag in beginsel niet buiten het partnerschap worden doorgegeven (lid 5), op vier uitzonderingen na.</p>
 <p>De flowchart hierboven ontleedt het artikel stap voor stap: van de voorbereiding van een partnerschap en de procedurele en juridische randvoorwaarden tot de inhoudelijke scope, met kritisch commentaar en operationeel, strategisch en governance-advies voor banken.</p>
 <h2 class="faq-kop">Veelgestelde vragen</h2>
-<details>
+<details class="faq-item">
 <summary>Wat is een partnerschap voor informatie-uitwisseling?</summary>
 <div class="antwoord">Een samenwerkingsverband op grond van artikel 75 AMLR waarbinnen meldingsplichtige entiteiten informatie over cliënten en transacties kunnen uitwisselen, onder meer voor cliëntenonderzoek en transactiemonitoring.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Vanaf wanneer geldt artikel 75 AMLR?</summary>
 <div class="antwoord">De AMLR is op 19 juni 2024 in het Publicatieblad verschenen en wordt op 10 juli 2027 algemeen van toepassing. Als verordening werkt zij rechtstreeks in alle EU-lidstaten.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Over welke cliënten mag informatie worden gedeeld?</summary>
 <div class="antwoord">Artikel 75 lid 4 onder f bakent dit af. Over de precieze reikwijdte van die bepaling bestaat discussie; de flowchart behandelt zowel de nauwe als de brede lezing.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Is goedkeuring nodig voor zo’n partnerschap?</summary>
 <div class="antwoord">Deelnemers moeten hun voornemen melden bij hun toezichthouders (art. 75 lid 2 AMLR). De AML-toezichthouders verifiëren het partnerschap, in voorkomend geval in onderling overleg en in overleg met de gegevensbeschermingsautoriteiten.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Mag gedeelde informatie buiten het partnerschap worden gebruikt?</summary>
 <div class="antwoord">In beginsel niet (art. 75 lid 5 AMLR). Er gelden vier uitzonderingen, onder meer wanneer de informatie moet worden opgenomen in een melding aan de FIU of wordt verstrekt op grond van art. 49 lid 1 AMLR.</div>
+</details>
+<details class="faq-item">
+<summary>Welke informatie mag binnen een partnerschap worden uitgewisseld?</summary>
+<div class="antwoord">Artikel 75 lid 3 AMLR bakent dit af. Een bijzonder punt is SAR-gerelateerde informatie: uitwisseling daarvan vereist instemming van de FIU (lid 4 onder k). De flowchart bevat een drielagige juridische analyse van dit vraagstuk.</div>
+</details>
+<details class="faq-item">
+<summary>Hoe richt je een partnerschap voor informatie-uitwisseling op?</summary>
+<div class="antwoord">De flowchart bevat een stappenplan: van bestuurlijke oriëntatie en strategische positiekeuze, via de kennisgeving aan de toezichthouders, tot de inrichting van onder meer een MoU met joint-controllership-afspraken, een centraal contactpunt voor betrokkenenrechten en aangepaste privacyverklaringen.</div>
+</details>
+</div>
 </details>
 </section>
 

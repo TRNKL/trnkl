@@ -50,6 +50,22 @@
     "@type": "Answer",
     "text": "Nee. Instellingen en hun medewerkers zijn op grond van art. 20c Wwft niet civielrechtelijk of arbeidsrechtelijk aansprakelijk voor economische schade die de cliënt lijdt als gevolg van het opvolgen van het FIU-verzoek. Niet-onverwijld opvolgen is wél een economisch delict."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Wanneer mag de FIU een transactie opschorten?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Wanneer er aanwijzingen bestaan dat de transactie verband houdt met witwassen, onderliggende basisdelicten of terrorismefinanciering. De FIU zet de bevoegdheid uitsluitend in wanneer haar eigen analyse daartoe aanleiding geeft of op verzoek van een buitenlandse FIU; proportionaliteit is daarbij het uitgangspunt."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat moet een instelling doen bij een opschortingsverzoek van de FIU?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Het verzoek onverwijld opvolgen, dat wil zeggen zo snel mogelijk, de transactie aanhouden en de cliënt terstond informeren (art. 17a lid 4 tot en met 6 Wwft). Niet-onverwijld opvolgen is een economisch delict (art. 1 sub 2° WED)."
+   }
   }
  ]
 }
@@ -1176,47 +1192,65 @@ document.querySelectorAll('.modal-box').forEach(function(box) {
 
 
 <style>
-.uitleg-sectie{max-width:680px;margin:0 auto;padding:48px 24px 40px;font-family:var(--font)}
-.uitleg-sectie .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
-.uitleg-sectie h2{font-size:22px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
-.uitleg-sectie p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
-.uitleg-sectie .faq-kop{font-size:22px;color:var(--text-primary);margin:28px 0 14px;letter-spacing:-.01em}
-.uitleg-sectie details{border-top:.5px solid var(--border-mid)}
-.uitleg-sectie details:last-of-type{border-bottom:.5px solid var(--border-mid)}
-.uitleg-sectie summary{display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none}
-.uitleg-sectie summary::-webkit-details-marker{display:none}
-.uitleg-sectie summary::after{content:"+";color:#FF5A1F;font-size:18px;margin-left:12px;flex-shrink:0}
-.uitleg-sectie details[open] summary::after{content:"3"}
-.uitleg-sectie .antwoord{padding:0 0 16px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
-@media (prefers-color-scheme: dark){.uitleg-sectie .kicker{color:#FF5A1F}}
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"3"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item:last-of-type{border-bottom:none}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"3"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+@media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
 </style>
 
 <section class="uitleg-sectie">
+<details class="uitleg-wrap">
+<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
+<div class="uitleg-body">
 <p class="kicker">Achtergrond</p>
 <h2>Wat regelt artikel 17a Wwft?</h2>
 <p>Vanaf 1 juli 2026 kan FIU-Nederland tijdens haar analyse een transactie tijdelijk laten opschorten op grond van artikel 17a Wwft, wanneer die mogelijk verband houdt met witwassen, onderliggende basisdelicten of terrorismefinanciering. De FIU zet deze bevoegdheid uitsluitend in wanneer haar eigen analyse daartoe aanleiding geeft of op verzoek van een buitenlandse FIU; proportionaliteit is daarbij het uitgangspunt.</p>
 <p>De bevoegdheid geldt na het amendement-Van Nispen/Mutluer voor alle Wwft-instellingen. In de praktijk betreft het vooral banken en crypto- en betaaldienstverleners, maar ook notarissen, advocaten, makelaars en belastingadviseurs vallen onder de reikwijdte. De instelling moet het FIU-verzoek onverwijld opvolgen en de transactie maximaal vijf werkdagen aanhouden; komt het verzoek voort uit een signaal van een buitenlandse FIU, dan kan de termijn worden verlengd tot in totaal tien werkdagen.</p>
 <p>De flowchart hierboven laat stap voor stap zien hoe de bevoegdheid werkt: van het verzoek van de FIU en de maximale duur tot het terstond informeren van de cliënt, het einde van de opschorting (vrijgave of beslag), de civielrechtelijke vrijwaring en het toezicht door DNB.</p>
 <h2 class="faq-kop">Veelgestelde vragen</h2>
-<details>
+<details class="faq-item">
 <summary>Wanneer treedt artikel 17a Wwft in werking?</summary>
 <div class="antwoord">Op 1 juli 2026. Vanaf die datum kan FIU-Nederland meldingsplichtige instellingen verzoeken een transactie tijdelijk op te schorten.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Hoe lang mag de FIU een transactie opschorten?</summary>
 <div class="antwoord">Maximaal vijf werkdagen (art. 17a lid 1 Wwft). Wordt het verzoek gedaan op verzoek van een buitenlandse FIU, dan kan de termijn worden verlengd tot in totaal tien werkdagen (art. 17a lid 2 Wwft).</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Voor wie geldt de opschortingsbevoegdheid?</summary>
 <div class="antwoord">Voor alle Wwft-instellingen. In de praktijk betreft het vooral banken en crypto- en betaaldienstverleners, maar ook notarissen, advocaten, makelaars en belastingadviseurs vallen onder de reikwijdte.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Moet de cliënt geïnformeerd worden over de opschorting?</summary>
 <div class="antwoord">Ja. De instelling is verplicht de cliënt terstond te informeren over de toepassing van de opschortingsmaatregel (art. 17a lid 6 Wwft). Het oorspronkelijke wetsvoorstel kende slechts een passieve informatieplicht, op verzoek van de cliënt; dat is bij amendement-Six Dijkstra gewijzigd.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Is de instelling aansprakelijk voor schade door opschorting?</summary>
 <div class="antwoord">Nee. Instellingen en hun medewerkers zijn op grond van art. 20c Wwft niet civielrechtelijk of arbeidsrechtelijk aansprakelijk voor economische schade die de cliënt lijdt als gevolg van het opvolgen van het FIU-verzoek. Niet-onverwijld opvolgen is wél een economisch delict.</div>
+</details>
+<details class="faq-item">
+<summary>Wanneer mag de FIU een transactie opschorten?</summary>
+<div class="antwoord">Wanneer er aanwijzingen bestaan dat de transactie verband houdt met witwassen, onderliggende basisdelicten of terrorismefinanciering. De FIU zet de bevoegdheid uitsluitend in wanneer haar eigen analyse daartoe aanleiding geeft of op verzoek van een buitenlandse FIU; proportionaliteit is daarbij het uitgangspunt.</div>
+</details>
+<details class="faq-item">
+<summary>Wat moet een instelling doen bij een opschortingsverzoek van de FIU?</summary>
+<div class="antwoord">Het verzoek onverwijld opvolgen, dat wil zeggen zo snel mogelijk, de transactie aanhouden en de cliënt terstond informeren (art. 17a lid 4 tot en met 6 Wwft). Niet-onverwijld opvolgen is een economisch delict (art. 1 sub 2° WED).</div>
+</details>
+</div>
 </details>
 </section>
 

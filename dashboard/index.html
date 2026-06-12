@@ -42,6 +42,22 @@
     "@type": "Answer",
     "text": "Uitsluitend openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat staat er over wonen in het coalitieakkoord 2026–2030?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Het hoofdstuk bouwen en wonen. Het dashboard ontleedt dat hoofdstuk in 50 losse doelen, elk met een eigen doelpagina waarop de afspraak, de verkiezingsprogramma’s, de Kamerstukken en de cijfers naast elkaar staan."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat staat er over asiel en migratie in het coalitieakkoord 2026–2030?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Het hoofdstuk asiel, migratie en integratie, in het dashboard ontleed in 67 doelen met elk een eigen doelpagina."
+   }
   }
  ]
 }
@@ -330,43 +346,61 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 </div></section>
 
 <style>
-.uitleg-sectie{max-width:680px;margin:0 auto;padding:48px 24px 40px;font-family:var(--font)}
-.uitleg-sectie .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
-.uitleg-sectie h2{font-size:22px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
-.uitleg-sectie p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
-.uitleg-sectie .faq-kop{font-size:22px;color:var(--text-primary);margin:28px 0 14px;letter-spacing:-.01em}
-.uitleg-sectie details{border-top:.5px solid var(--border-mid)}
-.uitleg-sectie details:last-of-type{border-bottom:.5px solid var(--border-mid)}
-.uitleg-sectie summary{display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none}
-.uitleg-sectie summary::-webkit-details-marker{display:none}
-.uitleg-sectie summary::after{content:"+";color:#FF5A1F;font-size:18px;margin-left:12px;flex-shrink:0}
-.uitleg-sectie details[open] summary::after{content:"\2013"}
-.uitleg-sectie .antwoord{padding:0 0 16px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
-@media (prefers-color-scheme: dark){.uitleg-sectie .kicker{color:#FF5A1F}}
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"3"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item:last-of-type{border-bottom:none}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"3"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+@media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
 </style>
 
 <section class="uitleg-sectie">
+<details class="uitleg-wrap">
+<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
+<div class="uitleg-body">
 <p class="kicker">Achtergrond</p>
 <h2>Het coalitieakkoord volgen, doel voor doel</h2>
 <p>Het TRNKL Politiek Dashboard ontleedt het coalitieakkoord 2026–2030 van D66, VVD en CDA in losse, controleerbare doelen. Per doel staat naast elkaar wat het akkoord afspreekt, wat de coalitiepartijen er in hun verkiezingsprogramma over schreven, wat de Tweede Kamer er sinds de beëdiging van het kabinet mee doet en welke cijfers uit publieke bronnen de afspraak tastbaar maken.</p>
 <p>Twee thema’s zijn uitgewerkt: Wonen, met 50 doelpagina’s uit het hoofdstuk bouwen en wonen, en Asiel &amp; migratie, met 67 doelen uit het hoofdstuk asiel, migratie en integratie. De overige thema’s van het akkoord volgen.</p>
 <p>Het dashboard velt geen waardeoordeel. Loopt een plan anders dan voorzien, dan kan daar een goede reden voor zijn; het dashboard toont het verschil, de lezer weegt het.</p>
 <h2 class="faq-kop">Veelgestelde vragen</h2>
-<details>
+<details class="faq-item">
 <summary>Wat is het TRNKL Politiek Dashboard?</summary>
 <div class="antwoord">Een onafhankelijk dashboard dat het coalitieakkoord 2026–2030 van D66, VVD en CDA ontleedt in losse doelen en per doel laat zien wat de afspraak is, wat de Tweede Kamer ermee doet en wat de cijfers tonen.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Welke thema’s zijn uitgewerkt?</summary>
 <div class="antwoord">Wonen (50 doelpagina’s) en Asiel & migratie (67 doelen). De overige thema’s van het akkoord, zoals bestaanszekerheid, zorg en klimaat & energie, zijn in voorbereiding.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Velt het dashboard een politiek oordeel?</summary>
 <div class="antwoord">Nee. Het dashboard legt feiten naast elkaar en toont het verschil tussen afspraak en uitvoering; het oordeel is aan de lezer.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Welke bronnen gebruikt het dashboard?</summary>
 <div class="antwoord">Uitsluitend openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten.</div>
+</details>
+<details class="faq-item">
+<summary>Wat staat er over wonen in het coalitieakkoord 2026–2030?</summary>
+<div class="antwoord">Het hoofdstuk bouwen en wonen. Het dashboard ontleedt dat hoofdstuk in 50 losse doelen, elk met een eigen doelpagina waarop de afspraak, de verkiezingsprogramma’s, de Kamerstukken en de cijfers naast elkaar staan.</div>
+</details>
+<details class="faq-item">
+<summary>Wat staat er over asiel en migratie in het coalitieakkoord 2026–2030?</summary>
+<div class="antwoord">Het hoofdstuk asiel, migratie en integratie, in het dashboard ontleed in 67 doelen met elk een eigen doelpagina.</div>
+</details>
+</div>
 </details>
 </section>
 

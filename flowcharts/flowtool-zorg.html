@@ -41,6 +41,14 @@
     "@type": "Answer",
     "text": "Een gestructureerd beeld van de aanwezige signalen en het patroon dat daaruit naar voren komt, met vervolgstappen: intern escaleren, het juiste toezicht inschakelen of het signaal via de gemeente delen met het Informatie Knooppunt Zorgfraude."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Wie houdt toezicht op gemeentelijke zorgaanbieders?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Bij Wmo-zorg ligt het toezicht bij de Wmo-toezichthouder, veelal de GGD; de IGJ komt in beeld waar ook zorg onder de Wkkgz wordt geleverd, zoals GGZ-behandeling. Bij jeugdhulp onder de Jeugdwet houdt de Inspectie Gezondheidszorg en Jeugd toezicht."
+   }
   }
  ]
 }
@@ -325,43 +333,57 @@
 
 
 <style>
-.uitleg-sectie{max-width:680px;margin:0 auto;padding:48px 24px 40px;font-family:var(--font)}
-.uitleg-sectie .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
-.uitleg-sectie h2{font-size:22px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
-.uitleg-sectie p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
-.uitleg-sectie .faq-kop{font-size:22px;color:var(--text-primary);margin:28px 0 14px;letter-spacing:-.01em}
-.uitleg-sectie details{border-top:.5px solid var(--border-mid)}
-.uitleg-sectie details:last-of-type{border-bottom:.5px solid var(--border-mid)}
-.uitleg-sectie summary{display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none}
-.uitleg-sectie summary::-webkit-details-marker{display:none}
-.uitleg-sectie summary::after{content:"+";color:#FF5A1F;font-size:18px;margin-left:12px;flex-shrink:0}
-.uitleg-sectie details[open] summary::after{content:"3"}
-.uitleg-sectie .antwoord{padding:0 0 16px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
-@media (prefers-color-scheme: dark){.uitleg-sectie .kicker{color:#FF5A1F}}
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"3"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item:last-of-type{border-bottom:none}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"3"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+@media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
 </style>
 
 <section class="uitleg-sectie">
+<details class="uitleg-wrap">
+<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
+<div class="uitleg-body">
 <p class="kicker">Achtergrond</p>
 <h2>Signalen van zorgfraude herkennen</h2>
 <p>De Flowtool Zorg is een interactieve zelfevaluatie waarmee je signalen van zorgfraude en integriteitsrisico’s gestructureerd naloopt, in plaats van afvinkt. De tool beslaat drie gemeentelijke zorgdomeinen: jeugdzorg (Jeugdwet), begeleiding &amp; dagbesteding (Wmo 2015) en beschermd wonen &amp; opvang (Wmo 2015).</p>
 <p>De evaluatie volgt drie stappen: eerst het speelveld (om welk domein en welke rol gaat het), dan de signalen, en tot slot het patroon met vervolgstappen, zoals intern escaleren, het toezicht inschakelen of het signaal delen via de gemeente met het Informatie Knooppunt Zorgfraude. De tool is bedoeld voor iedereen die beroepsmatig met deze geldstromen of cliënten te maken krijgt: gemeenteambtenaren en inkopers, Wmo- en jeugdconsulenten, toezichthouders, zorgaanbieders en zorgmedewerkers, accountants en compliance-medewerkers van banken.</p>
 <p>De flowtool werkt volledig in de browser. Er worden geen persoonsgegevens gevraagd, verzonden of opgeslagen; bij het sluiten van de tab is alles weg.</p>
 <h2 class="faq-kop">Veelgestelde vragen</h2>
-<details>
+<details class="faq-item">
 <summary>Voor wie is de Flowtool Zorg bedoeld?</summary>
 <div class="antwoord">Voor iedereen die beroepsmatig met gemeentelijke zorggeldstromen of cliënten te maken krijgt: gemeenteambtenaren en inkopers, Wmo- en jeugdconsulenten, toezichthouders (Wmo-toezicht/GGD, IGJ, NZa), zorgaanbieders en zorgmedewerkers, accountants, SVB-medewerkers en compliance-medewerkers van banken.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Welke zorgdomeinen dekt de tool?</summary>
 <div class="antwoord">Drie gemeentelijke zorgdomeinen: jeugdzorg (Jeugdwet), begeleiding & dagbesteding (Wmo 2015) en beschermd wonen & opvang (Wmo 2015).</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Worden er gegevens opgeslagen?</summary>
 <div class="antwoord">Nee. De tool werkt volledig in de browser; er worden geen persoonsgegevens gevraagd, verzonden of opgeslagen. Vul ook nooit cliëntnamen, BSN of andere herleidbare gegevens in — de tool vraagt er niet om.</div>
 </details>
-<details>
+<details class="faq-item">
 <summary>Wat levert de zelfevaluatie op?</summary>
 <div class="antwoord">Een gestructureerd beeld van de aanwezige signalen en het patroon dat daaruit naar voren komt, met vervolgstappen: intern escaleren, het juiste toezicht inschakelen of het signaal via de gemeente delen met het Informatie Knooppunt Zorgfraude.</div>
+</details>
+<details class="faq-item">
+<summary>Wie houdt toezicht op gemeentelijke zorgaanbieders?</summary>
+<div class="antwoord">Bij Wmo-zorg ligt het toezicht bij de Wmo-toezichthouder, veelal de GGD; de IGJ komt in beeld waar ook zorg onder de Wkkgz wordt geleverd, zoals GGZ-behandeling. Bij jeugdhulp onder de Jeugdwet houdt de Inspectie Gezondheidszorg en Jeugd toezicht.</div>
+</details>
+</div>
 </details>
 </section>
 
