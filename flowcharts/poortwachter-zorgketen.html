@@ -301,9 +301,9 @@
     }
     .bus { display: none; }
     .compare-grid { grid-template-columns: 1fr; }
-    .proc { flex-direction: column; }
-    .proc .pb { max-width: none; }
-    .proc .pa { justify-content: center; transform: rotate(90deg); }
+    .proc { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+    .proc .pb { max-width: none; width: 100%; }
+    .proc .pa { width: 100%; justify-content: center; transform: rotate(90deg); }
     .dtable-wrap .dtable { min-width: 540px; }
   }
 
