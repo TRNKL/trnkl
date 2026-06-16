@@ -96,8 +96,9 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 .nav-link:link, .nav-link:focus, .nav-link:active { color: var(--text-secondary); }
 .nav-link:visited { color: #5f5e5a; }
 @media (prefers-color-scheme: dark) { .nav-link:visited { color: #9c9a92; } }
+.nav-link span { color: var(--text-secondary); }
 .nav-link:hover { text-decoration: none; }
-@media (hover: hover) { .nav-link:hover { color: var(--text-primary); } }
+@media (hover: hover) { .nav-link:hover, .nav-link:hover span { color: var(--text-primary); } }
 
 /* Hero */
 .hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 68px 0 64px; }
@@ -161,7 +162,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <a href="#flowcharts" class="nav-link">Flowcharts</a>
         <a href="#flowtools" class="nav-link">Flowtools</a>
         <a href="#dashboards" class="nav-link">Dashboards</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="contact.html" class="nav-link"><span>Contact</span></a>
       </div>
     </nav>
   </div>
