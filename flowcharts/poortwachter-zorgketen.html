@@ -253,6 +253,7 @@
   .dtable { width: 100%; border-collapse: collapse; margin: 8px 0 4px; font-size: 11px; }
   .dtable th, .dtable td { border: 0.5px solid var(--border-light); padding: 6px 8px; text-align: left; vertical-align: top; line-height: 1.5; }
   .dtable th { background: var(--bg-tertiary); font-weight: 600; color: var(--text-secondary); font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+  .dtable-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .prio-r { color: #791F1F; font-weight: 700; white-space: nowrap; }
   .prio-o { color: #7A3200; font-weight: 700; white-space: nowrap; }
   .prio-y { color: #8a6d00; font-weight: 700; white-space: nowrap; }
@@ -300,6 +301,10 @@
     }
     .bus { display: none; }
     .compare-grid { grid-template-columns: 1fr; }
+    .proc { flex-direction: column; }
+    .proc .pb { max-width: none; }
+    .proc .pa { justify-content: center; transform: rotate(90deg); }
+    .dtable-wrap .dtable { min-width: 540px; }
   }
 
   .site-footer { padding: 28px 24px; margin-top: 40px; border-top: 0.5px solid var(--border-light); background: var(--bg-primary); text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.7; }
@@ -525,7 +530,7 @@
     <div class="modal-section">
       <div class="modal-section-title">4. Het scenario technisch: acht aspecten, twee fasen en een gedeelde uitkomst</div>
       <div class="modal-section-sub">Twee kolommen op het canvas; de uitkomst (Z7&ndash;Z8) is de gedeelde afsluiting van elke fase · <span class="zlab poort">poort</span> <span class="zlab relatie">relatie</span> <span class="zlab uitkomst">uitkomst</span></div>
-      <table class="dtable ztable">
+      <div class="dtable-wrap"><table class="dtable ztable">
         <thead><tr><th>Aspect</th><th>Fase</th><th>Wat het inhoudt</th></tr></thead>
         <tbody>
           <tr><td><span class="zkode">Z1</span></td><td><span class="zlab poort">poort</span></td><td><strong>Segmentdetectie:</strong> automatische check op SBI-code en activiteitenomschrijving bij onboarding, om zorgklanten en zorggerelateerde entiteiten te detecteren. Elke hit gaat naar handmatige verificatie.</td></tr>
@@ -537,7 +542,7 @@
           <tr><td><span class="zkode">Z7</span></td><td><span class="zlab uitkomst">uitkomst</span></td><td><strong>Weegkader &amp; risicobereidheid:</strong> de optelsom van indicatoren (kans &times; impact, spreidingsregel, veiligheidsoverride) leidt tot een restrisico-oordeel: binnen of buiten de risicobereidheid.</td></tr>
           <tr><td><span class="zkode">Z8</span></td><td><span class="zlab uitkomst">uitkomst</span></td><td><strong>Meld- &amp; maatregelenproces:</strong> een gedocumenteerd relatiebesluit (art. 5) en terugkoppeling van de casus naar de SIRA; b&iacute;j een ongebruikelijke transactie bovendien een FIU-melding (art. 16, geheimhouding art. 23). Buiten de risicobereidheid vallen en melden zijn aparte verplichtingen.</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <div class="info-banner"><strong>Van organisatie- naar klantniveau:</strong> de secties hierboven (hoofdrisico's, scenariotaxonomie en de trechter) staan op organisatieniveau: de SIRA zoals DNB die bedoelt. Vanaf hier verschuift de analyse naar klantniveau: hetzelfde scenario toegepast op de individuele klant in de tijd, vastgelegd in de scenario-datatag (sectie 5).</div>
       <div class="info-banner"><strong>Leeswijzer:</strong> de twee kolommen op het canvas voeren dit scenario uit. Fase 1 (aan de poort) werkt Z1&ndash;Z3 uit, fase 2 (tijdens de klantrelatie) Z4&ndash;Z6. Elke kolom eindigt in het mogelijke gevolg: valt het restrisico buiten de risicobereidheid, dan volgen de uitkomst-aspecten Z7&ndash;Z8 (weging, maatregelen, en bij een ongebruikelijke transactie melden). Binnen elke kolom: wat het scenario zegt, wat er automatisch gebeurt, welke handmatige stappen volgen, het mogelijke gevolg, en praktijk &amp; advies.</div>
       <div class="mp">De volledige indicatorenset met gewichten en drempels hoort thuis in het risicomodel van de bank die zorgfraude als scenario in haar SIRA heeft opgenomen, niet in een publieke flowchart. Die operationele detaillering blijft vertrouwelijk, juist om ontwijking te voorkomen. De herkomst van de typologie-indicatoren (AMLC, FIU, RIEC) is per kolom gebrond. Het scenario is bewust compact gehouden: uitbreiden gebeurt in het risicomodel van de instelling, niet in de scenariodefinitie. Zo blijft de SIRA hanteerbaar.</div>
@@ -825,7 +830,7 @@
 
     <div class="mh">Z4 · de detectieregels op de zorgtypologie</div>
     <div class="mp" style="margin-bottom:6px">Acht regelfamilies, rechtstreeks herleidbaar tot AMLC-, FIU- en OM-casu&iuml;stiek, drempels en kalibratie blijven aan de instelling:</div>
-    <table class="dtable">
+    <div class="dtable-wrap"><table class="dtable">
       <thead><tr><th>Regel</th><th>Meet</th><th>Herleidbaar tot</th></tr></thead>
       <tbody>
         <tr><td>Personeelslast / omzet</td><td>salarisbatches tegenover publieke zorginstroom</td><td>AMLC: 8&ndash;11% waar ~71% gangbaar is; OM-zaak 2024: &plusmn;30% vs &plusmn;70%</td></tr>
@@ -837,7 +842,7 @@
         <tr><td>Pgb-doorboeking</td><td>SVB-instroom die binnen dagen (vrijwel) volledig doorgaat naar &eacute;&eacute;n tegenrekening</td><td>AMLC-casu&iuml;stiek; FIU-jaaroverzicht 2024</td></tr>
         <tr><td>Bemiddelaar-concentratie</td><td>&eacute;&eacute;n rekening die voor veel budgethouders ontvangt; pasgebruik door derden</td><td>AMLC: 35 bankpasjes van pgb-cli&euml;nten bij &eacute;&eacute;n zorgbureau</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="mp" style="margin-top:6px">Vangnet voor de poort: de instroomherkomst-regel flagt klanten met gemeente- of SVB-instroom z&oacute;nder zorgsegment-flag (gemiste Z1) alsnog. Er bestaat geen afzonderlijk vastgestelde FIU-typologie &ldquo;zorgfraude&rdquo;; de regels operationaliseren de generieke witwastypologie&euml;n op de zorgcontext.</div>
 
     <div class="info-banner"><strong>De datatag bepaalt welke regels zinvol zijn.</strong> Stelt de bank bij acceptatie vast dat deze rekening niet voor salarisbetaling wordt gebruikt (de klant voert de loonadministratie bij een andere bank) en legt zij die gewogen afweging vast in de scenario-datatag, dan staat de personeelslast/omzet-regel voor deze klant uit: de verhouding die de regel meet, bestaat hier niet. Dat scheelt een alert die de analist anders zou afhandelen en met een verwijzing naar het acceptatiedossier zou moeten verklaren. Verschijnen er op deze rekening t&oacute;ch salarisbatches, dan spreekt dat de datatag tegen en is d&aacute;t het signaal.</div>
@@ -954,7 +959,7 @@
     <div class="sira-regel"><span class="sr-label">Z4&ndash;Z6 in de praktijk</span>casu&iuml;stiek door de bank-bril <span class="zlab relatie">relatie</span></div>
 
     <div class="mh">Wat had de bank kunnen zien?</div>
-    <table class="dtable">
+    <div class="dtable-wrap"><table class="dtable">
       <thead><tr><th>Zaak</th><th>Wat er gebeurde</th><th>Welke regel had geraakt</th></tr></thead>
       <tbody>
         <tr><td>Dolia (pgb-thuiszorg)</td><td>170.830 gedeclareerde uren waar er maximaal 37.904 leverbaar waren (hooguit ~22%); benadelingsbedrag &euro;5,4 mln (rechtbank)</td><td>Personeelslast/omzet · pgb-doorboeking</td></tr>
@@ -962,7 +967,7 @@
         <tr><td>OM-zaak 2024 (&euro;1,5 mln)</td><td>Witwassen met zorgfraude; zaak begon met &plusmn;20 verdacht verklaarde transacties</td><td>Personeelslast/omzet</td></tr>
         <tr><td>FIU-casus (negen ton)</td><td>Branchevreemde marge, lage personeelskosten, luxe-uitgaven; bankwissel om uit zicht te blijven</td><td>Gelieerde uitstroom · Luxebestedingen · cash-ratio · en de melding van de tw&eacute;&eacute;de bank</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="mh">De casu&iuml;stiek als bewijs van de route</div>
     <div class="mp">De keten melding → FIU → opsporing → resultaat is geen theorie: drie banken meldden rond &eacute;&eacute;n netwerk en de Arbeidsinspectie hield aan (ruim &euro;1 mln); een bankmelding over een zorgbestuurder leidde tot een veroordeling voor het witwassen van negen ton, en toen de cli&euml;nt van bank wisselde om uit zicht te blijven, meldde ook de tweede bank; een melding over contante pgb-opnames eindigde in 2026 in de ontbinding van een malafide zorgstichting en een bestuursverbod. De les uit de bankwissel-casus: <strong>een vertrokken cli&euml;nt ontslaat niet van de meldplicht</strong> over wat is waargenomen.</div>
