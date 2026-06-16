@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+<base target="_blank" rel="noopener noreferrer">
+<title>Zorgfraude en de bank als poortwachter: een SIRA-scenario onder de Wwft | TRNKL</title>
+<link rel="canonical" href="https://trnkl.nl/flowcharts/poortwachter-zorgketen.html">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Is zorgfraude een apart risico of een scenario in de SIRA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Zorgfraude is geen zelfstandig hoofdrisico maar een scenario onder de hoofdrisico's witwassen en fraude. De opbrengst wordt per definitie witgewassen en loopt vrijwel volledig over bankrekeningen. In de systematische integriteitsrisicoanalyse (SIRA) krijgt het scenario een inherent risico, beheersmaatregelen (cliëntenonderzoek en transactiemonitoring) en een restrisico."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Welke Wwft-verplichtingen gelden voor de bank bij zorgfraude?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Cliëntenonderzoek (art. 3 Wwft), verscherpt onderzoek bij verhoogd risico (art. 8), voortdurende controle op de relatie en de transacties (art. 3 lid 2 sub d) en het onverwijld melden van ongebruikelijke transacties aan de FIU (art. 16), met geheimhouding jegens een ieder (art. 23). Vanaf 10 juli 2027 verschuift het cliëntenonderzoek naar art. 20 AMLR."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat is een scenario-datatag?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Een gestructureerd, machineleesbaar profiel dat elke klant bij acceptatie krijgt en dat per scenario vastlegt welke inherente risico's, beheersmaatregelen en restrisico's spelen. Het tekstuele dossier blijft de bron; de codering legt daarachter de risicoweging gestructureerd vast, zodat systemen ermee kunnen werken zonder de menselijke weging te vervangen. Daarmee automatiseert de tag welke detectieregels op de klant draaien: alleen toepasselijke scenario's triggeren en een regel waarvan de grondslag bij deze klant ontbreekt blijft uit, zodat de false-positive-ratio daalt. Omdat ook de uitkomst (afwijzing of beëindiging) met de scenario-reden wordt vastgelegd, wordt geaggregeerd zichtbaar hoeveel klanten buiten een scenario zijn geweigerd of beëindigd, wat laat zien of de controls werken. Het is risicogebaseerd en datagedreven werken in de meest letterlijke zin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Welke signalen wijzen op zorgfraude?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Snelle omzetgroei zonder personeel dat daarbij past, een lage personeelslast tegenover de omzet, hoge contante opnames, bovenmatige huur aan een gelieerde vastgoed-bv, dividend dat niet strookt met de zorgactiviteiten, pgb's die binnen dagen worden doorgeboekt, uitgaven aan luxegoederen of overboekingen naar het buitenland zonder zorggrond, en complexe structuren rond kleine zorg-bv's. Eén signaal is zelden bewijs; het gaat om de optelsom en de spreiding over meerdere categorieën."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat gebeurt er als het risico onacceptabel is?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Valt het restrisico buiten de risicobereidheid uit de SIRA, dan volgt een gedocumenteerd besluit over de relatie: verscherpen, voortzetten onder voorwaarden of beëindigen (art. 5 Wwft). Dat besluit is per definitie individueel, geen categorale uitsluiting. Een melding aan de FIU is een aparte verplichting met een eigen drempel: die volgt alleen als er een ongebruikelijke transactie is (art. 16 Wwft). Buiten de risicobereidheid vallen leidt dus niet automatisch tot een FIU-melding."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat verandert artikel 75 AMLR voor zorgfraude?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Vanaf 10 juli 2027 biedt art. 75 AMLR een grondslag voor partnerschappen voor informatie-uitwisseling, waarin meldingsplichtige entiteiten cliënt- en transactiegegevens mogen delen om netwerken te detecteren die één instelling niet ziet. Dat kan ook cross-sectoraal, bijvoorbeeld tussen banken en accountants: juist de twee Wwft-instellingen die volgens de FIU de meeste zorgfraude-gerelateerde transacties aanleveren. De toezichthouder toetst het partnerschap vooraf en de melding aan de FIU blijft apart bestaan (overweging 149 AMLR)."
+   }
+  }
+ ]
+}
+</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:site_name" content="TRNKL">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://trnkl.nl/flowcharts/poortwachter-zorgketen.html">
+<meta property="og:image" content="https://trnkl.nl/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Zorgfraude als scenario in de SIRA van de bank: hoe de Wwft-poortwachter het risicogebaseerd en datagedreven herkent, van de poort tot de FIU-melding.">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="De bank als poortwachter in de zorgketen">
+<meta property="og:description" content="Interactieve flowchart · zorgfraude als scenario in de SIRA · risicogebaseerde en datagedreven detectie · van de poort tot de FIU-melding">
+
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #faf9f4;
+    --bg-tertiary: #f5f4ee;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --border-light: rgba(0,0,0,0.10);
+    --border-mid: rgba(0,0,0,0.18);
+    --border-strong: rgba(0,0,0,0.28);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c;
+      --bg-secondary: #2a2a27;
+      --bg-tertiary: #242422;
+      --text-primary: #e8e6de;
+      --text-secondary: #9c9a92;
+      --text-tertiary: #6b6960;
+      --border-light: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.22);
+    }
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  header {
+    background: var(--bg-primary);
+    border-bottom: 0.5px solid var(--border-mid);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 0 0 100vmax var(--bg-primary);
+    clip-path: inset(0 -100vmax);
+  }
+  .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .header-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+  .brand-mark { font-size: 21px; font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; line-height: 1; text-decoration: none; white-space: nowrap; }
+  .brand-mark:hover { opacity: 0.7; }
+  .merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+  .header-rule { width: 1px; height: 26px; background: var(--border-mid); flex: 0 0 auto; }
+
+  .canvas-wrap {
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .n8n-node { display: flex; flex-direction: column; align-items: center; cursor: pointer; user-select: none; }
+  .node-box {
+    border-radius: 10px;
+    border: 1.5px solid var(--border-mid);
+    background: var(--bg-primary);
+    display: flex; align-items: center; gap: 9px;
+    padding: 10px 14px;
+    width: 300px;
+    transition: border-color .15s, transform .12s, box-shadow .12s;
+    position: relative; cursor: pointer;
+  }
+  .n8n-node:hover .node-box { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .node-icon-wrap { width: 32px; height: 32px; min-width: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .node-text { flex: 1; min-width: 0; }
+  .node-name { font-size: 12px; font-weight: 500; color: var(--text-primary); line-height: 1.35; }
+  .node-type { font-size: 10px; color: var(--text-secondary); margin-top: 2px; line-height: 1.3; }
+
+  .node-badge { position: absolute; top: -9px; left: 50%; transform: translateX(-50%); font-size: 9px; border-radius: 20px; padding: 2px 9px; white-space: nowrap; font-weight: 600; letter-spacing: .03em; }
+
+  .info-dot {
+    position: absolute; top: -9px; right: -9px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--bg-secondary); border: 1px solid var(--border-mid);
+    font-size: 11px; font-weight: 500; color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10;
+    transition: background .12s, border-color .12s, color .12s;
+  }
+  .info-dot:hover { background: #E6F1FB; border-color: #185FA5; color: #185FA5; }
+
+  /* ----- Org-chart connectoren ----- */
+  .v-line { width: 2px; background: var(--border-mid); margin: 0 auto; }
+  .branch-row { display: flex; justify-content: center; align-items: flex-start; gap: 28px; }
+  .branch-col { display: flex; flex-direction: column; align-items: center; }
+  .bus-wrap { display: flex; justify-content: center; }
+  .bus { position: relative; height: 22px; }
+
+  /* ----- Kolomkop-node ----- */
+  .zg-node { user-select: none; cursor: pointer; }
+  .zg-box {
+    border-radius: 10px; border: 1.5px solid #FF5A1F; background: var(--bg-primary);
+    display: flex; align-items: center; gap: 9px; padding: 10px 13px; width: 248px;
+    transition: transform .12s, box-shadow .12s; position: relative;
+  }
+  .zg-node:hover .zg-box { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(255,90,31,0.12); }
+  .zg-icon { width: 32px; height: 32px; min-width: 32px; border-radius: 8px; background: #FFF1EA; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .zg-text { flex: 1; min-width: 0; }
+  .zg-name { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+  .zg-rank { font-size: 9px; color: var(--text-secondary); margin-top: 2px; }
+
+  /* ----- Stap-node ----- */
+  .inst-node { user-select: none; cursor: pointer; }
+  .inst-box {
+    border-radius: 10px; border: 1.5px solid #1D9E75; background: var(--bg-primary);
+    display: flex; align-items: center; gap: 8px; padding: 9px 12px; width: 248px;
+    transition: transform .12s, box-shadow .12s; position: relative;
+  }
+  .inst-node:hover .inst-box { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(29,158,117,0.12); }
+  .inst-icon { width: 30px; height: 30px; min-width: 30px; border-radius: 7px; background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .inst-text { flex: 1; min-width: 0; }
+  .inst-name { font-size: 11px; font-weight: 500; color: var(--text-primary); line-height: 1.3; }
+  .inst-step { font-size: 9px; color: var(--text-tertiary); margin-top: 2px; line-height: 1.3; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+  /* ----- Modals ----- */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.45); align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px;
+    max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto;
+    padding: 22px 24px 28px; position: relative;
+    /* tekstselectie standaard toegestaan; de JS-schakelaar BLOKKEER_KOPIEREN zet dit bij publicatie weer dicht */
+  }
+  .modal-close { position: absolute; top: 14px; right: 16px; font-size: 20px; cursor: pointer; background: none; border: none; color: var(--text-secondary); line-height: 1; }
+  .modal-close:hover { color: var(--text-primary); }
+  .modal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; padding-right: 26px; line-height: 1.4; }
+  .modal-kicker { font-size: 10px; font-weight: 600; color: #C2410C; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+  .mh { font-size: 10px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; margin: 16px 0 6px; }
+  .mp { font-size: 12px; color: var(--text-primary); line-height: 1.75; }
+  .mtag { display: inline-block; font-size: 10px; border-radius: 4px; padding: 2px 8px; margin: 2px 3px 2px 0; background: #E6F1FB; color: #0C447C; }
+  .mtag.g { background: #E1F5EE; color: #085041; }
+  .mtag.p { background: #EEEDFE; color: #3C3489; }
+  .mtag.o { background: #FFF3E0; color: #7A3200; }
+  .mtag.r { background: #FCEBEB; color: #791F1F; }
+  .ml { font-size: 12px; color: var(--text-primary); line-height: 1.75; padding-left: 16px; }
+  .ml li { margin-bottom: 2px; }
+
+  .modal-section { margin-top: 22px; padding-top: 18px; border-top: 0.5px solid var(--border-light); }
+  .modal-section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+  .modal-section-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; line-height: 1.4; }
+  .modal-section-sub { font-size: 10px; color: var(--text-secondary); margin-bottom: 10px; }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+  .compare-col { background: var(--bg-secondary); border-radius: 8px; padding: 10px 12px; border: 0.5px solid var(--border-light); }
+  .compare-col-title { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+  .compare-col ul { font-size: 11px; line-height: 1.7; padding-left: 14px; color: var(--text-primary); }
+
+  .info-banner { background: #FFF3E0; border: 1px solid #F5D9A8; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 11px; color: #7A3200; line-height: 1.65; }
+  .info-banner strong { font-weight: 600; }
+  .info-banner.g { background: #E1F5EE; border-color: #BCE3D5; color: #085041; }
+  .pgb-banner { background: #EEEDFE; border: 1px solid #C9C5F0; border-radius: 8px; padding: 10px 14px; margin: 12px 0; font-size: 11px; color: #3C3489; line-height: 1.65; }
+  .pgb-banner strong { font-weight: 700; }
+
+  /* ----- SIRA-regel: plek in het control framework, bovenaan elke stap-modal ----- */
+  .sira-regel { background: var(--bg-secondary); border: 0.5px solid var(--border-light); border-left: 4px solid #FF5A1F; border-radius: 0 8px 8px 0; padding: 8px 12px; margin: 0 0 14px; font-size: 10.5px; color: var(--text-secondary); line-height: 1.6; }
+  .sira-regel strong { color: var(--text-primary); font-weight: 600; }
+  .sira-regel .sr-label { display: block; font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 2px; }
+
+  /* ----- Tabellen ----- */
+  .dtable { width: 100%; border-collapse: collapse; margin: 8px 0 4px; font-size: 11px; }
+  .dtable th, .dtable td { border: 0.5px solid var(--border-light); padding: 6px 8px; text-align: left; vertical-align: top; line-height: 1.5; }
+  .dtable th { background: var(--bg-tertiary); font-weight: 600; color: var(--text-secondary); font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+  .prio-r { color: #791F1F; font-weight: 700; white-space: nowrap; }
+  .prio-o { color: #7A3200; font-weight: 700; white-space: nowrap; }
+  .prio-y { color: #8a6d00; font-weight: 700; white-space: nowrap; }
+  @media (prefers-color-scheme: dark) { .prio-y { color: #d9c178; } }
+
+  /* ----- Checklists & signalen ----- */
+  .checklist { list-style: none; padding-left: 2px; font-size: 12px; line-height: 1.7; color: var(--text-primary); }
+  .checklist li { position: relative; padding-left: 22px; margin-bottom: 4px; }
+  .checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--text-tertiary); font-size: 13px; }
+  .flag-list { list-style: none; padding-left: 2px; font-size: 12px; line-height: 1.7; color: var(--text-primary); }
+  .flag-list li { position: relative; padding-left: 22px; margin-bottom: 5px; }
+  .flag-list li::before { content: "\2691"; position: absolute; left: 0; color: #C2410C; font-size: 12px; }
+
+  .source-block { margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--border-light); user-select: text; -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; }
+  .source-label { font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+  .source-text { font-size: 10px; color: var(--text-secondary); line-height: 1.6; }
+  .source-text a { color: #185FA5; text-decoration: none; }
+  .source-text a:hover { text-decoration: underline; }
+  .mp a { color: #C2410C; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(194,65,31,0.3); transition: border-color .15s ease; }
+  .mp a:hover { border-bottom-color: #C2410C; }
+
+  .hint { font-size: 11px; color: var(--text-tertiary); padding: 8px 24px 14px; text-align: center; }
+
+  @media (max-width: 820px) {
+    .branch-row {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-self: stretch;
+      gap: 14px;
+      margin-left: -24px;
+      margin-right: -24px;
+      padding: 4px 24px 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+      overscroll-behavior-x: contain;
+    }
+    .branch-col {
+      flex: 0 0 auto;
+      width: min(84vw, 300px);
+      margin-bottom: 0;
+      scroll-snap-align: center;
+    }
+    .bus { display: none; }
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+
+  .site-footer { padding: 28px 24px; margin-top: 40px; border-top: 0.5px solid var(--border-light); background: var(--bg-primary); text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.7; }
+  .site-footer .fmark { font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; }
+  .site-footer a { color: var(--text-tertiary); text-decoration: underline; }
+  .site-footer a:hover { color: #C2410C; }
+
+  /* ----- Scenario-aspecten (Z1-Z8) ----- */
+  .zlab { display:inline-block; font-size:9px; font-weight:700; border-radius:4px; padding:2px 7px; letter-spacing:.05em; text-transform:uppercase; vertical-align:1px; white-space:nowrap; }
+  .zlab.poort { background:#E1F5EE; color:#085041; }
+  .zlab.relatie { background:#E6F1FB; color:#0C447C; }
+  .zlab.uitkomst { background:#FCEBEB; color:#791F1F; }
+  .zkode { font-weight:700; color:#C2410C; }
+  .ztable td:first-child { white-space:nowrap; }
+  /* ----- Processtroom (automatisch/handmatig visueel) ----- */
+  .proc { display:flex; align-items:stretch; gap:6px; flex-wrap:wrap; margin:10px 0 4px; }
+  .proc .pb { flex:1; min-width:92px; max-width:150px; border:1px solid var(--border-mid); border-radius:8px; padding:8px 7px; text-align:center; background:var(--bg-primary); }
+  .proc .pb.accent { border:1.5px solid #C2410C; }
+  .proc .pt { font-size:10.5px; font-weight:600; color:var(--text-primary); line-height:1.3; }
+  .proc .ps { font-size:9px; color:var(--text-secondary); margin-top:3px; line-height:1.4; }
+  .proc .pa { display:flex; align-items:center; color:var(--text-tertiary); font-weight:700; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" target="_self" class="brand-mark" title="Naar de homepage">TRNKL<span class="merkpunt"></span></a>
+  <div class="header-rule"></div>
+  <div>
+    <div class="header-title">De bank als poortwachter in de zorgketen</div>
+    <div class="header-sub">Zorgfraude als scenario in de SIRA · risicomodel · controls binnen CDD en TM</div>
+  </div>
+</header>
+
+<div class="canvas-wrap" style="flex-direction:column;align-items:center">
+  <div class="hint">Klik op <span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-mid);font-size:11px;font-weight:500;color:var(--text-secondary);vertical-align:middle;margin:0 2px;cursor:default">i</span> of op een node voor meer informatie</div>
+
+  <!-- HOOFDNODE: HET BETOOG -->
+  <div class="n8n-node" style="margin-top:24px">
+    <div class="node-box" style="border-color:#FF5A1F" onclick="openM('achtergrond')">
+      <div class="node-badge" style="background:#FFF1EA;color:#C2410C">ACHTERGRONDINFORMATIE</div>
+      <button class="info-dot" onclick="event.stopPropagation();openM('achtergrond')" title="Achtergrond: zorgfraude &amp; de poortwachter">i</button>
+      <div class="node-icon-wrap" style="background:#FFF1EA">🏦</div>
+      <div class="node-text">
+        <div class="node-name">Achtergrond: zorgfraude &amp; de poortwachter</div>
+        <div class="node-type">Het betoog · noodzaak · informatiepositie · bestaande Wwft-plicht · de lacune</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-line" style="height:26px"></div>
+
+  <!-- GRONDSLAGNODE: SIRA -->
+  <div class="n8n-node">
+    <div class="node-box" style="border-color:#185FA5" onclick="openM('sira')">
+      <div class="node-badge" style="background:#E6F1FB;color:#0C447C">GRONDSLAG</div>
+      <button class="info-dot" onclick="event.stopPropagation();openM('sira')" title="Van SIRA naar zorgfraude-scenario">i</button>
+      <div class="node-icon-wrap" style="background:#E6F1FB">🧭</div>
+      <div class="node-text">
+        <div class="node-name">Van SIRA naar zorgfraude-scenario</div>
+        <div class="node-type">DNB Good Practices · scenario's · technische aspecten Z1–Z8 per fase</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-line" style="height:26px"></div>
+
+  <!-- Bus naar twee kolommen -->
+  <div class="bus-wrap">
+    <div class="bus" style="width:492px">
+      <div style="position:absolute;top:0;left:116px;width:260px;height:2px;background:var(--border-mid)"></div>
+      <div style="position:absolute;top:0;left:115px;width:2px;height:22px;background:var(--border-mid)"></div>
+      <div style="position:absolute;top:0;left:375px;width:2px;height:22px;background:var(--border-mid)"></div>
+    </div>
+  </div>
+
+  <!-- TWEE KOLOMMEN -->
+  <div class="branch-row">
+
+    <!-- ===== KOLOM 1 — AAN DE POORT ===== -->
+    <div class="branch-col">
+      <div class="zg-node">
+        <div class="zg-box" onclick="openM('k1')">
+          <div class="node-badge" style="background:#FCEBEB;color:#791F1F">FASE 1</div>
+          <button class="info-dot" onclick="event.stopPropagation();openM('k1')" title="Aan de poort">i</button>
+          <div class="zg-icon">🚪</div>
+          <div class="zg-text"><div class="zg-name">Aan de poort</div><div class="zg-rank">Scenario-aspecten Z1–Z3, met uitkomst Z7–Z8</div></div>
+        </div>
+      </div>
+      <div class="v-line" style="height:26px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k1-scen')"><button class="info-dot" onclick="event.stopPropagation();openM('k1-scen')" title="Open">i</button><div class="inst-icon">🧭</div><div class="inst-text"><div class="inst-step">Stap 1</div><div class="inst-name">Het scenario in deze fase</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k1-auto')"><button class="info-dot" onclick="event.stopPropagation();openM('k1-auto')" title="Open">i</button><div class="inst-icon">⚙️</div><div class="inst-text"><div class="inst-step">Stap 2</div><div class="inst-name">Automatische uitvoering</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k1-hand')"><button class="info-dot" onclick="event.stopPropagation();openM('k1-hand')" title="Open">i</button><div class="inst-icon">🔎</div><div class="inst-text"><div class="inst-step">Stap 3</div><div class="inst-name">Handmatige opvolging</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k1-gevolg')"><button class="info-dot" onclick="event.stopPropagation();openM('k1-gevolg')" title="Open">i</button><div class="inst-icon">⚠️</div><div class="inst-text"><div class="inst-step">Stap 4</div><div class="inst-name">Mogelijk gevolg: onacceptabel risico</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" style="border-color:#C2410C" onclick="openM('k1-praktijk')"><button class="info-dot" onclick="event.stopPropagation();openM('k1-praktijk')" title="Open">i</button><div class="inst-icon" style="background:#FFF1EA">🛠️</div><div class="inst-text"><div class="inst-step">Stap 5</div><div class="inst-name">Praktijk &amp; advies</div></div></div></div>
+    </div>
+
+    <!-- ===== KOLOM 2 — TIJDENS DE KLANTRELATIE ===== -->
+    <div class="branch-col">
+      <div class="zg-node">
+        <div class="zg-box" onclick="openM('k2')">
+          <div class="node-badge" style="background:#FCEBEB;color:#791F1F">FASE 2</div>
+          <button class="info-dot" onclick="event.stopPropagation();openM('k2')" title="Tijdens de klantrelatie">i</button>
+          <div class="zg-icon">🔄</div>
+          <div class="zg-text"><div class="zg-name">Tijdens de klantrelatie</div><div class="zg-rank">Scenario-aspecten Z4–Z6, met uitkomst Z7–Z8</div></div>
+        </div>
+      </div>
+      <div class="v-line" style="height:26px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k2-scen')"><button class="info-dot" onclick="event.stopPropagation();openM('k2-scen')" title="Open">i</button><div class="inst-icon">🧭</div><div class="inst-text"><div class="inst-step">Stap 1</div><div class="inst-name">Het scenario in deze fase</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k2-auto')"><button class="info-dot" onclick="event.stopPropagation();openM('k2-auto')" title="Open">i</button><div class="inst-icon">⚙️</div><div class="inst-text"><div class="inst-step">Stap 2</div><div class="inst-name">Automatische uitvoering</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k2-hand')"><button class="info-dot" onclick="event.stopPropagation();openM('k2-hand')" title="Open">i</button><div class="inst-icon">🔎</div><div class="inst-text"><div class="inst-step">Stap 3</div><div class="inst-name">Handmatige opvolging</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" onclick="openM('k2-gevolg')"><button class="info-dot" onclick="event.stopPropagation();openM('k2-gevolg')" title="Open">i</button><div class="inst-icon">⚠️</div><div class="inst-text"><div class="inst-step">Stap 4</div><div class="inst-name">Mogelijk gevolg: onacceptabel risico</div></div></div></div>
+      <div class="v-line" style="height:22px"></div>
+      <div class="inst-node"><div class="inst-box" style="border-color:#C2410C" onclick="openM('k2-praktijk')"><button class="info-dot" onclick="event.stopPropagation();openM('k2-praktijk')" title="Open">i</button><div class="inst-icon" style="background:#FFF1EA">⚖️</div><div class="inst-text"><div class="inst-step">Stap 5</div><div class="inst-name">Praktijk &amp; advies</div></div></div></div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- ================= MODALS ================= -->
+<!-- ===== MODAL: ACHTERGROND — HET BETOOG ===== -->
+<div class="modal-overlay" id="ov-achtergrond">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('achtergrond')">&#x2715;</button>
+    <div class="modal-title">Achtergrond: zorgfraude &amp; de poortwachter</div>
+    <div class="modal-kicker">Het betoog · noodzaak, informatiepositie en de lacune</div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">De stelling</div>
+      <div class="mp">Banken zijn een onmisbare poortwachter bij de bestrijding van zorgfraude. Dat is geen nieuwe verplichting en geen beleidskeuze, maar een logisch gevolg van drie vaststellingen: de opbrengst van zorgfraude loopt per definitie over bankrekeningen, de bank ziet de geldstromen rond haar klantnetwerk samenhangender dan enige andere partij in de keten, en de bestaande Wwft-verplichtingen dekken dit scenario al volledig. Wat ontbreekt is geen wet, maar invulling. Deze achtergrondmodal onderbouwt die stelling stap voor stap; de grondslagnode eronder vertaalt haar naar de SIRA, en de twee kolommen naar de praktijk.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">1. De noodzaak: dit geld kan niet om de bank heen</div>
+      <div class="modal-section-sub">De omvang, het stelsel en de gronddelicten</div>
+      <div class="mp">De omvang van zorgfraude is onbekend; het Openbaar Ministerie hanteert een veelgenoemde <strong>raming van ~&euro;10 miljard per jaar</strong> (het kabinet benadrukt: zonder sluitende onderbouwing), een Europese koepelraming (EHFCN) gaat uit van 3&ndash;8% van de zorguitgaven verloren aan fraude en corruptie, toegepast op het Nederlandse zorgbudget grofweg &euro;3&ndash;8 mrd. Welke raming ook klopt: publiek zorggeld wordt giraal uitgekeerd, door gemeenten, zorgverzekeraars, zorgkantoren en de Sociale Verzekeringsbank (pgb), en de frauduleuze winst moet daarna een bestemming vinden: huur aan gelieerd vastgoed, dividend, contante opnames, luxegoederen, buitenlandse rekeningen. <strong>Geen van die bestemmingen kan om een bankrekening heen, en dus niet om de bank.</strong> Die opbrengst wordt vervolgens witgewassen: zij is afkomstig uit een gronddelict (oplichting, valsheid in geschrifte, verduistering) en het overdragen, omzetten en verhullen ervan is witwassen (art. 420bis e.v. Sr). Juist het voorkomen en signaleren van witwassen is het terrein waarvoor de Wwft de bank als poortwachter heeft aangewezen.</div>
+      <div class="mp" style="margin-top:10px">De bank kijkt daarbij <strong>stelselbreed</strong>: op de rekening van een zorgklant komen alle financieringsstromen samen. Het Informatie Knooppunt Zorgfraude telde in 2023 de meeste signalen juist bij Zvw-gefinancierde zorg (144), gevolgd door Wlz (72) en Wmo (70), op afstand de Jeugdwet (26); ook mondzorg en GGZ passeren de rekening. De TRNKL-flowchart <a href="https://trnkl.nl/flowcharts/integriteit-zorg.html">integriteitsrisico's in de gemeentelijk gefinancierde zorg</a> diept de gemeentelijke domeinen uit; de signalen in d&eacute;ze flowchart zijn financieringsstroom-agnostisch geformuleerd.</div>
+      <div class="mp" style="margin-top:10px"><span class="mtag r">nuance</span> &ldquo;Zorgfraude&rdquo; is <strong>geen zelfstandige strafbepaling</strong>. Vervolging loopt via valsheid in geschrifte (art. 225 Sr), oplichting (art. 326 Sr), verduistering (art. 321 Sr), bedrog bij faillissement (art. 341 en 343 Sr, relevant voor zorgbureaus die via faillissement-en-doorstart schuldeisers en gemeenten benadelen) en <strong>witwassen</strong> (art. 420bis Sr). Juist dat laatste maakt de redenering rond: wat ook het gronddelict is, de opbrengst die de rekening passeert is witwassen, en witwassen is het terrein van de poortwachter. De opsporing bevestigt dit door zorgfraudezaken via het witwasspoor aan te pakken, zelfs zonder afzonderlijk bewezen gronddelict (Rb. Amsterdam 2024, ECLI:NL:RBAMS:2024:6705).</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">2. De informatiepositie: de bank ziet wat niemand anders ziet</div>
+      <div class="modal-section-sub">Versnipperd toezicht tegenover &eacute;&eacute;n transactiebeeld</div>
+      <div class="mp">Het zorgtoezicht is verdeeld over <strong>342 gemeenten</strong>, zorgverzekeraars, zorgkantoren, IGJ en NZa; ieder ziet het eigen deel. Wie in de ene gemeente wordt betrapt, begint elders opnieuw; het Waarschuwingsregister Zorgfraude (Wbsrz) moet dat doorbreken maar werkt achteraf. De Algemene Rekenkamer beschreef een netwerk dat ondanks signalen sinds 2014 jarenlang doordraaide, tegelijk actief in wijkverpleging, jeugdzorg &eacute;n beschermd wonen. Het OM spreekt van &ldquo;spinnenwebben&rdquo; waar toezicht en opsporing nog te veel per losse aanbieder naar kijken.</div>
+      <div class="mp" style="margin-top:10px">Juist daar komt alles samen: op de bankrekening. Op &eacute;&eacute;n rekeningenstelsel komen samen: de instroom uit <em>meerdere</em> gemeenten en stromen tegelijk, de SVB-pgb-stromen, de huur aan de gelieerde vastgoed-bv, de salarisbatches (of het ontbreken daarvan), de contante opnames en de onderlinge overboekingen binnen het netwerk van rechtspersonen. Wat voor het zorgtoezicht verspreide stukjes zijn, is voor de bank <strong>&eacute;&eacute;n samenhangend transactiebeeld</strong>. De FIU-casu&iuml;stiek bewijst de waarde: drie banken meldden rond &eacute;&eacute;n zorgnetwerk en de Arbeidsinspectie hield aan (ruim &euro;1 mln witgewassen); een zorgbestuurder werd veroordeeld voor het witwassen van negen ton nadat <em>haar eigen bank</em> meldde, en toen zij wisselde van bank om uit het zicht te blijven, meldde ook de tweede; een melding over contante pgb-opnames leidde in 2026 tot ontbinding van een malafide zorgstichting en een bestuursverbod.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">3. Geen nieuwe verplichting: dit &iacute;s de Wwft</div>
+      <div class="modal-section-sub">Waarom het scenario al onder de bestaande poortwachtersplicht valt</div>
+      <div class="mp">De redenering in drie stappen. <strong>Ten eerste:</strong> de Wwft verplicht tot cli&euml;ntenonderzoek, voortdurende controle op de relatie en de transacties, en het onverwijld melden van ongebruikelijke transacties, risicogebaseerd, dus afgestemd op de risico's die de instelling in haar SIRA onderkent. <strong>Ten tweede:</strong> zorgfraude is blijkens het voorgaande een witwasrisico, en blijkens de FIU ook een terrorismefinancieringsrisico: van de aan zorgfraude gerelateerde ongebruikelijke transacties had in 2018 circa <strong>20%</strong> een m&oacute;gelijk verband met terrorismefinanciering, een aandeel dat daarna daalde (Kamerstuk 28 828, nr. 124). Een mogelijk verband is geen verdenking. DNB noemt zorgfraude sinds 2026 in haar integriteitstoezicht als geldstroom die aan terrorismefinanciering kan bijdragen, op gezag van FIU-analyses. <strong>Dus:</strong> een bank die haar Wwft-verplichtingen risicogebaseerd invult, m&oacute;et dit scenario overwegen. Niet omdat er een nieuwe regel is, maar omdat de bestaande regels het al vragen. Het dreigingsbeeld van de banken zelf zegt het ook: de NVB Financial Crime Threat Assessment 2023-24 benoemt healthcare fraud expliciet als public funding fraud.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">4. De oproep: neem de banken mee in het kabinetsplan</div>
+      <div class="modal-section-sub">Een standpunt</div>
+      <div class="mp">De effectiviteit van het bancaire antiwitwasonderzoek ligt al jaren onder vuur: veel capaciteit, relatief weinig opsporingsresultaat, de NVB constateert dat circa 90% van de personen achter verdacht verklaarde transacties al bekend is bij de opsporing en bepleit gerichte intelligence in plaats van ongerichte monitoring. <strong>Naar mijn mening is zorgfraude bij uitstek het scenario waar de bank dat gelijk kan aantonen:</strong> de geldstromen kunnen niet om de bank heen, de typologie is gedocumenteerd en de informatiepositie is uniek. H&oacute;e dat gerichte werken er concreet uitziet, werkt de grondslagnode uit: datagedreven, met een scenario-datatag per klant die de detectie richt op de risico's die er bij die klant toe doen.</div>
+      <div class="mp" style="margin-top:10px">Het kabinetspakket van 8 juni 2026 zet vol in op de publieke keten: toetredingseisen, vergunningplicht, VOG's, gegevensdeling tussen gemeenten, verzekeraars, zorgkantoren en opsporing. De banken komen in het pakket niet voor. <strong>Mijns inziens hoort het kabinet de banken als deel van de oplossing mee te nemen: zonder de bancaire informatiepositie zal het pakket minder effect hebben dan gedacht</strong>, omdat juist het zicht op de geldstromen t&uacute;ssen de domeinen en gemeenten ontbreekt, het zicht dat het stelsel zelf structureel mist.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">5. De lacune · en wat deze flowchart doet</div>
+      <div class="modal-section-sub">De dreiging is gedocumenteerd; de invulling ontbreekt</div>
+      <ul class="ml" style="margin-top:4px">
+        <li><strong>De banken zitten niet aan tafel:</strong> in de Taskforce Integriteit Zorgsector werken NZa, ZN, IGJ, Arbeidsinspectie, FIOD, Belastingdienst, CIZ en VNG samen (in breder verband ook OM, VWS en SVB), terwijl de TIZ zelf schrijft te willen &ldquo;investeren in informatiedeling met private partijen zoals banken&rdquo;. De Wbsrz biedt g&eacute;&eacute;n grondslag voor signaaldeling met banken; de enige formele brug is de Wwft/FIU-route.</li>
+        <li><strong>De zorgsector staat niet op DNB's hoogrisicolijsten</strong> (wel: vastgoed, trust, crypto, kansspelen), en de Wwft-guidance noemt de zorg nergens.</li>
+        <li><strong>Er bestaat geen NVB-sectorstandaard zorg</strong>, terwijl er voor tal van sectoren w&eacute;l Industry Baselines bestaan, tot automotive aan toe. Deze flowchart volgt exact dat NVB-format, het Financial Crime Framework (risicogebaseerd) van klantacceptatie via doorlopend klantonderzoek tot einde van de relatie, maar dan voor de sector die nog geen eigen standaard heeft: de zorg.</li>
+        <li><strong>Het eigen dreigingsbeeld van de banken noemt zorg niet meer apart:</strong> de FCTA 2023-24 benoemde healthcare fraud nog expliciet als public funding fraud, maar de geactualiseerde FCTA 2026 is heringericht rond veertien modi operandi-categorie&euml;n (waaronder witwasroutes, sanctie-omzeiling en terrorismefinanciering) en noemt zorgfraude niet meer als zelfstandige dreiging, het verschijnt alleen nog als generiek gronddelict &ldquo;fraude&rdquo;. In het publieke deel van het bancaire dreigingsbeeld lijkt de expliciete aandacht voor zorg daarmee af te nemen, terwijl die elders juist toeneemt: de FIU spreekt van &ldquo;toenemende complexiteit&rdquo;, DNB noemt zorgfraude sinds 2026 in haar integriteitstoezicht, en het kabinet trok in juni 2026 een fors pakket uit.</li>
+      </ul>
+      <div class="mp" style="margin-top:8px">FIU, AMLC, Arbeidsinspectie en kabinet documenteren de dreiging al jaren; de bancaire vertaling ontbreekt. Deze flowchart voorziet daarin: de grondslagnode werkt het scenario uit volgens DNB's SIRA-systematiek, en de twee kolommen vertalen het naar de uitvoering, aan de poort en tijdens de klantrelatie, elk eindigend wanneer een controluitkomst buiten de risicobereidheid valt.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">6. De volgende stap: het netwerkbeeld deelbaar maken (art. 75 AMLR)</div>
+      <div class="modal-section-sub">Van ge&iuml;soleerde silo naar gedeeld netwerkbeeld</div>
+      <div class="mp">De informatiepositie van &eacute;&eacute;n bank kent een grens: zij ziet haar eigen segment van het netwerk, niet dat van andere banken. Juist zorgfraude maakt dat zichtbaar, de fraudeur die van bank wisselt om uit zicht te blijven, en netwerken die bewust over meerdere instellingen worden gespreid. De FIU-casu&iuml;stiek toont het: pas toen drie banken rond &eacute;&eacute;n netwerk meldden, ontstond het volledige beeld.</div>
+      <div class="mp"><strong>Artikel 75 AMLR</strong> (van toepassing vanaf 10 juli 2027) geeft hiervoor straks een directe Europese grondslag: <strong>partnerschappen voor informatie-uitwisseling</strong> waarbinnen meldingsplichtige entiteiten onderling cli&euml;nt- en transactiegegevens mogen delen om netwerken te detecteren die een enkele instelling niet ziet. Hier liggen twee sleutelrollen: de <strong>banken</strong> die binnen het partnerschap hun netwerkbeeld kunnen bundelen, en de <strong>toezichthouder</strong> die het partnerschap v&oacute;&oacute;r de start toetst (art. 75 lid 2) en de proportionaliteit en gegevensbescherming bewaakt, de verplichte gegevensbeschermingseffectbeoordeling (DPIA) volgt uit art. 75 lid 4. Zo verschuift de poortwachtersrol van een ge&iuml;soleerde naar een gedeelde verantwoordelijkheid.</div>
+      <div class="mp">Het partnerschap hoeft niet tot bank-bank beperkt te blijven: artikel 75 staat ook <strong>cross-sectorale</strong> samenwerking toe tussen verschillende soorten meldingsplichtige entiteiten, zoals <strong>banken en accountants</strong>. Dat is voor zorgfraude bijzonder relevant: de FIU constateert dat vooral <a href="https://www.fiu-nederland.nl/knowledge_base/zo-volgen-we-meldingen-van-zorgfraude-op/" target="_blank" rel="noopener noreferrer">banken en accountants de zorgfraude-gerelateerde ongebruikelijke transacties aanleveren</a>, banken vanuit hun zicht op de geldstromen, accountants vanuit hun zicht op de financi&euml;le administratie en de jaarrekening. Naar de aard en omvang van hun kernactiviteiten hebben deze twee Wwft-poortwachters een uniek financieel zicht op zorgfraude; een art. 75-partnerschap kan dat zicht bundelen.</div>
+      <div class="mp">Twee grenzen blijven staan: het partnerschap vervangt de melding aan de FIU niet (overweging 149 AMLR, wie op basis van gedeelde informatie een vermoeden vormt, meldt nog steeds zelf), en de uitwisseling is gebonden aan strikte waarborgen rond noodzaak, vertrouwelijkheid en gegevensbescherming. De volledige uitwerking staat in de TRNKL-flowchart <a href="https://trnkl.nl/flowcharts/artikel75-amlr.html">Art. 75 AMLR · Partnerschappen voor informatie-uitwisseling</a>.</div>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.tweedekamer.nl/kamerstukken/kamervragen/detail?id=2024Z12311&did=2024D29700" target="_blank" rel="noopener noreferrer">TK — OM-raming €10 mld (2024)</a> · <a href="https://www.openaccessgovernment.org/corruption-healthcare-europe/25701/" target="_blank" rel="noopener noreferrer">EHFCN — 3–8%</a> · <a href="https://www.ikz.nl/wp-content/uploads/2025/01/JaarrapportageSignalenfraudeindezorg2023.pdf" target="_blank" rel="noopener noreferrer">IKZ — Signalen 2023 (verdeling per wet)</a> · Wetboek van Strafrecht art. 225, 326, 321, 341, 343, 420bis · <a href="https://www.amlc.nl/zorgfraude-door-eenmanszaak/" target="_blank" rel="noopener noreferrer">AMLC — witwasspoor zonder bewezen gronddelict</a> · <a href="https://www.rekenkamer.nl/actueel/nieuws/2022/04/14/aanpak-zorgfraude-is-vooral-vergaderen" target="_blank" rel="noopener noreferrer">Algemene Rekenkamer (2022)</a> · <a href="https://www.ftm.nl/artikelen/openbaar-ministerie-kan-zorgfraude-niet-aan" target="_blank" rel="noopener noreferrer">FTM/OM — spinnenwebben</a> · <a href="https://www.fiu-nederland.nl/knowledge_base/zo-volgen-we-meldingen-van-zorgfraude-op/" target="_blank" rel="noopener noreferrer">FIU — meldingen zorgfraude</a> · <a href="https://www.fiu-nederland.nl/zorgfraudeur-veroordeeld/" target="_blank" rel="noopener noreferrer">FIU — bankwissel-casus</a> · <a href="https://www.fiu-nederland.nl/knowledge_base/meldingen-dragen-bij-aan-ontbinding-malafide-zorgstichting/" target="_blank" rel="noopener noreferrer">FIU — ontbinding zorgstichting (2026)</a> · <a href="https://zoek.officielebekendmakingen.nl/kst-28828-124.html" target="_blank" rel="noopener noreferrer">Kamerstuk 28 828, nr. 124 — TF-link in FIU-transactiemeldingen</a> · <a href="https://www.dnb.nl/media/lqvnbp1u/85932_2600060_dnb-ia-iib-2026_nl_v5_tg_pdfa.pdf" target="_blank" rel="noopener noreferrer">DNB — Integriteitstoezicht in Beeld 2026</a> · <a href="https://www.nvb.nl/media/uvgbly4k/20240330-financial-crime-threat-assessment-of-the-netherlands-2023-24.pdf" target="_blank" rel="noopener noreferrer">NVB — FCTA 2023-24 (healthcare fraud)</a> · <a href="https://www.nvb.nl/media/h52jxugt/fcta-nl.pdf" target="_blank" rel="noopener noreferrer">NVB — FCTA 2026 (14 witwasroutes, zorg niet meer apart)</a> · <a href="https://www.nvb.nl/media/czxdynla/nextgen-poortwachters-position-paper.pdf" target="_blank" rel="noopener noreferrer">NVB — NextGen Poortwachters</a> · <a href="https://www.rijksoverheid.nl/actueel/nieuws/2026/06/08/stevig-pakket-aan-maatregelen-in-aanpak-zorgfraude" target="_blank" rel="noopener noreferrer">Rijksoverheid — kabinetspakket (8 juni 2026)</a> · <a href="https://www.nza.nl/over-de-nza/ons-toezicht/t/taskforce-integriteit-zorg" target="_blank" rel="noopener noreferrer">NZa — TIZ</a> · <a href="https://www.dnb.nl/nieuws-voor-de-sector/toezicht-2022/nadere-duiding-hoogrisicosectoren-in-de-integriteitsrisico-uitvraag/" target="_blank" rel="noopener noreferrer">DNB — hoogrisicosectoren (2022)</a> · <a href="https://trnkl.nl/flowcharts/artikel75-amlr.html">TRNKL — flowchart Art. 75 AMLR · Partnerschappen voor informatie-uitwisseling</a> · <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/PDF/?uri=OJ:L_202401624" target="_blank" rel="noopener noreferrer">Verordening (EU) 2024/1624 (AMLR) — art. 75, overw. 146&ndash;149</a> · <a href="https://www.nvb.nl/media/fibcamis/nvb-sector-standaard-npo-2025-nl.pdf" target="_blank" rel="noopener noreferrer">NVB — Sectorstandaard not-for-profitorganisaties (2025), voorbeeld van het Financial Crime Framework-format</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: GRONDSLAG — VAN SIRA NAAR SCENARIO ===== -->
+<div class="modal-overlay" id="ov-sira">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('sira')">&#x2715;</button>
+    <div class="modal-title">Van SIRA naar zorgfraude-scenario</div>
+    <div class="modal-kicker">Grondslag · de trechter: SIRA → integriteitsrisico → scenario → technische aspecten</div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">1. Wat is een SIRA?</div>
+      <div class="modal-section-sub">Naar de Good Practices van De Nederlandsche Bank (2025)</div>
+      <div class="mp">De <strong>systematische integriteitsrisicoanalyse (SIRA)</strong> is de analyse waarmee een financi&euml;le instelling haar integriteitsrisico's in kaart brengt en beheerst, afgestemd op de eigen aard, omvang, producten en klantenkring. DNB verwacht blijkens haar Good Practices (2025) een analyse die <strong>systematisch</strong> is (geen losse lijstjes maar een navolgbare methode), <strong>actueel</strong> blijft (een levend document dat meebeweegt met nieuwe dreigingen) en <strong>gebruikt wordt</strong> (het bestuur stuurt erop; de uitkomsten bepalen het beleid). De kernmechaniek: per risico het <strong>inherente risico</strong> bepalen, de <strong>beheersmaatregelen</strong> (controls) ertegenover zetten en het <strong>restrisico</strong> vaststellen. Dat restrisico wordt vervolgens getoetst aan de <strong>risicobereidheid</strong> van de instelling. Valt het erbinnen, dan is het geaccepteerd en gedocumenteerd; valt het erbuiten, dan volgen extra maatregelen of be&euml;indiging van de relatie.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">2. Van integriteitsrisico's naar scenario's</div>
+      <div class="modal-section-sub">Meerdere wettelijke kaders · de Wwft als anker van de controls</div>
+      <div class="mp">Voor banken omvatten de integriteitsrisico's in elk geval de Wwft-risico's <strong>witwassen en terrorismefinanciering</strong>, plus <strong>fraude en corruptie</strong> (strafbaar via het Wetboek van Strafrecht) en <strong>sanctie-omzeiling</strong> (Sanctiewet 1977). Wat ze bindt is niet de Wwft maar het bredere begrip integriteitsrisico uit de eis van een integere bedrijfsvoering (Wft/Bpr); de SIRA is het instrument dat deze uiteenlopende wettelijke kaders onder &eacute;&eacute;n analyse brengt. Die hoofdrisico's zijn stabiel; de wendbaarheid zit een laag dieper, in de <strong>scenario's</strong>: concrete verschijningsvormen waarin een hoofdrisico zich in de eigen klantenkring kan voordoen. Een scenario verbindt een <strong>klantsegment</strong> (uit de segmentatie) met een <strong>modus operandi</strong> (uit typologie&euml;n en casu&iuml;stiek) en met de <strong>controls</strong> die het scenario moeten ondervangen. De Wwft-verplichtingen, cli&euml;ntenonderzoek (art. 3), verscherpt onderzoek (art. 8), voortdurende controle (art. 3 lid 2 sub d) en de meldplicht (art. 16), zijn in deze systematiek geen losse plichten maar de <em>wettelijke ankerpunten van de controls</em> die per scenario worden ingericht.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">3. De trechter naar het zorgfraude-scenario</div>
+      <div class="modal-section-sub">Segment · modus operandi · geraakte hoofdrisico's</div>
+      <div class="mp"><strong>Segment:</strong> klanten in de zorg, zorggerelateerde bemiddelings- en uitzendbureaus, &eacute;n de gelieerde vastgoed-, holding- en management-bv's: het netwerk, niet alleen de zorgentiteit. Welke typen zorgverleners voor de eigen portefeuille relevant zijn, bepaalt de instelling zelf aan de hand van de <a href="https://www.cbs.nl/nl-nl/onze-diensten/methoden/classificaties/activiteiten/standaard-bedrijfsindeling--sbi--/sbi-code-zoeken" target="_blank" rel="noopener noreferrer">SBI-codezoeker van het CBS</a>; de SBI-codes zijn daarbij een hulpmiddel voor afbakening, geen fraude-indicatie op zichzelf. <strong>Modus operandi:</strong> declareren zonder (volledig) te leveren en de opbrengst wegsluizen, herkenbaar aan snelle omzetgroei zonder personeel dat daarbij past, hoge contante opnames, dividend dat niet strookt met de zorgactiviteiten en complexe structuren rond kleine zorg-bv's. <strong>Geraakte hoofdrisico's:</strong> witwassen en fraude, en blijkens FIU en DNB ook terrorismefinanciering. <strong>Risicobereidheid:</strong> ook de bank met (vrijwel) geen zorgklanten overweegt dit scenario expliciet; gemotiveerd vastleggen dat het inherente risico laag is, is een valide uitkomst.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">4. Het scenario technisch: acht aspecten, twee fasen en een gedeelde uitkomst</div>
+      <div class="modal-section-sub">Twee kolommen op het canvas; de uitkomst (Z7&ndash;Z8) is de gedeelde afsluiting van elke fase · <span class="zlab poort">poort</span> <span class="zlab relatie">relatie</span> <span class="zlab uitkomst">uitkomst</span></div>
+      <table class="dtable ztable">
+        <thead><tr><th>Aspect</th><th>Fase</th><th>Wat het inhoudt</th></tr></thead>
+        <tbody>
+          <tr><td><span class="zkode">Z1</span></td><td><span class="zlab poort">poort</span></td><td><strong>Segmentdetectie:</strong> automatische check op SBI-code en activiteitenomschrijving bij onboarding, om zorgklanten en zorggerelateerde entiteiten te detecteren. Elke hit gaat naar handmatige verificatie.</td></tr>
+          <tr><td><span class="zkode">Z2</span></td><td><span class="zlab poort">poort</span></td><td><strong>Netwerk- en personenscreening:</strong> geautomatiseerde koppeling van KvK/UBO-data, insolventiehistorie en gemachtigdenregistratie. Handmatig onderzoek naar doorstart- en katvangerpatronen.</td></tr>
+          <tr><td><span class="zkode">Z3</span></td><td><span class="zlab poort">poort</span></td><td><strong>Risicoclassificatie &amp; acceptatie:</strong> scoring langs het risicomodel (structuur- en personenindicatoren), zo nodig verscherpt onderzoek met gerichte uitvraag, en een gedocumenteerd acceptatiebesluit (standaard / onder voorwaarden / afwijzen). Bij acceptatie krijgt de klant de <strong>scenario-datatag</strong> toegekend (zie sectie 5).</td></tr>
+          <tr><td><span class="zkode">Z4</span></td><td><span class="zlab relatie">relatie</span></td><td><strong>Sectorspecifieke detectieregels (TM):</strong> geautomatiseerde regels op de zorgtypologie, onder meer personeelslast tegenover omzet, cash-ratio, gelieerde uitstroom, pgb-doorboekingen, bemiddelaar-concentratie, geactiveerd op basis van de scenario-datatag: alleen de regels van toepasselijke scenario's draaien op deze klant.</td></tr>
+          <tr><td><span class="zkode">Z5</span></td><td><span class="zlab relatie">relatie</span></td><td><strong>Anomaliedetectie:</strong> statistische laag (ongesuperviseerd) die afwijkingen van normaal rekeninggedrag vangt die de regels missen, altijd met menselijke weging (human-in-the-loop).</td></tr>
+          <tr><td><span class="zkode">Z6</span></td><td><span class="zlab relatie">relatie</span></td><td><strong>Review &amp; feedback-lus:</strong> periodieke en event-driven review van het klantbeeld; TM-alerts verhogen de CDD-score, een hoog klantprofiel verlaagt de TM-drempels voor het hele netwerk. Elke review en elk alert werkt de scenario-datatag bij, zodat de detectie meegroeit met het klantbeeld.</td></tr>
+          <tr><td><span class="zkode">Z7</span></td><td><span class="zlab uitkomst">uitkomst</span></td><td><strong>Weegkader &amp; risicobereidheid:</strong> de optelsom van indicatoren (kans &times; impact, spreidingsregel, veiligheidsoverride) leidt tot een restrisico-oordeel: binnen of buiten de risicobereidheid.</td></tr>
+          <tr><td><span class="zkode">Z8</span></td><td><span class="zlab uitkomst">uitkomst</span></td><td><strong>Meld- &amp; maatregelenproces:</strong> een gedocumenteerd relatiebesluit (art. 5) en terugkoppeling van de casus naar de SIRA; b&iacute;j een ongebruikelijke transactie bovendien een FIU-melding (art. 16, geheimhouding art. 23). Buiten de risicobereidheid vallen en melden zijn aparte verplichtingen.</td></tr>
+        </tbody>
+      </table>
+      <div class="info-banner"><strong>Van organisatie- naar klantniveau:</strong> de secties hierboven (hoofdrisico's, scenariotaxonomie en de trechter) staan op organisatieniveau: de SIRA zoals DNB die bedoelt. Vanaf hier verschuift de analyse naar klantniveau: hetzelfde scenario toegepast op de individuele klant in de tijd, vastgelegd in de scenario-datatag (sectie 5).</div>
+      <div class="info-banner"><strong>Leeswijzer:</strong> de twee kolommen op het canvas voeren dit scenario uit. Fase 1 (aan de poort) werkt Z1&ndash;Z3 uit, fase 2 (tijdens de klantrelatie) Z4&ndash;Z6. Elke kolom eindigt in het mogelijke gevolg: valt het restrisico buiten de risicobereidheid, dan volgen de uitkomst-aspecten Z7&ndash;Z8 (weging, maatregelen, en bij een ongebruikelijke transactie melden). Binnen elke kolom: wat het scenario zegt, wat er automatisch gebeurt, welke handmatige stappen volgen, het mogelijke gevolg, en praktijk &amp; advies.</div>
+      <div class="mp">De volledige indicatorenset met gewichten en drempels hoort thuis in het risicomodel van de bank die zorgfraude als scenario in haar SIRA heeft opgenomen, niet in een publieke flowchart. Die operationele detaillering blijft vertrouwelijk, juist om ontwijking te voorkomen. De herkomst van de typologie-indicatoren (AMLC, FIU, RIEC) is per kolom gebrond. Het scenario is bewust compact gehouden: uitbreiden gebeurt in het risicomodel van de instelling, niet in de scenariodefinitie. Zo blijft de SIRA hanteerbaar.</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">5. Datagedreven werken: de scenario-datatag</div>
+      <div class="modal-section-sub">Een voorstel · hoe de SIRA van papier naar de systemen gaat</div>
+      <div class="mp">Naar mijn mening is <strong>datagedreven werken de sleutel tot succes in de hele SIRA-keten</strong>: een scenario dat alleen in een document leeft, stuurt niets. De brug is de <strong>scenario-datatag</strong>, een gestructureerd, machineleesbaar profiel dat elke klant bij acceptatie krijgt toegekend en dat per scenario vastlegt wat het dossier in vrije tekst al zegt: welke <strong>inherente risico's</strong> bij deze klant spelen, welke <strong>beheersmaatregelen</strong> daarop zijn ingericht en wat het <strong>restrisico</strong> is. De tag bevat dezelfde informatie als de informatietekst uit het CDD-onderzoek en de alertafhandeling; het verschil is dat systemen ermee kunnen werken.</div>
+      <div class="mp"><strong>Het principe is scenario-onafhankelijk.</strong> Zorgfraude is hier het uitgewerkte voorbeeld omdat de geldstromen niet om de bank heen kunnen en de typologie goed gedocumenteerd is, maar de scenario-datatag werkt voor elk SIRA-scenario, vastgoed en fiscale constructies, handel en sanctieomzeiling, trade-based witwassen, katvangers en geldezels. Elke klant draagt de tags van de scenario's die op h&eacute;m van toepassing zijn, en alleen die regels draaien. De scenario-datatag is dus &eacute;&eacute;n toepassing van een generiek mechanisme, niet een aparte oplossing voor de zorg.</div>
+      <div class="mh">De levenscyclus</div>
+      <div class="proc">
+        <div class="pb"><div class="pt">Acceptatie (Z3)</div><div class="ps">tag toegekend: scenario's, inherente risico's, controls, restrisico</div></div>
+        <div class="pa">→</div>
+        <div class="pb"><div class="pt">Detectie (Z4/Z5)</div><div class="ps">alleen de regels van de toepasselijke scenario's draaien op deze klant</div></div>
+        <div class="pa">→</div>
+        <div class="pb"><div class="pt">Review / alert (Z6)</div><div class="ps">elke uitkomst werkt de tag bij; het profiel groeit mee met het klantbeeld</div></div>
+        <div class="pa">→</div>
+        <div class="pb accent"><div class="pt">Terug naar detectie</div><div class="ps">de bijgewerkte tag stuurt de volgende detectieronde: de feedback-lus, geautomatiseerd</div></div>
+      </div>
+      <div class="mh">Waarom dit de false-positive-ratio drukt</div>
+      <div class="mp">Generieke transactiemonitoring draait alle regels op alle klanten en verdrinkt de analist in alerts die niets met het klantprofiel te maken hebben, precies de ongerichte monitoring waarvan de sector zelf vaststelt dat zij weinig oplevert. De scenario-datatag keert dat om: <strong>scenario's die aan de tag verbonden zijn, worden gedetecteerd; scenario's die niet van toepassing zijn, triggeren niet</strong>. De zorgregels (Z4) draaien op de klant met de zorgtag, niet op de bakker. Dat verkleint de false-positive-ratio aanzienlijk, richt de schaarse analistencapaciteit op de risico's die er bij d&eacute;ze klant toe doen, en is risicogebaseerd werken in de meest letterlijke zin, &ldquo;minder doen waar dat kan en meer waar dat nodig is&rdquo; (DNB), en de gerichte intelligence waar de NVB met NextGen Poortwachter voor pleit.</div>
+      <div class="mh">Wat de tag oplevert voor toezicht en governance</div>
+      <div class="mp"><strong>Audit trail.</strong> Een vrije-tekst dossier laat zich niet reproduceren; een gestructureerde tag wel. Omdat de tag per scenario inherent risico, control en restrisico machineleesbaar vastlegt, is elke wijziging te voorzien van tijdstempel en wie hem deed, en is elke alert herleidbaar naar de tagstand die hem triggerde en de toegepaste logica, precies wat de toezichthouder verlangt: elke score of alert achteraf reproduceerbaar. De tag maakt van het klantbeeld een data lineage waarin je kunt reconstrueren wat de bank wist, op welk scenario en op welk moment, en waarom een regel wel of niet vuurde.</div>
+      <div class="mp"><strong>De drie verdedigingslijnen.</strong> Doordat de tag expliciet benoemt welke scenario's w&eacute;l en n&iacute;et op een klant van toepassing zijn, wordt &ldquo;is er een risico gemist?&rdquo; een controleerbare vraag in plaats van een handmatige dossierstudie. De eerste lijn ziet binnen het eigen werkveld of de juiste scenario's, controls en restrisico's zijn vastgelegd. De tweede lijn kan over de hele portefeuille de effectiviteit van controls toetsen en steekproeven draaien op klanten die een risico-indicator dragen z&oacute;nder bijbehorende scenario-tag; een gemist risico wordt zichtbaar. De derde lijn kan onafhankelijk nagaan waarom een alert wel of niet vuurde en de dekking afzetten tegen de SIRA-scenario's, waardoor de assurance reproduceerbaar wordt.</div>
+      <div class="mp"><strong>Aansluiting op de SIRA-cyclus en de RCSA.</strong> De levenscyclus van de tag is de SIRA-cyclus van DNB (identificatie, analyse, beheersing, monitoring en review) operationeel gemaakt op klantniveau: de tag bevat de identificatie (welke scenario's), de analyse (restrisico), de beheersing (welke controls) en de monitoring (bijwerken bij elke review en elk alert). Daarmee kan de periodieke risk &amp; control self-assessment aggregeren uit gestructureerde data in plaats van uit een handmatige Excel-exercitie, de beweging van puntmeting naar continu, datagevoed assessment die DNB met de Good Practices SIRA 2025 uitdrukkelijk vraagt (&ldquo;een levend document&rdquo;, weg van de tirannie van Excel). Belangrijk daarbij: de SIRA en de RCSA staan op organisatieniveau, de tag op klantniveau. De scenario's uit de SIRA defini&euml;ren het schema van de tag (top-down); de geaggregeerde tagdata valideren en actualiseren de SIRA (bottom-up). Zo sluit de cyclus zich.</div>
+      <div class="mh">Datakwaliteit als voorwaarde voor delen in een partnerschap</div>
+      <div class="mp">Datagedreven werken loont niet alleen binnen de eigen muren. Zodra banken onder <strong>art. 75 AMLR</strong> (vanaf 10 juli 2027) data willen delen in een partnerschap voor informatie-uitwisseling, wordt de kwaliteit van die data de bottleneck. Delen mag alleen voor zover noodzakelijk en proportioneel, geminimaliseerd en controleerbaar (AVG en de waarborgen van art. 75 lid 4). Een gestructureerde, machineleesbare scenario-datatag maakt dat mogelijk: je deelt gericht het relevante risicobeeld van een geflagde klant of netwerk (inherent risico, beheersmaatregelen en restrisico per scenario) in plaats van een ongestructureerd dossier rond te sturen. Wie zijn data niet op orde heeft, kan binnen een partnerschap niet effici&euml;nt, proportioneel &eacute;n aantoonbaar delen. Dat geldt te meer bij <strong>cross-sectoraal</strong> delen, bijvoorbeeld tussen banken en accountants, de twee Wwft-instellingen die volgens de FIU de meeste zorgfraude-gerelateerde meldingen aanleveren: een gestructureerde tag laat juist het noodzakelijke risicobeeld over de domeingrens heen delen, zonder hele dossiers uit te wisselen. Dezelfde tag die intern de false positives drukt, is extern dus de sleutel tot deelbaarheid; zie de TRNKL-flowchart <a href="https://trnkl.nl/flowcharts/artikel75-amlr.html">Art. 75 AMLR · Partnerschappen voor informatie-uitwisseling</a>.</div>
+      <div class="mp"><strong>Wat de tag voedt.</strong> De tag werkt alleen zo snel en betrouwbaar als de data die hem voeden. De brug is een <strong>uniforme, gecodeerde uitvraag</strong> bij de handmatige opvolging: per scenario een vaste uitvraagset waarvan de uitkomst gecodeerd wordt vastgelegd, zodat de tag zich daaruit vrijwel vanzelf bijwerkt. Het vrije-tekstdossier blijft daarbij de bron; de codes leggen alleen de risicoweging gestructureerd vast. De concrete werkwijze staat in Praktijk &amp; advies van kolom 1 (aan de poort) en kolom 2.</div>
+      <div class="info-banner"><strong>De verantwoordingseis hoort erbij.</strong> Wie detectie selectief maakt, moet kunnen verantwoorden w&aacute;&aacute;rom: de methodologie van de tag legt vast hoe de tag tot stand komt (welke data, welke besliscriteria, wie hem toekent en bijwerkt), hoe hij aansluit op de scenariodefinitie in de SIRA, en hoe wordt geborgd dat een klant niet ten onrechte b&uacute;iten een scenario valt (periodieke validatie, de vangnetregels van Z4, steekproeven op niet-getagde klanten). Een tag zonder gedocumenteerde totstandkoming is voor de toezichthouder geen risicogebaseerd werken maar een blinde vlek met een etiket. Datagedreven werken in het drielijnenmodel staat of valt bovendien met datakwaliteit en auditeerbaarheid: een tag op zwakke brondata verplaatst het risico, maar laat het niet verdwijnen.</div>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.dnb.nl/media/fjag2ojs/dnb-sira-gp-2025-nl.pdf" target="_blank" rel="noopener noreferrer">DNB — Good Practices SIRA (2025)</a> · <a href="https://www.dnb.nl/media/2vqbu1cv/good-practices-integriteitrisicoanalyse.pdf" target="_blank" rel="noopener noreferrer">DNB — Good Practices Integriteitrisicoanalyse (systematiek bruto risico → beheersmaatregelen → netto risico per scenario)</a> · <a href="https://www.afm.nl/~/profmedia/files/doelgroepen/accountantsorganisaties/2019/20191017-bijlage-brief-handvatten-sira.pdf" target="_blank" rel="noopener noreferrer">AFM — Handvatten SIRA</a> · <a href="https://www.dnb.nl/media/meidddba/dnb-qas-en-good-practices-wwft.pdf" target="_blank" rel="noopener noreferrer">DNB — Q&amp;As en Good Practices Wwft (2024)</a> · Wwft art. 3, 8 en 16 (BWBR0024282) · <a href="https://zoek.officielebekendmakingen.nl/kst-28828-124.html" target="_blank" rel="noopener noreferrer">Kamerstuk 28 828, nr. 124</a> · <a href="https://www.nvb.nl/media/czxdynla/nextgen-poortwachters-position-paper.pdf" target="_blank" rel="noopener noreferrer">NVB — NextGen Poortwachters (gerichte intelligence)</a> · <a href="https://www.pwc.nl/nl/actueel-en-publicaties/diensten-en-sectoren/financiele-sector/operationele-effectiviteit-sira-onder-de-loep-van-dnb.html" target="_blank" rel="noopener noreferrer">PwC — Operationele effectiviteit SIRA</a> · <a href="https://mab-online.nl/article/47158/" target="_blank" rel="noopener noreferrer">Tammenga — AI &amp; three lines of defence (MAB 94, 2020)</a> · <a href="https://trnkl.nl/flowcharts/artikel75-amlr.html">TRNKL — flowchart Art. 75 AMLR · Partnerschappen voor informatie-uitwisseling</a> · <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/PDF/?uri=OJ:L_202401624" target="_blank" rel="noopener noreferrer">Verordening (EU) 2024/1624 (AMLR) — art. 75</a> · TRNKL — methodologie SIRA zorgfraude · risicomodel van de instelling (CDD &amp; TM · vertrouwelijk)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: KOLOMKOP 1 ===== -->
+<div class="modal-overlay" id="ov-k1">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k1')">&#x2715;</button>
+    <div class="modal-title">Aan de poort</div>
+    <div class="modal-kicker">Fase 1 · scenario-aspecten Z1, Z2 en Z3, met de gedeelde uitkomst Z7 en Z8</div>
+    <div class="mp">De acceptatie is het eerste moment waarop het scenario werkt. De zorgsector kent in delen een lage toetredingsdrempel; de bankrekening is voor een malafide aanbieder vaak de eerste formele horde. Deze kolom laat zien hoe de drie poort-aspecten uit het scenario in de praktijk draaien: de automatische segmentdetectie (Z1), de netwerk- en personenscreening (Z2) en de risicoclassificatie met het acceptatiebesluit (Z3), steeds in de volgorde scenario → automatisch → handmatig → mogelijk gevolg → praktijk & advies. De fase eindigt, net als fase 2, in de gedeelde uitkomst: valt het restrisico bij de weging buiten de risicobereidheid (Z7), dan volgt het meld- en maatregelenproces (Z8).</div>
+  </div>
+</div>
+
+<!-- ===== MODAL: KOLOMKOP 2 ===== -->
+<div class="modal-overlay" id="ov-k2">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k2')">&#x2715;</button>
+    <div class="modal-title">Tijdens de klantrelatie</div>
+    <div class="modal-kicker">Fase 2 · scenario-aspecten Z4, Z5 en Z6, met de gedeelde uitkomst Z7 en Z8</div>
+    <div class="mp">Waar de poort om structuur en personen draait, draait de relatie om gedrag. Deze kolom laat zien hoe de drie relatie-aspecten uit het scenario in de praktijk draaien: de sectorspecifieke detectieregels (Z4), de anomalielaag (Z5) en de review met de feedback-lus (Z6). E&eacute;n wettelijke verplichting (de voortdurende controle van art. 3 lid 2 sub d Wwft), twee controls die elkaar voeden: CDD-review en transactiemonitoring zijn in dit scenario &eacute;&eacute;n systeem. De fase eindigt, net als fase 1, in de gedeelde uitkomst: valt het restrisico bij de weging buiten de risicobereidheid (Z7), dan volgt het meld- en maatregelenproces (Z8).</div>
+  </div>
+</div>
+
+<!-- ===== K1 — STAP 1: HET SCENARIO IN DEZE FASE ===== -->
+<div class="modal-overlay" id="ov-k1-scen">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k1-scen')">&#x2715;</button>
+    <div class="modal-title">Het scenario in deze fase</div>
+    <div class="modal-kicker">Aan de poort · stap 1 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Uit de SIRA-grondslag</span><span class="zkode">Z1</span> segmentdetectie · <span class="zkode">Z2</span> netwerk- en personenscreening · <span class="zkode">Z3</span> risicoclassificatie &amp; acceptatie <span class="zlab poort">poort</span></div>
+
+    <div class="mh">Wat het scenario hier wil bereiken</div>
+    <div class="mp">Aan de poort beantwoordt het scenario drie vragen, in volgorde: <strong>is dit een zorgklant of een zorggerelateerde entiteit?</strong> (Z1); <strong>wie en wat zit erachter?</strong> (Z2); <strong>accepteren we, en onder welke voorwaarden?</strong> (Z3). De logica: structuur- en personenkenmerken zijn aan de poort het best zichtbaar en later in de relatie nauwelijks nog te herkennen, terwijl gedragskenmerken pas gaandeweg ontstaan. De poort vangt dus de katvanger en de doorstart; de relatie vangt de spookzorg.</div>
+
+    <div class="mh">Waarom de poort hier zwaar weegt</div>
+    <div class="mp">De zorgsector kent in delen een lage toetredingsdrempel: voor zuivere Wmo-begeleiding geldt nu geen vergunningplicht en geen BIG-registratie. De rekening openen is voor een malafide aanbieder daardoor vaak de eerste formele toets door een professionele partij. <strong>Dat verandert mogelijk met het kabinetspakket van 8 juni 2026</strong>: dat kondigt een uitgebreide vergunningplicht aan (inclusief solisten en onderaannemers) en een VOG-plicht voor bestuurders, eigenaren en toezichthouders. Zodra die in werking treden, verschuift de drempel deels naar de publieke keten, en krijgt de bank aan de poort nieuwe, publiek toetsbare maatregelen: vergunning- en VOG-status worden acceptatie- en reviewchecks, en het ontbreken ervan na inwerkingtreding weegt als hard signaal (aankomende controls). Het wettelijk anker blijft het cli&euml;ntenonderzoek van art. 3 Wwft, met art. 8 Wwft (verscherpt onderzoek) zodra de risicokenmerken van het scenario zich aandienen. De sector zelf is daarbij &eacute;&eacute;n risicofactor, geen automatisch hoog risico per klant. Aankomend kader: vanaf 10 juli 2027 vervangt de AMLR de Wwft. Het cli&euml;ntenonderzoek verschuift naar art. 20 AMLR, geharmoniseerd uitgewerkt in de RTS onder art. 28 AMLR (in 2026 in consultatie bij AMLA). De systematiek blijft gelijk; de scenario-aanpak van deze flowchart sluit daarop aan.</div>
+    <div class="info-banner"><strong>Risicobereidheid:</strong> ook de bank die nauwelijks zorgklanten accepteert, doorloopt Z1. Juist de automatische segmentdetectie levert het bewijs dat het scenario is overwogen, en onderbouwt een gemotiveerd-laag-oordeel in de SIRA.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 3 en 8 (BWBR0024282) · <a href="https://www.dnb.nl/media/fjag2ojs/dnb-sira-gp-2025-nl.pdf" target="_blank" rel="noopener noreferrer">DNB — Good Practices SIRA (2025)</a> · <a href="https://www.dnb.nl/nieuws-voor-de-sector/toezicht-2022/nadere-duiding-hoogrisicosectoren-in-de-integriteitsrisico-uitvraag/" target="_blank" rel="noopener noreferrer">DNB — sector als risicofactor (2022)</a> · <a href="https://www.amla.europa.eu/policy/public-consultations/consultation-draft-rts-customer-due-diligence_en" target="_blank" rel="noopener noreferrer">AMLA — concept-RTS CDD (art. 28 AMLR)</a> · Verordening (EU) 2024/1624 (AMLR) art. 20 en 28 · TRNKL — methodologie SIRA zorgfraude</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K1 — STAP 2: AUTOMATISCHE UITVOERING ===== -->
+<div class="modal-overlay" id="ov-k1-auto">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k1-auto')">&#x2715;</button>
+    <div class="modal-title">Automatische uitvoering</div>
+    <div class="modal-kicker">Aan de poort · stap 2 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Uitvoering van</span><span class="zkode">Z1</span> en <span class="zkode">Z2</span> · de geautomatiseerde laag <span class="zlab poort">poort</span></div>
+
+    <div class="mh">Z1 · segmentdetectie in het onboardingproces</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Aanvraag</div><div class="ps">zakelijke rekening</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">SBI-check</div><div class="ps">zorg-SBI-codes en zorggerelateerde codes</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Activiteiten-check</div><div class="ps">tekstmatch op KvK-omschrijving en opgegeven doel (zorg, begeleiding, pgb, bemiddeling)</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Zorgsegment-flag</div><div class="ps">naar werkvoorraad handmatige verificatie (stap 3)</div></div>
+    </div>
+    <div class="mp">De detectie is bewust ruim: ook bemiddelings- en uitzendbureaus gericht op zorgpersoneel en entiteiten met een zorggerelateerde activiteitenomschrijving zonder zorg-SBI vallen erbinnen. Een misser aan de poort is later alleen nog via het transactiegedrag te herstellen (de instroomherkomst-regel van Z4 fungeert als vangnet: wie gemeente- of SVB-instroom ontvangt zonder zorgsegment-flag, wordt alsnog geflagd).</div>
+
+    <div class="mh">Z2 · geautomatiseerde netwerk- en personenscreening</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">KvK / UBO</div><div class="ps">gelieerde entiteiten aan dezelfde UBO('s) koppelen</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Insolventie- &amp; historiecheck</div><div class="ps">eerdere faillissementen en uitschrijvingen van bestuurders</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Screening</div><div class="ps">sancties, PEP, adverse media op UBO en bestuur</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Netwerkbeeld</div><div class="ps">&eacute;&eacute;n dossier per netwerk, niet per entiteit</div></div>
+    </div>
+    <div class="mp">Aankomend datapunt: zodra de uitgebreide <strong>vergunningplicht</strong> en de <strong>VOG-plicht</strong> uit het kabinetspakket (8 juni 2026) in werking treden, worden dat publiek toetsbare checks in deze laag. Het ontbreken ervan wordt dan een harde stop richting handmatige beoordeling.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Handelsregister/UBO-register (KvK) · Centraal Insolventieregister · <a href="https://www.rijksoverheid.nl/actueel/nieuws/2026/06/08/stevig-pakket-aan-maatregelen-in-aanpak-zorgfraude" target="_blank" rel="noopener noreferrer">Rijksoverheid — kabinetspakket (vergunning/VOG)</a> · risicomodel van de instelling (doelpopulatie en categorie A/B · vertrouwelijk)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K1 — STAP 3: HANDMATIGE OPVOLGING ===== -->
+<div class="modal-overlay" id="ov-k1-hand">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k1-hand')">&#x2715;</button>
+    <div class="modal-title">Handmatige opvolging</div>
+    <div class="modal-kicker">Aan de poort · stap 3 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Uitvoering van</span><span class="zkode">Z2</span> (verdieping) en <span class="zkode">Z3</span> · de analist aan zet <span class="zlab poort">poort</span></div>
+
+    <div class="mh">De verificatie na een zorgsegment-flag</div>
+    <ul class="checklist" style="margin-top:4px">
+      <li>Klopt het beeld: is dit feitelijk een zorgaanbieder, een bemiddelaar of een gelieerde entiteit (vastgoed/holding) van een zorgnetwerk?</li>
+      <li>Wie voert de feitelijke zeggenschap: komt de gemachtigden- en passenadministratie overeen met het KvK-bestuur (katvanger-check)?</li>
+      <li>Is er een doorstartpatroon: eerdere zorgentiteiten van dezelfde personen die zijn gefailleerd of uitgeschreven, met dezelfde werkwijze?</li>
+      <li>Heeft het bestuur een zorgachtergrond, en zijn er antecedenten of negatieve media (RIEC Oost: bij circa 32% van de onderzochte zorg-zzp'ers, 28 van 87, werden strafrechtelijke veroordelingen aangetroffen)?</li>
+      <li>Welke financieringsstromen worden verwacht (Zvw, Wlz, gemeenten, SVB-pgb), uit hoeveel gemeenten, en in welke verhouding tot de organisatieomvang?</li>
+    </ul>
+
+    <div class="mh">De gerichte uitvraag (verscherpt onderzoek, art. 8 Wwft)</div>
+    <div class="mp">Bij risicokenmerken volgt een uitvraag, illustratief, niet-limitatief: de openbare <strong>jaarverantwoording</strong> en de aansluiting op het verwachte rekeninggedrag; de <strong>gemeentecontracten of toewijzingen</strong>; het <strong>pgb-aandeel</strong> en wie de budgetten feitelijk beheert; de <strong>huur- en eigendomsrelatie</strong> van zorglocaties (gelieerde verhuurder?). Wie niet kan uitleggen hoe de organisatie haar omzet gaat verdienen, levert daarmee z&eacute;lf het volgende datapunt. De uitkomst van deze uitvraag, en hoe diep er is uitgevraagd, weegt mee in het inherente en het restrisico van de klant. Die weging wordt bij acceptatie (Z3) vastgelegd in de scenario-datatag en reist met de klant mee naar de doorlopende fase. Het tekstuele dossier blijft daarbij de bron; de codering legt alleen de risicoweging gestructureerd vast, zodat systemen ermee kunnen werken (zie de grondslagnode, sectie 5, en Praktijk &amp; advies van kolom 1 en 2).</div>
+    <div class="mp">Zo'n vastlegging stuurt ook de doorlopende monitoring: stelt de bank vast dat deze rekening niet voor salarisbetaling wordt gebruikt omdat de loonadministratie bij een andere bank loopt, dan legt zij die gewogen afweging vast in de scenario-datatag. In de doorlopende fase hoeft de personeelslast/omzet-regel dan niet op deze klant te draaien (zie kolom 2, stap 2): de verhouding ontbreekt nu eenmaal, en de reden staat al in het acceptatiedossier.</div>
+    <div class="info-banner"><strong>Vastleggen is de control.</strong> DNB's SIRA-systematiek draait op aantoonbaarheid: ook een positief acceptatiebesluit wordt gedocumenteerd, inclusief de gewogen signalen en de getoetste verklaringen. Wat niet vastligt, bestaat bij de review en voor de toezichthouder niet.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 8 (BWBR0024282) · <a href="https://www.ede.nl/fileadmin/ede.nl/afbeeldingen/Nieuws/2023/Fenomeenanalyse_criminele_zzp-ers_in_de_zorg.pdf" target="_blank" rel="noopener noreferrer">RIEC Oost — antecedenten zzp'ers</a> · <a href="https://www.ikz.nl/actueel/nieuws/2019/11/12/misstanden-bij-beschermd-en-begeleid-wonen" target="_blank" rel="noopener noreferrer">IKZ — antecedenten bestuurders (2019)</a> · <a href="https://www.jaarverantwoordingzorg.nl" target="_blank" rel="noopener noreferrer">jaarverantwoordingzorg.nl</a> · <a href="https://www.dnb.nl/media/fjag2ojs/dnb-sira-gp-2025-nl.pdf" target="_blank" rel="noopener noreferrer">DNB — Good Practices SIRA (aantoonbaarheid)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K1 — STAP 4: MOGELIJK GEVOLG ===== -->
+<div class="modal-overlay" id="ov-k1-gevolg">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k1-gevolg')">&#x2715;</button>
+    <div class="modal-title">Mogelijk gevolg: onacceptabel risico</div>
+    <div class="modal-kicker">Aan de poort · stap 4 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Overgang naar</span><span class="zkode">Z7</span>&ndash;<span class="zkode">Z8</span> · uitkomst buiten de risicobereidheid <span class="zlab poort">poort</span></div>
+
+    <div class="mh">Waar de poort op uit kan komen</div>
+    <div class="mp">Niet elke acceptatie eindigt met een rekening. Een uitkomst van Z1&ndash;Z3, een segment-hit, een doorstart- of katvangerpatroon, of een classificatie die ook n&aacute; de uitvraag hoog blijft, valt na weging soms b&uacute;iten de risicobereidheid. Dan is dit het sluitstuk van de poort.</div>
+
+    <div class="mh">Van poort-uitkomst naar restrisico-oordeel (Z7)</div>
+    <div class="mp">De vraag is steeds: valt het <strong>restrisico</strong>, wat overblijft n&aacute; de getoetste verklaringen en getroffen maatregelen, nog binnen de <strong>risicobereidheid</strong> uit de SIRA? Het weegkader van het risicomodel bepaalt dat: de <strong>optelsom</strong> (&eacute;&eacute;n signaal is zelden bewijs), de <strong>spreidingsregel</strong> (signalen over meerdere categorie&euml;n wegen zwaarder dan concentratie in &eacute;&eacute;n) en de impactweging (kans &times; impact). Twee routes lopen buiten de gewone weging om: de <strong>veiligheidsoverride</strong> (aanwijzingen voor uitbuiting of misbruik van cli&euml;nten escaleren direct) en het <strong>niet-voltooibare onderzoek</strong> (verklaart of documenteert de klant niet, dan schrijft art. 5 Wwft voor dat de relatie niet wordt aangegaan).</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Poort-uitkomst (Z1&ndash;Z3)</div><div class="ps">hit, patroon of hoge classificatie</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Weging restrisico (Z7)</div><div class="ps">binnen de risicobereidheid?</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Buiten de risicobereidheid</div><div class="ps">afwijzen, en bij een vermoeden: melden (Z8)</div></div>
+    </div>
+
+    <div class="mh">Twee uitkomsten aan de poort (Z8)</div>
+    <div class="mp"><strong>Gedocumenteerde afwijzing:</strong> individueel gemotiveerd, nooit categoraal. De EBA merkt categoraal weren zonder individuele beoordeling aan als &ldquo;unwarranted de-risking&rdquo; (EBA/GL/2023/04), en de Hoge Raad oordeelde dat banken op grond van hun maatschappelijke positie gehouden kunnen zijn ook zakelijke klanten een rekening te bieden, tenzij een gerechtvaardigd integriteitsbelang zich daartegen verzet (ECLI:NL:HR:2021:1652). <strong>FIU-melding:</strong> bij een concreet vermoeden meldt de bank onverwijld aan de FIU (art. 16 Wwft), ook als de relatie niet wordt aangegaan. Leg de afwijzing met de scenario-reden vast in de scenario-datatag, zodat geaggregeerd zichtbaar wordt hoeveel klanten buiten dit scenario zijn geweigerd (zie stap 5, &ldquo;Terug de SIRA in&rdquo;).</div>
+
+    <div class="mh">Melden aan de poort vraagt een andere denkwijze</div>
+    <div class="mp">Tijdens een lopende relatie steunt een melding op waargenomen transactiegedrag; aan de poort is dat er nog niet. Hier rust de meldplicht op de <strong>voorgenomen transactie</strong> (art. 16 Wwft noemt uitdrukkelijk de verrichte &eacute;n de voorgenomen ongebruikelijke transactie) en op de subjectieve indicator: de structuur- en personensignalen uit Z2 en Z3, katvanger, doorstart, verhulde zeggenschap, z&iacute;jn de aanleiding, niet een geldstroom. De route is daarna gelijk aan die in de relatiefase:</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Melding aan de poort</div><div class="ps">voorgenomen ongebruikelijke transactie · ook als de relatie niet wordt aangegaan</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">FIU-Nederland</div><div class="ps">analyseert, verrijkt, kan verdacht verklaren</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Opsporing</div><div class="ps">meestal recherche zorgfraude (NLA) · FIOD, politie, FP</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Resultaat</div><div class="ps">aanhoudingen, veroordelingen, ontbinding, bestuursverboden</div></div>
+    </div>
+    <div class="mp">Twee dingen vragen aan de poort extra aandacht:</div>
+    <ul class="ml" style="margin-top:4px">
+      <li><strong>Afwijzen is geen melden.</strong> Een klant weigeren be&euml;indigt het eigen risico, maar laat het signaal verdwijnen, de volgende bank begint blind. Bij een vermoeden meldt de bank dus ook als de rekening nooit wordt geopend.</li>
+      <li><strong>De melding gaat over de (voorgenomen) transactie of het patroon, niet over de weigering.</strong> Het weigeren is een acceptatiebesluit; het melden is een wettelijke plicht die daar los van staat en blijft bestaan na de afwijzing.</li>
+    </ul>
+    <div class="mp">De inhoud van een goede melding (optelsom, netwerk, publieke context) en de bevoegdheden art. 17 en 17a zijn gelijk aan de relatiefase.</div>
+    <div class="info-banner"><strong>Geheimhouding blijft staan:</strong> ook in een afwijzingsbrief wordt de (voorgenomen) melding niet genoemd (art. 23 Wwft). De motivering steunt op het niet-voltooibare onderzoek of het risicoprofiel, niet op de melding.</div>
+    <div class="mp"><strong>Buiten deze flowchart:</strong> het civielrechtelijke weigeringsproces z&eacute;lf is een eigen spoor met eigen jurisprudentie: de bancaire zorgplicht, de toegang tot het betalingsverkeer, de belangenafweging en het kort-gedingrisico. Deze flowchart behandelt de Wwft-poortwachtersrol (detecteren, wegen, melden); afwijzing verschijnt hier alleen als uitkomst van de risicoweging, niet als uitgewerkte procedure.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 5, 16 en 23 (BWBR0024282) · <a href="https://www.dnb.nl/media/fjag2ojs/dnb-sira-gp-2025-nl.pdf" target="_blank" rel="noopener noreferrer">DNB — Good Practices SIRA (risicobereidheid, restrisico)</a> · <a href="https://www.eba.europa.eu/sites/default/files/document_library/Publications/Guidelines/2023/1054144/Guidelines%20on%20MLTF%20risk%20management%20and%20access%20to%20financial%20services.pdf" target="_blank" rel="noopener noreferrer">EBA/GL/2023/04</a> · <a href="https://uitspraken.rechtspraak.nl/inziendocument?id=ECLI%3ANL%3AHR%3A2021%3A1652" target="_blank" rel="noopener noreferrer">HR 5 november 2021 (ING/Yin Yang)</a> · risicomodel van de instelling (weegkader, veiligheidsoverride · vertrouwelijk)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K1 — STAP 5: PRAKTIJK & ADVIES ===== -->
+<div class="modal-overlay" id="ov-k1-praktijk">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k1-praktijk')">&#x2715;</button>
+    <div class="modal-title">Praktijk &amp; advies</div>
+    <div class="modal-kicker">Aan de poort · stap 5 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Afronding van</span><span class="zkode">Z3</span> · het acceptatiebesluit en zijn grenzen <span class="zlab poort">poort</span></div>
+
+    <div class="mh">Drie uitkomsten van het acceptatiebesluit</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Accepteren</div><div class="ps">standaardprofiel · reguliere reviewcyclus</div></div>
+      <div class="pa">·</div>
+      <div class="pb accent"><div class="pt">Accepteren onder voorwaarden</div><div class="ps">verhoogd profiel · kortere cyclus · aangescherpte TM-drempels vanaf dag &eacute;&eacute;n (Z6)</div></div>
+      <div class="pa">·</div>
+      <div class="pb"><div class="pt">Afwijzen</div><div class="ps">gedocumenteerd · individueel gemotiveerd</div></div>
+    </div>
+    <div class="mp">De middelste route wordt onderschat: accepteren onder voorwaarden behoudt het zicht dat bij een afwijzing naar een andere instelling verschuift, en activeert de feedback-lus van fase 2 vanaf de eerste transactie. Bij elke acceptatie hoort de toekenning van de <strong>scenario-datatag</strong> (zie de grondslagnode, sectie 5): het gestructureerde profiel van inherente risico's, controls en restrisico dat vanaf dat moment bepaalt welke detectieregels op deze klant draaien.</div>
+    <div class="mp"><strong>Leg ook de afwijzing met de scenario-reden vast in de scenario-datatag,</strong> zodat geaggregeerd zichtbaar wordt hoeveel klanten buiten dit scenario zijn geweigerd; dat aantal is op zichzelf stuurinformatie over of de controls werken (zie ook fase 2, stap 5, &ldquo;Terug de SIRA in&rdquo;).</div>
+
+    <div class="mh">De grens: geen categorale uitsluiting</div>
+    <div class="mp">De EBA merkt het categoraal weren van klantgroepen zonder individuele beoordeling aan als &ldquo;unwarranted de-risking&rdquo; (EBA/GL/2023/04), en de Hoge Raad oordeelde dat banken op grond van hun maatschappelijke positie gehouden kunnen zijn ook zakelijke klanten een betaalrekening te bieden (ECLI:NL:HR:2021:1652). Het scenario rechtvaardigt scherpte per klant, geen sectorban. De bonafide zorgaanbieder is geen risico maar een cli&euml;nt.</div>
+
+    <div class="mh">Praktijkillustratie</div>
+    <div class="mp">In de zaak van de Arbeidsinspectie van juni 2026 werden gestopte zorgstichtingen via katvangers doorgestart en liep schijnfacturatie via een 'uitzendbureau', met &euro;2 mln witgewassen zorggeld. Vrijwel elk element van die casus is een poort-kenmerk: doorstart, afwijkende feitelijke zeggenschap, zorggerelateerde tussenpersoon. Z1&ndash;Z3, consequent uitgevoerd, zetten zo'n netwerk al bij de aanvraag op de radar.</div>
+
+    <div style="margin-top:16px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan de poortwachter</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li>Beoordeel het netwerk, niet de losse entiteit; &eacute;&eacute;n dossier per UBO-cluster.</li>
+        <li>Naar mijn mening is de combinatie doorstart-historie + gelieerde vastgoed-bv het zwaarste samengestelde poortsignaal: het verenigt de twee structuren waarmee zorggeld aantoonbaar wordt weggesluisd.</li>
+        <li>Documenteer elk besluit, ook acceptaties: de aantoonbaarheid is de control.</li>
+        <li>Houd de organisatie wendbaar: richt beleid, procedures en systemen zo in dat de vergunning- en VOG-status uit het kabinetspakket snel als acceptatie- en reviewcheck kunnen worden ingebouwd zodra die definitief worden.</li>
+        <li>Naar mijn mening hoort dit scenario op de bestuurstafel: de combinatie van witwassen, terrorismefinanciering &eacute;n kwetsbare cli&euml;nten als slachtoffer maakt zorgfraude tot meer dan een operationeel thema.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="mh">Handvatten: de acceptatie-uitvraag uniform en gecodeerd</div>
+      <div class="mp">De <strong>scenario-datatag</strong> wordt hier voor het eerst toegekend, dus leg de acceptatie-uitvraag meteen <strong>uniform en gecodeerd</strong> vast. Het cli&euml;ntdossier blijft de bron; de codes leggen achter de schermen de risicoweging vast, zodat de tag al gestructureerd start en de relatie-fase hem alleen hoeft bij te werken, niet opnieuw hoeft op te bouwen. Concreet bij de acceptatie:</div>
+      <ul class="ml" style="margin-top:6px">
+        <li>Werk per scenario met een <strong>vaste acceptatie-uitvraagset</strong>, gekoppeld aan de indicatoren van dat scenario: dezelfde risicokenmerken leiden tot dezelfde uitvraag, ongeacht welke analist hem doet.</li>
+        <li>Leg de uitkomst <strong>gecodeerd</strong> vast: per indicator getoetst &rarr; verklaring plausibel, deels of weerlegd &rarr; effect op het inherente risico en het restrisico bij acceptatie.</li>
+        <li>Weeg ook de <strong>mate van uitvraag</strong>: vraag je bij de ene aanvrager aanzienlijk meer op dan bij de andere, dan raakt dat het risicobeeld van die klant; leg die weging in de tag vast zodat ze onderbouwd en herhaalbaar is.</li>
+        <li>Houd naast de codes altijd het <strong>volledige tekstdossier</strong> en een &ldquo;anders / niet-passend&rdquo;-optie: de codes zijn de weging, het dossier de onderbouwing.</li>
+        <li>De codering voedt het acceptatiebesluit, maar vervangt het niet: de mens weegt, en het besluit blijft gedocumenteerd (de aantoonbaarheid is de control).</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.eba.europa.eu/sites/default/files/document_library/Publications/Guidelines/2023/1054144/Guidelines%20on%20MLTF%20risk%20management%20and%20access%20to%20financial%20services.pdf" target="_blank" rel="noopener noreferrer">EBA/GL/2023/04</a> · <a href="https://uitspraken.rechtspraak.nl/inziendocument?id=ECLI%3ANL%3AHR%3A2021%3A1652" target="_blank" rel="noopener noreferrer">HR 5 november 2021 (ING/Yin Yang)</a> · <a href="https://www.nlarbeidsinspectie.nl/actueel/nieuws/2026/06/04/aanhoudingen-voor-fraude-met-miljoenen-aan-zorggelden" target="_blank" rel="noopener noreferrer">NLA — aanhoudingen 4 juni 2026</a> · <a href="https://www.rijksoverheid.nl/actueel/nieuws/2026/06/08/stevig-pakket-aan-maatregelen-in-aanpak-zorgfraude" target="_blank" rel="noopener noreferrer">Rijksoverheid — kabinetspakket (2026)</a></div>
+    </div>
+  </div>
+</div>
+<!-- MODALS-KOL1-KLAAR -->
+<!-- ===== K2 — STAP 1: HET SCENARIO IN DEZE FASE ===== -->
+<div class="modal-overlay" id="ov-k2-scen">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k2-scen')">&#x2715;</button>
+    <div class="modal-title">Het scenario in deze fase</div>
+    <div class="modal-kicker">Tijdens de klantrelatie · stap 1 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Uit de SIRA-grondslag</span><span class="zkode">Z4</span> detectieregels · <span class="zkode">Z5</span> anomaliedetectie · <span class="zkode">Z6</span> review &amp; feedback-lus <span class="zlab relatie">relatie</span></div>
+
+    <div class="mh">Wat het scenario hier wil bereiken</div>
+    <div class="mp">Tijdens de relatie verschuift de vraag van &ldquo;wie is dit?&rdquo; naar <strong>&ldquo;klopt het gedrag bij het beeld?&rdquo;</strong>. Spookzorg en wegsluizen zijn aan de poort onzichtbaar; in het transactiegedrag worden ze meetbaar. Het scenario zet daarvoor drie lagen in: vaste regels op de gedocumenteerde typologie (Z4), een statistische laag voor wat de regels missen (Z5), en de review die het klantbeeld actueel houdt en beide controls verbindt (Z6).</div>
+
+    <div class="mh">E&eacute;n verplichting, twee controls</div>
+    <div class="mp">Het wettelijk anker is &eacute;&eacute;n zinsnede: de <strong>voortdurende controle</strong> op de zakelijke relatie en de transacties (art. 3 lid 2 sub d Wwft). Daarbinnen zijn CDD-review en transactiemonitoring afzonderlijke beheersmaatregelen op hetzelfde scenario, geen gescheiden werelden. DNB constateerde in 2017 al dat banken hun transactiemonitoring &ldquo;nog niet op orde&rdquo; hadden; sectorspecifieke regels schrijft de toezichthouder niet voor. Dat is precies de invulling die dit scenario levert.</div>
+    <div class="info-banner"><strong>De feedback-lus is de kern:</strong> een TM-alert verhoogt de CDD-score van klant &eacute;n netwerk; een classificatie &ldquo;hoog&rdquo; verlaagt de TM-drempels voor het hele gelieerde cluster. Wie de lus niet sluit, behandelt &eacute;&eacute;n scenario als twee losse risico's en mist de netwerk-samenhang die zorgfraude juist kenmerkt.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 3 lid 2 sub d (BWBR0024282) · <a href="https://www.dnb.nl/voor-de-sector/open-boek-toezicht-sectoren/banken/integriteitstoezicht/guidance-transactiemonitoringsproces-bij-banken/" target="_blank" rel="noopener noreferrer">DNB — guidance transactiemonitoring (2017)</a> · <a href="https://www.dnb.nl/media/meidddba/dnb-qas-en-good-practices-wwft.pdf" target="_blank" rel="noopener noreferrer">DNB — Q&amp;As en Good Practices Wwft (2024)</a> · TRNKL — methodologie SIRA zorgfraude (feedback-lus)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K2 — STAP 2: AUTOMATISCHE UITVOERING ===== -->
+<div class="modal-overlay" id="ov-k2-auto">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k2-auto')">&#x2715;</button>
+    <div class="modal-title">Automatische uitvoering</div>
+    <div class="modal-kicker">Tijdens de klantrelatie · stap 2 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Uitvoering van</span><span class="zkode">Z4</span> en <span class="zkode">Z5</span> · de geautomatiseerde laag <span class="zlab relatie">relatie</span></div>
+
+    <div class="mh">Z4 · de detectieregels op de zorgtypologie</div>
+    <div class="mp" style="margin-bottom:6px">Acht regelfamilies, rechtstreeks herleidbaar tot AMLC-, FIU- en OM-casu&iuml;stiek, drempels en kalibratie blijven aan de instelling:</div>
+    <table class="dtable">
+      <thead><tr><th>Regel</th><th>Meet</th><th>Herleidbaar tot</th></tr></thead>
+      <tbody>
+        <tr><td>Personeelslast / omzet</td><td>salarisbatches tegenover publieke zorginstroom</td><td>AMLC: 8&ndash;11% waar ~71% gangbaar is; OM-zaak 2024: &plusmn;30% vs &plusmn;70%</td></tr>
+        <tr><td>Cash-ratio</td><td>contante opnames op rekeningen met gemeente-/SVB-instroom</td><td>AMLC: &gt;50% van &euro;4 mln contant; FIU-casus 2026 (pgb)</td></tr>
+        <tr><td>Gelieerde uitstroom</td><td>fees, leningen, managementvergoedingen en dividend naar entiteiten van dezelfde UBO</td><td>AMLC: marge ver boven Barometer-norm (~2,7%), fictieve leningen</td></tr>
+        <tr><td>Vastgoed &amp; onroerend goed</td><td>bovenmatige huur of lease aan een gelieerde vastgoed-bv &eacute;n aankoop of financiering van onroerend goed uit zorgomzet</td><td>AMLC: vastgoedinvesteringen; FTM-zorghotels (&euro;750k huur/jaar)</td></tr>
+        <tr><td>Grensoverschrijdende uitstroom</td><td>uitgaande overboekingen naar buitenlandse rekeningen zonder zorginhoudelijke grond, in het bijzonder naar hoogrisicojurisdicties</td><td>AMLC: opbrengst overgeboekt naar het buitenland; generieke layering-typologie</td></tr>
+        <tr><td>Luxebestedingen</td><td>directe uitgaven aan voertuigen of luxegoederen vanaf de zakelijke rekening zonder bedrijfseconomisch doel (zelfverrijkingssignaal), zichtbaar via merchantcategorie&euml;n</td><td>FIU-casus (luxe-uitgaven); AMLC-typologie: handeling zonder redelijk bedrijfseconomisch doel</td></tr>
+        <tr><td>Pgb-doorboeking</td><td>SVB-instroom die binnen dagen (vrijwel) volledig doorgaat naar &eacute;&eacute;n tegenrekening</td><td>AMLC-casu&iuml;stiek; FIU-jaaroverzicht 2024</td></tr>
+        <tr><td>Bemiddelaar-concentratie</td><td>&eacute;&eacute;n rekening die voor veel budgethouders ontvangt; pasgebruik door derden</td><td>AMLC: 35 bankpasjes van pgb-cli&euml;nten bij &eacute;&eacute;n zorgbureau</td></tr>
+      </tbody>
+    </table>
+    <div class="mp" style="margin-top:6px">Vangnet voor de poort: de instroomherkomst-regel flagt klanten met gemeente- of SVB-instroom z&oacute;nder zorgsegment-flag (gemiste Z1) alsnog. Er bestaat geen afzonderlijk vastgestelde FIU-typologie &ldquo;zorgfraude&rdquo;; de regels operationaliseren de generieke witwastypologie&euml;n op de zorgcontext.</div>
+
+    <div class="info-banner"><strong>De datatag bepaalt welke regels zinvol zijn.</strong> Stelt de bank bij acceptatie vast dat deze rekening niet voor salarisbetaling wordt gebruikt (de klant voert de loonadministratie bij een andere bank) en legt zij die gewogen afweging vast in de scenario-datatag, dan staat de personeelslast/omzet-regel voor deze klant uit: de verhouding die de regel meet, bestaat hier niet. Dat scheelt een alert die de analist anders zou afhandelen en met een verwijzing naar het acceptatiedossier zou moeten verklaren. Verschijnen er op deze rekening t&oacute;ch salarisbatches, dan spreekt dat de datatag tegen en is d&aacute;t het signaal.</div>
+
+    <div class="mh">Z5 · de anomalielaag</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Features</div><div class="ps">instroomconcentratie · cash-ratio · loonratio · gelieerde uitstroom · vastgoed-/huurquote · grensoverschrijdende stromen · groeisnelheid</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Model</div><div class="ps">ongesuperviseerd (Isolation Forest, autoencoders) wegens schaarse labels en class imbalance</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Anomaliescore</div><div class="ps">hoge vangst, lage precisie · veel vals-positieven zijn ingecalculeerd</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Analist</div><div class="ps">human-in-the-loop · score is nooit zelfstandig grond voor een maatregel (AVG art. 22)</div></div>
+    </div>
+    <div class="mp">Onderzoek op Nederlandse zorgdeclaratiedata en de bredere AML-literatuur onderbouwen deze opzet; governance (validatie, versiebeheer, bias-bewaking op gedrag in plaats van persoonskenmerken) hoort bij het model, niet erachteraan.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.amlc.nl/witwassen-en-zorgfraude/" target="_blank" rel="noopener noreferrer">AMLC — Witwassen! … en zorgfraude (regelfamilies)</a> · <a href="https://www.amlc.nl/zorgfraude-door-eenmanszaak/" target="_blank" rel="noopener noreferrer">AMLC — eenmanszaak (cash)</a> · <a href="https://www.om.nl/actueel/nieuws/2024/10/23/bedrag-van-15-miljoen-witgewassen-met-zorgfraude-om-eist-22-maanden" target="_blank" rel="noopener noreferrer">OM — loonkostenratio (2024)</a> · <a href="https://www.ftm.nl/artikelen/ouderenzorgbedrijf-failliet-vastgoedboeren-cashen-miljoenen" target="_blank" rel="noopener noreferrer">FTM — zorghotels</a> · <a href="https://arxiv.org/abs/2507.01924" target="_blank" rel="noopener noreferrer">Bakker e.a. — anomaliedetectie GGZ-declaraties (preprint 2025)</a> · <a href="https://arxiv.org/abs/2201.04207" target="_blank" rel="noopener noreferrer">Jensen &amp; Iosifidis — AML &amp; ML (2023)</a> · <a href="https://mab-online.nl/article/47158/" target="_blank" rel="noopener noreferrer">Tammenga — AI &amp; three lines (MAB 2020)</a> · AVG art. 22</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K2 — STAP 3: HANDMATIGE OPVOLGING ===== -->
+<div class="modal-overlay" id="ov-k2-hand">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k2-hand')">&#x2715;</button>
+    <div class="modal-title">Handmatige opvolging</div>
+    <div class="modal-kicker">Tijdens de klantrelatie · stap 3 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Uitvoering van</span><span class="zkode">Z6</span> · alert-triage en review door de analist <span class="zlab relatie">relatie</span></div>
+
+    <div class="mh">De triage van een alert</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Alert</div><div class="ps">uit regel (Z4) of model (Z5)</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Verklaring toetsen</div><div class="ps">is er een legitieme verklaring, en houdt die stand?</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Uitvragen</div><div class="ps">gerichte vragen aan de cli&euml;nt · zonder de melding te noemen (art. 23 Wwft)</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Wegen</div><div class="ps">optelsom langs het risicomodel → binnen of buiten de risicobereidheid (Z7)</div></div>
+    </div>
+    <div class="mp">Bijna elk signaal kent een legitieme verklaring, en die eerst toetsen is kwaliteitsborging: een lage personeelslast kan inhuur of onderaanneming zijn (maar dan moeten die betalingen zichtbaar zijn), een hoge huur kan kleinschalig wonen zijn (maar niet buiten elke marktverhouding), contant kan incidenteel zijn (maar niet structureel op publieke zorginstroom). De toetsing wordt gedocumenteerd; een afgesloten alert zonder vastgelegde verklaring laat het volgende alert op hetzelfde netwerk weer bij nul beginnen. Voor de individuele beoordelaar is er een hulpmiddel: de <a href="https://trnkl.nl/flowcharts/flowtool-zorg.html">Flowtool Zorg</a> laat de optelsom gestructureerd wegen, volledig in de browser en zonder dat er iets wordt vastgelegd of verzonden.</div>
+
+    <div class="mh">De review als tweede handmatige spoor</div>
+    <div class="mp">Naast de alert-triage loopt de <strong>periodieke en event-driven review</strong>: het klantbeeld bijwerken op triggers als een bestuurswissel, een faillissement in het netwerk, plotselinge nieuwe gemeentestromen of mediasignalen. De openstaande punten uit de poortfase (&ldquo;niet vast te stellen&rdquo;) vormen de agenda van de eerstvolgende review. Open punten zijn een uitvraaglijst, geen geruststelling. De review herijkt ook de scenario-datatag: een bij acceptatie uitgezette regel (zoals de personeelslast/omzet-regel wanneer salaris via een andere bank loopt) wordt opnieuw gewogen zodra een trigger het klantbeeld verandert, en gedrag dat de datatag tegenspreekt komt als alert in deze triage terug.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 23 (geheimhouding bij uitvraag) · TRNKL — flowchart integriteitsrisico's zorg (weegtabel &ldquo;van signaal naar oordeel&rdquo;) · risicomodel van de instelling (vertrouwelijk) · <a href="https://www.amlc.nl/terugkoppeling-verdachte-transacties/" target="_blank" rel="noopener noreferrer">AMLC — context en dossierkwaliteit</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K2 — STAP 4: PRAKTIJK & ADVIES ===== -->
+<!-- ===== K2 — STAP 4: MOGELIJK GEVOLG ===== -->
+<div class="modal-overlay" id="ov-k2-gevolg">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k2-gevolg')">&#x2715;</button>
+    <div class="modal-title">Mogelijk gevolg: onacceptabel risico</div>
+    <div class="modal-kicker">Tijdens de klantrelatie · stap 4 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Overgang naar</span><span class="zkode">Z7</span>&ndash;<span class="zkode">Z8</span> · uitkomst buiten de risicobereidheid <span class="zlab relatie">relatie</span></div>
+
+    <div class="mh">Waar de relatie op uit kan komen</div>
+    <div class="mp">Een TM-alert (Z4/Z5) of een reviewbevinding (Z6) die n&aacute; de uitvraag en weging b&uacute;iten de risicobereidheid valt, blijft niet in de monitoringlaag hangen. Dan volgen maatregelen op de relatie, en bij een ongebruikelijke transactie ook een melding aan de FIU (art. 16). Het zijn aparte verplichtingen: buiten de risicobereidheid vallen leidt niet automatisch tot een melding. Beide worden gedocumenteerd, en de uitkomst voedt de SIRA-herijking.</div>
+
+    <div class="mh">Van alert naar restrisico-oordeel (Z7)</div>
+    <div class="mp">Valt het <strong>restrisico</strong> nog binnen de <strong>risicobereidheid</strong> uit de SIRA? Het weegkader bepaalt dat: de <strong>optelsom</strong>, de <strong>spreidingsregel</strong> (signalen over meerdere categorie&euml;n wegen zwaarder) en de impactweging (kans &times; impact). Twee routes lopen buiten de gewone weging om: de <strong>veiligheidsoverride</strong> (uitbuiting of misbruik van cli&euml;nten escaleert direct) en het <strong>niet-voltooibare onderzoek</strong> (art. 5 Wwft dwingt dan tot be&euml;indiging).</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Alert of reviewbevinding (Z4&ndash;Z6)</div><div class="ps">na uitvraag en weging</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Weging restrisico (Z7)</div><div class="ps">buiten de risicobereidheid</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Uitkomst (Z8)</div><div class="ps">maatregelen op de relatie · melden bij een ongebruikelijke transactie</div></div>
+    </div>
+
+    <div class="mh">Melden bij de FIU (Z8)</div>
+    <div class="mp"><span class="mtag g">Wwft art. 16 lid 1</span> de bank meldt een verrichte of voorgenomen <strong>ongebruikelijke transactie</strong> onverwijld aan de FIU zodra het ongebruikelijke karakter bekend is. Een bewezen delict is niet vereist; de gewogen optelsom uit Z7 &iacute;s de aanleiding. &ldquo;Onverwijld&rdquo; betekent zo snel mogelijk zonder onnodige vertraging; de vroegere termijn van veertien dagen is in 2013 op advies van de FATF vervangen door deze open norm. <span class="mtag g">art. 23</span> verplicht tot geheimhouding jegens een ieder: van de melding, van nadere inlichtingen (art. 17) en van het overleg daarover.</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Melding</div><div class="ps">ongebruikelijke transactie · met de optelsom als context</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">FIU-Nederland</div><div class="ps">analyseert, verrijkt, kan verdacht verklaren</div></div>
+      <div class="pa">→</div>
+      <div class="pb"><div class="pt">Opsporing</div><div class="ps">meestal recherche zorgfraude (NLA) · FIOD, politie, FP</div></div>
+      <div class="pa">→</div>
+      <div class="pb accent"><div class="pt">Resultaat</div><div class="ps">aanhoudingen, veroordelingen, ontbinding, bestuursverboden</div></div>
+    </div>
+    <div class="mp">De FIU meldt dat vooral <strong>banken en accountants</strong> de zorgfraude-gerelateerde transacties aanleveren, en kan via art. 17 Wwft nadere inlichtingen opvragen. Per 1 juli 2026 komt de <strong>opschortingsbevoegdheid</strong> erbij (art. 17a), uitgewerkt in de TRNKL-flowchart <a href="https://trnkl.nl/flowcharts/artikel17a-wwft.html">Art. 17a Wwft · Opschortingsbevoegdheid FIU</a>.</div>
+    <div class="info-banner g"><strong>Een goede melding bevat:</strong> de optelsom (welke indicatoren, welke getoetste en verworpen verklaringen), het netwerk (gelieerde rechtspersonen en rekeningen) en de publieke context (SVB-/gemeente-instroom, sector, jaarverantwoording).</div>
+
+    <div class="mh">Maatregelen op de relatie (Z8)</div>
+    <div class="proc">
+      <div class="pb"><div class="pt">Verscherpen</div><div class="ps">hoogste risicoprofiel · korte reviewcyclus · laagste TM-drempels op het hele netwerk</div></div>
+      <div class="pa">·</div>
+      <div class="pb accent"><div class="pt">Voortzetten onder voorwaarden</div><div class="ps">met zicht houden als expliciete overweging</div></div>
+      <div class="pa">·</div>
+      <div class="pb"><div class="pt">Be&euml;indigen</div><div class="ps">verplicht bij niet-voltooibaar onderzoek (art. 5) · anders een belangenafweging</div></div>
+    </div>
+    <div class="mp"><strong>De afweging tussen zicht houden en afscheid loopt twee kanten op:</strong> be&euml;indigen begrenst het eigen risico, maar verplaatst het netwerk naar een volgende instelling en breekt het transactiebeeld af; voortzetten onder verscherping houdt zicht en blijft de FIU en de opsporing van verse informatie voorzien, maar laat het risico op de eigen balans staan. Welke kant zwaarder weegt, is aan de instelling. De grens is de-risking: Nederlandse banken be&euml;indigden in 2021 circa 52.000 relaties en weigerden er circa 34.000. Categoraal weren zonder individuele beoordeling is &ldquo;unwarranted&rdquo; (EBA/GL/2023/04, ECLI:NL:HR:2021:1652). Leg de be&euml;indiging met de scenario-reden vast in de scenario-datatag, zodat geaggregeerd zichtbaar wordt hoeveel klanten buiten dit scenario zijn be&euml;indigd (zie stap 5, &ldquo;Terug de SIRA in&rdquo;).</div>
+    <div class="info-banner"><strong>Geheimhouding blijft staan:</strong> ook in de be&euml;indigingsbrief wordt de (voorgenomen) melding niet genoemd (art. 23 Wwft). De motivering steunt op het niet-voltooibare onderzoek of het risicoprofiel, niet op de melding.</div>
+    <div class="mp"><strong>Buiten deze flowchart:</strong> het civielrechtelijke opzeggingsproces z&eacute;lf is een eigen spoor met eigen jurisprudentie: de bancaire zorgplicht, de belangenafweging, de toegang tot het betalingsverkeer en het kort-gedingrisico. Deze flowchart behandelt de Wwft-poortwachtersrol (detecteren, wegen, melden); be&euml;indiging verschijnt hier alleen als uitkomst van de risicoweging, niet als uitgewerkte procedure.</div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text">Wwft art. 5, 16, 17, 17a en 23 (BWBR0024282) · <a href="https://www.fiu-nederland.nl/onverwijld-melden/" target="_blank" rel="noopener noreferrer">FIU — onverwijld melden</a> · <a href="https://www.fiu-nederland.nl/wp-content/uploads/2025/07/FIU-NL-jaaroverzicht-2024.pdf" target="_blank" rel="noopener noreferrer">FIU — Jaaroverzicht 2024</a> · <a href="https://www.eba.europa.eu/sites/default/files/document_library/Publications/Guidelines/2023/1054144/Guidelines%20on%20MLTF%20risk%20management%20and%20access%20to%20financial%20services.pdf" target="_blank" rel="noopener noreferrer">EBA/GL/2023/04</a> · <a href="https://uitspraken.rechtspraak.nl/inziendocument?id=ECLI%3ANL%3AHR%3A2021%3A1652" target="_blank" rel="noopener noreferrer">HR 5 november 2021</a> · <a href="https://www.amlc.nl/kort-geding-opzeggen-bankrelatie/" target="_blank" rel="noopener noreferrer">AMLC — opzeggen bankrelatie</a> · <a href="https://trnkl.nl/flowcharts/artikel17a-wwft.html">TRNKL — flowchart Art. 17a Wwft · Opschortingsbevoegdheid FIU</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="ov-k2-praktijk">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeM('k2-praktijk')">&#x2715;</button>
+    <div class="modal-title">Praktijk &amp; advies</div>
+    <div class="modal-kicker">Tijdens de klantrelatie · stap 5 van 5</div>
+    <div class="sira-regel"><span class="sr-label">Z4&ndash;Z6 in de praktijk</span>casu&iuml;stiek door de bank-bril <span class="zlab relatie">relatie</span></div>
+
+    <div class="mh">Wat had de bank kunnen zien?</div>
+    <table class="dtable">
+      <thead><tr><th>Zaak</th><th>Wat er gebeurde</th><th>Welke regel had geraakt</th></tr></thead>
+      <tbody>
+        <tr><td>Dolia (pgb-thuiszorg)</td><td>170.830 gedeclareerde uren waar er maximaal 37.904 leverbaar waren (hooguit ~22%); benadelingsbedrag &euro;5,4 mln (rechtbank)</td><td>Personeelslast/omzet · pgb-doorboeking</td></tr>
+        <tr><td>Zorghotels (FTM 2024)</td><td>&euro;750.000 huur per jaar aan gelieerd vastgoed terwijl de zorg faalde</td><td>Vastgoed &amp; onroerend goed</td></tr>
+        <tr><td>OM-zaak 2024 (&euro;1,5 mln)</td><td>Witwassen met zorgfraude; zaak begon met &plusmn;20 verdacht verklaarde transacties</td><td>Personeelslast/omzet</td></tr>
+        <tr><td>FIU-casus (negen ton)</td><td>Branchevreemde marge, lage personeelskosten, luxe-uitgaven; bankwissel om uit zicht te blijven</td><td>Gelieerde uitstroom · Luxebestedingen · cash-ratio · en de melding van de tw&eacute;&eacute;de bank</td></tr>
+      </tbody>
+    </table>
+
+    <div class="mh">De casu&iuml;stiek als bewijs van de route</div>
+    <div class="mp">De keten melding → FIU → opsporing → resultaat is geen theorie: drie banken meldden rond &eacute;&eacute;n netwerk en de Arbeidsinspectie hield aan (ruim &euro;1 mln); een bankmelding over een zorgbestuurder leidde tot een veroordeling voor het witwassen van negen ton, en toen de cli&euml;nt van bank wisselde om uit zicht te blijven, meldde ook de tweede bank; een melding over contante pgb-opnames eindigde in 2026 in de ontbinding van een malafide zorgstichting en een bestuursverbod. De les uit de bankwissel-casus: <strong>een vertrokken cli&euml;nt ontslaat niet van de meldplicht</strong> over wat is waargenomen.</div>
+
+    <div class="mh">Terug de SIRA in</div>
+    <div class="mp">Elke casus die dit spoor doorloopt, is een datapunt voor het framework zelf: klopte de segmentatie (Z1), vingen de regels het patroon (Z4), was het restrisico-oordeel houdbaar (Z7)? Die terugkoppeling maakt de SIRA tot het levende document dat DNB verlangt. <strong>Leg ook de uitkomst z&eacute;lf vast in de scenario-datatag:</strong> een afwijzing aan de poort of een be&euml;indiging tijdens de relatie, met de scenario-reden erbij. Zo wordt optelbaar hoeveel klanten zijn geweigerd of be&euml;indigd omdat ze buiten de risicobereidheid van dit scenario vielen, en dat aantal is op zichzelf stuurinformatie over of de controls werken. Nieuwe FIU-Alerts, nieuwe wetgeving (kabinetspakket, Wet integere bedrijfsvoering zorg- en jeugdhulpaanbieders (Wibz)) en eigen casu&iuml;stiek horen in de eerstvolgende SIRA-cyclus verwerkt te zijn.</div>
+
+    <div style="margin-top:16px">
+      <div class="mp"><span class="mtag" style="font-size:11px;font-weight:700;padding:3px 10px">Advies aan de poortwachter</span></div>
+      <ul class="ml" style="margin-top:6px">
+        <li>Aggregeer over het netwerk voordat je weegt: de losse rekening kan kloppen terwijl het cluster niet klopt.</li>
+        <li>Naar mijn mening is de personeelslast/omzet-ratio het krachtigste enkelvoudige datapunt in dit scenario: zorg is mensenwerk, en geen legitieme verklaring overbrugt blijvend het gat tussen gedeclareerde zorg en ontbrekende lonen.</li>
+        <li>Behandel de uitvraag als instrument: wie de huur, de fee of de contante opname niet kan verklaren, levert daarmee het volgende datapunt.</li>
+        <li>Gun de anomalielaag zijn vals-positieven: een model dat nooit ten onrechte alarmeert, vangt ook het nieuwe patroon niet.</li>
+        <li>Weeg be&euml;indiging en voortzetting expliciet tegen elkaar af voordat je besluit; beide raken zowel het eigen risico als het zicht op de keten.</li>
+        <li>Documenteer be&euml;indiging &eacute;n voortzetting even zorgvuldig; beide moeten bij de toezichthouder en in kort geding standhouden.</li>
+        <li>Meld ook wat de vertrokken cli&euml;nt achterliet; de tweede bank maakte in de casu&iuml;stiek het verschil.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="mh">Handvatten: de uitvraag uniform en gecodeerd</div>
+      <div class="mp">Coderen vervangt het tekstuele dossier niet; dat blijft de bron en is juist de bedoeling. De codes leggen achter de schermen de risicoweging van die informatie vast, zodat een systeem ermee kan werken en die weging met de klant mee blijft reizen.</div>
+      <div class="mp">De handmatige opvolging is pas waardevol als de uitkomst ook de <strong>scenario-datatag</strong> bijwerkt. Dat lukt alleen als de uitvraag uniform en gecodeerd wordt vastgelegd in plaats van als losse vrije tekst:</div>
+      <ul class="ml" style="margin-top:6px">
+        <li>Werk per scenario met een <strong>vaste uitvraagset</strong>, gekoppeld aan de indicatoren van dat scenario: dezelfde bevinding leidt zo tot dezelfde uitvraag, ongeacht welke analist hem doet.</li>
+        <li>Leg de uitkomst <strong>gecodeerd</strong> vast: per indicator getoetst → verklaring plausibel, deels of weerlegd → effect op het restrisico. Uit die codes werkt de tag zich vrijwel vanzelf bij; niemand hoeft vrije tekst te herinterpreteren.</li>
+        <li>Weeg ook de <strong>mate van uitvraag</strong>: ga je bij de ene klant bij een alert of review aanzienlijk dieper dan bij de andere, dan raakt dat het restrisico van die klant; leg die weging in de tag vast zodat ze onderbouwd en herhaalbaar is.</li>
+        <li>Houd naast de codes altijd een <strong>toelichtingsveld</strong> en een &ldquo;anders / niet-passend&rdquo;-optie: een gesloten schema mist anders de nuance van het dossier.</li>
+        <li>Codering voedt het oordeel, maar vervangt het niet. De <strong>menselijke weging</strong> blijft. En de uitvraag is risicogestuurd, geen vaste vragenlijst die je aan de klant overhandigt (geheimhouding, art. 23 Wwft).</li>
+      </ul>
+    </div>
+
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.rtlnieuws.nl/nieuws/nederland/artikel/4877526/zorgfraude-broers-utrecht-dolia-thuiszorg" target="_blank" rel="noopener noreferrer">OM/RTL — Dolia</a> · <a href="https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:RBMNE:2019:5647" target="_blank" rel="noopener noreferrer">Rb. Midden-Nederland 28 nov. 2019 (ECLI:NL:RBMNE:2019:5647)</a> · <a href="https://www.ftm.nl/artikelen/ouderenzorgbedrijf-failliet-vastgoedboeren-cashen-miljoenen" target="_blank" rel="noopener noreferrer">FTM — zorghotels (2024)</a> · <a href="https://www.om.nl/actueel/nieuws/2024/10/23/bedrag-van-15-miljoen-witgewassen-met-zorgfraude-om-eist-22-maanden" target="_blank" rel="noopener noreferrer">OM — &euro;1,5 mln (2024)</a> · <a href="https://www.fiu-nederland.nl/zorgfraudeur-veroordeeld/" target="_blank" rel="noopener noreferrer">FIU — bankwissel-casus</a> · <a href="https://www.fiu-nederland.nl/knowledge_base/zo-volgen-we-meldingen-van-zorgfraude-op/" target="_blank" rel="noopener noreferrer">FIU — drie banken, &eacute;&eacute;n netwerk</a> · <a href="https://www.fiu-nederland.nl/knowledge_base/meldingen-dragen-bij-aan-ontbinding-malafide-zorgstichting/" target="_blank" rel="noopener noreferrer">FIU — ontbinding zorgstichting (2026)</a> · <a href="https://www.dnb.nl/media/fjag2ojs/dnb-sira-gp-2025-nl.pdf" target="_blank" rel="noopener noreferrer">DNB — Good Practices SIRA (levend document)</a></div>
+    </div>
+  </div>
+</div>
+<!-- MODALS-KOL2-KLAAR -->
+<!-- KOL3 OPGENOMEN IN STAP 4/5 VAN KOLOM 1 EN 2 -->
+
+<script>
+
+function openM(id){ document.getElementById('ov-'+id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeM(id){ document.getElementById('ov-'+id).classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('.modal-overlay').forEach(function(ov){
+  ov.addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; } });
+});
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ document.querySelectorAll('.modal-overlay.open').forEach(function(ov){ ov.classList.remove('open'); }); document.body.style.overflow=''; }
+});
+// === Kopieerbeveiliging ===
+// Eén schakelaar. Zet op TRUE vóór publicatie om kopiëren, plakken en tekstselectie in de
+// modals te blokkeren (bronvermeldingen blijven altijd kopieerbaar). Op TRUE gezet bij
+// publicatie (16 juni 2026), na afronding van de Harvard-review.
+const BLOKKEER_KOPIEREN = true;
+if (BLOKKEER_KOPIEREN) {
+  document.querySelectorAll('.modal-box').forEach(function(box){
+    box.style.userSelect = 'none'; box.style.webkitUserSelect = 'none';
+    function allowInSource(e){ return e.target.closest('.source-block')!==null; }
+    box.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  });
+}
+
+</script>
+
+<style>
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"\2212"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item:last-of-type{border-bottom:none}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+@media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
+</style>
+
+<section class="uitleg-sectie">
+<details class="uitleg-wrap">
+<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
+<div class="uitleg-body">
+<p class="kicker">Achtergrond</p>
+<h2>Hoe past zorgfraude in de SIRA en de poortwachtersrol van de bank?</h2>
+<p>De opbrengst van zorgfraude loopt per definitie over bankrekeningen, en de bank ziet de geldstromen rond haar klantnetwerk samenhangender dan andere partijen in de keten. Daarmee is de bank een poortwachter. Deze flowchart werkt zorgfraude uit als scenario in de systematische integriteitsrisicoanalyse (SIRA), binnen de bestaande Wwft-verplichtingen: cliëntenonderzoek (art. 3), verscherpt onderzoek (art. 8) en de meldplicht (art. 16). Geen nieuwe verplichting, maar invulling van wat de Wwft al vraagt.</p>
+<p>De uitwerking volgt twee fasen. Aan de poort: segmentdetectie, netwerk- en personenscreening en risicoclassificatie bij de acceptatie. Tijdens de klantrelatie: sectorspecifieke transactiemonitoring, anomaliedetectie en periodieke review. Elke fase eindigt in het mogelijke gevolg: valt het restrisico buiten de risicobereidheid, dan volgen maatregelen op de relatie, en bij een ongebruikelijke transactie een melding aan de FIU. Centraal staat risicogebaseerd en datagedreven werken via een scenario-datatag per klant, die de detectie richt op de risico's die er bij die klant toe doen en zo de false positives drukt.</p>
+<p>De flowchart benoemt ook de lacune: de zorgsector staat niet op de hoogrisicolijsten van DNB en er is geen NVB-sectorstandaard zorg, terwijl FIU, AMLC, Arbeidsinspectie en kabinet de aandacht juist opvoeren. En de volgende stap: artikel 75 AMLR maakt het vanaf 10 juli 2027 mogelijk het netwerkbeeld binnen een partnerschap te delen. Alle stappen zijn herleidbaar tot openbare bronnen.</p>
+<h2 class="faq-kop">Veelgestelde vragen</h2>
+<details class="faq-item"><summary>Is zorgfraude een apart risico of een scenario in de SIRA?</summary><div class="antwoord">Zorgfraude is geen zelfstandig hoofdrisico maar een scenario onder de hoofdrisico's witwassen en fraude. De opbrengst wordt per definitie witgewassen en loopt vrijwel volledig over bankrekeningen. In de systematische integriteitsrisicoanalyse (SIRA) krijgt het scenario een inherent risico, beheersmaatregelen (cliëntenonderzoek en transactiemonitoring) en een restrisico.</div></details>
+<details class="faq-item"><summary>Welke Wwft-verplichtingen gelden voor de bank bij zorgfraude?</summary><div class="antwoord">Cliëntenonderzoek (art. 3 Wwft), verscherpt onderzoek bij verhoogd risico (art. 8), voortdurende controle op de relatie en de transacties (art. 3 lid 2 sub d) en het onverwijld melden van ongebruikelijke transacties aan de FIU (art. 16), met geheimhouding jegens een ieder (art. 23). Vanaf 10 juli 2027 verschuift het cliëntenonderzoek naar art. 20 AMLR.</div></details>
+<details class="faq-item"><summary>Wat is een scenario-datatag?</summary><div class="antwoord">Een gestructureerd, machineleesbaar profiel dat elke klant bij acceptatie krijgt en dat per scenario vastlegt welke inherente risico's, beheersmaatregelen en restrisico's spelen. Het tekstuele dossier blijft de bron; de codering legt daarachter de risicoweging gestructureerd vast, zodat systemen ermee kunnen werken zonder de menselijke weging te vervangen. Daarmee automatiseert de tag welke detectieregels op de klant draaien: alleen toepasselijke scenario's triggeren en een regel waarvan de grondslag bij deze klant ontbreekt blijft uit, zodat de false-positive-ratio daalt. Omdat ook de uitkomst (afwijzing of beëindiging) met de scenario-reden wordt vastgelegd, wordt geaggregeerd zichtbaar hoeveel klanten buiten een scenario zijn geweigerd of beëindigd, wat laat zien of de controls werken. Het is risicogebaseerd en datagedreven werken in de meest letterlijke zin.</div></details>
+<details class="faq-item"><summary>Welke signalen wijzen op zorgfraude?</summary><div class="antwoord">Snelle omzetgroei zonder personeel dat daarbij past, een lage personeelslast tegenover de omzet, hoge contante opnames, bovenmatige huur aan een gelieerde vastgoed-bv, dividend dat niet strookt met de zorgactiviteiten, pgb's die binnen dagen worden doorgeboekt, uitgaven aan luxegoederen of overboekingen naar het buitenland zonder zorggrond, en complexe structuren rond kleine zorg-bv's. Eén signaal is zelden bewijs; het gaat om de optelsom en de spreiding over meerdere categorieën.</div></details>
+<details class="faq-item"><summary>Wat gebeurt er als het risico onacceptabel is?</summary><div class="antwoord">Valt het restrisico buiten de risicobereidheid uit de SIRA, dan volgt een gedocumenteerd besluit over de relatie: verscherpen, voortzetten onder voorwaarden of beëindigen (art. 5 Wwft). Dat besluit is per definitie individueel, geen categorale uitsluiting. Een melding aan de FIU is een aparte verplichting met een eigen drempel: die volgt alleen als er een ongebruikelijke transactie is (art. 16 Wwft). Buiten de risicobereidheid vallen leidt dus niet automatisch tot een FIU-melding.</div></details>
+<details class="faq-item"><summary>Wat verandert artikel 75 AMLR voor zorgfraude?</summary><div class="antwoord">Vanaf 10 juli 2027 biedt art. 75 AMLR een grondslag voor partnerschappen voor informatie-uitwisseling, waarin meldingsplichtige entiteiten cliënt- en transactiegegevens mogen delen om netwerken te detecteren die één instelling niet ziet. Dat kan ook cross-sectoraal, bijvoorbeeld tussen banken en accountants: juist de twee Wwft-instellingen die volgens de FIU de meeste zorgfraude-gerelateerde transacties aanleveren. De toezichthouder toetst het partnerschap vooraf en de melding aan de FIU blijft apart bestaan (overweging 149 AMLR).</div></details>
+</div>
+</details>
+</section>
+
+<footer class="site-footer">
+  <span class="fmark">TRNKL<span class="merkpunt"></span></span> &middot; Atelier voor kennis en beleid<br>
+  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a>
+</footer>
+
+</body>
+</html>
