@@ -302,7 +302,7 @@
     .bus { display: none; }
     .compare-grid { grid-template-columns: 1fr; }
     .proc { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
-    .proc .pb { max-width: none; width: 100%; }
+    .proc .pb { max-width: none !important; width: 100% !important; min-width: 0 !important; }
     .proc .pa { width: 100%; justify-content: center; transform: rotate(90deg); }
     .dtable-wrap .dtable { min-width: 540px; }
   }
