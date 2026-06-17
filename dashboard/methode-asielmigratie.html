@@ -3,19 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Styleguide — Asiel &amp; migratie</title>
-<meta name="description" content="Styleguide en werkwijze van het thema asiel & migratie in het TRNKL Politiek Dashboard.">
-<link rel="canonical" href="https://trnkl.nl/dashboard/methode-asielmigratie.html">
-<link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="TRNKL">
-<meta property="og:locale" content="nl_NL">
-<meta property="og:title" content="Styleguide — Asiel &amp; migratie">
-<meta property="og:url" content="https://trnkl.nl/dashboard/methode-asielmigratie.html">
-<meta property="og:image" content="https://trnkl.nl/assets/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
+<title>Styleguide - Asiel &amp; migratie | TRNKL</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -252,8 +240,36 @@ table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--b
 
 footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; border-top: 0.5px solid var(--border-light); font-size: 12px; color: var(--text-tertiary); text-align: center; }
 .accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-light);border-bottom:.5px solid var(--border-light)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"−"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"−"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
 </style>
 
+<link rel="canonical" href="https://trnkl.nl/dashboard/methode-asielmigratie.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TRNKL">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Styleguide - Asiel &amp; migratie | TRNKL">
+<meta property="og:url" content="https://trnkl.nl/dashboard/methode-asielmigratie.html">
+<meta property="og:image" content="https://trnkl.nl/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Styleguide en werkwijze van het thema asiel &amp; migratie in het TRNKL Politiek Dashboard.">
 </head>
 <body>
 <header>

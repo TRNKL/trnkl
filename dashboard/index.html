@@ -3,75 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Politiek Dashboard — coalitieakkoord 2026–2030 per doel gevolgd | TRNKL</title>
-<meta name="description" content="Het coalitieakkoord 2026–2030 van D66, VVD en CDA ontleed in losse doelen. Per doel: de afspraak, de verkiezingsprogramma’s, wat de Tweede Kamer ermee doet en de cijfers.">
-<link rel="canonical" href="https://trnkl.nl/dashboard/">
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "Wat is het TRNKL Politiek Dashboard?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Een onafhankelijk dashboard dat het coalitieakkoord 2026–2030 van D66, VVD en CDA ontleedt in losse doelen en per doel laat zien wat de afspraak is, wat de Tweede Kamer ermee doet en wat de cijfers tonen."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Welke thema’s zijn uitgewerkt?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Wonen (50 doelpagina’s) en Asiel & migratie (67 doelen). De overige thema’s van het akkoord, zoals bestaanszekerheid, zorg en klimaat & energie, zijn in voorbereiding."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Velt het dashboard een politiek oordeel?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Nee. Het dashboard legt feiten naast elkaar en toont het verschil tussen afspraak en uitvoering; het oordeel is aan de lezer."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Welke bronnen gebruikt het dashboard?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Uitsluitend openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Wat staat er over wonen in het coalitieakkoord 2026–2030?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Het hoofdstuk bouwen en wonen. Het dashboard ontleedt dat hoofdstuk in 50 losse doelen, elk met een eigen doelpagina waarop de afspraak, de verkiezingsprogramma’s, de Kamerstukken en de cijfers naast elkaar staan."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Wat staat er over asiel en migratie in het coalitieakkoord 2026–2030?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Het hoofdstuk asiel, migratie en integratie, in het dashboard ontleed in 67 doelen met elk een eigen doelpagina."
-   }
-  }
- ]
-}
-</script>
-<link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="TRNKL">
-<meta property="og:locale" content="nl_NL">
-<meta property="og:title" content="Politiek Dashboard — coalitieakkoord 2026–2030 per doel gevolgd | TRNKL">
-<meta property="og:url" content="https://trnkl.nl/dashboard/">
-<meta property="og:image" content="https://trnkl.nl/assets/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
+<title>Politiek Dashboard - coalitieakkoord 2026-2030 per doel gevolgd | TRNKL</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -308,8 +240,92 @@ table.kamerstukken { width: 100%; border-collapse: collapse; background: var(--b
 
 footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; border-top: 0.5px solid var(--border-light); font-size: 12px; color: var(--text-tertiary); text-align: center; }
 .accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-light);border-bottom:.5px solid var(--border-light)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"−"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"−"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
 </style>
 
+<link rel="canonical" href="https://trnkl.nl/dashboard/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Wat is het TRNKL Politiek Dashboard?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Een onafhankelijk dashboard dat het coalitieakkoord 2026-2030 van D66, VVD en CDA ontleedt in losse doelen en per doel laat zien wat de afspraak is, wat de Tweede Kamer ermee doet en wat de cijfers tonen."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Welke thema's zijn uitgewerkt?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Wonen (50 doelpagina's) en Asiel & migratie (67 doelen). De overige thema's van het akkoord, zoals bestaanszekerheid, zorg en klimaat & energie, zijn in voorbereiding."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Velt het dashboard een politiek oordeel?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nee. Het dashboard legt feiten naast elkaar en toont het verschil tussen afspraak en uitvoering; het oordeel is aan de lezer."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Welke bronnen gebruikt het dashboard?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Uitsluitend openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiele rapporten."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat staat er over wonen in het coalitieakkoord 2026-2030?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Het hoofdstuk bouwen en wonen. Het dashboard ontleedt dat hoofdstuk in 50 losse doelen, elk met een eigen doelpagina waarop de afspraak, de verkiezingsprogramma's, de Kamerstukken en de cijfers naast elkaar staan."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat staat er over asiel en migratie in het coalitieakkoord 2026-2030?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Het hoofdstuk asiel, migratie en integratie, in het dashboard ontleed in 67 doelen met elk een eigen doelpagina."
+   }
+  }
+ ]
+}
+</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TRNKL">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Politiek Dashboard - coalitieakkoord 2026-2030 per doel gevolgd | TRNKL">
+<meta property="og:url" content="https://trnkl.nl/dashboard/">
+<meta property="og:image" content="https://trnkl.nl/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Het coalitieakkoord 2026-2030 van D66, VVD en CDA ontleed in losse doelen. Per doel: de afspraak, de verkiezingsprogramma&#x27;s, wat de Tweede Kamer ermee doet en de cijfers.">
 </head>
 <body>
 <header>
@@ -344,66 +360,7 @@ footer { padding: 32px 0; background: var(--bg-primary); margin-top: 56px; borde
 <div class="thema-tile binnenkort"><h3>Stikstof &amp; natuur</h3><div class="thema-badge">In voorbereiding</div></div>
 </div>
 </div></section>
-
-<style>
-.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
-.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
-.uitleg-trigger::-webkit-details-marker{display:none}
-.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
-.uitleg-wrap[open] > .uitleg-trigger::after{content:"3"}
-.uitleg-body{padding:24px 0 8px}
-.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
-.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
-.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
-.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
-.faq-item{border-top:.5px solid var(--border-light)}
-.faq-item:last-of-type{border-bottom:none}
-.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
-.faq-item[open] summary::after{content:"3"}
-.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
-@media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
-</style>
-
-<section class="uitleg-sectie">
-<details class="uitleg-wrap">
-<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
-<div class="uitleg-body">
-<p class="kicker">Achtergrond</p>
-<h2>Het coalitieakkoord volgen, doel voor doel</h2>
-<p>Het TRNKL Politiek Dashboard ontleedt het coalitieakkoord 2026–2030 van D66, VVD en CDA in losse, controleerbare doelen. Per doel staat naast elkaar wat het akkoord afspreekt, wat de coalitiepartijen er in hun verkiezingsprogramma over schreven, wat de Tweede Kamer er sinds de beëdiging van het kabinet mee doet en welke cijfers uit publieke bronnen de afspraak tastbaar maken.</p>
-<p>Twee thema’s zijn uitgewerkt: Wonen, met 50 doelpagina’s uit het hoofdstuk bouwen en wonen, en Asiel &amp; migratie, met 67 doelen uit het hoofdstuk asiel, migratie en integratie. De overige thema’s van het akkoord volgen.</p>
-<p>Het dashboard velt geen waardeoordeel. Loopt een plan anders dan voorzien, dan kan daar een goede reden voor zijn; het dashboard toont het verschil, de lezer weegt het.</p>
-<h2 class="faq-kop">Veelgestelde vragen</h2>
-<details class="faq-item">
-<summary>Wat is het TRNKL Politiek Dashboard?</summary>
-<div class="antwoord">Een onafhankelijk dashboard dat het coalitieakkoord 2026–2030 van D66, VVD en CDA ontleedt in losse doelen en per doel laat zien wat de afspraak is, wat de Tweede Kamer ermee doet en wat de cijfers tonen.</div>
-</details>
-<details class="faq-item">
-<summary>Welke thema’s zijn uitgewerkt?</summary>
-<div class="antwoord">Wonen (50 doelpagina’s) en Asiel & migratie (67 doelen). De overige thema’s van het akkoord, zoals bestaanszekerheid, zorg en klimaat & energie, zijn in voorbereiding.</div>
-</details>
-<details class="faq-item">
-<summary>Velt het dashboard een politiek oordeel?</summary>
-<div class="antwoord">Nee. Het dashboard legt feiten naast elkaar en toont het verschil tussen afspraak en uitvoering; het oordeel is aan de lezer.</div>
-</details>
-<details class="faq-item">
-<summary>Welke bronnen gebruikt het dashboard?</summary>
-<div class="antwoord">Uitsluitend openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten.</div>
-</details>
-<details class="faq-item">
-<summary>Wat staat er over wonen in het coalitieakkoord 2026–2030?</summary>
-<div class="antwoord">Het hoofdstuk bouwen en wonen. Het dashboard ontleedt dat hoofdstuk in 50 losse doelen, elk met een eigen doelpagina waarop de afspraak, de verkiezingsprogramma’s, de Kamerstukken en de cijfers naast elkaar staan.</div>
-</details>
-<details class="faq-item">
-<summary>Wat staat er over asiel en migratie in het coalitieakkoord 2026–2030?</summary>
-<div class="antwoord">Het hoofdstuk asiel, migratie en integratie, in het dashboard ontleed in 67 doelen met elk een eigen doelpagina.</div>
-</details>
-</div>
-</details>
-</section>
-
+<section class="uitleg-sectie"><details class="uitleg-wrap"><summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary><div class="uitleg-body"><p class="kicker">Achtergrond</p><h2>Wat is het TRNKL Politiek Dashboard?</h2><p>Het TRNKL Politiek Dashboard ontleedt het coalitieakkoord 2026-2030 van D66, VVD en CDA in losse doelen. Per doel zet het naast elkaar wat het akkoord afspreekt, wat de coalitiepartijen er in hun verkiezingsprogramma over schreven, wat de Tweede Kamer ermee doet en welke feitelijke cijfers uit publieke bronnen erbij horen.</p><p>Het dashboard velt geen oordeel: het toont het verschil tussen afspraak en uitvoering, de lezer weegt het. De thema&#x27;s Wonen en Asiel &amp; migratie zijn uitgewerkt; de overige thema&#x27;s volgen. Alle gegevens komen uit openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiele rapporten.</p><h2 class="faq-kop">Veelgestelde vragen</h2><details class="faq-item"><summary>Wat is het TRNKL Politiek Dashboard?</summary><div class="antwoord">Een onafhankelijk dashboard dat het coalitieakkoord 2026-2030 van D66, VVD en CDA ontleedt in losse doelen en per doel laat zien wat de afspraak is, wat de Tweede Kamer ermee doet en wat de cijfers tonen.</div></details><details class="faq-item"><summary>Welke thema&#x27;s zijn uitgewerkt?</summary><div class="antwoord">Wonen (50 doelpagina&#x27;s) en Asiel &amp; migratie (67 doelen). De overige thema&#x27;s van het akkoord, zoals bestaanszekerheid, zorg en klimaat &amp; energie, zijn in voorbereiding.</div></details><details class="faq-item"><summary>Velt het dashboard een politiek oordeel?</summary><div class="antwoord">Nee. Het dashboard legt feiten naast elkaar en toont het verschil tussen afspraak en uitvoering; het oordeel is aan de lezer.</div></details><details class="faq-item"><summary>Welke bronnen gebruikt het dashboard?</summary><div class="antwoord">Uitsluitend openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiele rapporten.</div></details><details class="faq-item"><summary>Wat staat er over wonen in het coalitieakkoord 2026-2030?</summary><div class="antwoord">Het hoofdstuk bouwen en wonen. Het dashboard ontleedt dat hoofdstuk in 50 losse doelen, elk met een eigen doelpagina waarop de afspraak, de verkiezingsprogramma&#x27;s, de Kamerstukken en de cijfers naast elkaar staan.</div></details><details class="faq-item"><summary>Wat staat er over asiel en migratie in het coalitieakkoord 2026-2030?</summary><div class="antwoord">Het hoofdstuk asiel, migratie en integratie, in het dashboard ontleed in 67 doelen met elk een eigen doelpagina.</div></details></div></details></section>
 <footer>
   <div class="container">
     <span class="accent">TRNKL<span class="merkpunt"></span></span> Politiek Dashboard · samengesteld uit openbare bronnen: het coalitieakkoord, Tweede Kamer Open Data, CBS-statistiek en officiële rapporten
