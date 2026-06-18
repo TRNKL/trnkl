@@ -87,11 +87,11 @@ a:hover { text-decoration: underline; }
 /* Header */
 header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border-mid); position: sticky; top: 0; z-index: 100; }
 @media (prefers-color-scheme: dark) { header { background: rgba(30,30,28,0.85); } }
-.nav { display: flex; align-items: center; padding: 14px 0; gap: 32px; }
+.nav { display: flex; align-items: center; padding: 14px 0; gap: 16px 24px; flex-wrap: wrap; }
 .nav-logo { flex-shrink: 0; }
 .nav-logo:hover { text-decoration: none; }
 .nav-logo .bl-mark { font-weight: 800; font-size: 22px; color: var(--orange); letter-spacing: -0.03em; }
-.nav-links { display: flex; gap: 28px; margin-left: auto; align-items: center; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 14px 22px; margin-left: auto; align-items: center; }
 .nav-link { font-size: 13px; color: var(--text-secondary); font-weight: 500; -webkit-tap-highlight-color: transparent; }
 .nav-link:link, .nav-link:focus, .nav-link:active { color: var(--text-secondary); background: transparent; outline: none; }
 .nav-link:hover { text-decoration: none; }
@@ -159,6 +159,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <a href="#flowcharts" class="nav-link">Flowcharts</a>
         <a href="#flowtools" class="nav-link">Flowtools</a>
         <a href="#dashboards" class="nav-link">Dashboards</a>
+        <a href="over.html" class="nav-link">Over</a>
       </div>
     </nav>
   </div>
@@ -251,7 +252,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
   <div class="container-narrow">
     <span class="footer-mark">TRNKL<span class="merkpunt"></span></span>
     <p class="footer-text">Atelier voor kennis en beleid. Alle uitwerkingen zijn herleidbaar tot openbare bronnen: wet- en regelgeving, parlementaire stukken en officiële statistiek.</p>
-    <p class="footer-meta">KvK 88301648 &nbsp;&middot;&nbsp; <a href="contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="disclaimer.html">Disclaimer</a></p>
+    <p class="footer-meta">KvK 88301648 &nbsp;&middot;&nbsp; <a href="over.html">Over</a> &nbsp;&middot;&nbsp; <a href="contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="disclaimer.html">Disclaimer</a></p>
   </div>
 </footer>
 
