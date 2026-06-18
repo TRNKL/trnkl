@@ -147,6 +147,14 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
 .footer-meta { font-size: 12px; color: var(--text-tertiary); margin-top: 10px; }
 .footer-meta a { color: var(--text-tertiary); text-decoration: underline; }
 .footer-meta a:hover { color: var(--orange-text); }
+/* Anker-offset zodat de sectietitel niet onder de sticky header valt */
+#flowcharts, #flowtools, #dashboards { scroll-margin-top: 84px; }
+/* Compacter menu op mobiel: links links uitlijnen, dicht onder het logo */
+@media (max-width: 560px) {
+  header .nav { padding: 9px 0 11px; row-gap: 3px; }
+  .nav-links { margin-left: 0; gap: 8px 18px; }
+  #flowcharts, #flowtools, #dashboards { scroll-margin-top: 104px; }
+}
 </style>
 </head>
 <body>
