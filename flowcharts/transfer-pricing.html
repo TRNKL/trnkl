@@ -348,10 +348,12 @@
       gap: 14px;
       margin-left: -24px;
       margin-right: -24px;
-      padding: 4px 24px 12px;
+      /* symmetrische zijruimte zodat een gesnapte kolom exact centreert
+         onder de verbindingslijn vanaf het anker-blok */
+      padding: 4px calc((100vw - min(84vw, 300px)) / 2) 12px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x proximity;
+      scroll-snap-type: x mandatory;
       scrollbar-width: thin;
       overscroll-behavior-x: contain;
     }
