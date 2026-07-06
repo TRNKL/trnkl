@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+<base target="_blank" rel="noopener noreferrer">
+<title>Flowtool transfer pricing: bouw je structuur op de wereldkaart | TRNKL</title>
+<link rel="canonical" href="https://trnkl.nl/flowcharts/flowtool-transfer-pricing.html">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Flowtool transfer pricing: bouw je structuur op de wereldkaart",
+   "description": "Bouw een transfer pricing-structuur op de wereldkaart: kies landen, trek transactiestromen en zie per stroom de meest geschikte methode en per land het regime.",
+   "inLanguage": "nl-NL",
+   "mainEntityOfPage": "https://trnkl.nl/flowcharts/flowtool-transfer-pricing.html",
+   "author": {
+    "@type": "Person",
+    "honorificPrefix": "mr.",
+    "name": "Toine Jorna",
+    "url": "https://trnkl.nl/",
+    "jobTitle": "Jurist en oprichter van TRNKL, atelier voor kennis en beleid",
+    "sameAs": [
+     "https://www.instagram.com/trnkl.nl/",
+     "https://www.linkedin.com/in/toine-jorna-b6543a58/"
+    ]
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "TRNKL",
+    "url": "https://trnkl.nl/"
+   },
+   "datePublished": "2026-07-03T09:00:00+02:00",
+   "dateModified": "2026-07-04T09:00:00+02:00"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "TRNKL",
+     "item": "https://trnkl.nl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Flowtool transfer pricing: bouw je structuur op de wereldkaart",
+     "item": "https://trnkl.nl/flowcharts/flowtool-transfer-pricing.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Wat is de flowtool transfer pricing?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Een interactieve tool waarmee je een transfer pricing-structuur nabouwt op een wereldkaart: je kiest de landen die in de concernstructuur zitten, trekt transactiestromen tussen die landen (goederen, diensten, IP, financieel of kostendeling) en beantwoordt per stroom een korte reeks vragen. De tool wijst dan de meest geschikte OESO-verrekenprijsmethode aan, toont per land het transfer pricing-regime en de documentatieplichten, en signaleert waar een structuur analytisch gaat knellen. De inhoudelijke basis is de TRNKL-flowchart transfer pricing."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Waar komt de landeninformatie vandaan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Uit de officiële OECD Transfer Pricing Country Profiles, die per land door de belastingdienst zelf worden ingevuld en door de OESO worden gepubliceerd. Per land toont de tool de wettelijke grondslag van het zakelijkheidsbeginsel, de status van de OESO-richtlijnen, de documentatieplichten, de Amount B-positie en de beschikbare vormen van zekerheid vooraf, met de datum van het gebruikte profiel erbij. De kennisbank bevat alle 83 jurisdicties waarvoor de OESO een profiel publiceert; per land is zichtbaar of de samenvatting al handmatig is gecontroleerd en van wanneer het profiel dateert."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is de uitkomst van de tool een advies?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nee. De tool is educatief: hij laat zien hoe de methodekeuze en de documentatieplichten uit het OESO-stelsel volgen uit de kenmerken van een transactie, en waar toezichthouders op letten. De uitkomst is een startpunt om het stelsel te begrijpen, geen fiscaal advies en geen vervanging van een eigen analyse of een adviseur. Verrekenprijzen vergen altijd een beoordeling van de concrete feiten."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat betekent het verificatielabel bij een land?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "De landenprofielen worden in twee stappen verwerkt: eerst wordt de informatie uit het OECD-profiel geëxtraheerd, daarna wordt elke samenvatting handmatig gecontroleerd tegen het originele profiel. Zolang die tweede stap voor een land nog niet is afgerond, draagt het een zichtbaar label. Zo is altijd duidelijk welke informatie de volledige controle heeft doorlopen en welke nog niet."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Houdt de tool rekening met btw en douane?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Ja, als aandachtspunt. De vragenmodule vraagt per transactiestroom of periodieke verrekenprijscorrecties (year-end adjustments) worden verwacht. Zo ja, dan wijst het overzicht op de btw- en douanekant, gebaseerd op de arresten Arcomet Towercranes (C-726/23) en Stellantis Portugal (C-603/24) van het Hof van Justitie van de EU: een correctie kan een btw-belaste dienst zijn, een prijsaanpassing van eerdere leveringen (met correctiefacturen, aangepaste aangiften en bij invoer van buiten de EU een gewijzigde douanewaarde), of buiten de btw blijven wanneer zij louter winst toerekent zonder verband met concrete prestaties. De inhoudelijke uitleg staat in de flowchart transfer pricing."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Welke transfer pricing-methode kiest de tool en waarom?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "De tool volgt de selectielogica van hoofdstuk II van de OECD Transfer Pricing Guidelines: is er een bruikbare marktprijs of interne vergelijkbare, dan de CUP-methode; leveren beide partijen unieke en waardevolle bijdragen, dan de profit split; is de getoetste partij een routinedistributeur, dan resale price of TNMM (met Amount B als het land dat toepast); werkt zij op kostenbasis, dan cost plus of TNMM; anders TNMM. Financiële transacties lopen via de CUP-route van hoofdstuk X. De tool beperkt zich tot deze vijf methoden, ook waar landen daarnaast andere methoden toestaan (zie daarvoor het regimepaneel per land)."
+   }
+  }
+ ]
+}
+</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:site_name" content="TRNKL">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://trnkl.nl/flowcharts/flowtool-transfer-pricing.html">
+<meta property="og:image" content="https://trnkl.nl/assets/og/og-flowtool-transfer-pricing.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Bouw een transfer pricing-structuur op de wereldkaart: kies landen, trek transactiestromen en zie per stroom de meest geschikte methode en per land het regime.">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flowtool transfer pricing: bouw je structuur op de wereldkaart">
+<meta property="og:description" content="Interactieve flowtool · kies landen op de kaart · trek transactiestromen · vragenmodule wijst de meest geschikte methode · regime en documentatieplichten per land">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #faf9f4;
+    --bg-tertiary: #f5f4ee;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --border-light: rgba(0,0,0,0.10);
+    --border-mid: rgba(0,0,0,0.18);
+    --border-strong: rgba(0,0,0,0.28);
+    --land: #e9e7dd;
+    --land-rand: #c9c7bc;
+    --oranje: #FF5A1F;
+    --oranje-d: #C2410C;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c;
+      --bg-secondary: #2a2a27;
+      --bg-tertiary: #242422;
+      --text-primary: #e8e6de;
+      --text-secondary: #9c9a92;
+      --text-tertiary: #6b6960;
+      --border-light: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.22);
+      --land: #3a3a36;
+      --land-rand: #55554f;
+    }
+  }
+
+  body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
+
+  header {
+    background: var(--bg-primary); border-bottom: 0.5px solid var(--border-mid);
+    padding: 14px 24px; display: flex; align-items: center; gap: 16px;
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 0 0 100vmax var(--bg-primary); clip-path: inset(0 -100vmax);
+  }
+  .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .header-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+  .brand-mark { font-size: 21px; font-weight: 800; color: var(--oranje); letter-spacing: -0.03em; line-height: 1; text-decoration: none; white-space: nowrap; }
+  .brand-mark:hover { opacity: 0.7; }
+  .merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+  .header-rule { width: 1px; height: 26px; background: var(--border-mid); flex: 0 0 auto; }
+
+  .hero { max-width: 680px; margin: 0 auto; padding: 30px 24px 6px; text-align: center; }
+  .hero h1 { font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .hero .haak { font-size: 14px; font-weight: 700; color: var(--oranje-d); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+  .hero .lead { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+  @media (max-width: 600px) { .hero h1 { font-size: 22px; } }
+
+  /* ---------- Globe-intro ---------- */
+  .globe-sectie { display: flex; flex-direction: column; align-items: center; padding: 18px 24px 8px; }
+  #globe { cursor: grab; touch-action: none; max-width: 92vw; height: auto; }
+  #globe:active { cursor: grabbing; }
+  .globe-hint { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; text-align: center; }
+  .start-knop {
+    margin-top: 16px; background: var(--oranje); color: #fff; border: none; border-radius: 10px;
+    font-family: var(--font); font-size: 14px; font-weight: 700; padding: 12px 26px; cursor: pointer;
+    letter-spacing: .01em; transition: transform .12s, box-shadow .12s;
+  }
+  .start-knop:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(255,90,31,0.30); }
+
+  /* ---------- Tool ---------- */
+  .tool-wrap { max-width: 1060px; margin: 0 auto; padding: 8px 18px 20px; display: none; }
+  .tool-wrap.actief { display: block; }
+
+  .stepper { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 14px 0 16px; }
+  .stap-chip {
+    display: flex; align-items: center; gap: 7px; border: 1.5px solid var(--border-mid); border-radius: 22px;
+    background: var(--bg-primary); padding: 7px 15px 7px 8px; cursor: pointer; user-select: none;
+    font-size: 12px; font-weight: 600; color: var(--text-secondary); transition: border-color .15s, color .15s;
+  }
+  .stap-chip .nr {
+    width: 21px; height: 21px; border-radius: 50%; background: var(--bg-tertiary); border: 1px solid var(--border-mid);
+    display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--text-tertiary);
+  }
+  .stap-chip.actief { border-color: var(--oranje); color: var(--text-primary); }
+  .stap-chip.actief .nr { background: #FFF1EA; border-color: var(--oranje); color: var(--oranje-d); }
+  .stap-chip.klaar .nr { background: #E1F5EE; border-color: #1D9E75; color: #085041; }
+
+  .tool-grid { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 14px; align-items: start; }
+  @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
+
+  .kaart-paneel { background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px; padding: 10px; position: relative; }
+  #kaart { width: 100%; height: auto; display: block; }
+  .kaart-voetnoot { font-size: 10px; color: var(--text-tertiary); padding: 6px 6px 2px; line-height: 1.5; }
+  .kaart-fout { font-size: 12px; color: var(--text-secondary); padding: 22px 14px; text-align: center; display: none; line-height: 1.7; }
+
+  .zij-paneel { background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px; padding: 16px; }
+  .zp-titel { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .zp-sub { font-size: 10.5px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5; }
+  .fase { display: none; }
+  .fase.actief { display: block; }
+
+  .land-groep { font-size: 9px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin: 12px 0 5px; }
+  .land-rij { display: flex; align-items: center; gap: 8px; padding: 4px 2px; border-radius: 7px; cursor: pointer; user-select: none; }
+  .land-rij:hover { background: var(--bg-tertiary); }
+  .land-rij input { accent-color: var(--oranje); cursor: pointer; }
+  .land-rij .ln { font-size: 12px; font-weight: 500; flex: 1; }
+  .land-rij .info, .regime-knop {
+    font-size: 10px; font-weight: 600; color: var(--text-secondary); cursor: pointer; white-space: nowrap;
+    border: 1px solid var(--border-mid); border-radius: 12px; padding: 2.5px 9px; background: var(--bg-primary);
+    transition: border-color .12s, color .12s, background .12s; user-select: none;
+  }
+  .land-rij .info:hover, .regime-knop:hover { border-color: var(--oranje); color: var(--oranje-d); background: #FFF1EA; }
+  @media (prefers-color-scheme: dark) { .land-rij .info:hover, .regime-knop:hover { background: rgba(255,90,31,0.12); } }
+  .vlagje { font-size: 8.5px; font-weight: 700; border-radius: 4px; padding: 1.5px 6px; white-space: nowrap; background: #FFF3E0; color: #7A3200; letter-spacing: .03em; }
+  .vlagje.ok { background: #E1F5EE; color: #085041; }
+
+  .veld-label { font-size: 10px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .05em; margin: 12px 0 4px; }
+  select.veld, .veld-select {
+    width: 100%; font-family: var(--font); font-size: 12.5px; color: var(--text-primary);
+    background: var(--bg-secondary); border: 1px solid var(--border-mid); border-radius: 8px; padding: 8px 10px;
+  }
+  .knop {
+    width: 100%; margin-top: 12px; background: var(--oranje); color: #fff; border: none; border-radius: 9px;
+    font-family: var(--font); font-size: 12.5px; font-weight: 700; padding: 10px 14px; cursor: pointer;
+  }
+  .knop:disabled { opacity: .35; cursor: not-allowed; }
+  .knop.secundair { background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-mid); }
+
+  .stroom-rij { display: flex; align-items: center; gap: 8px; background: var(--bg-secondary); border: 0.5px solid var(--border-light); border-radius: 9px; padding: 8px 10px; margin-top: 8px; font-size: 12px; }
+  .stroom-rij .sr-tekst { flex: 1; line-height: 1.45; }
+  .stroom-rij .sr-type { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; border-radius: 4px; padding: 2px 7px; white-space: nowrap; }
+  .stroom-rij .sr-del { background: none; border: none; color: var(--text-tertiary); font-size: 14px; cursor: pointer; line-height: 1; }
+  .stroom-rij .sr-del:hover { color: var(--oranje-d); }
+
+  .t-goederen { background: #E1F5EE; color: #085041; }
+  .t-diensten { background: #E6F1FB; color: #0C447C; }
+  .t-ip { background: #EEEDFE; color: #3C3489; }
+  .t-financieel { background: #FFF3E0; color: #7A3200; }
+  .t-kostendeling { background: #FCEBEB; color: #791F1F; }
+
+  .vraag-blok { background: var(--bg-secondary); border: 0.5px solid var(--border-light); border-radius: 10px; padding: 12px; margin-top: 10px; }
+  .vraag-blok .vb-kop { font-size: 11px; font-weight: 700; margin-bottom: 8px; line-height: 1.45; }
+  .vraag { font-size: 12px; line-height: 1.55; margin: 10px 0 5px; }
+  .antwoorden { display: flex; flex-wrap: wrap; gap: 6px; }
+  .antwoorden button {
+    font-family: var(--font); font-size: 11.5px; font-weight: 600; border: 1.5px solid var(--border-mid);
+    background: var(--bg-primary); color: var(--text-primary); border-radius: 18px; padding: 5px 13px; cursor: pointer;
+  }
+  .antwoorden button.gekozen { border-color: var(--oranje); background: #FFF1EA; color: var(--oranje-d); }
+  @media (prefers-color-scheme: dark) { .antwoorden button.gekozen { background: rgba(255,90,31,0.14); color: #ffb497; } }
+
+  .uitkomst-kaart { background: var(--bg-secondary); border: 0.5px solid var(--border-light); border-left: 4px solid var(--oranje); border-radius: 0 10px 10px 0; padding: 12px 14px; margin-top: 10px; }
+  .uk-kop { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .uk-methode { font-size: 13px; font-weight: 800; color: var(--oranje-d); margin: 2px 0 5px; }
+  .uk-reden { font-size: 11.5px; color: var(--text-secondary); line-height: 1.6; }
+  .signaal { background: #FFF3E0; border: 1px solid #F5D9A8; border-radius: 8px; padding: 9px 12px; margin-top: 8px; font-size: 11px; color: #7A3200; line-height: 1.6; }
+  .signaal strong { font-weight: 700; }
+  .land-uitkomst { border-top: 0.5px solid var(--border-light); padding-top: 10px; margin-top: 12px; }
+  .lu-naam { font-size: 12px; font-weight: 700; }
+  .lu-detail { font-size: 11px; color: var(--text-secondary); line-height: 1.65; margin-top: 3px; }
+
+  .disclaimer { background: var(--bg-tertiary); border: 0.5px solid var(--border-light); border-radius: 10px; padding: 10px 14px; margin-top: 14px; font-size: 10.5px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ---------- Land-paneel (modal) ---------- */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.45); align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px; max-width: 620px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 22px 24px 26px; position: relative; }
+  .modal-close { position: absolute; top: 14px; right: 16px; font-size: 20px; cursor: pointer; background: none; border: none; color: var(--text-secondary); line-height: 1; }
+  .modal-close:hover { color: var(--text-primary); }
+  .modal-title { font-size: 16px; font-weight: 700; margin-bottom: 3px; padding-right: 26px; }
+  .modal-kicker { font-size: 10px; font-weight: 600; color: var(--oranje-d); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+  .regime-veld { margin-top: 12px; }
+  .rv-label { font-size: 9.5px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+  .rv-tekst { font-size: 12px; line-height: 1.7; }
+  .source-block { margin-top: 16px; padding-top: 10px; border-top: 0.5px solid var(--border-light); }
+  .source-label { font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+  .source-text { font-size: 10px; color: var(--text-secondary); line-height: 1.6; }
+  .source-text a { color: #185FA5; text-decoration: none; }
+  .source-text a:hover { text-decoration: underline; }
+
+  /* ---------- Kaartstijlen (SVG) ---------- */
+  .landvorm { fill: var(--land); stroke: var(--land-rand); stroke-width: .5; }
+  .landvorm.kiesbaar { cursor: pointer; }
+  .landvorm.kiesbaar:hover { fill: #f6d9cb; }
+  .landvorm.geselecteerd { fill: var(--oranje); fill-opacity: .82; stroke: var(--oranje-d); }
+  .land-punt { fill: var(--oranje); stroke: #fff; stroke-width: 1.2; cursor: pointer; }
+  .stroom-pijl { fill: none; stroke-width: 2; opacity: .9; }
+  .graticule { fill: none; stroke: var(--border-light); stroke-width: .4; }
+  .globe-zee { fill: var(--bg-tertiary); stroke: var(--border-mid); stroke-width: 1; }
+
+  /* ----- Print (export van het overzicht als PDF via het printmenu) ----- */
+  .print-kop { display: none; }
+  @media print {
+    header, .hero, .globe-sectie, .stepper, .hint, .no-print, .site-footer, .modal-overlay, .uitleg-sectie, .kaart-fout { display: none !important; }
+    body { background: #fff; color: #000; }
+    .tool-wrap { display: block !important; max-width: 100%; padding: 0; }
+    .tool-grid { display: block; }
+    .kaart-paneel, .zij-paneel { border: none; padding: 0; margin-bottom: 14px; }
+    .kaart-voetnoot { display: none; }
+    a { color: #000; text-decoration: none; }
+    .print-kop { display: block; font-family: var(--font); margin-bottom: 12px; border-bottom: 2px solid #FF5A1F; padding-bottom: 8px; }
+    .print-kop .pk-merk { font-size: 17px; font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; }
+    .print-kop .pk-titel { font-size: 13px; font-weight: 700; margin-top: 3px; }
+    .print-kop .pk-sub { font-size: 10px; color: #555; margin-top: 2px; }
+  }
+
+  .site-footer { padding: 28px 24px; margin-top: 40px; border-top: 0.5px solid var(--border-light); background: var(--bg-primary); text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.7; }
+  .site-footer .fmark { font-weight: 800; color: var(--oranje); letter-spacing: -0.03em; }
+  .site-footer a { color: var(--text-tertiary); text-decoration: underline; }
+  .site-footer a:hover { color: var(--oranje-d); }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" target="_self" class="brand-mark" title="Naar de homepage">TRNKL<span class="merkpunt"></span></a>
+  <div class="header-rule"></div>
+  <div>
+    <div class="header-title">Flowtool transfer pricing</div>
+    <div class="header-sub">Bouw je structuur op de wereldkaart · methodekeuze · regime en documentatie per land</div>
+    <div class="header-byline" style="font-size:11px;font-weight:600;color:var(--text-primary);margin-top:8px;">Door <a href="/over.html" style="color:inherit;text-decoration:underline;">mr. Toine Jorna</a> &middot; eerste publicatie 3 juli 2026 &middot; bijgewerkt 4 juli 2026</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="haak">Van wereldbol naar zakelijke prijs</div>
+  <h1>Flowtool transfer pricing: bouw je structuur op de wereldkaart</h1>
+  <p class="lead">Kies de landen die in de concernstructuur zitten, trek de transactiestromen ertussen en beantwoord per stroom een korte reeks vragen. De tool wijst de meest geschikte OESO-methode aan, toont per land het transfer pricing-regime uit de offici&euml;le OECD-landenprofielen en signaleert waar een structuur analytisch gaat knellen. De inhoudelijke basis is de <a href="transfer-pricing.html" style="color:var(--oranje-d);font-weight:600">TRNKL-flowchart transfer pricing</a>. Educatief, geen advies.</p>
+</section>
+
+<!-- ---------- GLOBE-INTRO ---------- -->
+<section class="globe-sectie" id="globe-sectie">
+  <svg id="globe" width="380" height="380" viewBox="0 0 380 380" role="img" aria-label="Draaibare wereldbol"></svg>
+  <div class="globe-hint">Sleep om de aarde te draaien</div>
+  <button class="start-knop" id="start-knop" onclick="startTool()">Start: bouw je structuur →</button>
+</section>
+
+<!-- ---------- DE TOOL ---------- -->
+<div class="tool-wrap" id="tool">
+
+  <div class="stepper">
+    <div class="stap-chip actief" id="chip-1" onclick="gaNaarFase(1)"><span class="nr">1</span>Landen kiezen</div>
+    <div class="stap-chip" id="chip-2" onclick="gaNaarFase(2)"><span class="nr">2</span>Stromen trekken</div>
+    <div class="stap-chip" id="chip-3" onclick="gaNaarFase(3)"><span class="nr">3</span>Vragen beantwoorden</div>
+    <div class="stap-chip" id="chip-4" onclick="gaNaarFase(4)"><span class="nr">4</span>Overzicht</div>
+  </div>
+
+  <div class="tool-grid">
+    <div class="kaart-paneel">
+      <svg id="kaart" viewBox="0 0 940 480" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="kaart-fout" id="kaart-fout">De wereldkaart kon niet worden geladen (geen verbinding met de kaartbron).<br>Je kunt de tool volledig gebruiken via de landenlijst hiernaast.</div>
+      <div class="kaart-voetnoot">Klik op een gemarkeerd land voor het regime. Oranje = gekozen. Kleine jurisdicties (zoals Singapore en Luxemburg) krijgen een stip. Grijze landen hebben (nog) geen OECD-landenprofiel.</div>
+    </div>
+
+    <div class="zij-paneel">
+
+      <!-- FASE 1: LANDEN -->
+      <div class="fase actief" id="fase-1">
+        <div class="zp-titel">Stap 1 · Kies de landen van de structuur</div>
+        <div class="zp-sub">Klik op de kaart of vink hieronder aan. De kennisbank bevat alle 83 jurisdicties met een OECD-landenprofiel; het label per land toont of de samenvatting handmatig is gecontroleerd tegen het originele profiel.</div>
+        <div id="landenlijst"></div>
+        <button class="knop" id="naar-2" onclick="gaNaarFase(2)" disabled>Verder: stromen trekken →</button>
+      </div>
+
+      <!-- FASE 2: STROMEN -->
+      <div class="fase" id="fase-2">
+        <div class="zp-titel">Stap 2 · Trek de transactiestromen</div>
+        <div class="zp-sub">Kies per stroom het land van herkomst, het land van bestemming en het transactietype uit de flowchart. De pijl verschijnt op de kaart.</div>
+        <div class="veld-label">Van</div>
+        <select class="veld" id="stroom-van"></select>
+        <div class="veld-label">Naar</div>
+        <select class="veld" id="stroom-naar"></select>
+        <div class="veld-label">Transactietype</div>
+        <select class="veld" id="stroom-type">
+          <option value="goederen">Goederen (productie → distributie)</option>
+          <option value="diensten">Diensten (management, IT, shared services)</option>
+          <option value="ip">Immaterieel (licentie, royalty, overdracht van IP)</option>
+          <option value="financieel">Financieel (lening, cash pool, garantie)</option>
+          <option value="kostendeling">Kostendeling (cost contribution arrangement, CCA)</option>
+        </select>
+        <button class="knop" onclick="voegStroomToe()">+ Stroom toevoegen</button>
+        <div id="stromenlijst"></div>
+        <button class="knop" id="naar-3" onclick="gaNaarFase(3)" disabled>Verder: vragen →</button>
+      </div>
+
+      <!-- FASE 3: VRAGEN -->
+      <div class="fase" id="fase-3">
+        <div class="zp-titel">Stap 3 · Beantwoord de vragen</div>
+        <div class="zp-sub">E&eacute;n vraag over de groep, daarna per stroom de vragen die de meest geschikte methode bepalen (hoofdstuk II van de OECD Transfer Pricing Guidelines, TPG).</div>
+        <div class="vraag-blok">
+          <div class="vb-kop">De groep</div>
+          <div class="vraag">Wat is de geconsolideerde groepsomzet (vorig boekjaar)?</div>
+          <div class="antwoorden" data-vraag="omzet">
+            <button onclick="kiesOmzet('klein',this)">&lt; &euro; 50 mln</button>
+            <button onclick="kiesOmzet('midden',this)">&euro; 50 &ndash; 750 mln</button>
+            <button onclick="kiesOmzet('groot',this)">&gt; &euro; 750 mln</button>
+          </div>
+        </div>
+        <div id="vragen-per-stroom"></div>
+        <button class="knop" id="naar-4" onclick="gaNaarFase(4)" disabled>Naar het overzicht →</button>
+      </div>
+
+      <!-- FASE 4: OVERZICHT -->
+      <div class="fase" id="fase-4">
+        <div class="print-kop">
+          <div class="pk-merk">TRNKL<span class="merkpunt"></span></div>
+          <div class="pk-titel">Flowtool transfer pricing · overzicht van de structuur</div>
+          <div class="pk-sub" id="print-datum">Educatief, geen advies · trnkl.nl/flowcharts/flowtool-transfer-pricing.html</div>
+        </div>
+        <div class="zp-titel">Stap 4 · Overzicht</div>
+        <div class="zp-sub">De structuur op de kaart, per stroom de meest geschikte methode, per land de verplichtingen, en de analytische signalen.</div>
+        <div id="overzicht"></div>
+        <div class="disclaimer"><strong>Educatief, geen advies.</strong> Deze tool laat zien hoe methodekeuze en verplichtingen uit het OESO-stelsel volgen; de uitkomst is een startpunt, geen fiscaal advies. Landeninformatie: OECD Transfer Pricing Country Profiles (datum per land in het regimepaneel). De inhoudelijke onderbouwing staat in de <a href="transfer-pricing.html" style="color:var(--oranje-d)">flowchart transfer pricing</a>.</div>
+        <div class="zp-sub no-print" style="margin-top:12px;margin-bottom:0">Niets van deze sessie wordt opgeslagen. Wil je het overzicht bewaren of delen, print het dan of sla het via het printmenu op als PDF; de kaart met de structuur print mee.</div>
+        <button class="knop no-print" onclick="printOverzicht()">Print / bewaar als PDF</button>
+        <button class="knop secundair no-print" onclick="herstart()">Opnieuw beginnen</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ---------- LAND-PANEEL ---------- -->
+<div class="modal-overlay" id="land-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="sluitLand()">&#x2715;</button>
+    <div class="modal-title" id="lm-titel"></div>
+    <div class="modal-kicker" id="lm-kicker"></div>
+    <div id="lm-inhoud"></div>
+    <div class="source-block">
+      <div class="source-label">Bron</div>
+      <div class="source-text">OECD Transfer Pricing Country Profile van deze jurisdictie, via <a href="https://www.oecd.org/en/topics/sub-issues/transfer-pricing/transfer-pricing-country-profiles.html" target="_blank" rel="noopener noreferrer">oecd.org — Transfer Pricing Country Profiles</a>. De samenvatting is een bewerking; het profiel zelf is leidend.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= KENNISBANK (bron van waarheid in dit bestand) =================
+     Extractie uit de OECD Transfer Pricing Country Profiles; per land: geverifieerd
+     wordt pas true na handmatige controle tegen het originele profiel. ============ -->
+<script id="tp-data" type="application/json">
+{
+ "landen": [
+  {
+   "id": "NL",
+   "iso": 528,
+   "naam": "Nederland",
+   "regio": "Europa",
+   "lon": 5.3,
+   "lat": 52.2,
+   "klein": false,
+   "grondslag": "Art. 8b Wet Vpb 1969; uitwerking in het Verrekenprijsbesluit 2022.",
+   "tpg": "Niet in de wet; via het Verrekenprijsbesluit gelden de TPG als internationaal aanvaarde uitleg van het arm's length-beginsel.",
+   "methoden": "Vijf OESO-methoden (Verrekenprijsbesluit); meest geschikte methode, keuze aan de belastingplichtige mits zakelijke uitkomst.",
+   "documentatie": "Basisplicht art. 8b lid 3 (vormvrij, geen drempel, geldt ook voor mkb). Master file en local file vanaf € 50 mln geconsolideerde groepsomzet (art. 29b e.v.); CbCR vanaf € 750 mln.",
+   "amountB": "Past de vereenvoudigde benadering zelf niet toe; respecteert de uitkomst bij covered jurisdictions (Amount B-besluit, 27 november 2024).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, ICAP; in Nederland ondergebracht bij het College Internationale Fiscale Zekerheid (dat laatste volgens de Belastingdienst, niet het OECD-profiel).",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: o.a. een tegemoetkoming voor garantievergoedingen: is geen zakelijke garantiefee bepaalbaar, dan mag de fee op de helft van het voordeel voor de ontvanger worden gesteld (Verrekenprijsbesluit, par. 9.4.3)."
+  },
+  {
+   "id": "BE",
+   "iso": 56,
+   "naam": "België",
+   "regio": "Europa",
+   "lon": 4.6,
+   "lat": 50.6,
+   "klein": false,
+   "grondslag": "Art. 185 §2 WIB 92 (expliciet); art. 26, 54, 79 en 206/3 WIB 92 (impliciet, 'abnormale of goedgunstige voordelen'); art. 344 WIB 92 (impliciet, 'rechtmatige financiële of economische behoeften').",
+   "tpg": "TPG als richtsnoer; omzetting BEPS-actie 13 in art. 321/1-321/7 WIB 92 met circulaires.",
+   "methoden": "Vijf OESO-methoden; ook andere methoden toegestaan als die tot een geschiktere verrekenprijs leiden (circulaire 2020/C/35); meest geschikte methode.",
+   "documentatie": "Master file en local file (eigen formulieren) voor Belgische groepsentiteiten bij operationele omzet > € 50 mln, balanstotaal > € 1 mld of > 100 FTE (art. 321/1-321/7 WIB 92); master file binnen 12 maanden na jaareinde, local file bij de aangifte; CbCR conform BEPS-actie 13.",
+   "amountB": "Implementeert de vereenvoudigde benadering conform het politieke commitment binnen het Inclusive Framework (zie profiel).",
+   "apa": "Rulings (Dienst Voorafgaande Beslissingen), uni-, bi- en multilaterale APA's, ICAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "DE",
+   "iso": 276,
+   "naam": "Duitsland",
+   "regio": "Europa",
+   "lon": 10.4,
+   "lat": 51.2,
+   "klein": false,
+   "grondslag": "§1 Außensteuergesetz; §8(3) Körperschaftsteuergesetz (verdeckte Gewinnausschüttung).",
+   "tpg": "Via wet en de Verwaltungsgrundsätze Verrechnungspreise (circulaire).",
+   "methoden": "Vijf OESO-methoden; bij gebrek aan vergelijkbare gegevens geldt de hypothetische zakelijkheidstoets (hypothetical arm's length price, §1(3) AStG); meest geschikte methode.",
+   "documentatie": "§90(3) Abgabenordnung: master file (drempel omzet € 100 mln), local file en transactiematrix; master file, transactiematrix en documentatie over buitengewone transacties binnen 30 dagen na aankondiging van een boekenonderzoek zonder apart verzoek, local file op verzoek binnen 30 dagen; §138a AO: CbCR, indienen binnen 12 maanden na jaareinde.",
+   "amountB": "Geregeld via par. 3.63a van de Verrechnungspreise-circulaire van 12 december 2024 (eigen invulling, zie profiel); respecteert de uitkomst bij covered jurisdictions.",
+   "apa": "Bi- en multilaterale APA's (geen unilaterale), ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "FR",
+   "iso": 250,
+   "naam": "Frankrijk",
+   "regio": "Europa",
+   "lon": 2.5,
+   "lat": 46.6,
+   "klein": false,
+   "grondslag": "Art. 57 Code général des impôts (equivalent van art. 9 OESO-modelverdrag).",
+   "tpg": "Via de administratieve doctrine (BOFiP), die uitdrukkelijk naar de TPG verwijst.",
+   "methoden": "Geen wettelijke lijst van methoden; de administratieve doctrine schrijft voor de TPG en daarmee de OESO-methoden te volgen; meest geschikte methode.",
+   "documentatie": "Volledige documentatieplicht (master file en local file) voor entiteiten met omzet of balanstotaal vanaf € 150 mln (art. L 13 AA LPF); jaarlijkse vereenvoudigde versie vanaf € 50 mln (art. 223 quinquies B CGI); CbCR vanaf € 750 mln (art. 223 quinquies C CGI), binnen 12 maanden na jaareinde.",
+   "amountB": "Past sinds 1 januari 2025 de vereenvoudigde benadering toe voor low-capacity jurisdictions, conform het IF-commitment; daarbuiten niet.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, ICAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: vereenvoudigde APA-procedure en vereenvoudigde toepassing van de TP-richtsnoeren voor het mkb."
+  },
+  {
+   "id": "LU",
+   "iso": 442,
+   "naam": "Luxemburg",
+   "regio": "Europa",
+   "lon": 6.1,
+   "lat": 49.8,
+   "klein": true,
+   "grondslag": "Art. 56 en 56bis LITL (wet van 4 december 1967); art. 56bis codificeert de BEPS-criteria uit de TPG.",
+   "tpg": "Expliciete verwijzingen in de parlementaire stukken; art. 56bis neemt de herziene TPG-criteria in de wet over.",
+   "methoden": "OESO-methoden vereist via de TPG als basis van de wetgeving (geen aparte wettelijke lijst); andere methoden mogelijk binnen par. 2.9 TPG; meest geschikte methode.",
+   "documentatie": "Algemene documentatieplicht (§171(3) Abgabenordnung), uitgebreid tot intragroepstransacties; geen afzonderlijke master/local file-standaard; CbCR (wet 23 december 2016) vanaf € 750 mln.",
+   "amountB": "In overweging.",
+   "apa": "Uni-, bi- en multilaterale APA's, ICAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: safe harbour voor zuiver intermediaire financieringsmaatschappijen: optie voor een vereenvoudigde methode met een minimaal nettorendement van 2% na belasting op de doorgeleide bedragen (circulaire LIR 56-56bis/1, 27 december 2016)."
+  },
+  {
+   "id": "IE",
+   "iso": 372,
+   "naam": "Ierland",
+   "regio": "Europa",
+   "lon": -8.0,
+   "lat": 53.2,
+   "klein": false,
+   "grondslag": "S. 835C Taxes Consolidation Act 1997, vervangen bij Finance Act 2019 (van toepassing sinds 2020).",
+   "tpg": "Dynamisch in de wet verankerd: de regels worden uitgelegd in overeenstemming met de TPG.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; interkwartielbandbreedte conform TPG; andere methoden aanvaardbaar conform par. 2.9 TPG.",
+   "documentatie": "Master file vanaf € 250 mln en local file vanaf € 50 mln geconsolideerde groepsomzet (Finance Act 2019, conform de TPG-bijlagen); gereed uiterlijk bij de aangifte, op verzoek binnen 30 dagen aan te leveren; CbCR vanaf € 750 mln, indienen binnen 12 maanden na jaareinde.",
+   "amountB": "Past de vereenvoudigde benadering zelf niet toe; wettelijk commitment om de uitkomst bij covered jurisdictions te respecteren.",
+   "apa": "Bi- en multilaterale APA's (geen unilaterale), ICAP, MAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "GB",
+   "iso": 826,
+   "naam": "Verenigd Koninkrijk",
+   "regio": "Europa",
+   "lon": -1.5,
+   "lat": 52.5,
+   "klein": false,
+   "grondslag": "Sections 147 en 164 Taxation (International and Other Provisions) Act 2010.",
+   "tpg": "De wet eist uitleg die 'best secures consistency' met de TPG: de sterkste wettelijke koppeling.",
+   "methoden": "Vijf OESO-methoden via de TPG-koppeling; meest geschikte methode; andere methoden voor zover de TPG die toelaten.",
+   "documentatie": "Transfer Pricing Records Regulations 2023: master file en local file verplicht voor groepen boven de CbCR-drempel; CbCR-Regulations 2016 vanaf € 750 mln.",
+   "amountB": "Past zelf niet toe; politiek commitment om de uitkomst bij covered jurisdictions te respecteren.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Nee als zodanig; wel een vrijstelling van de TP-regels voor kleine en middelgrote ondernemingen (ss. 166 en 172 TIOPA 2010)."
+  },
+  {
+   "id": "CH",
+   "iso": 756,
+   "naam": "Zwitserland",
+   "regio": "Europa",
+   "lon": 8.2,
+   "lat": 46.8,
+   "klein": false,
+   "grondslag": "Art. 58 Federal Direct Tax Law en art. 24 Tax Harmonisation Law, via vaste rechtspraak van het Bundesgericht; geen afzonderlijke TP-wet.",
+   "tpg": "Via rechtspraak en praktijk; geen formele wettelijke status.",
+   "methoden": "OESO-methoden via de praktijk; meest geschikte methode; ook andere methoden mogelijk (vraag 4 vinkt 'other' aan).",
+   "documentatie": "Geen master/local file-plicht; wel CbCR (CbCR-wet en -verordening, in werking 1 december 2017) voor groepen met een geconsolideerde omzet boven CHF 900 mln.",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: circulaires van de federale belastingdienst met safe harbours voor verdekt eigen vermogen (thin capitalisation, circulaire 6a van 2004) en jaarlijks gepubliceerde intragroeps-rentetarieven."
+  },
+  {
+   "id": "ES",
+   "iso": 724,
+   "naam": "Spanje",
+   "regio": "Europa",
+   "lon": -3.7,
+   "lat": 40.3,
+   "klein": false,
+   "grondslag": "Art. 18 Ley 27/2014 (vennootschapsbelastingwet), uitgewerkt in art. 13-16 van het uitvoeringsbesluit.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden en waarderingstechnieken alleen als geen van de vijf toepasbaar is.",
+   "documentatie": "Master file en local file beschikbaar uiterlijk op de laatste aangiftedag, aan te leveren op verzoek; aparte aangifte verbonden transacties; CbCR binnen 12 maanden na jaareinde (conform BEPS-actie 13).",
+   "amountB": "Past de vereenvoudigde benadering zelf niet toe; respecteert de uitkomst bij covered jurisdictions conform het IF-commitment.",
+   "apa": "Uni-, bi- en multilaterale APA's, ICAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: o.a. een safe harbour voor diensten van professionele aandeelhouders (bijv. advocaten, artsen) aan hun gelieerde vennootschap (art. 18 lid 6 CIT Act)."
+  },
+  {
+   "id": "IT",
+   "iso": 380,
+   "naam": "Italië",
+   "regio": "Europa",
+   "lon": 12.5,
+   "lat": 42.5,
+   "klein": false,
+   "grondslag": "Art. 110(7) TUIR (DPR 917/1986, laatst bijgewerkt december 2024); Ministerieel Decreet 14 mei 2018.",
+   "tpg": "Het decreet van 2018 verwijst naar internationale best practices; uitleg langs de TPG.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "CbCR verplicht (wet 208/2015) vanaf € 750 mln; master file en local file niet verplicht maar vereist voor boetebescherming (penalty protection, besluit Revenue Agency 23 november 2020).",
+   "amountB": "In evaluatie; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "SE",
+   "iso": 752,
+   "naam": "Zweden",
+   "regio": "Europa",
+   "lon": 15.5,
+   "lat": 60.0,
+   "klein": false,
+   "grondslag": "14 kap. 19 § Inkomstskattelagen (correctieregel).",
+   "tpg": "Als uitlegbron in de praktijk (zie profiel).",
+   "methoden": "OESO-methoden via de rechtspraak van de hoogste bestuursrechter (geen wettelijke lijst), inclusief andere methoden; meest geschikte methode.",
+   "documentatie": "Master file en local file (39 kap. 15-16 §§ Skatteförfarandelagen), alleen op verzoek in te dienen; talen Zweeds, Noors, Deens of Engels; CbCR binnen 12 maanden (conform BEPS-actie 13).",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions met belastingverdrag (IF-commitment).",
+   "apa": "Bi- en multilaterale APA's (geen unilaterale), MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "PL",
+   "iso": 616,
+   "naam": "Polen",
+   "regio": "Europa",
+   "lon": 19.3,
+   "lat": 52.1,
+   "klein": false,
+   "grondslag": "Art. 11c CIT Act en art. 23o PIT Act.",
+   "tpg": "Geen onderdeel van het Poolse recht; wel gebruikt als referentie.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; als die niet toepasbaar zijn andere methoden, incl. waarderingstechnieken.",
+   "documentatie": "Local file plus TPR-aangifte; master file voor entiteiten in groepen met geconsolideerde omzet > PLN 200 mln; CbCR vanaf € 750 mln (wet inzake uitwisseling fiscale informatie).",
+   "amountB": "Past de vereenvoudigde benadering zelf niet toe; respecteert de uitkomst bij covered jurisdictions conform het IF-commitment.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: safe harbours voor leningen (basisrente plus marge volgens de jaarlijkse aankondiging van de minister van Financiën) en voor diensten met een lage toegevoegde waarde (low value-adding services) met een kostenopslag van 5% (art. 11f en 11g CIT Act; art. 23r en 23s PIT Act)."
+  },
+  {
+   "id": "US",
+   "iso": 840,
+   "naam": "Verenigde Staten",
+   "regio": "Amerika",
+   "lon": -98.5,
+   "lat": 39.8,
+   "klein": false,
+   "grondslag": "IRC §482; Treasury Regulations §§1.482-1 t/m 1.482-9.",
+   "tpg": "Geen expliciete verwijzing (behalve Amount B via Notice 2025-4); de eigen regels worden consistent met de TPG geacht.",
+   "methoden": "Vijf OESO-methoden plus andere methoden (o.a. income, market cap en acquisition price methods) onder Treas. Reg. §1.482; best method rule.",
+   "documentatie": "Geen master/local file-plicht; documentatie vrijwillig maar noodzakelijk voor boetebescherming (Treas. Reg. §1.6662-6(d)); CbCR; informatieaangifte Form 5472.",
+   "amountB": "Ja: in-scope getoetste partijen kunnen kiezen voor de vereenvoudigde benadering als safe harbour (Notice 2025-4, december 2024).",
+   "apa": "APA-programma (APMA): uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: een safe haven-rentetarief voor bepaalde leningen van 100 tot 130% van de Applicable Federal Rate (Treas. Reg. §1.482-2(a)(2)(iii))."
+  },
+  {
+   "id": "CA",
+   "iso": 124,
+   "naam": "Canada",
+   "regio": "Amerika",
+   "lon": -106.0,
+   "lat": 56.0,
+   "klein": false,
+   "grondslag": "Section 247 Income Tax Act.",
+   "tpg": "Als uitlegbron erkend, mede via rechtspraak van het Supreme Court en administratieve memoranda (TPM).",
+   "methoden": "OESO-methoden; meest geschikte methode, met in de praktijk een natuurlijke voorkeursvolgorde.",
+   "documentatie": "Geen master/local file-standaard; contemporaneous documentation (s. 247(4)) en informatieformulieren (o.a. T106) verplicht; CbCR conform BEPS-actie 13.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions conform het IF-commitment.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "BR",
+   "iso": 76,
+   "naam": "Brazilië",
+   "regio": "Amerika",
+   "lon": -51.9,
+   "lat": -10.8,
+   "klein": false,
+   "grondslag": "Wet 14.596/2023 (art. 2) en Normative Instruction RFB 2.161/2023: sinds 2023 een nieuw, OESO-conform stelsel met expliciet arm's length-beginsel.",
+   "tpg": "Het nieuwe stelsel is op de TPG geënt (historisch had Brazilië vaste marges).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden toegestaan mits de uitkomst arm's length is.",
+   "documentatie": "Master file, local file en CbCR plus TP-informatie in de aangifte (art. 34 wet 14.596; IN 2.161 art. 54-64); vrijstelling master/local file onder BRL 15 mln aan controlled transactions, vereenvoudigde local file van BRL 15 tot 500 mln; indiening binnen drie maanden na de ECF-deadline; aparte, snelle meldplicht voor commodity-transacties (vóór de 10e van de maand na contractsluiting).",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions conform het IF-commitment.",
+   "apa": "Rulings en uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Nee, maar wet 14.596/2023 (art. 34) machtigt de belastingdienst tot vereenvoudigingsregels voor bepaalde situaties."
+  },
+  {
+   "id": "MX",
+   "iso": 484,
+   "naam": "Mexico",
+   "regio": "Amerika",
+   "lon": -102.5,
+   "lat": 23.9,
+   "klein": false,
+   "grondslag": "Art. 76 (XII) en 179 Mexican Income Tax Law; aanvullend de Hydrocarbons Revenues Law.",
+   "tpg": "Directe verwijzing naar de TPG in de nationale bepalingen.",
+   "methoden": "OESO-methoden met wettelijke voorkeursvolgorde (CUP eerst); meest geschikte methode binnen dat kader.",
+   "documentatie": "Master file, local file en CbCR verplicht ín te dienen (art. 76-A MITL): local file (Spaans) vóór 15 mei, master file en CbCR vóór 31 december van het volgende jaar (master mag in het Engels).",
+   "amountB": "Voornemens: toepassing via tijdelijke regels aangekondigd; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP; bijzondere maquiladora-praktijk.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: de maquiladora-safe harbour: de fiscale winst is ten minste het hoogste van 6,9% van de activa of 6,5% van de kosten en uitgaven (art. 182 MITL)."
+  },
+  {
+   "id": "CN",
+   "iso": 156,
+   "naam": "China",
+   "regio": "Azië",
+   "lon": 104.0,
+   "lat": 35.5,
+   "klein": false,
+   "grondslag": "Enterprise Income Tax Law, hoofdstuk 6, art. 41 (special tax adjustments), met uitvoeringsregels en SAT Public Notices (o.a. [2016] 42 en [2017] 6).",
+   "tpg": "Geen formele status; China respecteert de TPG en verwerkt de hoofdlijnen ervan in de eigen regelgeving.",
+   "methoden": "OESO-methoden plus andere passende methoden; meest geschikte methode.",
+   "documentatie": "Drielaags plus extra: master file binnen 12 maanden na jaareinde van de uiteindelijke moeder, local file en special issue file vóór 30 juni van het volgende jaar, in het Chinees, aan te leveren binnen 30 dagen na verzoek (Public Notice [2016] 42); CbCR in Chinees en Engels; plus aparte related party-aangiften.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP; geen rulings.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "IN",
+   "iso": 356,
+   "naam": "India",
+   "regio": "Azië",
+   "lon": 78.9,
+   "lat": 22.0,
+   "klein": false,
+   "grondslag": "S. 92C Income-tax Act 1961 ('arm's length price') met Income-tax Rules 10A-10E.",
+   "tpg": "Geen directe werking; eigen regels breed in lijn met de TPG en het UN-manual.",
+   "methoden": "Vijf OESO-methoden plus een 'other method' (Rule 10AB); meest geschikte methode.",
+   "documentatie": "Eigen formulierenstelsel: local file-documentatie (Rule 10D) plus accountantsrapport Form 3CEB, master file (Rule 10DA, Forms 3CEAA/3CEAB), CbCR (Rule 10DB, Forms 3CEAC-3CEAE).",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP en een Dispute Resolution Panel (s. 144C); daarnaast eigen safe harbour-regels.",
+   "profiel": "juli 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: uitgebreide safe harbour rules voor gespecificeerde internationale transacties en belastingplichtigen (s. 92CB Income-tax Act 1961; Rules 10TA-10TG)."
+  },
+  {
+   "id": "JP",
+   "iso": 392,
+   "naam": "Japan",
+   "regio": "Azië",
+   "lon": 138.0,
+   "lat": 36.5,
+   "klein": false,
+   "grondslag": "Art. 66-4 Act on Special Measures concerning Taxation (ASMT); Commissioner's Directive on the Operation of Transfer Pricing.",
+   "tpg": "Als uitlegbron via de Commissioner's Directive.",
+   "methoden": "Vijf OESO-methoden plus een andere methode (waarderingstechniek op basis van geprojecteerde kasstromen, Order for Enforcement ASMT); meest geschikte methode.",
+   "documentatie": "Master file binnen één jaar na jaareinde van de uiteindelijke moeder (Japans of Engels); local file gereed bij de aangifte, zeven jaar bewaren, aanleveren op verzoek bij controle; CbCR (Engels).",
+   "amountB": "Respecteert het IF-commitment; nog geen eigen richtsnoeren (FAQ juni 2025).",
+   "apa": "Uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "SG",
+   "iso": 702,
+   "naam": "Singapore",
+   "regio": "Azië",
+   "lon": 103.8,
+   "lat": 1.35,
+   "klein": true,
+   "grondslag": "S. 34D Income Tax Act 1947; bij correctie een surcharge van 5% (s. 34E).",
+   "tpg": "Eigen Singapore TP Guidelines, in lijn met het arm's length-beginsel; aparte richtsnoeren voor o.a. commodity marketing/trading en gecentraliseerde activiteiten.",
+   "methoden": "Vijf OESO-methoden plus andere passende methoden of combinaties; meest geschikte methode.",
+   "documentatie": "Master file, local file, CbCR en TP-aangiften; plicht bij bruto-omzet boven SGD 10 mln (Income Tax (Transfer Pricing Documentation) Rules 2018 plus de Singapore TP Guidelines), in het Engels gereed bij de aangifte, aanleveren binnen 30 dagen na verzoek, vijf jaar bewaren.",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Enhanced engagement-programma's, uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: naast de 5%-kostenopslag voor routine support services kent Singapore aanvullende vereenvoudigingen in de Singapore TP Guidelines (secties 14 en 15) en de TP Documentation Rules 2018."
+  },
+  {
+   "id": "AU",
+   "iso": 36,
+   "naam": "Australië",
+   "regio": "Oceanië",
+   "lon": 134.0,
+   "lat": -25.0,
+   "klein": false,
+   "grondslag": "Subdivision 815-B Income Tax Assessment Act 1997.",
+   "tpg": "De wet verwijst naar de TPG als interpretatiebron.",
+   "methoden": "Geen methoden wettelijk voorgeschreven; de meest geschikte en betrouwbare methode of combinatie (s. 815-125(2) ITAA 1997), met de methoden uit de wettelijk verankerde TPG als mogelijke methoden.",
+   "documentatie": "Master file, local file, CbCR en aparte TP-aangiften wettelijk verankerd (subdiv. 815-E ITAA 1997; s. 262A ITAA 1936), voor groepen met wereldwijd jaarinkomen boven AUD 1 mld, indiening binnen 12 maanden na het rapportagejaar in het Engels; documentatie vereist voor een reasonably arguable position (TAA 1953, Schedule 1).",
+   "amountB": "Nee.",
+   "apa": "Rulings, enhanced engagement-programma's (o.a. justified trust), uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: Simplified Transfer Pricing Record Keeping Options (PCG 2017/2), vereenvoudigde documentatie-opties binnen het self-assessment-stelsel."
+  },
+  {
+   "id": "NZ",
+   "iso": 554,
+   "naam": "Nieuw-Zeeland",
+   "regio": "Oceanië",
+   "lon": 172.0,
+   "lat": -42.0,
+   "klein": false,
+   "grondslag": "Secties GC 6 t/m GC 14 Income Tax Act 2007 (o.a. GC 6(1B)); verbondenheid in subparts YA en YB.",
+   "tpg": "Wettelijke verwijzing naar de TPG 2022 (s. GC 6(1B)); de regels moeten consistent met de TPG worden toegepast.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "Geen expliciete master/local file-plicht; algemene administratieplicht (s. 22 Tax Administration Act 1994), documentatie in de praktijk langs de TPG; CbCR conform BEPS-actie 13.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, enhanced engagement-programma's, uni-, bi- en multilaterale APA's, MAP; een unilaterale APA is in Nieuw-Zeeland een ruling.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: vereenvoudigingen voor low value-adding intra-group services (conform TPG), voorgeschreven rentetarieven voor kleine leningen (hoofdsom tot NZD 10 mln) en een regeling voor kleine wholesale-distributeurs (omzet tot NZD 30 mln per jaar)."
+  },
+  {
+   "id": "KR",
+   "iso": 410,
+   "naam": "Zuid-Korea",
+   "regio": "Azië",
+   "lon": 127.8,
+   "lat": 36.4,
+   "klein": false,
+   "grondslag": "Act on the Adjustment of International Taxes (AAIT), met uitvoeringsbesluit.",
+   "tpg": "Wetgeving is aangepast om de TPG te volgen en is er grotendeels mee consistent.",
+   "methoden": "Vijf OESO-methoden plus voorgeschreven andere methoden voor intra-group payment guarantees; meest geschikte methode.",
+   "documentatie": "Master file, local file en CbCR plus aparte TP-aangiften (art. 16 AAIT; art. 33 uitvoeringsbesluit), volgens vaste indieningstermijnen.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: o.a. een voorgeschreven berekening van de normale rente bij intragroepsleningen (art. 11 EDAAIT; art. 3 uitvoeringsregels AAIT)."
+  },
+  {
+   "id": "ID",
+   "iso": 360,
+   "naam": "Indonesië",
+   "regio": "Azië",
+   "lon": 117.0,
+   "lat": -2.5,
+   "klein": false,
+   "grondslag": "Income Tax Law (wet nr. 7/1983, zoals gewijzigd); uitwerking in Minister of Finance Regulation 172/2023.",
+   "tpg": "Als referentie; eigen uitvoeringsregels zijn leidend.",
+   "methoden": "OESO-methoden plus andere methoden (o.a. waardering van materiële en immateriële activa, business valuation); meest geschikte methode.",
+   "documentatie": "Master file, local file en CbCR plus aangiftebijlagen (MoF Regulation 172/2023, art. 3 e.v.).",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (per februari 2025 zonder regelgeving of beleid).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "MY",
+   "iso": 458,
+   "naam": "Maleisië",
+   "regio": "Azië",
+   "lon": 102.0,
+   "lat": 4.0,
+   "klein": false,
+   "grondslag": "S. 140A(2) Income Tax Act 1967; Income Tax (Transfer Pricing) Rules 2023.",
+   "tpg": "Eigen TP-regels en -richtlijnen in lijn met de TPG; wettelijke arm's length range sinds aanslagjaar 2023; geen geheime comparables.",
+   "methoden": "Vijf OESO-methoden plus andere methoden als die aantoonbaar de hoogste vergelijkbaarheid bieden; meest geschikte methode.",
+   "documentatie": "Master file, local file en CbCR; contemporaneous transfer pricing documentation (CTPD) conform de Rules 2023, gereed vóór de aangiftetermijn, in Bahasa Malaysia of Engels, zeven jaar bewaren in Maleisië; details van controlled transactions jaarlijks in de aangifte.",
+   "amountB": "Nog geen besluit genomen.",
+   "apa": "Rulings, enhanced engagement-programma's, uni-, bi- en multilaterale APA's, MAP en een eigen dispute resolution-proces van de IRBM.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Nee, afgezien van de vereenvoudiging voor low value-adding intra-group services."
+  },
+  {
+   "id": "TH",
+   "iso": 764,
+   "naam": "Thailand",
+   "regio": "Azië",
+   "lon": 101.0,
+   "lat": 15.5,
+   "klein": false,
+   "grondslag": "S. 71 bis Revenue Code; Ministerial Regulation 369 (B.E. 2563, 2020) en Notification of the Director-General on Income Tax No. 400 (2021).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden plus alternatieve methoden in uitzonderlijke gevallen, na schriftelijke melding aan de Director-General binnen het boekjaar; meest geschikte methode.",
+   "documentatie": "Disclosure form bij de aangifte (s. 71 ter Revenue Code), local file en CbCR; geen master file-plicht.",
+   "amountB": "Nog in onderzoek.",
+   "apa": "Bilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "LK",
+   "iso": 144,
+   "naam": "Sri Lanka",
+   "regio": "Azië",
+   "lon": 80.7,
+   "lat": 7.8,
+   "klein": true,
+   "grondslag": "Ss. 76 en 77 Inland Revenue Act, met TP-regulations (TP Gazette).",
+   "tpg": "Regelgeving opgesteld in lijn met de TPG en het UN-manual.",
+   "methoden": "OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file, local file, CbCR, TP-aangifte en een Transfer Pricing Disclosure Form (Regulation 6 TP Gazette).",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Rulings en MAP; geen APA-programma vermeld.",
+   "profiel": "juni 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Nog niet: de wet laat safe harbour-regels door de Commissioner-General toe, maar richtsnoeren zijn nog niet uitgevaardigd (ss. 76-77 Inland Revenue Act)."
+  },
+  {
+   "id": "PK",
+   "iso": 586,
+   "naam": "Pakistan",
+   "regio": "Azië",
+   "lon": 69.3,
+   "lat": 30.0,
+   "klein": false,
+   "grondslag": "Income Tax Ordinance 2001 (o.a. s. 108); Income Tax Rules 2002, hoofdstuk VI (transfer pricing) en hoofdstuk VIA (documentatie en CbCR).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vier methoden (CUP, resale price, cost plus, profit split); TNMM staat niet in de regels; meest geschikte methode.",
+   "documentatie": "Master file, local file en CbCR (s. 108(3)-(5) ITO 2001; Rules 27A-27Q).",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (per maart 2025 nog zonder regelgeving).",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "DK",
+   "iso": 208,
+   "naam": "Denemarken",
+   "regio": "Europa",
+   "lon": 9.5,
+   "lat": 56.0,
+   "klein": false,
+   "grondslag": "§ 2 Ligningsloven (Tax Assessment Act); uitleg in de Juridiske Vejledning C.D.11.",
+   "tpg": "Als uitlegbron erkend via de Legal Guidance.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden mogelijk conform par. 2.9 TPG (bewijslast bij de belastingplichtige), incl. waarderingstechnieken.",
+   "documentatie": "Drieledig én actief: disclosure in de aangifte, master file en local file verplicht ín te dienen (binnen 60 dagen na de aangiftetermijn), en CbCR conform BEPS-actie 13.",
+   "amountB": "Nee (regelgeving voor het politieke commitment is in voorbereiding); respecteert de uitkomst bij covered jurisdictions.",
+   "apa": "Rulings (bindende svar), uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "FI",
+   "iso": 246,
+   "naam": "Finland",
+   "regio": "Europa",
+   "lon": 26.0,
+   "lat": 64.0,
+   "klein": false,
+   "grondslag": "§ 31 Act on Assessment Procedure (VML), gewijzigd via wetsvoorstellen 107/2006 en 142/2016.",
+   "tpg": "Uitlegbron voor verdragen en nationale wet; geen eigen afwijkende TP-guidance.",
+   "methoden": "Geen methoden in de wet; de TPG gelden als uitlegbron; meest geschikte methode.",
+   "documentatie": "Master file en local file conform de TPG-bijlagen (op verzoek, binnen 60 dagen); CbCR (Act on Assessment Procedure 14d-14e) plus TP-bijlage Form 78 bij de aangifte.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "NO",
+   "iso": 578,
+   "naam": "Noorwegen",
+   "regio": "Europa",
+   "lon": 9.0,
+   "lat": 61.0,
+   "klein": false,
+   "grondslag": "§ 13-1 Skatteloven (algemene correctiebepaling).",
+   "tpg": "Wettelijk verankerd: § 13-1(4) Skatteloven bepaalt dat met de TPG rekening moet worden gehouden bij toepassing van het arm's length-beginsel.",
+   "methoden": "Geen methoden in de wet; algemene verwijzing naar de TPG in § 13-1(4); meest geschikte methode.",
+   "documentatie": "Eigen documentatie- en aangifteplichten (Tax Administration Act §§ 8-11 en 8-12), op verzoek binnen 45 dagen; geen formele master/local file-standaard; CbCR conform BEPS-actie 13.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Bi- en multilaterale APA's (geen unilaterale), ICAP, MAP.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "IS",
+   "iso": 352,
+   "naam": "IJsland",
+   "regio": "Europa",
+   "lon": -18.6,
+   "lat": 64.9,
+   "klein": false,
+   "grondslag": "Art. 57 Income Tax Act no. 90/2003 (leden 1-3; documentatie in lid 5), uitgewerkt in Regulation no. 1180/2014.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode; de regeling laat ruimte voor andere methoden.",
+   "documentatie": "Eigen documentatieplicht zonder onderscheid master/local file (art. 57 lid 5 ITA); CbCR (Regulation 766/2019).",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "PT",
+   "iso": 620,
+   "naam": "Portugal",
+   "regio": "Europa",
+   "lon": -8.2,
+   "lat": 39.6,
+   "klein": false,
+   "grondslag": "Art. 63 Corporate Income Tax Code.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden alleen als de genoemde niet toepasbaar zijn (art. 63(3)).",
+   "documentatie": "Master file en local file (art. 17-18 Ministerial Order 268/2021) plus aparte TP-aangifte; CbCR (art. 121-A en 121-B CIT Code, conform BEPS-actie 13).",
+   "amountB": "Nee (invoering in beoordeling); respecteert de uitkomst bij covered jurisdictions zodra een overeenkomst tussen bevoegde autoriteiten geldt.",
+   "apa": "Uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "GR",
+   "iso": 300,
+   "naam": "Griekenland",
+   "regio": "Europa",
+   "lon": 22.0,
+   "lat": 39.0,
+   "klein": false,
+   "grondslag": "Art. 50 Income Tax Code (L. 4172/2013).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file en local file plus summary information table (Tax Procedure Code L. 5104/2024, art. 25; POL-besluiten); CbCR (L. 4484/2017, implementatie Richtlijn (EU) 2016/881).",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "MT",
+   "iso": 470,
+   "naam": "Malta",
+   "regio": "Europa",
+   "lon": 14.4,
+   "lat": 35.9,
+   "klein": true,
+   "grondslag": "Transfer Pricing Rules (o.a. rule 4), vastgesteld onder de Income Tax Act; uitleg via de MTCA-guidelines.",
+   "tpg": "De bindende MTCA-guidelines (o.g.v. art. 96(2) Income Tax Act) verwijzen per onderdeel naar de TPG; waar niet expliciet, gelden de TPG als niet-bindende referentie.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden voor zover de TPG die toelaten.",
+   "documentatie": "Master file en local file, aan te leveren op verzoek; CbCR voor UPE's en SPE's (S.L. 123.127, conform BEPS-actie 13).",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "LI",
+   "iso": 438,
+   "naam": "Liechtenstein",
+   "regio": "Europa",
+   "lon": 9.55,
+   "lat": 47.15,
+   "klein": true,
+   "grondslag": "Art. 49 Tax Act (2010) in samenhang met art. 31b Tax Ordinance.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode; andere methoden mogelijk.",
+   "documentatie": "Master file, local file en CbCR (CbCR-wet van 4 november 2016).",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "februari 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: een circulaire met safe harbour-rentetarieven voor intragroepsleningen."
+  },
+  {
+   "id": "CZ",
+   "iso": 203,
+   "naam": "Tsjechië",
+   "regio": "Europa",
+   "lon": 15.3,
+   "lat": 49.8,
+   "klein": false,
+   "grondslag": "§ 23(7) Income Tax Act 586/1992 Coll. (correctiebepaling); methodologische uitleg via richtsnoeren van het ministerie van Financiën (GFŘ D-59 en D-34).",
+   "tpg": "Uitlegbron en bindend voor de belastingdienst via Guidance D-59 (methodologische uitleg bij de Income Tax Act).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden mogelijk in lijn met de TPG.",
+   "documentatie": "Geen wettelijke master/local file-plicht; documentatie volgens Guidance D-334 aanbevolen; CbCR wettelijk geregeld (Act 164/2013, gewijzigd bij 305/2017), indiening binnen 12 maanden na het verslagjaar.",
+   "amountB": "Nee; politiek commitment om Amount B bij covered jurisdictions te accepteren via bilaterale overeenkomst.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "SK",
+   "iso": 703,
+   "naam": "Slowakije",
+   "regio": "Europa",
+   "lon": 19.5,
+   "lat": 48.7,
+   "klein": false,
+   "grondslag": "Income Tax Act, art. 17(5) en art. 18(1).",
+   "tpg": "Als uitlegbron erkend.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; ook een combinatie of een andere methode mits arm's length (art. 18 ITA).",
+   "documentatie": "Master file en local file volgens guidance MF/020061/2022-724 (inhoud gekoppeld aan art. 17(7) en 18(1) ITA), plus TP-gegevens in de aangifte; documentatie gedifferentieerd naar omvang (volledig, basis, vereenvoudigd); CbCR vanaf € 750 mln; indiening op verzoek binnen 15 dagen.",
+   "amountB": "In evaluatie; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: transacties met een waarde onder € 10.000 (bij leningen: hoofdsom onder € 50.000) vallen buiten de TP-regels (art. 17 ITA)."
+  },
+  {
+   "id": "HU",
+   "iso": 348,
+   "naam": "Hongarije",
+   "regio": "Europa",
+   "lon": 19.4,
+   "lat": 47.2,
+   "klein": false,
+   "grondslag": "Sectie 18 van Wet LXXXI van 1996 op de vennootschaps- en dividendbelasting (met sectie 31(2)(b)).",
+   "tpg": "Wettelijke verwijzing via sectie 31(2)(b) van dezelfde wet.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden als geen van de vijf een zakelijke prijs oplevert.",
+   "documentatie": "Master file en local file plus TP-gegevens in de aangifte; CbCR vanaf € 750 mln.",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "RO",
+   "iso": 642,
+   "naam": "Roemenië",
+   "regio": "Europa",
+   "lon": 25.0,
+   "lat": 45.9,
+   "klein": false,
+   "grondslag": "Fiscal Code (met uitvoeringsorders, o.a. Order 442).",
+   "tpg": "In de wetgeving geïncorporeerd door verwijzing en daarmee juridisch bindend (Fiscal Code art. 11 lid 4).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; ook 'any other method' uit de TPG erkend.",
+   "documentatie": "Master file en local file (TP-dossier volgens Order 442, drempels per transactieomvang; grote belastingplichtigen jaarlijks bij de CIT-aangifte, kleinere op verzoek bij controle); CbCR volgens Order 3049/2017.",
+   "amountB": "Nee: niet ingevoerd; Roemenië respecteert de uitkomst van Amount B bij covered jurisdictions met belastingverdrag.",
+   "apa": "Rulings en APA's (zie profiel voor vormen), MAP.",
+   "profiel": "november 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "BG",
+   "iso": 100,
+   "naam": "Bulgarije",
+   "regio": "Europa",
+   "lon": 25.2,
+   "lat": 42.8,
+   "klein": false,
+   "grondslag": "Art. 15 Corporate Income Tax Act; methoden uitgewerkt in Ordinance № H-3 van 7 november 2025 over het bepalen van marktprijzen.",
+   "tpg": "TP-regels worden uitgelegd en toegepast conform de meest recente editie van de OECD TPG (par. 2 Supplementary Provisions Ordinance № H-3).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; onder voorwaarden een andere methode (art. 14 lid 8 Ordinance H-3).",
+   "documentatie": "Local file verplicht boven wettelijke drempels, master file als onderdeel bij groepen; CbCR vanaf € 750 mln.",
+   "amountB": "Nee: Amount B is niet ingevoerd; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Beperkt instrumentarium; MAP (zie profiel).",
+   "profiel": "april 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "HR",
+   "iso": 191,
+   "naam": "Kroatië",
+   "regio": "Europa",
+   "lon": 16.0,
+   "lat": 45.2,
+   "klein": false,
+   "grondslag": "Art. 13 Profit Tax Act; art. 40 Profit Tax Ordinance.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode, met hiërarchie-accent: bij gelijke betrouwbaarheid gaan klassieke transactiemethoden voor en heeft CUP de voorkeur.",
+   "documentatie": "Master file en local file (art. 13 PTA; art. 40 Ordinance) plus PD-IPO-formulier; CbCR via de wet administratieve samenwerking (art. 34).",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, cooperative compliance, uni-, bi- en multilaterale APA's (looptijd 5 jaar), MAP.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Ja, alleen voor financiële transacties: de minister van Financiën schrijft de rentevoet voor, met opt-out naar een TPG-methode mits die consequent op alle overeenkomsten wordt toegepast (art. 13-14 Profit Tax Act)."
+  },
+  {
+   "id": "SI",
+   "iso": 705,
+   "naam": "Slovenië",
+   "regio": "Europa",
+   "lon": 14.8,
+   "lat": 46.1,
+   "klein": false,
+   "grondslag": "Art. 16 Corporate Income Tax Act, met de Rules on Transfer Prices.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file en local file (art. 382 Tax Procedure Act) plus TP-gegevens bij de aangifte (Annex 15 en 16); CbCR in de Tax Procedure Act (art. 248b e.v.), conform BEPS-actie 13.",
+   "amountB": "Nee: niet ingevoerd; bij covered jurisdictions met belastingverdrag respecteert Slovenië de uitkomst.",
+   "apa": "Cooperative compliance, uni-, bi- en multilaterale APA's, MAP; geen rulings.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: een voorgeschreven fiscaal erkende rentevoet (risicovrije voet plus opslagen voor looptijd en kredietwaardigheid) als safe harbour voor intragroepsleningen (art. 19 CITA-2)."
+  },
+  {
+   "id": "EE",
+   "iso": 233,
+   "naam": "Estland",
+   "regio": "Europa",
+   "lon": 25.5,
+   "lat": 58.7,
+   "klein": false,
+   "grondslag": "Subsectie 50(4) Income Tax Act, met de Transfer Pricing Regulation (nr. 53).",
+   "tpg": "Geen juridische status; gebruik van de TPG wordt aangemoedigd voor situaties die de Transfer Pricing Regulation niet dekt (art. 20 Regulation no. 53).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methode toegestaan met onderbouwing als de genoemde niet passen.",
+   "documentatie": "Master file en local file (art. 18 TP Regulation; alleen voor kredietinstellingen, verzekeraars, beursgenoteerde en grote ondernemingen vanaf 250 werknemers, € 50 mln omzet of € 43 mln balanstotaal; vreemde taal toegestaan, vertaling naar het Estisch op verzoek, termijn minimaal 60 dagen); CbCR via art. 20-3 Tax Information Exchange Act.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Nee, afgezien van de vereenvoudiging voor low value-adding intra-group services."
+  },
+  {
+   "id": "LV",
+   "iso": 428,
+   "naam": "Letland",
+   "regio": "Europa",
+   "lon": 24.9,
+   "lat": 56.9,
+   "klein": false,
+   "grondslag": "Corporate Income Tax Law met toepassingsregels; documentatie en APA's geregeld in Cabinet of Ministers Regulation No. 802 (2018).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; ook andere economische analysetechnieken mogelijk.",
+   "documentatie": "Master file en local file volgens Regulation No. 802: local file vanaf € 5 mln transactiewaarde met buitenlandse gelieerden, master file vanaf € 15 mln of vanaf € 5 mln bij omzet boven € 50 mln, indiening binnen 12 maanden na het boekjaar (local file € 250.000 tot 5 mln alleen op verzoek); CbCR volgens Regulation No. 397; taal Lets of Engels.",
+   "amountB": "Nee: niet ingevoerd; respecteert de uitkomst alleen zolang een akkoord tussen de bevoegde autoriteiten over Amount B van kracht is.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's (Regulation No. 802), MAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: regeling voor low value-adding intra-group services, met classificatie en voorgeschreven opslag (Cabinet Regulation No. 677, sectie 18-1). Daarnaast een documentatie-safe harbour: lokale TP-documentatie die niet automatisch hoeft te worden ingediend mag bij ongewijzigde omstandigheden elke drie jaar worden herzien, met jaarlijkse verversing van de financiële vergelijkingsdata."
+  },
+  {
+   "id": "LT",
+   "iso": 440,
+   "naam": "Litouwen",
+   "regio": "Europa",
+   "lon": 23.9,
+   "lat": 55.2,
+   "klein": false,
+   "grondslag": "Art. 40 Law on Corporate Income Tax, met TP Rules.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; combineren of aanpassen van methoden toegestaan, in uitzonderingsgevallen waarderingsmethoden.",
+   "documentatie": "Master file (inkomsten boven € 15 mln en onderdeel van een internationale groep) en local file (omzet boven € 3 mln) volgens TP Rules clausules 77-93 en art. 61 Law on Tax Administration, plus aparte TP-aangifte; vrijstelling onder € 90.000 per transactie; gereed op de 15e dag van de zesde maand na het tijdvak, aanlevering binnen 30 dagen na verzoek; CbCR binnen 12 maanden na het rapportagejaar.",
+   "amountB": "In beoordeling (nog geen besluit); respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "AL",
+   "iso": 8,
+   "naam": "Albanië",
+   "regio": "Europa",
+   "lon": 20.0,
+   "lat": 41.0,
+   "klein": false,
+   "grondslag": "Art. 36 (o.a. 36/2) Law no. 8438/1998 'On Income Tax', met Instruction MoF No. 16 (2014) over transfer pricing.",
+   "tpg": "Wet (art. 36-36/7) en Instruction No. 16/2014 zijn gebaseerd op de beginselen van de OECD TPG.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; in specifieke omstandigheden een andere methode (art. 36/2 lid 2).",
+   "documentatie": "Master file en local file (Instruction No. 16/2014); CbCR-verplichting niet aangevinkt in het profiel.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "december 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "BA",
+   "iso": 70,
+   "naam": "Bosnië en Herzegovina",
+   "regio": "Europa",
+   "lon": 17.8,
+   "lat": 44.2,
+   "klein": false,
+   "grondslag": "Law on Corporate Income Tax (per entiteit: Federatie BiH en Republika Srpska); Brčko District: Corporate Profit Tax Law.",
+   "tpg": "Per entiteit: Federatie BiH en Brčko District kennen de TPG geen status toe; Republika Srpska baseert wet en rulebook op de TPG en gebruikt ze als leidraad.",
+   "methoden": "OESO-methoden plus andere; Federatie BiH hanteert een hiërarchie (eerst CUP, cost plus en resale price), Republika Srpska de meest geschikte methode, Brčko District CUP als primaire methode waar mogelijk.",
+   "documentatie": "Per entiteit: Federatie BiH en Republika Srpska kennen master file, local file, CbCR en aparte TP-formulieren (FBiH: master file en CbCR vanaf € 750 mln, formulier TP-902 boven BAM 500.000, CBC-901 binnen 12 maanden); Brčko District alleen formulieren bij de aangifte.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "MAP aangevinkt bij alle drie entiteiten, al ontbreken MAP-procedures in de praktijk; Republika Srpska kent ook rulings; geen APA-programma.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "XK",
+   "iso": 412,
+   "naam": "Kosovo",
+   "regio": "Europa",
+   "lon": 20.9,
+   "lat": 42.6,
+   "klein": true,
+   "grondslag": "Art. 28 Law No. 06/L-105 on Corporate Income Tax; uitwerking in Administrative Instruction MF-No. 02/2017 on Transfer Pricing.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file en local file (art. 29 AI 02/2017) plus een controlled transactions notice (art. 28).",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "augustus 2023 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "UA",
+   "iso": 804,
+   "naam": "Oekraïne",
+   "regio": "Europa",
+   "lon": 31.0,
+   "lat": 49.0,
+   "klein": false,
+   "grondslag": "Art. 39 Tax Code of Ukraine (clausule 39.1: arm's length; 39.4: documentatie).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden plus waardering (discounted cash flow) bij intangibles en herstructureringen; meest geschikte methode binnen een wettelijke hiërarchie, met verplichte CUP voor commodity-transacties.",
+   "documentatie": "Master file, local file en CbCR plus een aparte TP-aangifte (art. 39.4 Tax Code).",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "RU",
+   "iso": 643,
+   "naam": "Rusland",
+   "regio": "Europa",
+   "lon": 60.0,
+   "lat": 60.0,
+   "klein": false,
+   "grondslag": "Russian Tax Code, sectie V.1 (art. 105.1 e.v.).",
+   "tpg": "Geen rechtsbron; de TPG en het UN TP Manual zijn toelaatbaar als aanvullende guidance.",
+   "methoden": "Vijf methoden naar OESO-model; eigen rangorde-accenten; bij eenmalige transacties is waardering (valuation) toegestaan.",
+   "documentatie": "Documentatie (art. 105.15 RTC) en drielaags master file/local file/CbCR (hoofdstuk 14.4-1 RTC).",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's (1-3 jaar, verlenging maximaal 2 jaar, geen rollback), MAP en ICAP.",
+   "profiel": "juli 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: safe harbour-rentebandbreedtes voor leningen tussen gelieerde partijen (art. 269 RTC)."
+  },
+  {
+   "id": "GE",
+   "iso": 268,
+   "naam": "Georgië",
+   "regio": "Azië",
+   "lon": 43.5,
+   "lat": 42.0,
+   "klein": false,
+   "grondslag": "Tax Code (TP-bepalingen), met nationale TP-instructies.",
+   "tpg": "Bij verschil prevaleert het Tax Code; instructies volgen de TPG.",
+   "methoden": "Vijf OESO-methoden plus in uitzonderingsgevallen een andere methode (art. 8(6) Decree 423); meest geschikte methode.",
+   "documentatie": "Lokale TP-documentatie op verzoek volgens de instructies; CbCR (art. 70-1 Tax Code); geen master/local file-standaard aangevinkt.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Rulings, unilaterale APA's, MAP.",
+   "profiel": "december 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "TR",
+   "iso": 792,
+   "naam": "Türkiye",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 35.0,
+   "lat": 39.0,
+   "klein": false,
+   "grondslag": "Art. 13 Corporate Income Tax Law No. 5520 (verkapte winstuitdeling via verrekenprijzen).",
+   "tpg": "Als uitlegbron erkend; uitwerking in Transfer Pricing General Communiqué No. 1.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; een andere methode als de vijf geen uitkomst geven.",
+   "documentatie": "Master file, local file en CbCR (Communiqué No. 1, sectie 7) plus TP-formulier bij de aangifte.",
+   "amountB": "Nee; positie over de respect-commitment nog in onderzoek.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "IL",
+   "iso": 376,
+   "naam": "Israël",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 35.0,
+   "lat": 31.4,
+   "klein": false,
+   "grondslag": "Section 85A Income Tax Ordinance (New Version); Income Tax Regulations (Determination of Market Conditions).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; combinatie van hiërarchie en meest geschikte methode: eerst CUP, anders de meest geschikte marge- of winstverdelingsmethode, anders een andere passende methode (s. 2 regulations).",
+   "documentatie": "Master file en CbCR aangevinkt in het profiel (s. 85A(c) ITO); lokale documentatie volgens de regulations.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: Circular 12/2018 met vaste bandbreedtes: low risk distribution 3-4% operating margin, marketingdiensten zonder IP 10-12% (NCP-index)."
+  },
+  {
+   "id": "SA",
+   "iso": 682,
+   "naam": "Saudi-Arabië",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 45.0,
+   "lat": 24.0,
+   "klein": false,
+   "grondslag": "Income Tax Law met de Transfer Pricing By-Laws (ZATCA); o.a. art. 10(11) Income Tax By-Laws.",
+   "tpg": "Eigen TP Guidelines in lijn met de TPG.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methode mogelijk onder art. 9 TP By-Laws.",
+   "documentatie": "Master file, local file en CbCR (TP By-Laws art. 16-18; Guidelines hoofdstuk 5), met disclosure form bij de aangifte.",
+   "amountB": "Geen eigen regeling (kan op de TPG steunen); respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings en unilaterale APA's (programma in opbouw), MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "AE",
+   "iso": 784,
+   "naam": "Verenigde Arabische Emiraten",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 54.3,
+   "lat": 23.9,
+   "klein": false,
+   "grondslag": "UAE Corporate Tax Law (Federal Decree-Law 47/2022), o.a. art. 34-35; TP-documentatie in Ministerial Decision No. 97/2023.",
+   "tpg": "Federal Tax Authority Transfer Pricing Guide volgt de TPG-lijn.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methode als aantoonbaar geen van de vijf redelijkerwijs toepasbaar is.",
+   "documentatie": "Master file en local file (Ministerial Decision 97/2023, met drempels), disclosure form; CbCR voor grote groepen.",
+   "amountB": "Nog geen positie ingenomen; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings (clarifications), MAP; APA-programma in ontwikkeling (zie profiel).",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Ja, zijdelings: Small Business Relief voor bedrijven met een omzet tot AED 3 mln (vereenvoudigde aangifte, geen belastbaar inkomen en vrijstelling van TP-documentatie), voor boekjaren vóór 2027."
+  },
+  {
+   "id": "EG",
+   "iso": 818,
+   "naam": "Egypte",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 30.0,
+   "lat": 26.5,
+   "klein": false,
+   "grondslag": "Art. 30 Income Tax Law No. 91/2005, met art. 38-40 van de uitvoeringsregels.",
+   "tpg": "Egyptian Transfer Pricing Guidelines volgen de TPG-lijn.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden mogelijk (zie profiel).",
+   "documentatie": "Master file, local file en CbCR (art. 12-13 Unified Tax Procedure Law No. 206/2020; Guidelines hoofdstuk 5).",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Unilaterale APA's, MAP.",
+   "profiel": "juni 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "TN",
+   "iso": 788,
+   "naam": "Tunesië",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 9.5,
+   "lat": 34.0,
+   "klein": false,
+   "grondslag": "Art. 48 septies Code de l'IRPP et de l'IS (ingevoerd via LF 2019 en LF 2021); documentatieplicht in art. 59 par. II bis.",
+   "tpg": "Geen expliciete verwijzing naar de TPG in de wet; de hervorming van 2019 en de notes communes zijn wel met OESO-assistentie op de TPG-lijn gebracht.",
+   "methoden": "Geen methoden in de wet; Note commune n° 11/2020 noemt indicatief de vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file en local file (art. 59 par. II bis; vanaf TND 200 mln omzet) plus jaarlijkse TP-aangifte; CbCR vanaf TND 1.636 mln (€ 750 mln), binnen 12 maanden.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "juli 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "AZ",
+   "iso": 31,
+   "naam": "Azerbeidzjan",
+   "regio": "Azië",
+   "lon": 47.5,
+   "lat": 40.3,
+   "klein": false,
+   "grondslag": "Tax Code, o.a. art. 14-1 en 18, met TP Rules.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden plus de mogelijkheid van een afwijkende onderbouwing door de belastingplichtige (art. 14-1.7 Tax Code); meest geschikte methode, met voorrang voor CUP waar betrouwbaar toepasbaar.",
+   "documentatie": "Master file, local file en CbCR (Tax Code art. 16.1.4, 16.1.4-1 en 16.9).",
+   "amountB": "Nee; nog geen regelgeving voor de vereenvoudigde benadering.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "MV",
+   "iso": 462,
+   "naam": "Maldiven",
+   "regio": "Azië",
+   "lon": 73.5,
+   "lat": 3.2,
+   "klein": true,
+   "grondslag": "Secties 67 en 79 Income Tax Act; Transfer Pricing Regulation (2020/R-43).",
+   "tpg": "Regelgeving, documentatie-eisen en de Arm's Length Guide zijn opgesteld met de TPG als referentie.",
+   "methoden": "OESO-methoden plus een andere methode met voorafgaande goedkeuring van MIRA; meest geschikte methode.",
+   "documentatie": "Master file, local file en TP-aangifte (Schedule 4 bij de aangifte) onder de TP Regulation (2020/R-43), op verzoek binnen 30 dagen; CbCR apart geregeld in s. 31-1 Tax Administration Act en de CbC Reporting Regulation (2021/R-9), indiening binnen 12 maanden.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "december 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "ZA",
+   "iso": 710,
+   "naam": "Zuid-Afrika",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 24.0,
+   "lat": -29.0,
+   "klein": false,
+   "grondslag": "Section 31 Income Tax Act No. 58 of 1962.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file, local file en CbCR, met administratieplicht (record keeping) voor kwalificerende belastingplichtigen.",
+   "amountB": "Interesse getoond maar nog niet ingevoerd; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Enhanced engagement (cooperative compliance) en MAP; APA-wetgeving (s. 76A Income Tax Act) is aangenomen maar de uitvoeringsnotices ontbreken nog.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "NG",
+   "iso": 566,
+   "naam": "Nigeria",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 8.0,
+   "lat": 9.6,
+   "klein": false,
+   "grondslag": "Companies Income Tax Act (o.a. s. 22(2)(b)); Income Tax (Transfer Pricing) Regulations 2018.",
+   "tpg": "Regulations 2018 volgen de TPG-lijn.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methode als geen van de genoemde redelijkerwijs toepasbaar is (reg. 5(4)).",
+   "documentatie": "Master file, local file en TP-aangiften (Regulations 2018, Part IV, reg. 13-17); CbCR via de aparte Income Tax (Country-by-Country Reporting) Regulations 2018.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Nee als algemene regel; wel kan een vrijstelling van de documentatie-eisen (reg. 16) gelden wanneer de prijzen specifieke door de belastingdienst te publiceren richtsnoeren volgen (Part VII, reg. 22 TP Regulations 2018), maar die richtsnoeren zijn nog niet gepubliceerd."
+  },
+  {
+   "id": "KE",
+   "iso": 404,
+   "naam": "Kenia",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 37.8,
+   "lat": 0.5,
+   "klein": false,
+   "grondslag": "Income Tax Act, o.a. s. 18(3) en 18(6).",
+   "tpg": "Geen formele status; in de praktijk en in de rechtspraak wel gebruikt als richtsnoer en interpretatiebron.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere door de Commissioner voorgeschreven methoden mogelijk.",
+   "documentatie": "Master file, local file en CbCR plus specifieke TP-returns (ss. 18B-18F Income Tax Act); master en local file indienen binnen 6 maanden, CbCR binnen 12 maanden na jaareinde.",
+   "amountB": "Zie profiel (nog geen toepassing).",
+   "apa": "Rulings, APA's (s. 18G Income Tax Act, ingevoerd via de Finance Act 2025), MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "ZM",
+   "iso": 894,
+   "naam": "Zambia",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 27.8,
+   "lat": -13.4,
+   "klein": false,
+   "grondslag": "Section 97A Income Tax Act (Chapter 323); Income Tax (Transfer Pricing) (Amendment) Regulations 2018.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methode alleen met goedkeuring van de Commissioner General (reg. 13(3)).",
+   "documentatie": "Master file, local file en CbCR (Regulations 21, 22 en 22A van de 2018-regulations).",
+   "amountB": "Nee (kader nog niet herzien voor Amount B); respecteert wel de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Nee, maar Zambia volgt de guidance voor low value-adding intra-group services (reg. 17 van de 2018-regulations)."
+  },
+  {
+   "id": "AO",
+   "iso": 24,
+   "naam": "Angola",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 17.5,
+   "lat": -12.3,
+   "klein": false,
+   "grondslag": "Art. 50 Corporate Income Tax Law (Law 26/20) en het Large Taxpayers Statute (Presidential Decree 147/13); methoden en TP-dossier in art. 12-13 van dat statuut.",
+   "tpg": "Niet juridisch bindend; gebruikt als uitleginstrument (explanatory instrument).",
+   "methoden": "Drie traditionele methoden (CUP, resale price, cost plus) volgens art. 13 van het Large Taxpayer-statuut.",
+   "documentatie": "Local file (TP-dossier) voor grote belastingplichtigen (art. 12); geen master file of CbCR aangevinkt.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Rulings, MAP.",
+   "profiel": "juli 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "SN",
+   "iso": 686,
+   "naam": "Senegal",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": -14.5,
+   "lat": 14.4,
+   "klein": false,
+   "grondslag": "Art. 17 Code Général des Impôts (arm's length); documentatieplicht in art. 638-639.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file, local file en CbCR plus specifieke TP-aangifte (art. 638-639 Tax Code); CbCR vanaf geconsolideerde omzet XOF 491 mld, indienen binnen 12 maanden.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "februari 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "LR",
+   "iso": 430,
+   "naam": "Liberia",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": -9.4,
+   "lat": 6.4,
+   "klein": false,
+   "grondslag": "Revenue Code (zoals gewijzigd) met de Liberia Income Tax Transfer Pricing Regulations.",
+   "tpg": "De regulations worden toegepast in lijn met de TPG.",
+   "methoden": "OESO-methoden; meest geschikte methode; andere methoden met goedkeuring van de Commissioner General.",
+   "documentatie": "Master file, local file en TP-aangifte bij de income tax return (s. 6 TP Regulations, indienen uiterlijk 31 maart); geen CbCR aangevinkt.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Rulings en APA's (eigen APA-programma met gepubliceerde guidelines: maximaal 5 jaar, rollback mogelijk); geen MAP-regeling.",
+   "profiel": "juni 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: een safe harbour voor kleine belastingplichtigen bij de documentatieverplichtingen (s. 6 TP Regulations); 'klein' is gedefinieerd in s. 200(c) Revenue Code, met een inkomensdrempel van LRD 3 mln (of het equivalent in USD)."
+  },
+  {
+   "id": "SC",
+   "iso": 690,
+   "naam": "Seychellen",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": 55.5,
+   "lat": -4.7,
+   "klein": true,
+   "grondslag": "Business Tax Act 2009, o.a. s. 54(1).",
+   "tpg": "Als referentie (zie profiel).",
+   "methoden": "Geen methoden in de wet; via de TPG en het UN-handboek zijn alle vijf OESO-methoden toepasbaar; meest geschikte methode (Public Ruling 2015-3).",
+   "documentatie": "Algemene documentatieplicht; geen master/local file- of CbCR-standaard aangevinkt.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Rulings, MAP.",
+   "profiel": "december 2021 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "AR",
+   "iso": 32,
+   "naam": "Argentinië",
+   "regio": "Amerika",
+   "lon": -64.0,
+   "lat": -34.0,
+   "klein": false,
+   "grondslag": "Income Tax Law N° 20.628 (t.o. 2019), met Decree N° 862/2019 (o.a. art. 14) en General Resolution N° 4717/2020.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; andere methoden voor specifieke transacties (art. 17 ITL; Decree 862/2019).",
+   "documentatie": "Master file, local file en CbCR plus TP-studie en aangiften (art. 17 ITL; art. 55 Decree 862/2019, gewijzigd bij Decree 767/2025).",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions conform het IF-commitment.",
+   "apa": "Rulings, ICAP, MAP; geen regulier APA-programma vermeld.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Ja: een vereenvoudigd regime voor internationale transacties (Form 2672) voor low-risk belastingplichtigen die aan voorwaarden voldoen (GR N° 5010/2021)."
+  },
+  {
+   "id": "CL",
+   "iso": 152,
+   "naam": "Chili",
+   "regio": "Amerika",
+   "lon": -71.0,
+   "lat": -33.5,
+   "klein": false,
+   "grondslag": "Art. 41 E Chilean Income Tax Law.",
+   "tpg": "Geen wettelijke of administratieve status; Circular No. 10 (2025) verwijst voor methoden, comparability en ranges wel naar de TPG.",
+   "methoden": "Vijf OESO-methoden plus subsidiair andere methoden als de vijf niet toepasbaar zijn (Circular No. 10, 2025); meest geschikte methode.",
+   "documentatie": "Master file (Form 1950) en CbCR (Form 1937) vanaf € 750 mln groepsomzet; local file (Form 1951) voor Large Companies met CbCR-plichtige groep en related party-transacties boven CLP 200 mln; TP-aangifte (Form 1907) voor middelgrote en grote bedrijven en bij transacties boven CLP 500 mln met laagbelastende jurisdicties; indiening uiterlijk de laatste werkdag van juni, Spaans of Engels (Form 1907 alleen Spaans).",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions conform het IF-commitment.",
+   "apa": "Uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "CO",
+   "iso": 170,
+   "naam": "Colombia",
+   "regio": "Amerika",
+   "lon": -73.0,
+   "lat": 4.0,
+   "klein": false,
+   "grondslag": "Colombiaanse Tax Code, art. 260-1 en 260-2.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file, local file, CbCR en TP-aangifte (art. 260-5 en 260-9 CTC; Decree 1625/2016); plicht vanaf bruto vermogen 100.000 UVT of bruto-inkomsten 61.000 UVT; master en local file bij transacties boven 45.000 UVT per jaar (10.000 UVT bij laagbelastende jurisdicties); CbCR vanaf 81 mln UVT (circa € 750 mln) geconsolideerde groepsomzet.",
+   "amountB": "In overweging; respecteert de uitkomst bij covered jurisdictions (IF-commitment).",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "PE",
+   "iso": 604,
+   "naam": "Peru",
+   "regio": "Amerika",
+   "lon": -75.0,
+   "lat": -9.2,
+   "klein": false,
+   "grondslag": "Income Tax Law, hoofdstuk V, art. 32 en 32-A.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; plus de residual profit split en andere internationaal aanvaarde methoden (art. 32-A sub e).",
+   "documentatie": "Master file, local file en CbCR (art. 32-A sub g ITL; art. 116-117 Regulation); local file vanaf 2.300 UIT aan inkomsten, master file vanaf 20.000 UIT groepsinkomen, CbCR vanaf PEN 2.700 mln geconsolideerd; jaarlijkse indiening, in het Spaans.",
+   "amountB": "Nee; committeert zich wel aan het respecteren van de uitkomst bij covered jurisdictions en evalueert het benodigde wetgevende kader.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "UY",
+   "iso": 858,
+   "naam": "Uruguay",
+   "regio": "Amerika",
+   "lon": -55.8,
+   "lat": -32.8,
+   "klein": false,
+   "grondslag": "Art. 38-40, Titel 4, Tax Ordinance 1996.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode; plus een specifieke methode voor im- en export van goederen met notering op transparante markten.",
+   "documentatie": "Master file, local file en CbCR plus TP-aangifte (art. 46 en 46 ter, Titel 4, Tax Ordinance 1996); aangifteplicht vanaf 50 mln indexed units aan transacties of na aanwijzing door de DGI, indiening binnen 9 maanden na jaareinde; het decreet dat de master file effectueert was bij dit profiel nog niet uitgevaardigd.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "februari 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Ja op papier: de wet machtigt de uitvoerende macht tot optionele forfaitaire winstregimes (notional profit) per type transactie of activiteit (art. 44, Titel 4, Tax Ordinance 1996); van die bevoegdheid was bij dit profiel nog geen gebruik gemaakt."
+  },
+  {
+   "id": "PY",
+   "iso": 600,
+   "naam": "Paraguay",
+   "regio": "Amerika",
+   "lon": -58.4,
+   "lat": -23.4,
+   "klein": false,
+   "grondslag": "Art. 35 (independence principle) en Boek I, hoofdstuk III (bijzondere waarderingsregels) wet 6380/2019.",
+   "tpg": "Bij het opstellen van de regels is aansluiting gezocht bij de TPG.",
+   "methoden": "OESO-methoden plus een verplichte marktnoteringsmethode voor bepaalde commodities (soja en derivaten, maïs, rijst, tarwe; art. 38 numeral 7); wettelijke voorkeursvolgorde: CUP eerst, de overige methoden alleen als de CUP niet passend is.",
+   "documentatie": "Local file / technische studie (ETPT, art. 39 wet 6380/2019; General Resolution 115/2022) bij bruto-inkomen boven PYG 10 mld en altijd bij transacties met laagbelastende jurisdicties, vrije zones of maquiladoras; indiening in het Spaans; geen master file of CbCR.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "april 2023 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "PA",
+   "iso": 591,
+   "naam": "Panama",
+   "regio": "Amerika",
+   "lon": -80.1,
+   "lat": 8.5,
+   "klein": true,
+   "grondslag": "Art. 762-A Código Fiscal (toegevoegd bij Ley 33 de 2010), nadien gewijzigd en aangevuld bij wet.",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Vijf OESO-methoden (art. 762-F); wettelijke voorkeursvolgorde: eerst CUP, resale price en cost plus; TNMM of profit split alleen als die door complexiteit of gebrek aan informatie niet goed toepasbaar zijn.",
+   "documentatie": "Master file, local file en CbCR plus jaarlijkse TP-aangifte binnen zes maanden na jaareinde (art. 762-I e.v. Código Fiscal; Decreto Ejecutivo 390/2016 en 46/2019); local file (TP-studie) en master file op verzoek binnen 45 werkdagen; CbCR vanaf € 750 mln; alles in het Spaans.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "februari 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "CR",
+   "iso": 188,
+   "naam": "Costa Rica",
+   "regio": "Amerika",
+   "lon": -84.1,
+   "lat": 9.9,
+   "klein": true,
+   "grondslag": "Art. 81 bis Income Tax Law; art. 77 van het uitvoeringsbesluit.",
+   "tpg": "Geen formele status: de wet verwijst niet naar de TPG; in de praktijk gelden ze als referentie en leidraad.",
+   "methoden": "Vijf OESO-methoden; meest geschikte methode; plus de methode 'valuation of internationally quoted assets' (conform par. 2.9 TPG).",
+   "documentatie": "Master file en local file (op verzoek, binnen 10 werkdagen, in het Spaans), CbCR (binnen 12 maanden na jaareinde) en een jaarlijkse informatieve TP-aangifte binnen zes maanden na het belastingjaar (art. 82 uitvoeringsbesluit); aangifteplicht voor grote nationale belastingplichtigen, vrijhandelszone-bedrijven en bij related party-transacties boven 1.000 basissalarissen per jaar.",
+   "amountB": "Nee; respecteert wel de uitkomst bij covered jurisdictions conform het IF-commitment.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "januari 2026",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "DO",
+   "iso": 214,
+   "naam": "Dominicaanse Republiek",
+   "regio": "Amerika",
+   "lon": -70.5,
+   "lat": 18.9,
+   "klein": true,
+   "grondslag": "Art. 281 Dominican Tax Code, met TP Regulation 78-14 (gewijzigd bij Decree 256-21).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode.",
+   "documentatie": "Master file, local file en CbCR plus TP-aangifte (Regulation 78-14, art. 18, gewijzigd bij Decree 256-21); TP-aangifte binnen 120 dagen na jaareinde, master en local file binnen 180 dagen na de aangifte, CbCR binnen een jaar, alles in het Spaans; vrijstelling local file onder circa DOP 13,2 mln aan related party-transacties.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "Uni-, bi- en multilaterale APA's, MAP.",
+   "profiel": "februari 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Kader aanwezig: het recht voorziet in safe harbours per sector met een minimumprijs of -winst (art. 281 bis par. V Tax Code; Regulation 78-14, art. 16); de benodigde uitvoeringsregels waren er bij dit profiel nog niet."
+  },
+  {
+   "id": "GT",
+   "iso": 320,
+   "naam": "Guatemala",
+   "regio": "Amerika",
+   "lon": -90.4,
+   "lat": 15.7,
+   "klein": true,
+   "grondslag": "Tax Update Law (Decree 10-2012, o.a. art. 54), Boek I (inkomstenbelasting), hoofdstuk over special valuation rules.",
+   "tpg": "Geen formele rol of status voor de TPG in het nationale kader.",
+   "methoden": "OESO-methoden; meest geschikte methode; plus een specifieke methode voor commodity-im- en export.",
+   "documentatie": "Local file (TP-studie) plus bijlage bij de aangifte; geen master file of CbCR aangevinkt.",
+   "amountB": "Nee; Guatemala respecteert ook de uitkomst bij covered jurisdictions niet.",
+   "apa": "Unilaterale APA's.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "HN",
+   "iso": 340,
+   "naam": "Honduras",
+   "regio": "Amerika",
+   "lon": -86.6,
+   "lat": 14.8,
+   "klein": true,
+   "grondslag": "Transfer Pricing Regulation Law (Decree 232-2011), met uitvoeringsreglement (Agreement 027-2015).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode; plus een methode voor export van internationaal genoteerde goederen.",
+   "documentatie": "Master file, local file en CbCR (Decree 232-2011 art. 17; Agreement 027-2015 art. 29-33; CbCR via Agreement SAR-653-2023) plus TP-aangifte en een TP-studie op verzoek; kleine belastingplichtigen met related party-transacties onder USD 1 mln per jaar vrijgesteld van de TP-aangifte.",
+   "amountB": "Nog geen maatregelen getroffen.",
+   "apa": "Geen instrumenten aangevinkt in het profiel (zie profiel).",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "JM",
+   "iso": 388,
+   "naam": "Jamaica",
+   "regio": "Amerika",
+   "lon": -77.3,
+   "lat": 18.1,
+   "klein": true,
+   "grondslag": "Income Tax Act, s. 17(1) en 17D met de Eighth Schedule.",
+   "tpg": "Grote delen van de TPG (stand 2015) zijn in de wet geïncorporeerd en daarmee juridisch bindend; daarnaast uitlegbron via de Transfer Pricing Practice Note van Tax Administration Jamaica.",
+   "methoden": "OESO-methoden plus andere methoden in bijzondere gevallen (Eighth Schedule par. 9-10); wettelijke voorkeursvolgorde: bij gelijke betrouwbaarheid gaat de CUP voor en gaan traditionele methoden voor TNMM en profit split.",
+   "documentatie": "Local file plus TP-aangifte (Income Tax (Transfer Pricing Documentation) Regulations 2015); documentatieplicht vanaf bruto jaaromzet van JMD 500 mln, gereed op de aangiftedatum, aanlevering binnen 30 werkdagen na verzoek, in het Engels; geen master file of CbCR.",
+   "amountB": "Nee.",
+   "apa": "Rulings, bi- en multilaterale APA's, MAP.",
+   "profiel": "mei 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "PG",
+   "iso": 598,
+   "naam": "Papoea-Nieuw-Guinea",
+   "regio": "Oceanië",
+   "lon": 144.0,
+   "lat": -6.5,
+   "klein": false,
+   "grondslag": "Division 15 PNG Income Tax Act 1959 (zoals gewijzigd).",
+   "tpg": "Als uitlegbron erkend (zie profiel).",
+   "methoden": "Geen methoden in de wet; Taxation Circular 2011/2 aanvaardt de vijf OESO-methoden; meest geschikte methode.",
+   "documentatie": "Algemene documentatie- en administratieplicht (ss. 364-366 Income Tax Act); CbCR plus een International Dealings Schedule bij de aangifte (Schedule 7); geen master/local file-standaard.",
+   "amountB": "Profiel dateert van vóór Amount B; positie onbekend.",
+   "apa": "MAP; geen APA-programma vermeld.",
+   "profiel": "februari 2022 (verouderd; herverificatie met prioriteit)",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "AT",
+   "iso": 40,
+   "naam": "Oostenrijk",
+   "regio": "Europa",
+   "lon": 14.1,
+   "lat": 47.6,
+   "klein": false,
+   "grondslag": "§ 6(6) Income Tax Act (arm's length bij grensoverschrijdende overdrachten); § 8(1)-(2) Corporate Income Tax Act (verdeckte Ausschüttung/Einlage); §§ 21 e.v. Federal Fiscal Code.",
+   "tpg": "Uitwerking in de Oostenrijkse Verrechnungspreisrichtlinien 2021, in lijn met de TPG.",
+   "methoden": "Vijf OESO-methoden (via de TPG; niet in de wet zelf); meest geschikte methode, maar bij gelijke betrouwbaarheid gaan traditionele transactiemethoden voor; andere methoden mogelijk.",
+   "documentatie": "Master file, local file en CbCR (§ 3 Transfer Pricing Documentation Act; hoofdstuk 3.1 Oostenrijkse TPG 2021); master/local file vanaf € 50 mln omzet in de twee voorgaande jaren, op verzoek in te dienen binnen 30 dagen na de aangifte.",
+   "amountB": "Nee: de vereenvoudigde benadering is niet ingevoerd; Oostenrijk accepteert wel de uitkomst van Amount B in covered jurisdictions waarmee een belastingverdrag bestaat.",
+   "apa": "Rulings, uni-, bi- en multilaterale APA's, ICAP, MAP.",
+   "profiel": "juli 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  },
+  {
+   "id": "CV",
+   "iso": 132,
+   "naam": "Kaapverdië",
+   "regio": "Midden-Oosten & Afrika",
+   "lon": -23.6,
+   "lat": 15.1,
+   "klein": true,
+   "grondslag": "Art. 65 Corporate Income Tax Code; art. 3 Ministerial Order (Portaria) 75/2015.",
+   "tpg": "Als uitlegbron via de Portaria (zie profiel).",
+   "methoden": "OESO-methoden; meest geschikte methode; plus aanvullende methode(n) in de nationale wetgeving.",
+   "documentatie": "Local file (art. 14-16 Portaria 75/2015) plus TP-aangifte (art. 66 en 104 CIT Code, gereed uiterlijk 31 juli na het belastingjaar); CbCR (art. 105-106 CIT Code); geen master file aangevinkt.",
+   "amountB": "Nee, in evaluatie; als IF-lid gecommitteerd aan het respecteren van de uitkomst bij covered jurisdictions.",
+   "apa": "Rulings, MAP.",
+   "profiel": "oktober 2025",
+   "geverifieerd": true,
+   "safeHarbours": "Geen safe harbours of andere vereenvoudigingen (profiel: nee)."
+  }
+ ]
+}
+</script>
+
+<script>
+/* ================= FLOWTOOL TRANSFER PRICING =================
+   Kennisbank: script#tp-data (hierboven). Kaartdata: world-atlas 110m via CDN.
+   Beslislogica methodekeuze: TPG hoofdstuk II, zoals uitgewerkt in de flowchart
+   transfer-pricing.html (stap 3 van kolom 1). ================================= */
+
+const DATA = JSON.parse(document.getElementById('tp-data').textContent);
+const LAND = {}; DATA.landen.forEach(l => LAND[l.id] = l);
+const ISO2ID = {}; DATA.landen.forEach(l => ISO2ID[l.iso] = l.id);
+const TYPENAAM = { goederen:'Goederen', diensten:'Diensten', ip:'Immaterieel', financieel:'Financieel', kostendeling:'Kostendeling' };
+const TYPEKLEUR = { goederen:'#1D9E75', diensten:'#185FA5', ip:'#5B4FC0', financieel:'#C2410C', kostendeling:'#B0483F' };
+
+const state = { fase:1, landen:[], stromen:[], antwoorden:{}, omzet:null, wereld:null };
+
+/* ---------- Globe (intro) ---------- */
+(function(){
+  const svg = d3.select('#globe'), B = 380, R = 168;
+  const proj = d3.geoOrthographic().scale(R).translate([B/2,B/2]).clipAngle(90);
+  const pad = d3.geoPath(proj);
+  svg.append('circle').attr('cx',B/2).attr('cy',B/2).attr('r',R).attr('class','globe-zee');
+  const laag = svg.append('g');
+  svg.append('path').datum(d3.geoGraticule10()).attr('class','graticule').attr('id','globe-grat').attr('d',pad);
+  let rot = [ -8, -38 ], sleep = false, laatst = null, autoT = null;
+
+  function teken(){
+    proj.rotate(rot);
+    laag.selectAll('path').attr('d',pad);
+    svg.select('#globe-grat').attr('d',pad);
+  }
+  function auto(){ autoT = d3.timer(() => { if(!sleep){ rot[0] += 0.18; teken(); } }); }
+
+  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w => {
+    state.wereld = w;
+    const landen = topojson.feature(w, w.objects.countries).features;
+    laag.selectAll('path').data(landen).join('path')
+      .attr('class', d => 'landvorm' + (ISO2ID[+d.id] ? ' kiesbaar' : ''))
+      .attr('d', pad);
+    teken(); auto(); tekenKaart();
+  }).catch(() => {
+    document.getElementById('kaart-fout').style.display = 'block';
+    document.getElementById('kaart').style.display = 'none';
+  });
+
+  svg.on('pointerdown', e => { sleep = true; laatst = [e.clientX, e.clientY]; })
+     .on('pointermove', e => {
+        if(!sleep || !laatst) return;
+        rot[0] += (e.clientX - laatst[0]) * 0.4;
+        rot[1] = Math.max(-80, Math.min(80, rot[1] - (e.clientY - laatst[1]) * 0.4));
+        laatst = [e.clientX, e.clientY]; teken();
+     });
+  d3.select(window).on('pointerup.globe', () => { sleep = false; laatst = null; });
+})();
+
+/* ---------- Werkkaart (plat) ---------- */
+const K = { b: 940, h: 480 };
+const kproj = d3.geoNaturalEarth1().scale(190).translate([K.b/2, K.h/2 + 20]);
+const kpad = d3.geoPath(kproj);
+const ksvg = d3.select('#kaart');
+const gLanden = ksvg.append('g');
+const gPijlen = ksvg.append('g');
+const gPunten = ksvg.append('g');
+ksvg.append('defs').append('marker')
+  .attr('id','pijlpunt').attr('viewBox','0 0 10 10').attr('refX',9).attr('refY',5)
+  .attr('markerWidth',7).attr('markerHeight',7).attr('orient','auto-start-reverse')
+  .append('path').attr('d','M 0 0 L 10 5 L 0 10 z').attr('fill','context-stroke');
+
+function tekenKaart(){
+  if(!state.wereld) return;
+  const landen = topojson.feature(state.wereld, state.wereld.objects.countries).features;
+  gLanden.selectAll('path').data(landen).join(
+      enter => enter.append('path')
+        .attr('d', kpad)
+        .call(s => s.append('title').text(d => { const id = ISO2ID[+d.id]; return id ? LAND[id].naam : ''; }))
+    )
+    .attr('class', d => {
+      const id = ISO2ID[+d.id];
+      let c = 'landvorm';
+      if(id) c += ' kiesbaar';
+      if(id && state.landen.includes(id)) c += ' geselecteerd';
+      return c;
+    })
+    .on('click', (e,d) => {
+      const id = ISO2ID[+d.id];
+      if(!id) return;
+      if(state.fase === 1){ toggleLand(id); } else { openLand(id); }
+    });
+  tekenPunten(); tekenPijlen();
+}
+
+function tekenPunten(){
+  const punten = state.landen.map(id => LAND[id]);
+  gPunten.selectAll('circle').data(punten, d => d.id).join(
+      enter => enter.append('circle')
+        .attr('class','land-punt')
+        .attr('r', d => d.klein ? 5 : 3.5)
+        .attr('cx', d => kproj([d.lon, d.lat])[0])
+        .attr('cy', d => kproj([d.lon, d.lat])[1])
+        .on('click', (e,d) => openLand(d.id))
+        .call(s => s.append('title').text(d => d.naam))
+    );
+}
+
+function tekenPijlen(){
+  gPijlen.selectAll('path').data(state.stromen, (d,i) => i + d.van + d.naar + d.type).join('path')
+    .attr('class','stroom-pijl')
+    .attr('stroke', d => TYPEKLEUR[d.type])
+    .attr('marker-end','url(#pijlpunt)')
+    .attr('d', d => {
+      const a = kproj([LAND[d.van].lon, LAND[d.van].lat]);
+      const b = kproj([LAND[d.naar].lon, LAND[d.naar].lat]);
+      const mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2;
+      const dx = b[0]-a[0], dy = b[1]-a[1];
+      const n = Math.hypot(dx,dy) || 1;
+      const buig = Math.min(60, n * 0.22);
+      return `M ${a[0]} ${a[1]} Q ${mx - dy/n*buig} ${my + dx/n*buig} ${b[0]} ${b[1]}`;
+    })
+    .append('title').text(d => `${LAND[d.van].naam} → ${LAND[d.naar].naam} (${TYPENAAM[d.type]})`);
+}
+
+/* ---------- Fase-navigatie ---------- */
+function startTool(){
+  document.getElementById('tool').classList.add('actief');
+  document.getElementById('tool').scrollIntoView({behavior:'smooth'});
+}
+function gaNaarFase(f){
+  if(f >= 2 && state.landen.length < 2) return;
+  if(f >= 3 && state.stromen.length < 1) return;
+  if(f >= 4 && !klaarVoorOverzicht()) return;
+  state.fase = f;
+  for(let i=1; i<=4; i++){
+    document.getElementById('fase-'+i).classList.toggle('actief', i===f);
+    const chip = document.getElementById('chip-'+i);
+    chip.classList.toggle('actief', i===f);
+    chip.classList.toggle('klaar', i<f);
+  }
+  if(f===2) vulStroomSelects();
+  if(f===3) renderVragen();
+  if(f===4) renderOverzicht();
+}
+function printOverzicht(){
+  renderOverzicht();
+  const nu = new Date();
+  document.getElementById('print-datum').textContent =
+    'Gemaakt op ' + nu.toLocaleDateString('nl-NL', {day:'numeric', month:'long', year:'numeric'}) +
+    ' · educatief, geen advies · trnkl.nl/flowcharts/flowtool-transfer-pricing.html';
+  window.print();
+}
+function herstart(){
+  state.landen = []; state.stromen = []; state.antwoorden = {}; state.omzet = null;
+  renderLandenlijst(); renderStromenlijst(); tekenKaart(); gaNaarFase(1);
+  document.querySelectorAll('.antwoorden button').forEach(b => b.classList.remove('gekozen'));
+}
+
+/* ---------- Fase 1: landen ---------- */
+function toggleLand(id){
+  const i = state.landen.indexOf(id);
+  if(i >= 0){ state.landen.splice(i,1); state.stromen = state.stromen.filter(s => s.van!==id && s.naar!==id); }
+  else state.landen.push(id);
+  renderLandenlijst(); renderStromenlijst(); tekenKaart();
+  document.getElementById('naar-2').disabled = state.landen.length < 2;
+  document.getElementById('naar-3').disabled = state.stromen.length < 1;
+}
+function renderLandenlijst(){
+  const wrap = document.getElementById('landenlijst');
+  const regios = [...new Set(DATA.landen.map(l => l.regio))];
+  wrap.innerHTML = regios.map(r =>
+    `<div class="land-groep">${r}</div>` +
+    DATA.landen.filter(l => l.regio===r).map(l => `
+      <div class="land-rij" onclick="toggleLand('${l.id}')">
+        <input type="checkbox" ${state.landen.includes(l.id)?'checked':''} onclick="event.stopPropagation();toggleLand('${l.id}')">
+        <span class="ln">${l.naam}</span>
+        <span class="vlagje${l.geverifieerd?' ok':''}">${l.geverifieerd?'geverifieerd':'nog niet geverifieerd'}</span>
+        <span class="info" onclick="event.stopPropagation();openLand('${l.id}')">regime</span>
+      </div>`).join('')
+  ).join('');
+  document.getElementById('naar-2').disabled = state.landen.length < 2;
+}
+
+/* ---------- Fase 2: stromen ---------- */
+function vulStroomSelects(){
+  const opts = state.landen.map(id => `<option value="${id}">${LAND[id].naam}</option>`).join('');
+  document.getElementById('stroom-van').innerHTML = opts;
+  document.getElementById('stroom-naar').innerHTML = opts;
+  if(state.landen.length > 1) document.getElementById('stroom-naar').selectedIndex = 1;
+}
+function voegStroomToe(){
+  const van = document.getElementById('stroom-van').value;
+  const naar = document.getElementById('stroom-naar').value;
+  const type = document.getElementById('stroom-type').value;
+  if(!van || !naar || van === naar) return;
+  state.stromen.push({van, naar, type});
+  renderStromenlijst(); tekenPijlen();
+  document.getElementById('naar-3').disabled = false;
+}
+function verwijderStroom(i){
+  state.stromen.splice(i,1);
+  delete state.antwoorden[i];
+  renderStromenlijst(); tekenPijlen();
+  document.getElementById('naar-3').disabled = state.stromen.length < 1;
+}
+function renderStromenlijst(){
+  document.getElementById('stromenlijst').innerHTML = state.stromen.map((s,i) => `
+    <div class="stroom-rij">
+      <span class="sr-type t-${s.type}">${TYPENAAM[s.type]}</span>
+      <span class="sr-tekst">${LAND[s.van].naam} → ${LAND[s.naar].naam}</span>
+      <button class="sr-del" onclick="verwijderStroom(${i})" title="Verwijderen">&#x2715;</button>
+    </div>`).join('');
+}
+
+/* ---------- Fase 3: vragen ---------- */
+function kiesOmzet(w, el){
+  state.omzet = w;
+  el.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('gekozen'));
+  el.classList.add('gekozen');
+  checkKlaar();
+}
+function renderVragen(){
+  const wrap = document.getElementById('vragen-per-stroom');
+  wrap.innerHTML = state.stromen.map((s,i) => {
+    const fin = s.type === 'financieel';
+    return `
+    <div class="vraag-blok">
+      <div class="vb-kop"><span class="sr-type t-${s.type}" style="font-size:9px;border-radius:4px;padding:2px 7px">${TYPENAAM[s.type]}</span> ${LAND[s.van].naam} → ${LAND[s.naar].naam}</div>
+      ${fin ? `
+      <div class="vraag">Is de financiering naar omvang en voorwaarden werkelijk een lening (aflossingscapaciteit, zakelijke condities)?</div>
+      <div class="antwoorden">
+        <button onclick="antwoord(${i},'echtelening',true,this)">Ja</button>
+        <button onclick="antwoord(${i},'echtelening',false,this)">Twijfel / nee</button>
+      </div>` : `
+      <div class="vraag">1. Is er een bruikbare marktprijs of interne vergelijkbare transactie (een comparable uncontrolled price, CUP)?</div>
+      <div class="antwoorden">
+        <button onclick="antwoord(${i},'cup',true,this)">Ja</button>
+        <button onclick="antwoord(${i},'cup',false,this)">Nee</button>
+      </div>
+      <div class="vraag">2. Leveren beide partijen unieke, waardevolle bijdragen, of zijn de activiteiten sterk geïntegreerd?</div>
+      <div class="antwoorden">
+        <button onclick="antwoord(${i},'uniek',true,this)">Ja</button>
+        <button onclick="antwoord(${i},'uniek',false,this)">Nee</button>
+      </div>
+      <div class="vraag">3. Wat is het profiel van de minst complexe (getoetste) partij?</div>
+      <div class="antwoorden">
+        <button onclick="antwoord(${i},'profiel','dist',this)">Distributie zonder veel toevoeging</button>
+        <button onclick="antwoord(${i},'profiel','prod',this)">Productie of dienst op kostenbasis</button>
+        <button onclick="antwoord(${i},'profiel','anders',this)">Anders / gemengd</button>
+      </div>`}
+      <div class="vraag">${fin?'2':'4'}. Zijn er in <strong>${LAND[s.naar].naam}</strong> (het land dat de beloning ontvangt) mensen die de risico's van deze transactie feitelijk beheersen?</div>
+      <div class="antwoorden">
+        <button onclick="antwoord(${i},'beheers',true,this)">Ja</button>
+        <button onclick="antwoord(${i},'beheers',false,this)">Nee / weet niet</button>
+      </div>
+      <div class="vraag">${fin?'3':'5'}. Worden op deze stroom periodieke verrekenprijscorrecties (year-end adjustments) verwacht om de marge op het beleidsniveau te brengen?</div>
+      <div class="antwoorden">
+        <button onclick="antwoord(${i},'yec',true,this)">Ja</button>
+        <button onclick="antwoord(${i},'yec',false,this)">Nee</button>
+      </div>
+    </div>`;
+  }).join('');
+  checkKlaar();
+}
+function antwoord(i, sleutel, waarde, el){
+  if(!state.antwoorden[i]) state.antwoorden[i] = {};
+  state.antwoorden[i][sleutel] = waarde;
+  el.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('gekozen'));
+  el.classList.add('gekozen');
+  checkKlaar();
+}
+function stroomCompleet(i){
+  const s = state.stromen[i], a = state.antwoorden[i] || {};
+  if(s.type === 'financieel') return 'echtelening' in a && 'beheers' in a && 'yec' in a;
+  return 'cup' in a && 'uniek' in a && 'profiel' in a && 'beheers' in a && 'yec' in a;
+}
+function klaarVoorOverzicht(){
+  return state.omzet && state.stromen.length > 0 && state.stromen.every((s,i) => stroomCompleet(i));
+}
+function checkKlaar(){ document.getElementById('naar-4').disabled = !klaarVoorOverzicht(); }
+
+/* ---------- Beslislogica (TPG hoofdstuk II / flowchart stap 3) ---------- */
+function methodeVoor(i){
+  const s = state.stromen[i], a = state.antwoorden[i];
+  if(s.type === 'financieel'){
+    return a.echtelening
+      ? { m:'CUP (rente-benchmark)', r:"Financiële transacties worden geprijsd op basis van de kredietwaardigheid van de debiteur, doorgaans met een CUP op rentetarieven (TPG hoofdstuk X)." }
+      : { m:'Eerst herkwalificatie toetsen', r:"Als de lening naar omvang of voorwaarden geen echte lening is, kan zij (deels) als kapitaal worden afgebakend; pas daarna volgt de prijs (TPG hoofdstuk X)." };
+  }
+  if(a.cup) return { m:'CUP', r:'Er is een bruikbare vergelijkbare marktprijs; bij gelijke betrouwbaarheid gaat de CUP voor op elke andere methode (TPG par. 2.3).' };
+  if(a.uniek) return { m:'Profit split', r:'Beide partijen leveren unieke en waardevolle bijdragen of werken sterk geïntegreerd; een eenzijdige methode doet daar geen recht aan (TPG par. 2.4).' };
+  if(a.profiel === 'dist'){
+    const land = LAND[s.naar], vanland = LAND[s.van];
+    const ab = (s.type === 'goederen') ? amountBNoot(vanland, land) : '';
+    return { m:'Resale price of TNMM', r:'De getoetste partij is een routinedistributeur: verkoopprijs minus zakelijke marge (resale price) of een netto-margevergelijking (TNMM).' + ab };
+  }
+  if(a.profiel === 'prod') return { m:'Cost plus of TNMM', r:'De getoetste partij werkt op kostenbasis (loon-/contractproductie of routinedienst): kosten plus zakelijke opslag, of TNMM op nettoniveau.' };
+  return { m:'TNMM', r:'Zonder bruikbare CUP, uniek tweezijdig profiel of duidelijk routineprofiel is de TNMM in de praktijk de meest toepasbare methode; onderbouw de keuze expliciet (TPG par. 2.2).' };
+}
+function amountBNoot(vanland, land){
+  const check = l => l.amountB.startsWith('Ja') ? 'past de vereenvoudigde benadering toe' :
+                 (l.amountB.startsWith('Nee') ? 'past haar niet toe' :
+                 (l.amountB.includes('onbekend') ? 'heeft geen bekende positie (verouderd profiel, zie regimepaneel)' : 'heeft een tussenpositie (zie regimepaneel)'));
+  return ` Let op Amount B voor routinedistributie: ${vanland.naam} ${check(vanland)}, ${land.naam} ${check(land)}.`;
+}
+function docNoot(){
+  if(state.omzet === 'groot') return 'Boven € 750 mln groepsomzet: houd rekening met alle drie de lagen (master file, local file en het Country-by-Country Report, CbCR) in elk betrokken land, plus in de EU public CbCR (bij die omzet in twee opeenvolgende boekjaren).';
+  if(state.omzet === 'midden') return 'Tussen € 50 en 750 mln groepsomzet: gestandaardiseerde master file- en local file-plichten (of vergelijkbare documentatie-eisen) zijn in veel landen aan de orde; de drempels verschillen per land; CbCR niet.';
+  return 'Onder € 50 mln groepsomzet: de gestandaardiseerde lagen gelden meestal niet, maar de basisplicht om prijzen te onderbouwen geldt vrijwel overal (in Nederland art. 8b lid 3 Wet Vpb).';
+}
+
+/* ---------- Fase 4: overzicht ---------- */
+function renderOverzicht(){
+  const wrap = document.getElementById('overzicht');
+  let html = '';
+  state.stromen.forEach((s,i) => {
+    const u = methodeVoor(i);
+    html += `
+    <div class="uitkomst-kaart">
+      <div class="uk-kop"><span class="sr-type t-${s.type}" style="font-size:9px;border-radius:4px;padding:2px 7px">${TYPENAAM[s.type]}</span> ${LAND[s.van].naam} → ${LAND[s.naar].naam}</div>
+      <div class="uk-methode">${u.m}</div>
+      <div class="uk-reden">${u.r}</div>
+    </div>`;
+    const a = state.antwoorden[i];
+    if(a && a.beheers === false){
+      html += `<div class="signaal"><strong>Signaal (de grens):</strong> de beloning van deze stroom landt in ${LAND[s.naar].naam}, maar daar lijken geen mensen te zitten die de risico's feitelijk beheersen. Sinds BEPS volgt de winst de werkelijke waardecreatie: papier zonder gedrag is precies waar toezichthouders op letten (zie de flowchart, kolom 2, stap 4).</div>`;
+    }
+    if(a && a.echtelening === false){
+      html += `<div class="signaal"><strong>Signaal:</strong> twijfel of de financiering een echte lening is raakt eerst de afbakening (lening of kapitaal) en pas daarna de prijs; de renteaftrek kan in zoverre vervallen.</div>`;
+    }
+    if(a && a.yec === true){
+      const btwTekst = (s.type === 'goederen')
+        ? `periodieke correcties op deze goederenstroom zijn voor de btw mogelijk prijsaanpassingen van eerdere leveringen (HvJ EU, Stellantis Portugal, C-603/24): denk aan correctiefacturen en aangepaste aangiften en listings, en bij invoer van buiten de EU aan de douanewaarde en invoerrechten. Is de correctie contractueel een vergoeding voor een aparte dienst, dan kan zij btw-belast zijn (HvJ EU, Arcomet Towercranes, C-726/23); is zij louter winsttoerekening zonder verband met concrete prestaties, dan blijft zij buiten de btw (kader AG Kokott; EU VAT Expert Group 2018). Documenteer de gekozen kwalificatie.`
+        : `een periodieke correctie die als vergoeding voor een intragroepsdienst is ingericht kan btw-belast zijn (HvJ EU, Arcomet Towercranes, C-726/23); een correctie die de prijs van eerdere prestaties aanpast vergt correctiefacturen en aangepaste aangiften (HvJ EU, Stellantis Portugal, C-603/24); louter winsttoerekening zonder verband met concrete prestaties blijft buiten de btw (kader AG Kokott; EU VAT Expert Group 2018). De contractuele vastlegging is beslissend; documenteer de gekozen kwalificatie.`;
+      html += `<div class="signaal"><strong>Btw &amp; douane:</strong> ${btwTekst} Zie de <a href="transfer-pricing.html" style="color:#7A3200;font-weight:700">flowchart</a>, kolom 2, stap 2.</div>`;
+    }
+  });
+  html += `<div class="land-uitkomst"><div class="lu-naam">Documentatie</div><div class="lu-detail">${docNoot()}</div></div>`;
+  state.landen.forEach(id => {
+    const l = LAND[id];
+    html += `<div class="land-uitkomst">
+      <div class="lu-naam">${l.naam} <span class="vlagje${l.geverifieerd?' ok':''}">${l.geverifieerd?'geverifieerd':'nog niet geverifieerd'}</span></div>
+      <div class="lu-detail"><strong>Grondslag:</strong> ${l.grondslag}<br><strong>Documentatie:</strong> ${l.documentatie}<br><span class="regime-knop" onclick="openLand('${l.id}')">volledig regimepaneel</span></div>
+    </div>`;
+  });
+  wrap.innerHTML = html;
+}
+
+/* ---------- Land-paneel ---------- */
+function openLand(id){
+  const l = LAND[id];
+  document.getElementById('lm-titel').textContent = l.naam;
+  document.getElementById('lm-kicker').innerHTML = `Transfer pricing-regime · OECD-profiel ${l.profiel} · <span class="vlagje${l.geverifieerd?' ok':''}" style="vertical-align:1px">${l.geverifieerd?'geverifieerd':'nog niet geverifieerd'}</span>`;
+  document.getElementById('lm-inhoud').innerHTML = [
+    ['Wettelijke grondslag', l.grondslag],
+    ['Status OESO-richtlijnen (TPG)', l.tpg],
+    ['Methoden', l.methoden],
+    ['Documentatie', l.documentatie],
+    ['Amount B', l.amountB],
+    ['Safe harbours en vereenvoudigingen', l.safeHarbours],
+    ['Zekerheid vooraf en geschillen', l.apa]
+  ].map(([k,v]) => `<div class="regime-veld"><div class="rv-label">${k}</div><div class="rv-tekst">${v}</div></div>`).join('');
+  document.getElementById('land-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function sluitLand(){
+  document.getElementById('land-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('land-modal').addEventListener('click', function(e){ if(e.target === this) sluitLand(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') sluitLand(); });
+
+renderLandenlijst();
+</script>
+
+<style>
+.uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
+.uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
+.uitleg-trigger::-webkit-details-marker{display:none}
+.uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+.uitleg-wrap[open] > .uitleg-trigger::after{content:"\2212"}
+.uitleg-body{padding:24px 0 8px}
+.uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+.uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
+.uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item:last-of-type{border-bottom:none}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+@media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
+</style>
+
+<section class="uitleg-sectie">
+<details class="uitleg-wrap">
+<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
+<div class="uitleg-body">
+<p class="kicker">Achtergrond</p>
+<h2>Wat doet de flowtool transfer pricing?</h2>
+<p>De flowtool vertaalt de TRNKL-flowchart transfer pricing naar een interactieve werkvorm. Je begint bij een draaibare wereldbol, kiest op de kaart of in de lijst de landen die in de concernstructuur zitten, en trekt vervolgens de transactiestromen ertussen: goederen, diensten, immaterieel (licenties en ander intellectueel eigendom, IP), financieel (leningen, cash pooling, garanties) of kostendeling. Per gekozen land toont de tool het transfer pricing-regime uit het officiële OECD Transfer Pricing Country Profile: de wettelijke grondslag van het zakelijkheidsbeginsel, de status van de OESO-richtlijnen, de documentatieplichten met drempels, de Amount B-positie en de beschikbare vormen van zekerheid vooraf. Daarna beantwoord je per stroom een korte reeks vragen over de transactie en het functieprofiel van de partijen. De tool volgt daarbij de selectielogica van hoofdstuk II van de OECD Transfer Pricing Guidelines en wijst de meest geschikte verrekenprijsmethode aan: CUP, resale price, cost plus, TNMM of profit split.</p>
+
+<p>Het overzicht sluit af met de analytische laag uit de flowchart: signaalvlaggen waar een structuur gaat knellen, bijvoorbeeld wanneer de beloning landt in een land waar niemand de risico's feitelijk beheerst, en een btw- en douane-aandachtspunt bij stromen met periodieke verrekenprijscorrecties (naar de arresten Arcomet en Stellantis Portugal van het Hof van Justitie van de EU). De kennisbank bevat alle 83 jurisdicties waarvoor de OESO een profiel publiceert; elk land draagt een label dat aangeeft of de samenvatting al handmatig is gecontroleerd tegen het originele OECD-profiel, en toont de datum van het gebruikte profiel. De tool is educatief en geen fiscaal advies: hij laat zien hoe methodekeuze en verplichtingen uit het stelsel volgen, zodat de logica navolgbaar wordt. Vaste inrichtingen (filialen zonder eigen rechtspersoon) vallen buiten de tool; de winsttoerekening daaraan behandelt de flowchart in de grondslag-modal.</p>
+<h2 class="faq-kop">Veelgestelde vragen</h2>
+<details class="faq-item"><summary>Wat is de flowtool transfer pricing?</summary><div class="antwoord">Een interactieve tool waarmee je een transfer pricing-structuur nabouwt op een wereldkaart: je kiest de landen die in de concernstructuur zitten, trekt transactiestromen tussen die landen (goederen, diensten, IP, financieel of kostendeling) en beantwoordt per stroom een korte reeks vragen. De tool wijst dan de meest geschikte OESO-verrekenprijsmethode aan, toont per land het transfer pricing-regime en de documentatieplichten, en signaleert waar een structuur analytisch gaat knellen. De inhoudelijke basis is de TRNKL-flowchart transfer pricing.</div></details>
+<details class="faq-item"><summary>Waar komt de landeninformatie vandaan?</summary><div class="antwoord">Uit de officiële OECD Transfer Pricing Country Profiles, die per land door de belastingdienst zelf worden ingevuld en door de OESO worden gepubliceerd. Per land toont de tool de wettelijke grondslag van het zakelijkheidsbeginsel, de status van de OESO-richtlijnen, de documentatieplichten, de Amount B-positie en de beschikbare vormen van zekerheid vooraf, met de datum van het gebruikte profiel erbij. De kennisbank bevat alle 83 jurisdicties waarvoor de OESO een profiel publiceert; per land is zichtbaar of de samenvatting al handmatig is gecontroleerd en van wanneer het profiel dateert.</div></details>
+<details class="faq-item"><summary>Is de uitkomst van de tool een advies?</summary><div class="antwoord">Nee. De tool is educatief: hij laat zien hoe de methodekeuze en de documentatieplichten uit het OESO-stelsel volgen uit de kenmerken van een transactie, en waar toezichthouders op letten. De uitkomst is een startpunt om het stelsel te begrijpen, geen fiscaal advies en geen vervanging van een eigen analyse of een adviseur. Verrekenprijzen vergen altijd een beoordeling van de concrete feiten.</div></details>
+<details class="faq-item"><summary>Wat betekent het verificatielabel bij een land?</summary><div class="antwoord">De landenprofielen worden in twee stappen verwerkt: eerst wordt de informatie uit het OECD-profiel geëxtraheerd, daarna wordt elke samenvatting handmatig gecontroleerd tegen het originele profiel. Zolang die tweede stap voor een land nog niet is afgerond, draagt het een zichtbaar label. Zo is altijd duidelijk welke informatie de volledige controle heeft doorlopen en welke nog niet.</div></details>
+<details class="faq-item"><summary>Houdt de tool rekening met btw en douane?</summary><div class="antwoord">Ja, als aandachtspunt. De vragenmodule vraagt per transactiestroom of periodieke verrekenprijscorrecties (year-end adjustments) worden verwacht. Zo ja, dan wijst het overzicht op de btw- en douanekant, gebaseerd op de arresten Arcomet Towercranes (C-726/23) en Stellantis Portugal (C-603/24) van het Hof van Justitie van de EU: een correctie kan een btw-belaste dienst zijn, een prijsaanpassing van eerdere leveringen (met correctiefacturen, aangepaste aangiften en bij invoer van buiten de EU een gewijzigde douanewaarde), of buiten de btw blijven wanneer zij louter winst toerekent zonder verband met concrete prestaties. De inhoudelijke uitleg staat in de flowchart transfer pricing.</div></details>
+<details class="faq-item"><summary>Welke transfer pricing-methode kiest de tool en waarom?</summary><div class="antwoord">De tool volgt de selectielogica van hoofdstuk II van de OECD Transfer Pricing Guidelines: is er een bruikbare marktprijs of interne vergelijkbare, dan de CUP-methode; leveren beide partijen unieke en waardevolle bijdragen, dan de profit split; is de getoetste partij een routinedistributeur, dan resale price of TNMM (met Amount B als het land dat toepast); werkt zij op kostenbasis, dan cost plus of TNMM; anders TNMM. Financiële transacties lopen via de CUP-route van hoofdstuk X. De tool beperkt zich tot deze vijf methoden, ook waar landen daarnaast andere methoden toestaan (zie daarvoor het regimepaneel per land).</div></details>
+</div>
+</details>
+</section>
+
+<footer class="site-footer">
+  <span class="fmark">TRNKL<span class="merkpunt"></span></span> &middot; Atelier voor kennis en beleid<br>
+  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a>
+</footer>
+
+</body>
+</html>
