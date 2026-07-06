@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Tekst- en datamining voorbehouden (art. 15o Aw / art. 4 lid 3 Richtlijn (EU) 2019/790).
+# Machine-leesbaar gebruik uitsluitend onder licentie: zie https://trnkl.nl/disclaimer.html
+
 Sitemap: https://trnkl.nl/sitemap.xml
