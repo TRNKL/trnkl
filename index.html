@@ -120,10 +120,15 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 @media (prefers-color-scheme: dark) { .hero-logo .bl-sub { color: var(--text-secondary); } }
 .hero h1 { font-size: 38px; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 18px; max-width: 720px; }
 .hero p.lede { font-size: 17px; color: var(--text-secondary); max-width: 680px; line-height: 1.6; }
+.hero-banner { margin-top: 24px; max-width: 680px; background: var(--orange-light); border: 0.5px solid var(--orange-border); border-radius: 10px; padding: 12px 16px; display: flex; gap: 12px; align-items: baseline; }
+.hero-banner .banner-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-text); white-space: nowrap; }
+.hero-banner .banner-tekst { font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); }
+.hero-banner a { color: var(--orange-text); font-weight: 600; }
 @media (max-width: 560px) {
   .hero-logo .bl-mark { font-size: 46px; }
   .hero h1 { font-size: 28px; }
   .hero p.lede { font-size: 15px; }
+  .hero-banner { flex-direction: column; gap: 6px; }
 }
 
 /* Secties */
@@ -196,6 +201,10 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
     </div>
     <h1>Kennis van recht en beleid, navolgbaar gemaakt.</h1>
     <p class="lede"><span class="accent">TRNKL<span class="merkpunt"></span></span> werkt complexe regelgeving en politieke afspraken stap voor stap uit, herleidbaar tot de bron. Dat gebeurt in drie vormen: flowcharts, flowtools en dashboards.</p>
+    <div class="hero-banner">
+      <span class="banner-label">Binnenkort</span>
+      <span class="banner-tekst">De TRNKL-kennisserver: koppel je eigen AI-assistent rechtstreeks aan onze kennisbank, met bron en peildatum bij elk antwoord. <a href="mailto:info@trnkl.nl?subject=TRNKL-kennisserver">Op de hoogte blijven</a></span>
+    </div>
   </div>
 </section>
 
