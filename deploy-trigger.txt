@@ -1,0 +1,1 @@
+Deploy trigger 2026-07-09 11:xx — geforceerde herdeploy na mislukte GitHub Pages runner (ed3252a). Dit bestand is inert en mag later verwijderd worden.
