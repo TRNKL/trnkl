@@ -938,14 +938,6 @@ function gaNaarFase(f){
   if (f === 3) renderAnalyse();
   if (f === 4) renderOverzicht();
   tekenKaart();
-  // Na een stapwissel bovenaan de nieuwe stap beginnen; mobiel bleef anders halverwege staan.
-  const toolEl = document.getElementById('tool');
-  if (toolEl){
-    const hdr = document.querySelector('header');
-    const marge = (hdr ? hdr.offsetHeight : 70) + 12;
-    const y = toolEl.getBoundingClientRect().top + window.pageYOffset - marge;
-    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-  }
 }
 function printOverzicht(){
   gaNaarFase(4);
