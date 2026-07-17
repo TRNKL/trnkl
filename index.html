@@ -143,6 +143,9 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 /* Productkaarten */
 .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 640px) { .product-grid { grid-template-columns: 1fr; } }
+.rubriek-kop { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.09em; margin: 34px 0 12px; padding-top: 20px; border-top: 1px solid var(--border-light); }
+.rubriek-kop.eerst { margin-top: 6px; padding-top: 0; border-top: none; }
+.rubriek-intro { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; margin: -4px 0 14px; max-width: 680px; }
 .product-card {
   display: flex; flex-direction: column;
   background: var(--bg-secondary); border: 1px solid var(--border-light);
@@ -215,6 +218,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
     <div class="section-eyebrow">Vorm één</div>
     <h2 class="section-title">Flowcharts</h2>
     <p class="section-lede">Een flowchart werkt een wet of regeling stap voor stap uit: welke verplichting geldt wanneer, en wat dat betekent voor de onderneming die eronder valt. Bij elke stap staat operationeel en strategisch advies. De flowcharts zijn gebaseerd op bestaande en toekomstige wet- en regelgeving.</p>
+    <div class="rubriek-kop eerst">Wwft &amp; AMLR &middot; de poortwachterspraktijk</div>
     <div class="product-grid">
       <a href="flowcharts/artikel17a-wwft.html" class="product-card">
         <div class="card-label">Art. 17a Wwft</div>
@@ -228,6 +232,105 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-desc">Het oprichten van een partnerschap voor informatie-uitwisseling onder de nieuwe Europese antiwitwasverordening. Met wetsanalyse, kritisch commentaar en operationeel, strategisch en governance-advies voor banken.</div>
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
+      <a href="flowcharts/opzegging-bankrelatie.html" class="product-card">
+        <div class="card-label">Wwft &middot; ABV &middot; 6:248 lid 2 BW</div>
+        <div class="card-title">Opzegging van de bankrelatie</div>
+        <div class="card-desc">Wanneer een bank de relatie mag of moet be&euml;indigen als het cli&euml;ntenonderzoek niet rondkomt, uitgewerkt vanuit beide kanten: de klant die zijn rekening wil houden en de bank die moet kiezen. Met de factorencatalogus uit de rechtspraak 2020&ndash;2026, de zorgvuldigheidseisen aan de vragenronde, de registers (IVR/EVR) en de mitigatieladder, plus de open rechtsvraag over de plichtopzegging en de overgang naar de AMLR.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+    </div>
+
+    <div class="rubriek-kop">FCTA-reeks &middot; de veertien dreigingscategorie&euml;n</div>
+    <p class="rubriek-intro">De Financial Crime Threat Assessment 2026 van de Nederlandse banken onderscheidt veertien categorie&euml;n van financieel-economische criminaliteit. TRNKL werkt ze alle veertien uit tot afzonderlijke flowcharts: per categorie de dreiging in kaart, met daartegenover de poortwachtersrol.</p>
+    <div class="product-grid">
+      <a href="flowcharts/witwassen-contant-geld.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 1 &middot; Wwft &middot; art. 420bis Sr</div>
+        <div class="card-title">Witwassen via contant geld: de dreiging en de regels</div>
+        <div class="card-desc">Fysiek geld laat nauwelijks sporen na. Zes modi operandi, van het mengen van omzet in contant-intensieve ondernemingen tot smurfen, white-label-geldautomaten en het cash compensatie model, met daartegenover de Nederlandse cijfers (NRA, FIU, OM) en het instrumentarium: het contantverbod van artikel 1f Wwft, de AMLC-indicatoren en de meldplicht van artikel 16 Wwft. Met vooruitblik: de Europese cashlimiet van 10.000 euro per 10 juli 2027.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-kansspelen.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 2</div>
+        <div class="card-title">Witwassen via kansspelen en online casino's: de dreiging en de regels</div>
+        <div class="card-desc">Hoe crimineel geld via casino's en gokplatforms wit wordt: cash-in/cash-out, junkets en cryptocasino's, plus Ksa-cijfers, Wwft-meldplicht en AMLR.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-waardevolle-goederen.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 3</div>
+        <div class="card-title">Witwassen via waardevolle goederen en grondstoffen: de dreiging en de regels</div>
+        <div class="card-desc">Hoe crimineel geld verdwijnt in goud, kunst en luxegoederen: de modi operandi, het NRA-risicobeeld, de cashlimiet en het toezicht op handelaren.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-handelsnetwerken.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 4</div>
+        <div class="card-title">Witwassen via illegale handels- en transportnetwerken: de dreiging en de aanpak</div>
+        <div class="card-desc">Hoe criminele netwerken mainports, bonded warehouses en pakketstromen misbruiken om geld te verplaatsen: corruptie, bulkcash, hawala en de aanpak in de havens.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-vastgoed.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 5</div>
+        <div class="card-title">Witwassen via vastgoed: de dreiging en de regels</div>
+        <div class="card-desc">Hoe crimineel geld de vastgoedmarkt binnendringt: ABC-transacties, hypotheekfraude, stromannen en huurconstructies, plus meldkloof, toezicht en UBO-regels.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/ondergronds-bankieren.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 6</div>
+        <div class="card-title">Ondergronds bankieren en informele waardeoverdracht: de dreiging en de regels</div>
+        <div class="card-desc">Hoe ondergronds bankieren en hawala werken: brokernetwerken, cash-pools, crypto en verrekening, plus vergunningplicht, meldplicht en toezicht.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/trade-based-money-laundering.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 7</div>
+        <div class="card-title">Trade-based money laundering: de dreiging en de regels</div>
+        <div class="card-desc">Hoe crimineel geld in handelsstromen verdwijnt: mis-invoicing, spookzendingen, shellbedrijven en third-party betalingen, plus TBML-indicatoren en meldplicht.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/geldezels-facilitators.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 8</div>
+        <div class="card-title">Professionele facilitators en geldezelnetwerken: witwassen als dienst</div>
+        <div class="card-desc">Hoe facilitators en geldezelnetwerken witwassen als dienst leveren: structuren op bestelling, werving via social media, cijfers, poortwachtersnormen, red flags.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-vennootschapsstructuren.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 9</div>
+        <div class="card-title">Witwassen via vennootschapsstructuren: de dreiging en de regels</div>
+        <div class="card-desc">Hoe criminelen vennootschappen, trusts en STAK's misbruiken om geld wit te wassen: shell-netwerken, valse facturen en UBO-verhulling, plus kader en indicatoren.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-jurisdictie-arbitrage.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 10</div>
+        <div class="card-title">Witwassen via jurisdictie-arbitrage: de dreiging en de regels</div>
+        <div class="card-desc">Hoe crimineel geld gaten tussen jurisdicties benut: offshore structuren, zwakke AML-landen en schijnarbitrage, plus landenlijsten en verscherpt onderzoek.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/terrorismefinanciering.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 11 &middot; Art. 421 Sr &middot; Wwft &middot; FATF</div>
+        <div class="card-title">Terrorismefinanciering: regels, risico's en de poortwachter</div>
+        <div class="card-desc">Witwassen draait om herkomst, terrorismefinanciering om bestemming: de bron kan legaal zijn en het bedrag klein. Het kader van VN-verdrag, FATF-aanbevelingen en EU-hoogrisicolijst tot Wwft en artikel 421 Sr, het Nederlandse risicobeeld (NRA, dreigingsbeeld, FIU-cijfers) en de poortwachtersrol: cli&euml;ntenonderzoek, terrorismelijst-screening, landenrisico, detectie van kleine bedragen en de melding op de subjectieve indicator. Met het AMLR-blok: wat verandert er per 10 juli 2027.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/sancties.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 12 &middot; Sanctiewet &middot; art. 215 VWEU &middot; OFAC</div>
+        <div class="card-title">Sancties: vier regimes, twee vuren en de poortwachter</div>
+        <div class="card-desc">Het sanctiekader van VN, EU, VS en VK in twee sporen: de verboden (bevriezing, beschikbaarstelling, de Amerikaanse 50%-regel tegenover de Europese zeggenschapstoets) en de poortwachtersrol (screening, UBO-toets, rode vlaggen, documentatie en escalatie). Met het dilemma van de blokkeringsverordening, de strafbaarstelling van omzeiling en de AMLR-sanctietoets die vanaf 10 juli 2027 in het cli&euml;ntenonderzoek komt.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-virtuele-activa.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 13</div>
+        <div class="card-title">Witwassen via virtuele activa: de dreiging en de regels</div>
+        <div class="card-desc">Hoe crimineel geld via crypto wit wordt: mixers, chain-hopping en cash-out, plus MiCAR, travel rule, meldplicht en het AMLR-verbod op privacycoins.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+      <a href="flowcharts/witwassen-effecten-kapitaalmarkten.html" class="product-card">
+        <div class="card-label">FCTA-reeks &middot; deel 14</div>
+        <div class="card-title">Witwassen via effecten en kapitaalmarkten: de dreiging en de regels</div>
+        <div class="card-desc">Hoe crimineel geld via effecten wit wordt: omnibus-custody, wash trading, FOP-settlements en dividendstripping, plus cijfers, Wwft, MAR en detectie.</div>
+        <div class="card-cta">Open de flowchart &rarr;</div>
+      </a>
+    </div>
+
+    <div class="rubriek-kop">Sectorbeelden &middot; zorg, agrifood &amp; fiscaal</div>
+    <div class="product-grid">
       <a href="flowcharts/integriteit-zorg.html" class="product-card">
         <div class="card-label">Wmo 2015 &middot; Jeugdwet</div>
         <div class="card-title">Integriteitsrisico&rsquo;s in de gemeentelijk gefinancierde zorg</div>
@@ -252,108 +355,8 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-desc">Het stelsel achter verrekenprijzen in twee fasen: de prijs bepalen (afbakening, functionele analyse en DEMPE, de vijf OESO-methoden, benchmarken en Amount B) en de prijs verantwoorden (documentatie, jaarrekening, APA's, correcties en geschillen). Met de btw- en douanekant van correcties, aandachtspunten per sector en de grens tussen planning en misbruik.</div>
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
-      <a href="flowcharts/opzegging-bankrelatie.html" class="product-card">
-        <div class="card-label">Wwft &middot; ABV &middot; 6:248 lid 2 BW</div>
-        <div class="card-title">Opzegging van de bankrelatie</div>
-        <div class="card-desc">Wanneer een bank de relatie mag of moet be&euml;indigen als het cli&euml;ntenonderzoek niet rondkomt, uitgewerkt vanuit beide kanten: de klant die zijn rekening wil houden en de bank die moet kiezen. Met de factorencatalogus uit de rechtspraak 2020&ndash;2026, de zorgvuldigheidseisen aan de vragenronde, de registers (IVR/EVR) en de mitigatieladder, plus de open rechtsvraag over de plichtopzegging en de overgang naar de AMLR.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-      <a href="flowcharts/witwassen-contant-geld.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 1 &middot; Wwft &middot; art. 420bis Sr</div>
-        <div class="card-title">Witwassen via contant geld: de dreiging en de regels</div>
-        <div class="card-desc">Fysiek geld laat nauwelijks sporen na. Zes modi operandi, van het mengen van omzet in contant-intensieve ondernemingen tot smurfen, white-label-geldautomaten en het cash compensatie model, met daartegenover de Nederlandse cijfers (NRA, FIU, OM) en het instrumentarium: het contantverbod van artikel 1f Wwft, de AMLC-indicatoren en de meldplicht van artikel 16 Wwft. Met vooruitblik: de Europese cashlimiet van 10.000 euro per 10 juli 2027.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-kansspelen.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 2</div>
-        <div class="card-title">Witwassen via kansspelen en online casino's: de dreiging en de regels</div>
-        <div class="card-desc">Hoe crimineel geld via casino's en gokplatforms wit wordt: cash-in/cash-out, junkets en cryptocasino's, plus Ksa-cijfers, Wwft-meldplicht en AMLR.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-waardevolle-goederen.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 3</div>
-        <div class="card-title">Witwassen via waardevolle goederen en grondstoffen: de dreiging en de regels</div>
-        <div class="card-desc">Hoe crimineel geld verdwijnt in goud, kunst en luxegoederen: de modi operandi, het NRA-risicobeeld, de cashlimiet en het toezicht op handelaren.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-handelsnetwerken.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 4</div>
-        <div class="card-title">Witwassen via illegale handels- en transportnetwerken: de dreiging en de aanpak</div>
-        <div class="card-desc">Hoe criminele netwerken mainports, bonded warehouses en pakketstromen misbruiken om geld te verplaatsen: corruptie, bulkcash, hawala en de aanpak in de havens.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-vastgoed.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 5</div>
-        <div class="card-title">Witwassen via vastgoed: de dreiging en de regels</div>
-        <div class="card-desc">Hoe crimineel geld de vastgoedmarkt binnendringt: ABC-transacties, hypotheekfraude, stromannen en huurconstructies, plus meldkloof, toezicht en UBO-regels.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/ondergronds-bankieren.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 6</div>
-        <div class="card-title">Ondergronds bankieren en informele waardeoverdracht: de dreiging en de regels</div>
-        <div class="card-desc">Hoe ondergronds bankieren en hawala werken: brokernetwerken, cash-pools, crypto en verrekening, plus vergunningplicht, meldplicht en toezicht.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/trade-based-money-laundering.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 7</div>
-        <div class="card-title">Trade-based money laundering: de dreiging en de regels</div>
-        <div class="card-desc">Hoe crimineel geld in handelsstromen verdwijnt: mis-invoicing, spookzendingen, shellbedrijven en third-party betalingen, plus TBML-indicatoren en meldplicht.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/geldezels-facilitators.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 8</div>
-        <div class="card-title">Professionele facilitators en geldezelnetwerken: witwassen als dienst</div>
-        <div class="card-desc">Hoe facilitators en geldezelnetwerken witwassen als dienst leveren: structuren op bestelling, werving via social media, cijfers, poortwachtersnormen, red flags.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-vennootschapsstructuren.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 9</div>
-        <div class="card-title">Witwassen via vennootschapsstructuren: de dreiging en de regels</div>
-        <div class="card-desc">Hoe criminelen vennootschappen, trusts en STAK's misbruiken om geld wit te wassen: shell-netwerken, valse facturen en UBO-verhulling, plus kader en indicatoren.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-jurisdictie-arbitrage.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 10</div>
-        <div class="card-title">Witwassen via jurisdictie-arbitrage: de dreiging en de regels</div>
-        <div class="card-desc">Hoe crimineel geld gaten tussen jurisdicties benut: offshore structuren, zwakke AML-landen en schijnarbitrage, plus landenlijsten en verscherpt onderzoek.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-      <a href="flowcharts/terrorismefinanciering.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 11 &middot; Art. 421 Sr &middot; Wwft &middot; FATF</div>
-        <div class="card-title">Terrorismefinanciering: regels, risico's en de poortwachter</div>
-        <div class="card-desc">Witwassen draait om herkomst, terrorismefinanciering om bestemming: de bron kan legaal zijn en het bedrag klein. Het kader van VN-verdrag, FATF-aanbevelingen en EU-hoogrisicolijst tot Wwft en artikel 421 Sr, het Nederlandse risicobeeld (NRA, dreigingsbeeld, FIU-cijfers) en de poortwachtersrol: cli&euml;ntenonderzoek, terrorismelijst-screening, landenrisico, detectie van kleine bedragen en de melding op de subjectieve indicator. Met het AMLR-blok: wat verandert er per 10 juli 2027.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-      <a href="flowcharts/sancties.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 12 &middot; Sanctiewet &middot; art. 215 VWEU &middot; OFAC</div>
-        <div class="card-title">Sancties: vier regimes, twee vuren en de poortwachter</div>
-        <div class="card-desc">Het sanctiekader van VN, EU, VS en VK in twee sporen: de verboden (bevriezing, beschikbaarstelling, de Amerikaanse 50%-regel tegenover de Europese zeggenschapstoets) en de poortwachtersrol (screening, UBO-toets, rode vlaggen, documentatie en escalatie). Met het dilemma van de blokkeringsverordening, de strafbaarstelling van omzeiling en de AMLR-sanctietoets die vanaf 10 juli 2027 in het cli&euml;ntenonderzoek komt.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-virtuele-activa.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 13</div>
-        <div class="card-title">Witwassen via virtuele activa: de dreiging en de regels</div>
-        <div class="card-desc">Hoe crimineel geld via crypto wit wordt: mixers, chain-hopping en cash-out, plus MiCAR, travel rule, meldplicht en het AMLR-verbod op privacycoins.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
-
-      <a href="flowcharts/witwassen-effecten-kapitaalmarkten.html" class="product-card">
-        <div class="card-label">FCTA-reeks &middot; deel 14</div>
-        <div class="card-title">Witwassen via effecten en kapitaalmarkten: de dreiging en de regels</div>
-        <div class="card-desc">Hoe crimineel geld via effecten wit wordt: omnibus-custody, wash trading, FOP-settlements en dividendstripping, plus cijfers, Wwft, MAR en detectie.</div>
-        <div class="card-cta">Open de flowchart &rarr;</div>
-      </a>
     </div>
+
     <div class="flow-cta">
       <h3>Flowcharts op maat</h3>
       <p>Een wet of regeling die navolgbaar moet worden? <span class="accent">TRNKL<span class="merkpunt"></span></span> werkt die stap voor stap uit in een flowchart, met operationeel en strategisch advies.</p>
