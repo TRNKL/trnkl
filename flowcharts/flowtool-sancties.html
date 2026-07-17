@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+<base target="_blank" rel="noopener noreferrer">
+<title>Sanctiescreening per land: flowtool sancties met wereldkaart | TRNKL</title>
+<link rel="canonical" href="https://trnkl.nl/flowcharts/flowtool-sancties.html">
+<meta name="tdm-reservation" content="1">
+<meta name="tdm-policy" content="https://trnkl.nl/disclaimer.html">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Flowtool sancties: toets je geldstromen op de wereldkaart",
+   "description": "Vink geldstromen aan op de wereldkaart en zie per land welke sancties gelden (VN, EU, VS, VK), het omzeilingsrisico via derde landen en de mitigerende documentatie.",
+   "inLanguage": "nl-NL",
+   "mainEntityOfPage": "https://trnkl.nl/flowcharts/flowtool-sancties.html",
+   "author": {
+    "@type": "Person",
+    "honorificPrefix": "mr.",
+    "name": "Toine Jorna",
+    "url": "https://trnkl.nl/",
+    "jobTitle": "Jurist en oprichter van TRNKL, atelier voor kennis en beleid",
+    "sameAs": [
+     "https://www.instagram.com/trnkl.nl/",
+     "https://www.linkedin.com/in/toine-jorna-b6543a58/"
+    ]
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "TRNKL",
+    "url": "https://trnkl.nl/"
+   },
+   "datePublished": "2026-07-17T09:00:00+02:00",
+   "dateModified": "2026-07-17T09:00:00+02:00"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "TRNKL",
+     "item": "https://trnkl.nl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Flowtool sancties: toets je geldstromen op de wereldkaart",
+     "item": "https://trnkl.nl/flowcharts/flowtool-sancties.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Wat doet de flowtool sancties?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Je bouwt op de wereldkaart de keten zoals de bank hem ziet: schakels kiezen (ook tussenschakels zonder eigen sancties, zoals België of Duitsland) en daartussen geld-, goederen- of dienstenstromen trekken, bijvoorbeeld Nederland naar België en België naar Servië. Per stroom toont de tool vier dingen: de sanctiestatus van de ontvangende schakel per regime (VN, EU, VS, VK), het doorlever- en omzeilingsrisico in de keten met de eindbestemming (end-user-beeld), de documentatie die het risico mitigeert, afgestemd op het stroomtype, en de verplichting die erbij hoort. Een apart paneel toont de signalen die na de transactie in transactiemonitoring kunnen opvallen. De tool is educatief en gericht op naleving; hij vergelijkt geen routes en geeft geen advies."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Waarom toont de tool ook landen zonder eigen sancties?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Omdat omzeiling juist via die landen loopt. Sinds de Ruslandpakketten verschuiven verboden goederenstromen naar doorvoerlanden: EU-handelsdata over de eerste tien maanden van 2025 toonden een stijging van circa 800 procent in de export van common high priority-goederen naar Kirgizië ten opzichte van 2022, en circa 1.200 procent in de doorvoer van diezelfde goederen van Kirgizië naar Rusland. Een geldstroom naar een land zonder sancties kan dus toch een sanctierisico dragen; de tool benoemt dat risico en de documentatie die het afdekt. Daarnaast geldt: de landenlijst dekt de landgebonden regimes, maar thematische sancties (terrorisme, cyber, mensenrechten, chemische wapens) raken personen en entiteiten in elk land. Naamscreening van de tegenpartij blijft daarom altijd nodig."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Welke documentatie vraagt een bank bij een sanctiegevoelige geldstroom?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Dat hangt af van het sanctietype. Bij listings: screeningsbewijs met datum en lijstversie, UBO-verklaring en een eigendoms- en zeggenschapsanalyse. Bij sectorale handelssancties: goederenclassificatie, end-user-verklaring, bewijs van eindbestemming en de no-Russia-clausule in het contract. Bij Amerikaanse embargo's: een OFAC-license of bewijs dat een VS-touchpoint ontbreekt, plus bij Cuba en Iran de toets aan de Europese blokkeringsverordening. Bij het olieprijsplafond: attestations en een schaduwvloot-check. De tool werkt dit per land uit, met peildatum per regel."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Slaat de tool mijn gegevens op?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nee. Alles gebeurt in de browser; er wordt niets verzonden of opgeslagen. Wil je het overzicht bewaren, print het dan of sla het via het printmenu op als PDF."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Hoe actueel is de landeninformatie?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Elke landregel draagt een eigen peildatum (bij lancering: 10 juli 2026). Sanctielijsten wijzigen meerdere keren per week; de tool wordt daarom maandelijks gecontroleerd tegen de officiële bronnen (VN Consolidated List, EU Sanctions Map, OFAC Recent Actions, UK Sanctions List). Voor een besluit is altijd de officiële lijst van dat moment leidend, niet deze tool."
+   }
+  }
+ ]
+}
+</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:site_name" content="TRNKL">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://trnkl.nl/flowcharts/flowtool-sancties.html">
+<meta property="og:image" content="https://trnkl.nl/assets/og/og-flowtool-sancties.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Vink geldstromen aan op de wereldkaart en zie per land welke sancties gelden (VN, EU, VS, VK), het omzeilingsrisico via derde landen en de mitigerende documentatie.">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flowtool sancties: geldstromen op de wereldkaart">
+<meta property="og:description" content="Interactieve casusbouwer · sanctiestatus per land (VN, EU, VS, VK) · omzeilingsrisico via buur- en derde landen · mitigerende documentatie per sanctietype · post-monitoringsignalen">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #faf9f4;
+    --bg-tertiary: #f5f4ee;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --border-light: rgba(0,0,0,0.10);
+    --border-mid: rgba(0,0,0,0.18);
+    --border-strong: rgba(0,0,0,0.28);
+    --land: #e9e7dd;
+    --land-rand: #c9c7bc;
+    --oranje: #FF5A1F;
+    --oranje-d: #C2410C;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c;
+      --bg-secondary: #2a2a27;
+      --bg-tertiary: #242422;
+      --text-primary: #e8e6de;
+      --text-secondary: #9c9a92;
+      --text-tertiary: #6b6960;
+      --border-light: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.22);
+      --land: #3a3a36;
+      --land-rand: #55554f;
+    }
+  }
+
+  body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
+
+  header {
+    background: var(--bg-primary); border-bottom: 0.5px solid var(--border-mid);
+    padding: 14px 24px; display: flex; align-items: center; gap: 16px;
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 0 0 100vmax var(--bg-primary); clip-path: inset(0 -100vmax);
+  }
+  .header-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .header-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+  .brand-mark { font-size: 21px; font-weight: 800; color: var(--oranje); letter-spacing: -0.03em; line-height: 1; text-decoration: none; white-space: nowrap; }
+  .brand-mark:hover { opacity: 0.7; }
+  .merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+  .header-rule { width: 1px; height: 26px; background: var(--border-mid); flex: 0 0 auto; }
+
+  .hero { max-width: 680px; margin: 0 auto; padding: 30px 24px 6px; text-align: center; }
+  .hero h1 { font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .hero .haak { font-size: 14px; font-weight: 700; color: var(--oranje-d); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+  .hero .lead { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+  @media (max-width: 600px) { .hero h1 { font-size: 22px; } }
+
+  /* ---------- Globe-intro ---------- */
+  .globe-sectie { display: flex; flex-direction: column; align-items: center; padding: 18px 24px 8px; }
+  #globe { cursor: grab; touch-action: none; max-width: 92vw; height: auto; }
+  #globe:active { cursor: grabbing; }
+  .globe-hint { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; text-align: center; }
+  .start-knop {
+    margin-top: 16px; background: var(--oranje); color: #fff; border: none; border-radius: 10px;
+    font-family: var(--font); font-size: 14px; font-weight: 700; padding: 12px 26px; cursor: pointer;
+    letter-spacing: .01em; transition: transform .12s, box-shadow .12s;
+  }
+  .start-knop:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(255,90,31,0.30); }
+
+  /* ---------- Tool ---------- */
+  .tool-wrap { max-width: 1060px; margin: 0 auto; padding: 8px 18px 20px; display: none; scroll-margin-top: 96px; }
+  .tool-wrap.actief { display: block; }
+
+  .stepper { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 14px 0 16px; }
+  .stap-chip {
+    display: flex; align-items: center; gap: 7px; border: 1.5px solid var(--border-mid); border-radius: 22px;
+    background: var(--bg-primary); padding: 7px 15px 7px 8px; cursor: pointer; user-select: none;
+    font-size: 12px; font-weight: 600; color: var(--text-secondary); transition: border-color .15s, color .15s;
+  }
+  .stap-chip .nr {
+    width: 21px; height: 21px; border-radius: 50%; background: var(--bg-tertiary); border: 1px solid var(--border-mid);
+    display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--text-tertiary);
+  }
+  .stap-chip.actief { border-color: var(--oranje); color: var(--text-primary); }
+  .stap-chip.actief .nr { background: #FFF1EA; border-color: var(--oranje); color: var(--oranje-d); }
+  .stap-chip.klaar .nr { background: #E1F5EE; border-color: #1D9E75; color: #085041; }
+
+  .tool-grid { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: start; }
+
+  .kaart-paneel { background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px; padding: 10px; position: relative; }
+  #kaart { width: 100%; height: auto; display: block; }
+  .peilstrip { max-width: 1060px; margin: 0 auto 12px; text-align: center; font-size: 10px; color: var(--text-tertiary); letter-spacing: .02em; }
+  .kaart-voetnoot { font-size: 10px; color: var(--text-tertiary); padding: 6px 6px 2px; line-height: 1.5; }
+  .kaart-fout { font-size: 12px; color: var(--text-secondary); padding: 22px 14px; text-align: center; display: none; line-height: 1.7; }
+
+  .zij-paneel { background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px; padding: 16px; }
+  .zp-titel { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .zp-sub { font-size: 10.5px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5; }
+  .fase { display: none; }
+  .fase.actief { display: block; }
+
+  .land-groep { font-size: 9px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin: 12px 0 5px; }
+  .land-rij { display: flex; align-items: center; gap: 8px; padding: 4px 2px; border-radius: 7px; cursor: pointer; user-select: none; }
+  .land-rij:hover { background: var(--bg-tertiary); }
+  .land-rij input { accent-color: var(--oranje); cursor: pointer; }
+  .land-rij .ln { font-size: 12px; font-weight: 500; flex: 1; }
+  .land-rij .info, .regime-knop {
+    font-size: 10px; font-weight: 600; color: var(--text-secondary); cursor: pointer; white-space: nowrap;
+    border: 1px solid var(--border-mid); border-radius: 12px; padding: 2.5px 9px; background: var(--bg-primary);
+    transition: border-color .12s, color .12s, background .12s; user-select: none;
+  }
+  .land-rij .info:hover, .regime-knop:hover { border-color: var(--oranje); color: var(--oranje-d); background: #FFF1EA; }
+  @media (prefers-color-scheme: dark) { .land-rij .info:hover, .regime-knop:hover { background: rgba(255,90,31,0.12); } }
+  .vlagje { font-size: 8.5px; font-weight: 700; border-radius: 4px; padding: 1.5px 6px; white-space: nowrap; background: #FFF3E0; color: #7A3200; letter-spacing: .03em; }
+  .vlagje.rood { background: #FCEBEB; color: #791F1F; }
+  .vlagje.ok { background: #E1F5EE; color: #085041; }
+
+  .knop {
+    width: 100%; margin-top: 12px; background: var(--oranje); color: #fff; border: none; border-radius: 9px;
+    font-family: var(--font); font-size: 12.5px; font-weight: 700; padding: 10px 14px; cursor: pointer;
+  }
+  .knop:disabled { opacity: .35; cursor: not-allowed; }
+  .knop.secundair { background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-mid); }
+  .knop.klein { width: auto; font-size: 11px; padding: 7px 12px; margin-top: 8px; margin-right: 6px; }
+
+  .uitkomst-kaart { background: var(--bg-secondary); border: 0.5px solid var(--border-light); border-left: 4px solid var(--oranje); border-radius: 0 10px 10px 0; padding: 12px 14px; margin-top: 10px; }
+  .uk-kop { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .uk-blok { margin-top: 9px; }
+  .uk-label { font-size: 9px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+  .uk-tekst { font-size: 11.5px; color: var(--text-primary); line-height: 1.6; }
+  .uk-tekst .rb { display:inline-block; font-size:9px; font-weight:700; border-radius:4px; padding:1.5px 6px; margin:1px 3px 1px 0; letter-spacing:.03em; }
+  .rb.vn { background:#E6F1FB; color:#0C447C; } .rb.eu { background:#FFF1EA; color:#C2410C; }
+  .rb.vs { background:#FCEBEB; color:#791F1F; } .rb.vk { background:#E1F5EE; color:#085041; }
+  .rb.geen { background:var(--bg-tertiary); color:var(--text-tertiary); }
+  .signaal { background: #FFF3E0; border: 1px solid #F5D9A8; border-radius: 8px; padding: 9px 12px; margin-top: 8px; font-size: 11px; color: #7A3200; line-height: 1.6; }
+  .signaal strong { font-weight: 700; }
+  .doclijst { list-style: none; padding: 0; margin-top: 4px; }
+  .doclijst li { position: relative; padding-left: 18px; font-size: 11px; line-height: 1.6; margin-bottom: 3px; }
+  .doclijst li::before { content: "\2610"; position: absolute; left: 0; color: var(--text-tertiary); }
+  .peil { font-size: 9px; color: var(--text-tertiary); }
+
+  .disclaimer { background: var(--bg-tertiary); border: 0.5px solid var(--border-light); border-radius: 10px; padding: 10px 14px; margin-top: 14px; font-size: 10.5px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ---------- Accordeon per stroom (analysefase) ---------- */
+  .stroom-acc { margin-top: 10px; border: 0.5px solid var(--border-mid); border-radius: 10px; background: var(--bg-primary); overflow: hidden; }
+  .stroom-acc summary { display: flex; align-items: center; gap: 8px; padding: 10px 12px; cursor: pointer; list-style: none; font-size: 12px; font-weight: 700; color: var(--text-primary); }
+  .stroom-acc summary::-webkit-details-marker { display: none; }
+  .stroom-acc summary::after { content: "+"; color: var(--oranje); font-size: 16px; margin-left: auto; flex-shrink: 0; }
+  .stroom-acc[open] summary::after { content: "\2212"; }
+  .stroom-acc[open] summary { border-bottom: 0.5px solid var(--border-light); }
+  .stroom-acc .acc-body { padding: 0 10px 10px; }
+  .stroom-acc .acc-body .uitkomst-kaart { margin-top: 8px; border-left-width: 3px; }
+
+  /* ---------- Modals ---------- */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.45); align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px; max-width: 620px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 22px 24px 26px; position: relative; }
+  .modal-close { position: absolute; top: 14px; right: 16px; font-size: 20px; cursor: pointer; background: none; border: none; color: var(--text-secondary); line-height: 1; }
+  .modal-close:hover { color: var(--text-primary); }
+  .modal-title { font-size: 16px; font-weight: 700; margin-bottom: 3px; padding-right: 26px; }
+  .modal-kicker { font-size: 10px; font-weight: 600; color: var(--oranje-d); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+  .regime-veld { margin-top: 12px; }
+  .rv-label { font-size: 9.5px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+  .rv-tekst { font-size: 12px; line-height: 1.7; }
+  .flag-list { list-style: none; padding-left: 2px; font-size: 12px; line-height: 1.7; color: var(--text-primary); }
+  .flag-list li { position: relative; padding-left: 22px; margin-bottom: 5px; }
+  .flag-list li::before { content: "\2691"; position: absolute; left: 0; color: var(--oranje-d); font-size: 12px; }
+  .source-block { margin-top: 16px; padding-top: 10px; border-top: 0.5px solid var(--border-light); user-select: text; -webkit-user-select: text; }
+  .source-label { font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+  .source-text { font-size: 10px; color: var(--text-secondary); line-height: 1.6; }
+  .source-text a { color: #185FA5; text-decoration: none; }
+  .source-text a:hover { text-decoration: underline; }
+
+  /* ---------- Kaartstijlen (SVG) ---------- */
+  .landvorm { fill: var(--land); stroke: var(--land-rand); stroke-width: .5; }
+  .landvorm.kiesbaar { cursor: pointer; }
+  .landvorm.kiesbaar:hover { fill: #f6d9cb; }
+  .landvorm.geselecteerd { fill: var(--oranje); fill-opacity: .82; stroke: var(--oranje-d); }
+  .landvorm.doorvoer { fill: #F5D9A8; fill-opacity: .9; stroke: #C99B4A; }
+  .land-punt { fill: var(--oranje); stroke: #fff; stroke-width: 1.2; cursor: pointer; }
+  .stroom-pijl { fill: none; stroke: var(--oranje-d); stroke-width: 2; opacity: .9; }
+  .graticule { fill: none; stroke: var(--border-light); stroke-width: .4; }
+  .globe-zee { fill: var(--bg-tertiary); stroke: var(--border-mid); stroke-width: 1; }
+
+  /* ----- Print ----- */
+  .print-kop { display: none; }
+  @media print {
+    header, .hero, .globe-sectie, .stepper, .peilstrip, .hint, .no-print, .site-footer, .modal-overlay, .uitleg-sectie, .kaart-fout { display: none !important; }
+    body { background: #fff; color: #000; }
+    .tool-wrap { display: block !important; max-width: 100%; padding: 0; }
+    .tool-grid { display: block; }
+    .kaart-paneel, .zij-paneel { border: none; padding: 0; margin-bottom: 14px; }
+    .kaart-voetnoot { display: none; }
+    a { color: #000; text-decoration: none; }
+    .print-kop { display: block; font-family: var(--font); margin-bottom: 12px; border-bottom: 2px solid #FF5A1F; padding-bottom: 8px; }
+    .print-kop .pk-merk { font-size: 17px; font-weight: 800; color: #FF5A1F; letter-spacing: -0.03em; }
+    .print-kop .pk-titel { font-size: 13px; font-weight: 700; margin-top: 3px; }
+    .print-kop .pk-sub { font-size: 10px; color: #555; margin-top: 2px; }
+  }
+
+  .site-footer { padding: 28px 24px; margin-top: 40px; border-top: 0.5px solid var(--border-light); background: var(--bg-primary); text-align: center; font-size: 12px; color: var(--text-tertiary); line-height: 1.7; }
+  .site-footer .fmark { font-weight: 800; color: var(--oranje); letter-spacing: -0.03em; }
+  .site-footer a { color: var(--text-tertiary); text-decoration: underline; }
+  .site-footer a:hover { color: var(--oranje-d); }
+
+  .uitleg-sectie{max-width:680px;margin:0 auto;padding:20px 24px 40px;font-family:var(--font)}
+  .uitleg-trigger{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-primary);list-style:none;border-top:.5px solid var(--border-mid);border-bottom:.5px solid var(--border-mid)}
+  .uitleg-trigger::-webkit-details-marker{display:none}
+  .uitleg-trigger::after{content:"+";color:#FF5A1F;font-size:20px;margin-left:12px;flex-shrink:0}
+  .uitleg-wrap[open] > .uitleg-trigger::after{content:"\2212"}
+  .uitleg-body{padding:24px 0 8px}
+  .uitleg-body .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C2410C;margin:0 0 8px}
+  .uitleg-body h2{font-size:20px;color:var(--text-primary);margin:0 0 14px;letter-spacing:-.01em}
+  .uitleg-body p{font-size:15px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px}
+  .uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:24px 0 10px;letter-spacing:-.01em}
+  .faq-item{border-top:.5px solid var(--border-light)}
+  .faq-item:last-of-type{border-bottom:none}
+  .faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+  .faq-item[open] summary::after{content:"\2212"}
+  .faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+  @media (prefers-color-scheme: dark){.uitleg-body .kicker{color:#FF5A1F}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" target="_self" class="brand-mark" title="Naar de homepage">TRNKL<span class="merkpunt"></span></a>
+  <div class="header-rule"></div>
+  <div>
+    <div class="header-title">Flowtool sancties</div>
+    <div class="header-sub">Geldstromen op de wereldkaart · sanctiestatus per land · omzeilingsrisico · mitigerende documentatie</div>
+    <div class="header-byline" style="font-size:11px;font-weight:600;color:var(--text-primary);margin-top:8px;">Door <a href="/over.html" style="color:inherit;text-decoration:underline;">mr. Toine Jorna</a> &middot; eerste publicatie 17 juli 2026 &middot; bijgewerkt 17 juli 2026</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="haak">Ook een land zonder sancties kan een sanctierisico dragen</div>
+  <h1>Flowtool sancties: toets je geldstromen op de wereldkaart</h1>
+  <p class="lead">Bouw de keten zoals de bank hem ziet: kies de schakels op de wereldkaart (ook tussenschakels zonder eigen sancties, zoals België) en trek de geld-, goederen- of dienstenstromen ertussen, schakel voor schakel. Per stroom toont de tool of er sancties gelden en van wie (VN, EU, VS, VK), het doorlever- en omzeilingsrisico in de keten met het end-user-beeld, de documentatie die het risico mitigeert en de verplichting die erbij hoort, plus de signalen die achteraf in transactiemonitoring kunnen opvallen. De juridische basis staat in de <a href="sancties.html" style="color:var(--oranje-d);font-weight:600">TRNKL-flowchart sancties</a>. Educatief, geen advies; gericht op naleving, niet op ontwijking.</p>
+</section>
+
+<!-- ---------- GLOBE-INTRO ---------- -->
+<section class="globe-sectie" id="globe-sectie">
+  <svg id="globe" width="380" height="380" viewBox="0 0 380 380" role="img" aria-label="Draaibare wereldbol"></svg>
+  <div class="globe-hint">Sleep om de aarde te draaien</div>
+  <button class="start-knop" id="start-knop" onclick="startTool()">Start: toets je geldstromen →</button>
+</section>
+
+<!-- ---------- DE TOOL ---------- -->
+<div class="tool-wrap" id="tool">
+
+  <div class="stepper">
+    <div class="stap-chip actief" id="chip-1" onclick="gaNaarFase(1)"><span class="nr">1</span>Schakels kiezen</div>
+    <div class="stap-chip" id="chip-2" onclick="gaNaarFase(2)"><span class="nr">2</span>Stromen trekken</div>
+    <div class="stap-chip" id="chip-3" onclick="gaNaarFase(3)"><span class="nr">3</span>Analyse per stroom</div>
+    <div class="stap-chip" id="chip-4" onclick="gaNaarFase(4)"><span class="nr">4</span>Overzicht &amp; print</div>
+  </div>
+
+  <div class="peilstrip">Peildata: dataset 17-07-2026, elke landregel draagt een eigen peildatum in de analyse · maandelijkse controle tegen de VN Consolidated List, de EU Sanctions Map, OFAC en de UK Sanctions List</div>
+
+  <div class="tool-grid">
+    <div class="kaart-paneel">
+      <svg id="kaart" viewBox="0 0 940 480" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="kaart-fout" id="kaart-fout">De wereldkaart kon niet worden geladen (geen verbinding met de kaartbron).<br>Je kunt de tool volledig gebruiken via de landenlijst hiernaast.</div>
+      <div class="kaart-voetnoot">Nederland kan beginpunt, tussenschakel of eindstation zijn. Oranje = gekozen schakel; amber = doorvoerland met verhoogd omzeilingsrisico voor de getrokken stromen. In stap 1 kun je elk land aanklikken als schakel, ook landen zonder eigen regime (tussenschakels krijgen een generiek profiel). Kleine jurisdicties krijgen een stip. Vanaf stap 3 opent een klik de sanctiestatus.</div>
+    </div>
+
+    <div class="zij-paneel">
+
+      <!-- FASE 1: SCHAKELS -->
+      <div class="fase actief" id="fase-1">
+        <div class="zp-titel">Stap 1 · Kies de schakels van je keten</div>
+        <div class="zp-sub">Vink hieronder de sanctie- en doorvoerlanden aan, of klik ze aan op de kaart. Andere landen (tussenschakels zoals België of Duitsland) hoef je hier niet te kiezen: die selecteer je in stap 2 rechtstreeks in de van/naar-lijsten, of je klikt ze op de kaart aan. Deze stap is optioneel; je kunt ook direct door naar stap 2.</div>
+        <div class="signaal" style="margin-top:0"><strong>Let op:</strong> deze lijst dekt de landgebonden regimes. Thematische sancties (terrorisme, cyber, mensenrechten, chemische wapens) raken personen en entiteiten in élk land. Naamscreening van de tegenpartij blijft dus altijd nodig, ook bij landen zonder markering.</div>
+        <div id="gekozen-schakels"></div>
+        <div id="landenlijst"></div>
+        <button class="knop" id="naar-2" onclick="gaNaarFase(2)">Verder: stromen trekken →</button>
+      </div>
+
+      <!-- FASE 2: STROMEN -->
+      <div class="fase" id="fase-2">
+        <div class="zp-titel">Stap 2 · Trek de geldstromen, schakel voor schakel</div>
+        <div class="zp-sub">Bouw de keten zoals de bank hem ziet: van wie naar wie wordt geleverd of betaald. Hier kies je uit alle landen van de wereld, in drie groepen: je gekozen schakels, de sanctie- en doorvoerlanden, en alle overige landen. Ook een stroom tussen twee niet-gesanctioneerde landen (bijvoorbeeld België → Duitsland) trek je hier dus direct; elk gebruikt land wordt automatisch een schakel op de kaart. Een doorleverketen (Nederland → België → Servië) maak je met twee stromen; de tool volgt de keten en toetst de eindbestemming. Nederland kan ook eindstation zijn: trek dan de stroom náár Nederland en de analyse kantelt naar de herkomstkant.</div>
+        <div class="veld-label" style="font-size:10px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:12px 0 4px">Van</div>
+        <select class="veld" id="stroom-van" style="width:100%;font-family:var(--font);font-size:12.5px;color:var(--text-primary);background:var(--bg-secondary);border:1px solid var(--border-mid);border-radius:8px;padding:8px 10px"></select>
+        <div class="veld-label" style="font-size:10px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:12px 0 4px">Naar</div>
+        <select class="veld" id="stroom-naar" style="width:100%;font-family:var(--font);font-size:12.5px;color:var(--text-primary);background:var(--bg-secondary);border:1px solid var(--border-mid);border-radius:8px;padding:8px 10px"></select>
+        <div class="veld-label" style="font-size:10px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:12px 0 4px">Type stroom</div>
+        <select class="veld" id="stroom-type" style="width:100%;font-family:var(--font);font-size:12.5px;color:var(--text-primary);background:var(--bg-secondary);border:1px solid var(--border-mid);border-radius:8px;padding:8px 10px">
+          <option value="geld">Geldstroom (betaling, financiering)</option>
+          <option value="goederen">Goederenstroom (levering, export)</option>
+          <option value="diensten">Dienstenstroom (advies, IT, transport)</option>
+          <option value="gemengd">Gemengd (geld en goederen/diensten)</option>
+        </select>
+        <button class="knop" onclick="voegStroomToe()">+ Stroom toevoegen</button>
+        <div id="stroom-melding" style="display:none;margin-top:8px;font-size:11px;line-height:1.6;color:#7A3200;background:#FFF3E0;border:1px solid #F5D9A8;border-radius:8px;padding:8px 12px"></div>
+        <div id="stromenlijst"></div>
+        <button class="knop" id="naar-3" onclick="gaNaarFase(3)" disabled>Verder: analyse →</button>
+      </div>
+
+      <!-- FASE 3: ANALYSE -->
+      <div class="fase" id="fase-3">
+        <div class="zp-titel">Stap 3 · De analyse per stroom en per keten</div>
+        <div class="zp-sub">Per stroom: sanctiestatus van de ontvangende schakel, het doorlever- en omzeilingsrisico in de keten (end-user-beeld), mitigerende documentatie en de verplichting. Het knopje "signalen na de transactie" opent het post-monitoringpaneel.</div>
+        <div id="analyse"></div>
+        <button class="knop" onclick="gaNaarFase(4)">Naar het overzicht →</button>
+      </div>
+
+      <!-- FASE 4: OVERZICHT -->
+      <div class="fase" id="fase-4">
+        <div class="print-kop">
+          <div class="pk-merk">TRNKL<span class="merkpunt"></span></div>
+          <div class="pk-titel">Flowtool sancties · overzicht van de getoetste stromen</div>
+          <div class="pk-sub" id="print-datum">Educatief, geen advies · trnkl.nl/flowcharts/flowtool-sancties.html</div>
+        </div>
+        <div class="zp-titel">Stap 4 · Overzicht</div>
+        <div class="zp-sub">Alle stromen onder elkaar, printklaar. De officiële lijsten van het moment van beoordelen blijven leidend.</div>
+        <div id="overzicht"></div>
+        <div class="disclaimer"><strong>Educatief, geen advies.</strong> Deze tool toont per land de sanctiestatus (peildatum per regel), het bekende omzeilingsrisico en de documentatie waarmee een poortwachter dat risico kan mitigeren. De landenlijst dekt de landgebonden regimes; thematische sancties (terrorisme, cyber, mensenrechten, chemische wapens) raken personen in elk land, dus naamscreening blijft altijd nodig. De tool vergelijkt geen routes, adviseert niet over transacties en is uitsluitend gericht op naleving. Voor een besluit zijn de officiële lijsten leidend: <a href="https://main.un.org/securitycouncil/en/content/un-sc-consolidated-list" style="color:var(--oranje-d)">VN</a>, <a href="https://www.sanctionsmap.eu/" style="color:var(--oranje-d)">EU Sanctions Map</a>, <a href="https://sanctionssearch.ofac.treas.gov/" style="color:var(--oranje-d)">OFAC</a> en de <a href="https://www.gov.uk/government/publications/the-uk-sanctions-list" style="color:var(--oranje-d)">UK Sanctions List</a>. De juridische onderbouwing staat in de <a href="sancties.html" style="color:var(--oranje-d)">flowchart sancties</a>.</div>
+        <div class="zp-sub no-print" style="margin-top:12px;margin-bottom:0">Niets van deze sessie wordt opgeslagen. Wil je het overzicht bewaren of delen, print het dan of sla het via het printmenu op als PDF.</div>
+        <button class="knop no-print" onclick="printOverzicht()">Print / bewaar als PDF</button>
+        <button class="knop secundair no-print" onclick="herstart()">Opnieuw beginnen</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ---------- LAND-PANEEL ---------- -->
+<div class="modal-overlay" id="land-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="sluitModal('land-modal')">&#x2715;</button>
+    <div class="modal-title" id="lm-titel"></div>
+    <div class="modal-kicker" id="lm-kicker"></div>
+    <div id="lm-inhoud"></div>
+    <div class="source-block">
+      <div class="source-label">Bron</div>
+      <div class="source-text">Samenvatting op basis van de officiële lijsten en regimes, peildatum per land: <a href="https://main.un.org/securitycouncil/en/content/un-sc-consolidated-list" target="_blank" rel="noopener noreferrer">VN Consolidated List</a> · <a href="https://www.sanctionsmap.eu/" target="_blank" rel="noopener noreferrer">EU Sanctions Map</a> · <a href="https://ofac.treasury.gov/sanctions-programs-and-country-information" target="_blank" rel="noopener noreferrer">OFAC</a> · <a href="https://www.gov.uk/government/publications/the-uk-sanctions-list" target="_blank" rel="noopener noreferrer">UK Sanctions List</a>. De lijsten zelf zijn leidend.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- POST-MONITORING-PANEEL ---------- -->
+<div class="modal-overlay" id="pm-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="sluitModal('pm-modal')">&#x2715;</button>
+    <div class="modal-title" id="pm-titel"></div>
+    <div class="modal-kicker">Signalen na de transactie · omzeilingsrisico vanuit transactiemonitoring</div>
+    <div id="pm-inhoud"></div>
+    <div class="source-block">
+      <div class="source-label">Bronnen</div>
+      <div class="source-text"><a href="https://www.bis.gov/identify-red-flags" target="_blank" rel="noopener noreferrer">BIS — red flags export control evasion</a> · <a href="https://www.fincen.gov/system/files/shared/FinCEN_Joint_Notice_US_Export_Controls_FINAL508.pdf" target="_blank" rel="noopener noreferrer">FinCEN/BIS — joint notice</a> · <a href="https://www.eba.europa.eu/sites/default/files/2024-11/eaeae49d-81a5-4154-8af9-5014f6ee8881/Final%20Report%20Guidelines%20restrictive%20measures%20.pdf" target="_blank" rel="noopener noreferrer">EBA — GL/2024/15</a> · <a href="https://www.dnb.nl/voor-de-sector/open-boek-toezicht/wet-regelgeving/sanctiewet-1977-sw/" target="_blank" rel="noopener noreferrer">DNB — Sanctiewet-dossier</a>. Signalen zijn indicatoren, geen oordeel.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DATASET (bron van waarheid in dit bestand) =================
+     Peildatum per land. Statusteksten samengevat uit de officiële lijsten en het
+     TRNKL-bronnenkader (sancties-opzet-bronnenkader.md); de lijsten zijn leidend.
+     Maandelijkse controle via de geplande taak sancties-maandcheck. ============ -->
+<script id="sancties-data" type="application/json">
+{
+ "peildatum": "2026-07-17",
+ "landen": [
+  {"id":"NL","iso":528,"naam":"Nederland","regio":"vertrekpunt","lon":5.3,"lat":52.2,"klein":true,"rol":"vertrek","peildatum":"2026-07-10",
+   "vn":"Geen doelland; VN-sancties werken door via de EU-omzetting",
+   "eu":"EU-lidstaat: de sanctieverordeningen gelden rechtstreeks voor iedereen in Nederland",
+   "vs":"Geen doelland; VS-sancties raken Nederlandse partijen via dollarverkeer, US persons en secundaire sancties",
+   "vk":"Geen doelland",
+   "karakter":"Start- of eindpunt van de keten; bij inkomende stromen verschuift de toets naar de herkomstkant",
+   "doorvoer":[],"docs":["keten"],
+   "docnote":"Bij een inkomende stroom draait de documentatie om herkomst: wie is de werkelijke afzender achter de keten, waar komen de gelden of goederen vandaan, en sporen betaal-, factuur- en goederenstroom met elkaar.",
+   "signaal":"Inkomende betalingen waarvan de herkomstketen niet spoort met het cliëntprofiel, of die kort na nieuwe designaties via een extra tussenschakel gaan lopen."},
+
+  {"id":"RU","iso":643,"naam":"Rusland","regio":"Europa en Kaukasus","lon":60,"lat":58,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen landenregime (vetorecht)","eu":"Zeer breed: 20 pakketten sectoraal plus listings (Vo. 833/2014 en 269/2014); verlengd tot 31 juli 2027; 21e pakket voorgesteld (9 juni 2026) maar nog niet aangenomen; aparte listingronde 15 juni 2026 (34 personen, 47 entiteiten)","vs":"Zeer breed (EO's, CAATSA); doorlopend nieuwe designaties","vk":"Breed regime onder SAMLA",
+   "karakter":"Sectoraal en listings: energie, financieel, tech, olieprijsplafond, schaduwvloot (632 schepen), anti-omzeiling",
+   "doorvoer":["KG","KZ","AM","GE","UZ","TR","AE","CN","RS","BY","HK"],
+   "docs":["tfs","sectoraal","prijsplafond","ontheffing"],
+   "docnote":"Bij alle gevoelige goederen (o.a. CHP-lijst, bijlage XL): no-Russia-clausule (art. 12g Vo. 833/2014) contractueel verplicht bij export naar derde landen; end-user-verklaring en bewijs van eindbestemming zijn hier de kern.",
+   "signaal":"Betaalstromen die kort na een nieuw pakket verschuiven naar Centraal-Azië, de Kaukasus, Turkije of de VAE bij gelijkblijvend volume en assortiment."},
+
+  {"id":"BY","iso":112,"naam":"Belarus","regio":"Europa en Kaukasus","lon":27.9,"lat":53.7,"klein":false,"rol":"beide","peildatum":"2026-07-10",
+   "vn":"Geen landenregime","eu":"Gekoppeld aan het Ruslandregime (Vo. 765/2006); uitgebreid in het 20e pakket","vs":"Ja, gericht en sectoraal","vk":"Ja",
+   "karakter":"Spiegelt het Ruslandregime; tevens doorvoerkanaal richting Rusland",
+   "doorvoer":["RU"],
+   "docs":["tfs","sectoraal"],
+   "docnote":"Zelfde documentenset als Rusland; let bij doorvoer via Belarus op identieke anti-omzeilingsmaatregelen.",
+   "signaal":"Facturatie via Belarussische tussenpartijen voor goederen met een Russische eindbestemming."},
+
+  {"id":"IR","iso":364,"naam":"Iran","regio":"Midden-Oosten","lon":53,"lat":32,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Heringesteld via snapback (27 september 2025); rechtsgeldigheid betwist door Rusland en China (weergave TRNKL: heringesteld, betwist)","eu":"Ja: nucleair, drones, mensenrechten","vs":"Alomvattend embargo; sinds juni 2026 lopen Amerikaans-Iraanse onderhandelingen (memorandum 17 juni 2026) met een tijdelijke oliewaiver t/m 21 augustus 2026; de formele status is onveranderd","vk":"Ja",
+   "karakter":"Alomvattend VS-embargo plus gelaagde VN/EU/VK-maatregelen; juridisch betwiste VN-status",
+   "doorvoer":["AE","TR"],
+   "docs":["tfs","embargo_vs","ontheffing","vn_brug"],
+   "docnote":"Bij weigering puur op VS-grond: eerst de blokkeringsverordening-toets (Vo. 2271/96); documenteer de eigen EU/NL-rechtelijke gronden of verken een Commissie-machtiging.",
+   "signaal":"Betalingen voor Iraanse tegenpartijen die via VAE- of Turkse tussenhandelaren lopen; wisselconstructies buiten het reguliere betalingsverkeer (hawala-achtig)."},
+
+  {"id":"KP","iso":408,"naam":"Noord-Korea","regio":"Azië","lon":127,"lat":40,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 1718: het meest complete VN-regime","eu":"Ja, implementatie plus autonome aanvulling","vs":"Alomvattend embargo","vk":"Ja",
+   "karakter":"Vrijwel volledige afsluiting: wapens, financieel, handel, arbeid",
+   "doorvoer":["CN"],
+   "docs":["tfs","embargo_vs","vn_brug"],
+   "docnote":"Elke directe of indirecte stroom is vrijwel zeker verboden; documentatie draait om aantonen dat er geen Noord-Koreaanse eindbestemming of arbeidsinzet in de keten zit.",
+   "signaal":"Betalingen aan Chinese grensregio-entiteiten met vage goederenomschrijvingen; bemanning- of arbeidsconstructies met Noord-Koreaanse werkers."},
+
+  {"id":"SY","iso":760,"naam":"Syrië","regio":"Midden-Oosten","lon":38,"lat":35,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Delisting president al-Sharaa (november 2025); terrorismelistings blijven","eu":"Economische sancties opgeheven (mei 2025); resterende ex-Assad-maatregelen op 18 mei 2026 met een jaar verlengd, met enkele delistings","vs":"Embargo beëindigd (EO 14312, 30 juni 2025); Caesar Act ingetrokken 18 december 2025; gerichte listings blijven","vk":"Versoepeld",
+   "karakter":"Afbouwfase: van alomvattend naar gericht; snel bewegend dossier",
+   "doorvoer":["LB","TR"],
+   "docs":["tfs","ontheffing"],
+   "docnote":"Screening blijft nodig op de resterende listings (Assad-kring, terrorisme); leg per transactie vast tegen welke lijstversie is gescreend, juist omdat het regime in afbouw is.",
+   "signaal":"Oude betaalroutes uit de embargoperiode (via buurlanden) die na de opheffing in stand blijven zonder economische reden."},
+
+  {"id":"CU","iso":192,"naam":"Cuba","regio":"Amerika's","lon":-79,"lat":21.5,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen sancties; wel de blokkeringsverordening tegen doorwerking van het VS-embargo","vs":"Alomvattend embargo (TWEA, Helms-Burton)","vk":"Geen",
+   "karakter":"Alleen-VS-casus: het embargo raakt EU-partijen via dollar en US-touchpoints, maar toegeven kan zelf verboden zijn",
+   "doorvoer":[],
+   "docs":["embargo_vs","ontheffing"],
+   "docnote":"De kern is hier de blokkeringsverordening (Vo. 2271/96): weigeren puur wegens het VS-embargo kan een misdrijf zijn (WED). Documenteer eigen gronden; bij een klemgeval is de Commissie-machtiging de route. Zie flowchart, spoor A stap 3.",
+   "signaal":"Afwijzingen of terugboekingen door Amerikaanse correspondentbanken; let op dat de eigen respons daarop geen stilzwijgende naleving van het VS-embargo wordt."},
+
+  {"id":"VE","iso":862,"naam":"Venezuela","regio":"Amerika's","lon":-66,"lat":7,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Gericht (listings)","vs":"Formeel van kracht, maar sinds januari 2026 selectieve versoepeling via general licenses voor de oliesector (GL 46 e.v., uitgebreid t/m GL 52, mei 2026)","vk":"Gericht",
+   "karakter":"Snel bewegend: blokkades blijven, oliesector deels opengezet via licenses",
+   "doorvoer":[],
+   "docs":["tfs","embargo_vs","ontheffing"],
+   "docnote":"Bij oliegerelateerde stromen: de exacte general license erbij leggen (nummer, datum, reikwijdte) en toetsen of de tegenpartij en activiteit erbinnen vallen; buiten de license geldt het volle sanctieregime.",
+   "signaal":"Olietransacties met tegenpartijen die niet onder een geldende general license vallen; snelle wissels van tegenpartij na intrekking of wijziging van een license."},
+
+  {"id":"MM","iso":104,"naam":"Myanmar","regio":"Azië","lon":96,"lat":21,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Geen landenregime","eu":"Ja: junta, wapens, grondstoffen","vs":"Ja, gericht","vk":"Ja",
+   "karakter":"Gericht op de junta en militaire economie",
+   "doorvoer":[],
+   "docs":["tfs","sectoraal"],
+   "docnote":"Let op staatsgelieerde tegenpartijen (militaire conglomeraten): de eigendoms- en zeggenschapsanalyse is hier belangrijker dan de naamscreening.",
+   "signaal":"Betalingen aan handelspartijen die herleidbaar zijn tot militaire conglomeraten of hun dochters."},
+
+  {"id":"LY","iso":434,"naam":"Libië","regio":"Afrika","lon":17,"lat":27,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 1970","eu":"Ja","vs":"Ja, gericht","vk":"Ja",
+   "karakter":"Wapenembargo en listings; staatsfondsen deels bevroren",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Bij stromen die raken aan staatsvermogen (LIA en dochters): bevriezingsstatus per entiteit vastleggen.",
+   "signaal":"Transacties rond bevroren staatsvermogen of olieopbrengsten buiten de erkende kanalen."},
+
+  {"id":"SO","iso":706,"naam":"Somalië","regio":"Afrika","lon":46,"lat":5,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 751 (Al-Shabaab, wapens)","eu":"Ja","vs":"Ja","vk":"Ja",
+   "karakter":"Wapenembargo en terrorismegerichte listings",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Bij remittance-stromen: extra aandacht voor de tussenschakels (money transfer operators) en hun agentennetwerk.",
+   "signaal":"Geldstromen via informele waardetransfer die de formele screening omzeilen."},
+
+  {"id":"SD","iso":729,"naam":"Soedan","regio":"Afrika","lon":30,"lat":15,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 1591","eu":"Ja, incl. RSF-gerelateerde listings","vs":"Ja","vk":"Ja",
+   "karakter":"Burgeroorlogsgerelateerd: wapens en listings van strijdende partijen",
+   "doorvoer":["AE"],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Goudhandel is het bekende omzeilingskanaal; vraag herkomstdocumentatie bij goud- en grondstofgerelateerde stromen.",
+   "signaal":"Goudgerelateerde betalingen via de Golf zonder sluitende herkomstketen."},
+
+  {"id":"SS","iso":728,"naam":"Zuid-Soedan","regio":"Afrika","lon":31,"lat":7,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 2206","eu":"Ja","vs":"Ja","vk":"Ja",
+   "karakter":"Wapenembargo en listings",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Standaard TFS-documentatie; let op olieopbrengsten en overheidsgelieerde tegenpartijen.",
+   "signaal":"Overheidsgelieerde betalingen die via derde landen worden omgeleid."},
+
+  {"id":"CF","iso":140,"naam":"Centraal-Afrikaanse Republiek","regio":"Afrika","lon":20,"lat":6.5,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 2127","eu":"Ja","vs":"Deels","vk":"Deels",
+   "karakter":"Klassiek VN-conflictregime: wapens en listings",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Betalingen rond grondstoffenconcessies met onduidelijke begunstigden."},
+
+  {"id":"CD","iso":180,"naam":"DR Congo","regio":"Afrika","lon":23,"lat":-3,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 1533","eu":"Ja","vs":"Deels","vk":"Deels",
+   "karakter":"Klassiek VN-conflictregime: wapens en listings",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Bij mineralengerelateerde stromen: herkomstdocumentatie (conflictmineralen) naast de sanctiescreening.",
+   "signaal":"Mineralenstromen via buurlanden met prijsafwijkingen."},
+
+  {"id":"GW","iso":624,"naam":"Guinee-Bissau","regio":"Afrika","lon":-15,"lat":12,"klein":true,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 2048","eu":"Ja","vs":"Deels","vk":"Deels",
+   "karakter":"Klein VN-regime (reisverboden, enkele listings)",
+   "doorvoer":[],
+   "docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"YE","iso":887,"naam":"Jemen","regio":"Midden-Oosten","lon":47.5,"lat":15.5,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 2140","eu":"Ja","vs":"Ja, incl. Houthi-terrorisme-aanwijzingen","vk":"Ja",
+   "karakter":"Conflictregime plus terrorisme-aanwijzingen",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Humanitaire stromen: gebruik de humanitaire uitzonderingen en documenteer de hulporganisatie-keten.",
+   "signaal":"Hulpgelden die buiten de gedocumenteerde keten om worden doorgezet."},
+
+  {"id":"IQ","iso":368,"naam":"Irak","regio":"Midden-Oosten","lon":43.5,"lat":33,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, restant regime 1518","eu":"Ja, restanten","vs":"Deels","vk":"Deels",
+   "karakter":"Restanten van het oude regime; vooral oud-regimegelieerde listings",
+   "doorvoer":[],
+   "docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"LB","iso":422,"naam":"Libanon","regio":"Midden-Oosten","lon":35.8,"lat":33.8,"klein":true,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 1636 (Hariri)","eu":"Ja, thematisch kader","vs":"Ja (o.a. Hezbollah-gerelateerd)","vk":"Deels",
+   "karakter":"Klein VN-regime plus terrorismegerichte VS-listings",
+   "doorvoer":["SY"],
+   "docs":["tfs"],
+   "docnote":"Let op Hezbollah-gelieerde tegenpartijen in de VS-lijsten; die overlappen niet met de EU-lijst.",
+   "signaal":"Stromen die richting Syrische wederopbouw lopen via Libanese tussenpartijen."},
+
+  {"id":"HT","iso":332,"naam":"Haïti","regio":"Amerika's","lon":-72.7,"lat":19,"klein":true,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, regime 2653 (het jongste VN-regime)","eu":"Ja","vs":"Ja","vk":"Ja",
+   "karakter":"Bendegeweld: listings van bendeleiders en facilitators",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Remittances die samenkomen bij enkele geconcentreerde begunstigden."},
+
+  {"id":"NI","iso":558,"naam":"Nicaragua","regio":"Amerika's","lon":-85,"lat":12.8,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Ja, gericht (mensenrechten/democratie)","vs":"Ja, gericht","vk":"Ja, gericht",
+   "karakter":"Persoonsgerichte mensenrechtenlistings",
+   "doorvoer":[],
+   "docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie; focus op regeringsgelieerde personen en entiteiten.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"ZW","iso":716,"naam":"Zimbabwe","regio":"Afrika","lon":29.8,"lat":-19,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Ja, gericht","vs":"Ja, gericht","vk":"Ja, gericht",
+   "karakter":"Persoonsgerichte listings (mensenrechten)",
+   "doorvoer":[],
+   "docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"CN","iso":156,"naam":"China","regio":"Azië","lon":104,"lat":35,"klein":false,"rol":"beide","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Gericht: mensenrechtenlistings (Xinjiang); entiteitslistings wegens steun aan de Russische militaire industrie","vs":"Gericht: listings plus omvangrijke exportcontrole (Entity List)","vk":"Gericht",
+   "karakter":"Geen landenregime, wel gerichte listings én een grote rol als doorvoer- en front company-jurisdictie",
+   "doorvoer":["RU","KP"],
+   "docs":["tfs","sectoraal"],
+   "docnote":"Bij tech- en dual-use-gerelateerde stromen: naast de sanctiescreening ook de VS Entity List en de EU-dual-use-vergunningplicht (CDIU) toetsen; die sporen lopen hier door elkaar.",
+   "signaal":"Betalingen aan handelsfirma's (o.a. in Hongkong) die CHP- of dual-use-goederen doorverkopen; open account-betalingen in combinatie met doorvoerbestemmingen."},
+
+  {"id":"AF","iso":4,"naam":"Afghanistan","regio":"Azië","lon":66,"lat":33.5,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Ja, Taliban-regime 1988 (thematisch)","eu":"Ja, implementatie","vs":"Ja, gericht","vk":"Ja",
+   "karakter":"Persoonsgericht Taliban-regime; het land als zodanig is niet integraal gesanctioneerd",
+   "doorvoer":[],
+   "docs":["tfs","vn_brug"],
+   "docnote":"Humanitaire uitzonderingen zijn hier uitdrukkelijk geregeld; documenteer het beroep daarop per stroom.",
+   "signaal":"Stromen naar de publieke sector die feitelijk bij gelistte Taliban-functionarissen uitkomen."},
+
+  {"id":"ML","iso":466,"naam":"Mali","regio":"Afrika","lon":-3.5,"lat":17,"klein":false,"rol":"doel","peildatum":"2026-07-10",
+   "vn":"Niet meer actief: het comité (2374) is in 2023 niet verlengd","eu":"Ja, eigen kader met listings","vs":"Deels","vk":"Deels",
+   "karakter":"Voorbeeld van divergentie: VN-regime beëindigd, EU-listings blijven",
+   "doorvoer":[],
+   "docs":["tfs"],
+   "docnote":"Leerpunt voor screening: een beëindigd VN-regime betekent niet dat de EU-lijst leeg is; screen tegen de EU-lijst.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"MD","iso":498,"naam":"Moldavië","regio":"Europa en Kaukasus","lon":28.4,"lat":47.2,"klein":true,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Ja, kader destabilisatie (Vo. 2023/888), verlengd tot 29 april 2027; 23 personen en 5 entiteiten gelist","vs":"Gericht","vk":"Gericht",
+   "karakter":"Persoonsgerichte listings wegens destabilisering van de republiek",
+   "doorvoer":[],"docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie; focus op destabilisatie-gelieerde personen en entiteiten.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"BA","iso":70,"naam":"Bosnië en Herzegovina","regio":"Europa en Kaukasus","lon":17.8,"lat":44.2,"klein":true,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Ja, kader tegen ondermijning van het Dayton-akkoord (Besluit 2011/173, Vo. 1183/2011), verlengd tot 31 maart 2027; kader zonder listings (er is nooit iemand gelist)","vs":"Ja, Westelijke Balkan-programma (EO 14033)","vk":"Ja, gericht",
+   "karakter":"Kader zonder listings; instrument achter de hand tegen ondermijning van het vredesakkoord",
+   "doorvoer":[],"docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"GT","iso":320,"naam":"Guatemala","regio":"Amerika's","lon":-90.4,"lat":15.6,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Ja, kader ondermijning democratie en rechtsstaat (Vo. 2024/287, sinds januari 2024); 8 personen en 1 entiteit gelist, verlengd op 9 januari 2026","vs":"Gericht (corruptie, visa)","vk":"Geen landenregime",
+   "karakter":"Persoonsgerichte listings",
+   "doorvoer":[],"docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"GN","iso":324,"naam":"Guinee","regio":"Afrika","lon":-10.9,"lat":10.4,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Ja, kader sinds 2009 (repressie Conakry, Vo. 1284/2009); 5 personen gelist, verlengd tot 27 oktober 2026","vs":"Deels","vk":"Ja, gericht",
+   "karakter":"Klein persoonsgericht kader",
+   "doorvoer":[],"docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"NE","iso":562,"naam":"Niger","regio":"Afrika","lon":9.4,"lat":17.6,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Ja, kader na de staatsgreep van 2023 (Besluit 2023/2287, Vo. 2023/2406), verlengd tot 24 oktober 2026; kader zonder listings (nooit gevuld)","vs":"Deels","vk":"Geen landenregime",
+   "karakter":"Kader zonder listings; sinds oktober 2023 is er niemand op geplaatst",
+   "doorvoer":[],"docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"BI","iso":108,"naam":"Burundi","regio":"Afrika","lon":29.9,"lat":-3.4,"klein":true,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Kader sinds 2015 (Vo. 2015/1755), verlengd tot 31 oktober 2026; lijst leeg sinds 22 september 2025 (laatste persoon geschrapt, Uitv.Vo. 2025/1940)","vs":"Deels","vk":"Geen landenregime",
+   "karakter":"Kader van kracht maar zonder listings sinds september 2025",
+   "doorvoer":[],"docs":["tfs"],
+   "docnote":"Standaard TFS-documentatie.",
+   "signaal":"Geen specifiek aanvullend signaal; standaard monitoring."},
+
+  {"id":"TN","iso":788,"naam":"Tunesië","regio":"Afrika","lon":9.6,"lat":34.1,"klein":true,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Kader misappropriation (bevriezing oud-regimetegoeden sinds 2011, Vo. 101/2011) van kracht; 27 personen gelist, laatst verlengd 30 januari 2026; einddatum in de bronnen niet eenduidig (monitorpunt maandcheck)","vs":"Geen landenregime","vk":"Geen landenregime",
+   "karakter":"Bevriezingskader verduisterde staatsgelden (oud-regime); status per verlenging bevestigd, einddatum monitoren",
+   "doorvoer":[],"docs":["tfs"],
+   "docnote":"Relevant bij tegoeden die herleidbaar zijn tot het oude regime; herkomstdocumentatie van vermogens is hier de kern.",
+   "signaal":"Vermogensstromen die herleidbaar zijn tot bevroren oud-regimetegoeden."},
+
+  {"id":"UA","iso":804,"naam":"Oekraïne","regio":"Europa en Kaukasus","lon":31,"lat":49,"klein":false,"rol":"doel","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Nuance: de sancties raken niet de staat Oekraïne maar personen (misappropriation oud-regime, Vo. 208/2014, verlengd tot 7 maart 2027) en de bezette gebieden (Krim: Vo. 692/2014, verlengd tot 23 juni 2027; niet-gecontroleerde gebieden: Vo. 2022/263)","vs":"Gebiedsgebonden: embargo op Krim, Donetsk en Loehansk","vk":"Gebiedsgebonden",
+   "karakter":"Gebiedsgebonden verboden binnen een verder niet-gesanctioneerd land; adres- en gebiedscheck is hier de kern",
+   "doorvoer":[],"docs":["tfs","sectoraal"],
+   "docnote":"Toets per transactie of de tegenpartij of levering in bezet gebied zit (adres, havencode, regio); een stroom naar vrij Oekraïne is regulier, een stroom naar bezet gebied valt onder het embargo.",
+   "signaal":"Leveringen of betalingen met adressen, havens of regio's in bezet gebied, of via Russische tussenschakels voor die gebieden."},
+
+  {"id":"KG","iso":417,"naam":"Kirgizië","regio":"Doorvoerlanden","lon":74.5,"lat":41.5,"klein":false,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; wel de eerste inzet van de anti-omzeilingstool (20e pakket): exportverbod CNC-machines en radio's","vs":"Entiteitslistings wegens doorvoer","vk":"Entiteitslistings",
+   "karakter":"Eerste testcase van de EU-anti-omzeilingstool: CHP-import uit de EU +800%, CHP-export naar Rusland +1.200% (eerste tien maanden 2025 t.o.v. 2022)",
+   "doorvoer":["RU"],
+   "docs":["sectoraal"],
+   "docnote":"Bij elke goederenstroom: CHP-check op de GN-code, end-user-verklaring, bewijs van eindbestemming en de no-Russia-clausule; bij CNC-machines en radio's geldt sinds het 20e pakket een exportverbod.",
+   "signaal":"Nieuwe Kirgizische tegenpartijen zonder trackrecord die westerse kwaliteitsgoederen bestellen; volumes die niet passen bij de lokale markt."},
+
+  {"id":"KZ","iso":398,"naam":"Kazachstan","regio":"Doorvoerlanden","lon":67,"lat":48,"klein":false,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; wel entiteitslistings wegens leveringen aan de Russische militaire industrie (20e pakket)","vs":"Entiteitslistings","vk":"Entiteitslistings",
+   "karakter":"Bekend doorvoerkanaal voor CHP- en dual-use-goederen richting Rusland",
+   "doorvoer":["RU"],
+   "docs":["sectoraal"],
+   "docnote":"Zelfde set als Kirgizië: CHP-check, end-user-verklaring, eindbestemmingsbewijs, no-Russia-clausule.",
+   "signaal":"Doorvoerpatronen: import uit de EU die qua goederencode één-op-één matcht met export naar Rusland."},
+
+  {"id":"AM","iso":51,"naam":"Armenië","regio":"Doorvoerlanden","lon":45,"lat":40.2,"klein":true,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; monitoring van CHP-stromen","vs":"Entiteitslistings","vk":"Geen landenregime",
+   "karakter":"Doorvoerkanaal in de Kaukasus-route richting Rusland",
+   "doorvoer":["RU"],
+   "docs":["sectoraal"],
+   "docnote":"CHP-check, end-user-verklaring, eindbestemmingsbewijs, no-Russia-clausule.",
+   "signaal":"Sterk gestegen handelsvolumes in westerse goederen zonder passende binnenlandse vraag."},
+
+  {"id":"GE","iso":268,"naam":"Georgië","regio":"Doorvoerlanden","lon":43.5,"lat":42,"klein":true,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; de Commissie monitort CHP- en ECG-stromen via Georgië expliciet","vs":"Geen landenregime","vk":"Geen landenregime",
+   "karakter":"Gemonitord doorvoerkanaal (Kaukasus-route)",
+   "doorvoer":["RU"],
+   "docs":["sectoraal"],
+   "docnote":"CHP-check, end-user-verklaring, eindbestemmingsbewijs, no-Russia-clausule.",
+   "signaal":"Transitogoederen die administratief in Georgië blijven maar fysiek doorreizen."},
+
+  {"id":"UZ","iso":860,"naam":"Oezbekistan","regio":"Doorvoerlanden","lon":64,"lat":41.5,"klein":false,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; wel entiteitslistings (20e pakket)","vs":"Entiteitslistings","vk":"Geen landenregime",
+   "karakter":"Doorvoerkanaal Centraal-Azië",
+   "doorvoer":["RU"],
+   "docs":["sectoraal"],
+   "docnote":"CHP-check, end-user-verklaring, eindbestemmingsbewijs, no-Russia-clausule.",
+   "signaal":"Nieuwe handelsfirma's met EU-import die niet bij het bedrijfsprofiel past."},
+
+  {"id":"TR","iso":792,"naam":"Turkije","regio":"Doorvoerlanden","lon":35,"lat":39,"klein":false,"rol":"doorvoer","peildatum":"2026-07-17",
+   "vn":"Geen","eu":"Klein eigen kader (boringen oostelijke Middellandse Zee, sinds 2019), verlengd tot november 2026 maar momenteel zonder listings; verder monitoring van doorvoer","vs":"Entiteitslistings wegens doorvoer en omzeiling","vk":"Entiteitslistings",
+   "karakter":"Grote hub: legitieme handel en doorvoerrisico lopen hier maximaal door elkaar",
+   "doorvoer":["RU","IR","SY"],
+   "docs":["sectoraal"],
+   "docnote":"Juist door het grote legitieme volume: risicogebaseerd documenteren; CHP-goederen en dual-use altijd met end-user-verklaring en eindbestemmingsbewijs.",
+   "signaal":"Tussenhandelaren die voor meerdere gesanctioneerde bestemmingen tegelijk inkopen; betaalinstructies die wisselen tussen Turkse en Golf-rekeningen."},
+
+  {"id":"AE","iso":784,"naam":"Verenigde Arabische Emiraten","regio":"Doorvoerlanden","lon":54,"lat":24,"klein":false,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; wel entiteitslistings (o.a. 20e pakket) wegens leveringen aan Rusland","vs":"Entiteitslistings; grote handhavingsaandacht","vk":"Entiteitslistings",
+   "karakter":"Financiële en handelshub: front companies, goud- en oliehandel, herfacturering",
+   "doorvoer":["RU","IR","SD"],
+   "docs":["sectoraal","tfs"],
+   "docnote":"Bij VAE-tegenpartijen: eigendoms- en zeggenschapsanalyse (wie zit erachter), herkomst- en bestemmingsdocumentatie bij goud en olie, en de no-Russia-clausule bij gevoelige goederen.",
+   "signaal":"Herfacturering: goederen die administratief via de VAE lopen maar fysiek elders heen gaan; prijsafwijkingen tussen factuur en marktwaarde."},
+
+  {"id":"RS","iso":688,"naam":"Servië","regio":"Doorvoerlanden","lon":20.9,"lat":44,"klein":true,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; monitoring van doorvoer (kandidaat-lidstaat, volgt EU-sancties niet volledig)","vs":"Enkele entiteitslistings","vk":"Geen landenregime",
+   "karakter":"Europese doorvoerroute; volgt het EU-sanctiebeleid niet volledig",
+   "doorvoer":["RU"],
+   "docs":["sectoraal"],
+   "docnote":"CHP-check, end-user-verklaring, eindbestemmingsbewijs, no-Russia-clausule.",
+   "signaal":"EU-goederen die via Servië worden omgeboekt naar EAEU-bestemmingen."},
+
+  {"id":"HK","iso":344,"naam":"Hongkong","regio":"Doorvoerlanden","lon":114.1,"lat":22.3,"klein":true,"rol":"doorvoer","peildatum":"2026-07-10",
+   "vn":"Geen","eu":"Geen landenregime; entiteitslistings van handelsfirma's","vs":"Entiteitslistings; exportcontrole-aandacht","vk":"Geen landenregime",
+   "karakter":"Hub voor handelsfirma's en front companies in de tech-doorvoer",
+   "doorvoer":["RU","KP","CN"],
+   "docs":["sectoraal","tfs"],
+   "docnote":"Bij Hongkongse handelsfirma's: eigendoms- en zeggenschapsanalyse plus CHP/dual-use-check; vraag door op de fysieke goederenstroom achter de facturen.",
+   "signaal":"Kort bestaande handelsfirma's met hoge volumes microelektronica; betaalstromen die niet sporen met de vrachtdocumentatie."}
+ ]
+}
+</script>
+
+
+<script>
+const DATA = JSON.parse(document.getElementById('sancties-data').textContent);
+const LAND = {}; DATA.landen.forEach(l => LAND[l.id] = l);
+const ISO2ID = {}; DATA.landen.forEach(l => ISO2ID[l.iso] = l.id);
+
+// Peildatum-weergave: dataset is ISO (JJJJ-MM-DD), de gebruiker ziet DD-MM-JJJJ
+function peil(d){ const p = (d || '').split('-'); return p.length === 3 ? p[2] + '-' + p[1] + '-' + p[0] : d; }
+
+// Documentatiesjablonen per sanctietype; per land aangevuld met docnote (volledig
+// uitgeschreven weergave per land, met peildatum per regel in de rendering).
+const DOCS = {
+  tfs: { naam: 'Listings / gerichte financiële sancties', items: [
+    'Screeningsbewijs met datum en lijstversie (cliënt én UBO’s)',
+    'UBO-verklaring en registeruittreksel',
+    'Eigendoms- en zeggenschapsanalyse bij rechtspersonen (50%-regel VS; eigendom of zeggenschap EU)'
+  ]},
+  sectoraal: { naam: 'Sectorale handelssancties', items: [
+    'Goederenclassificatie (GN-code) met CHP/ECG-check',
+    'End-user-verklaring van de eindafnemer',
+    'Bewijs van eindbestemming (vervoers- en douanedocumenten)',
+    'No-Russia-clausule (art. 12g Vo. 833/2014) in het exportcontract waar vereist'
+  ]},
+  embargo_vs: { naam: 'Alomvattend VS-embargo', items: [
+    'OFAC specific of general license (nummer, datum, reikwijdte)',
+    'Bewijs dat een VS-touchpoint ontbreekt (geen dollarclearing, geen US persons)',
+    'Juridische opinie over de reikwijdte',
+    'Blokkeringsverordening-toets bij Cuba/Iran: eigen EU/NL-gronden gedocumenteerd'
+  ]},
+  prijsplafond: { naam: 'Olieprijsplafond (G7)', items: [
+    'Prijsplafond-attestations uit de keten',
+    'Verzekerings- en vervoersdocumentatie',
+    'Schaduwvloot-check op IMO-nummer tegen de EU-lijst'
+  ]},
+  ontheffing: { naam: 'Ontheffing / derogatie', items: [
+    'NL: ontheffingsbesluit ministerie van Financiën (Team Sancties)',
+    'EU: derogatie van de bevoegde autoriteit; VK: OFSI licence; VS: OFAC license',
+    'Vastlegging dat niets is uitgevoerd vóór de ontheffing'
+  ]},
+  vn_brug: { naam: 'VN-overbrugging', items: [
+    'Vastlegging van aangehouden tegoeden en verrichte transacties bij een verse VN-listing',
+    'Vanaf 10 juli 2027 genormeerd door art. 27 AMLR (tijdelijke maatregelen)'
+  ]},
+  diensten: { naam: 'Dienstenstromen', items: [
+    'Omschrijving van de dienst en toets aan de dienstenverboden van het regime (bijv. EU-Ruslandpakketten: IT-, advies- en LNG-terminaldiensten)',
+    'Vastlegging wie de werkelijke afnemer van de dienst is (ook bij facturering via een tussenschakel)',
+    'Bij technische assistentie rond gevoelige goederen: toets aan dual-use-kader (Vo. 2021/821)'
+  ]},
+  keten: { naam: 'Doorlevering / end-user-beeld', items: [
+    'End-user-verklaring van de werkelijke eindafnemer (niet alleen de directe tegenpartij)',
+    'Doorleververklaring van de tussenschakel: aan wie wordt doorgeleverd en waarvoor',
+    'Bij gevoelige goederen: no-Russia-clausule contractueel doorzetten in de hele keten (art. 12g bij export naar derde landen; binnen de EU als best practice)',
+    'Consistentiecheck: factuur-, vervoers- en betaalstroom wijzen naar dezelfde eindbestemming'
+  ]},
+  herkomst: { naam: 'Inkomende stroom / herkomstbeeld', items: [
+    'Screeningsbewijs van de verzendende partij én de schakels ervoor (naam plus UBO, datum en lijstversie)',
+    'Herkomst van de gelden of goederen: bron van fondsen (source of funds), contracten en onderliggende leveringen',
+    'Eigendoms- en zeggenschapsanalyse van de afzender: wie zit er werkelijk achter (50%-regel VS; eigendom of zeggenschap EU)',
+    'Consistentiecheck: komt de betaalroute overeen met de gedocumenteerde herkomstketen'
+  ]}
+};
+
+// Welke documentsjablonen horen bij welk stroomtype
+const TYPE_DOCS = {
+  geld: ['tfs','embargo_vs','prijsplafond','ontheffing','vn_brug'],
+  goederen: ['tfs','sectoraal','embargo_vs','ontheffing','keten'],
+  diensten: ['tfs','diensten','embargo_vs','ontheffing'],
+  gemengd: ['tfs','sectoraal','diensten','embargo_vs','prijsplafond','ontheffing','vn_brug','keten']
+};
+const TYPENAAM = { geld: 'Geldstroom', goederen: 'Goederen', diensten: 'Diensten', gemengd: 'Gemengd' };
+
+// Basissignalen post-monitoring (FinCEN/BIS-alerts en EBA/GL/2024/15), aangevuld
+// met het landspecifieke signaal uit de dataset.
+const PM_BASIS = [
+  'Betalingen aan of via tussenpersonen in bekende doorvoerlanden, kort na nieuwe designaties',
+  'Gewijzigde betaalinstructies of nieuwe tegenpartijen richting hubs (Centraal-Azië, Kaukasus, Turkije, VAE, Hongkong)',
+  'Goederenomschrijvingen in betaalkenmerken die matchen met CHP- of dual-use-lijsten',
+  'Open account-betalingen in combinatie met doorvoerjurisdicties',
+  'Over- of onderfacturering en valutawissels zonder economische logica',
+  'Crypto-omleidingen; CASP’s screenen elke transfer (EBA/GL/2024/15)'
+];
+const PM_STAPPEN = [
+  'Alert beoordelen: welk signaal, welke stroom, welke lijstversie',
+  'Verrijken: goederen-, vaartuig- en tegenpartijdata erbij (CHP-check, IMO-check, register)',
+  'Eigendoms- en zeggenschapstoets op de tegenpartij (50%-regel / zeggenschap)',
+  'Concluderen en vastleggen: false positive, mitigeren met documentatie, of escaleren'
+];
+
+const state = { fase: 1, landen: [], stromen: [], wereld: null, features: {} };
+
+// EU-lidstaten (numerieke ISO) voor het generieke schakelprofiel
+const EU_ISO = new Set([40,56,100,191,196,203,208,233,246,250,276,300,348,372,380,428,440,442,470,528,616,620,642,703,705,724,752]);
+// Nederlandse namen voor alle niet-dataset-landen op de kaart; anders de kaartnaam
+const NAMEN_NL = {56:'België',276:'Duitsland',250:'Frankrijk',616:'Polen',40:'Oostenrijk',724:'Spanje',380:'Italië',203:'Tsjechië',348:'Hongarije',642:'Roemenië',100:'Bulgarije',300:'Griekenland',208:'Denemarken',752:'Zweden',246:'Finland',372:'Ierland',620:'Portugal',703:'Slowakije',705:'Slovenië',191:'Kroatië',440:'Litouwen',428:'Letland',233:'Estland',442:'Luxemburg',196:'Cyprus',470:'Malta',826:'Verenigd Koninkrijk',756:'Zwitserland',578:'Noorwegen',352:'IJsland',840:'Verenigde Staten',392:'Japan',410:'Zuid-Korea',36:'Australië',124:'Canada',554:'Nieuw-Zeeland',682:'Saudi-Arabië',634:'Qatar',414:'Koeweit',48:'Bahrein',512:'Oman',400:'Jordanië',376:'Israël',275:'Palestina',356:'India',586:'Pakistan',50:'Bangladesh',764:'Thailand',704:'Vietnam',458:'Maleisië',360:'Indonesië',608:'Filipijnen',702:'Singapore',96:'Brunei',116:'Cambodja',418:'Laos',524:'Nepal',64:'Bhutan',144:'Sri Lanka',626:'Oost-Timor',598:'Papoea-Nieuw-Guinea',242:'Fiji',548:'Vanuatu',90:'Salomonseilanden',158:'Taiwan',496:'Mongolië',76:'Brazilië',484:'Mexico',32:'Argentinië',152:'Chili',170:'Colombia',604:'Peru',68:'Bolivia',218:'Ecuador',600:'Paraguay',858:'Uruguay',328:'Guyana',740:'Suriname',591:'Panama',188:'Costa Rica',320:'Guatemala',340:'Honduras',222:'El Salvador',84:'Belize',214:'Dominicaanse Republiek',388:'Jamaica',780:'Trinidad en Tobago',44:"Bahama's",630:'Puerto Rico',192:'Cuba',818:'Egypte',504:'Marokko',12:'Algerije',788:'Tunesië',566:'Nigeria',710:'Zuid-Afrika',404:'Kenia',288:'Ghana',231:'Ethiopië',24:'Angola',72:'Botswana',108:'Burundi',120:'Kameroen',148:'Tsjaad',178:'Congo-Brazzaville',262:'Djibouti',226:'Equatoriaal-Guinea',232:'Eritrea',266:'Gabon',270:'Gambia',324:'Guinee',384:'Ivoorkust',426:'Lesotho',430:'Liberia',450:'Madagaskar',454:'Malawi',478:'Mauritanië',480:'Mauritius',508:'Mozambique',516:'Namibië',562:'Niger',646:'Rwanda',686:'Senegal',694:'Sierra Leone',768:'Togo',800:'Oeganda',834:'Tanzania',854:'Burkina Faso',894:'Zambia',748:'Eswatini',732:'Westelijke Sahara',498:'Moldavië',804:'Oekraïne',8:'Albanië',70:'Bosnië en Herzegovina',807:'Noord-Macedonië',499:'Montenegro',383:'Kosovo',31:'Azerbeidzjan',795:'Turkmenistan',762:'Tadzjikistan',368:'Irak',5:'vervallen',260:'Franse Zuidelijke Gebieden',304:'Groenland',540:'Nieuw-Caledonië',10:'Antarctica'};
+
+// Generiek profiel voor een tussenschakel die niet in de dataset zit
+function maakGeneriekLand(iso, feature){
+  const id = 'L' + iso;
+  const c = d3.geoCentroid(feature);
+  const isEU = EU_ISO.has(iso);
+  const naam = NAMEN_NL[iso] || (feature.properties && feature.properties.name) || ('Land ' + iso);
+  LAND[id] = {
+    id, iso, naam, regio: 'Tussenschakels', lon: c[0], lat: c[1],
+    klein: false, rol: 'schakel', generiek: true, peildatum: DATA.peildatum,
+    vn: 'Geen landenregime in deze dataset; toets de officiële lijsten',
+    eu: isEU ? 'EU-lidstaat: EU-sanctieverordeningen gelden er rechtstreeks; geen doelland' : 'Geen landenregime in deze dataset; toets de officiële lijsten',
+    vs: 'Geen landenregime in deze dataset; toets OFAC (SDN en 50%-regel blijven gelden voor tegenpartijen hier)',
+    vk: 'Geen landenregime in deze dataset; toets de UK Sanctions List',
+    karakter: isEU ? 'Tussenschakel binnen de EU; het risico zit niet in dit land maar in de doorlevering' : 'Tussenschakel zonder eigen landenregime in de dataset; het risico zit in de doorlevering',
+    doorvoer: [], docs: ['keten'],
+    docnote: 'Bij een tussenschakel draait de documentatie om het end-user-beeld: wie is de werkelijke eindafnemer achter deze schakel, en waar landt de levering of betaling uiteindelijk.',
+    signaal: 'Betalingen of leveringen aan deze schakel die qua volume, goederensoort of timing wijzen op doorlevering aan een verderop gelegen bestemming.'
+  };
+  ISO2ID[iso] = id;
+  return id;
+}
+
+/* ---------- Globe (intro) ---------- */
+(function(){
+  if (typeof d3 === 'undefined') { return; }
+  const svg = d3.select('#globe'), B = 380, R = 168;
+  const proj = d3.geoOrthographic().scale(R).translate([B/2,B/2]).clipAngle(90);
+  const pad = d3.geoPath(proj);
+  svg.append('circle').attr('cx',B/2).attr('cy',B/2).attr('r',R).attr('class','globe-zee');
+  const laag = svg.append('g');
+  let rot = [-10, -18], sleep = false, autoT = null;
+  function teken(){
+    proj.rotate(rot);
+    laag.selectAll('path').attr('d', pad);
+  }
+  function auto(){ autoT = d3.timer(() => { if(!sleep){ rot[0] += 0.18; teken(); } }); }
+  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w => {
+    state.wereld = w;
+    const landen = topojson.feature(w, w.objects.countries).features;
+    laag.selectAll('path').data(landen).join('path')
+      .attr('class', d => { const id = ISO2ID[+d.id]; return 'landvorm' + (id && LAND[id].rol !== 'vertrek' ? (LAND[id].rol === 'doorvoer' ? ' doorvoer' : ' geselecteerd') : ''); })
+      .attr('d', pad);
+    teken(); auto();
+    tekenKaart();
+    svg.call(d3.drag()
+      .on('start', () => { sleep = true; })
+      .on('drag', (e) => { rot[0] += e.dx * 0.4; rot[1] = Math.max(-70, Math.min(70, rot[1] - e.dy * 0.4)); teken(); })
+      .on('end', () => { sleep = false; }));
+  }).catch(() => {
+    document.getElementById('globe-sectie').querySelector('.globe-hint').textContent = 'De wereldbol kon niet worden geladen; de tool werkt gewoon.';
+    document.getElementById('kaart-fout').style.display = 'block';
+  });
+})();
+
+/* ---------- Platte kaart ---------- */
+const K = { b: 940, h: 480 };
+const kproj = d3.geoNaturalEarth1().scale(190).translate([K.b/2, K.h/2 + 20]);
+const kpad = d3.geoPath(kproj);
+const ksvg = d3.select('#kaart');
+const gLanden = ksvg.append('g');
+const gPijlen = ksvg.append('g');
+const gPunten = ksvg.append('g');
+
+// Doorvoerlanden die amber kleuren: de bekende doorvoerkanalen van elke schakel
+// die in een getrokken stroom als ontvanger voorkomt (plus, zolang er nog geen
+// stromen zijn, van de gekozen schakels).
+function doorvoerSet(){
+  const basis = state.stromen.length ? state.stromen.map(s => s.naar) : state.landen;
+  const s = new Set();
+  basis.forEach(id => ((LAND[id] && LAND[id].doorvoer) || []).forEach(d => { if(!state.landen.includes(d)) s.add(d); }));
+  return s;
+}
+
+function tekenKaart(){
+  if (!state.wereld) return;
+  const dv = doorvoerSet();
+  const landen = topojson.feature(state.wereld, state.wereld.objects.countries).features;
+  landen.forEach(f => { state.features[+f.id] = f; });
+  gLanden.selectAll('path').data(landen).join(
+    enter => enter.append('path')
+      .call(s => s.append('title').text(d => { const id = ISO2ID[+d.id]; return id ? LAND[id].naam : (NAMEN_NL[+d.id] || (d.properties && d.properties.name) || ''); }))
+  )
+    .attr('d', kpad)
+    .attr('class', d => {
+      const iso = +d.id, id = ISO2ID[iso];
+      if (id && LAND[id].rol === 'vertrek') return 'landvorm';
+      let c = 'landvorm kiesbaar';
+      if (id && state.landen.includes(id)) c += ' geselecteerd';
+      else if (id && dv.has(id)) c += ' doorvoer';
+      return c;
+    })
+    .on('click', (e, d) => {
+      const iso = +d.id;
+      let id = ISO2ID[iso];
+      if (id && LAND[id].rol === 'vertrek') return;
+      if (state.fase === 1) {
+        if (!id) id = maakGeneriekLand(iso, d);
+        toggleLand(id);
+      } else if (id) {
+        openLand(id);
+      }
+    });
+  tekenPunten(); tekenPijlen();
+}
+
+function tekenPunten(){
+  const dv = doorvoerSet();
+  const kleine = Object.values(LAND).filter(l => l.klein && l.rol !== 'vertrek' && (state.landen.includes(l.id) || dv.has(l.id)));
+  gPunten.selectAll('circle').data(kleine, d => d.id).join('circle')
+    .attr('class','land-punt')
+    .attr('r', 4.5)
+    .attr('cx', d => kproj([d.lon, d.lat])[0])
+    .attr('cy', d => kproj([d.lon, d.lat])[1])
+    .on('click', (e, d) => { if (state.fase === 1) toggleLand(d.id); else openLand(d.id); })
+    .append('title').text(d => d.naam);
+}
+
+function tekenPijlen(){
+  gPijlen.selectAll('path').data(state.stromen, (d, i) => d.van + '>' + d.naar + i).join('path')
+    .attr('class','stroom-pijl')
+    .attr('d', s => {
+      const a = kproj([LAND[s.van].lon, LAND[s.van].lat]);
+      const b = kproj([LAND[s.naar].lon, LAND[s.naar].lat]);
+      const mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2;
+      const dx = b[0]-a[0], dy = b[1]-a[1];
+      const n = Math.hypot(dx,dy) || 1;
+      const buig = Math.min(60, n * 0.22);
+      return `M${a[0]},${a[1]} Q${mx - dy/n*buig},${my + dx/n*buig} ${b[0]},${b[1]}`;
+    });
+}
+
+/* ---------- Ketenanalyse ---------- */
+function volgende(id){ return state.stromen.filter(s => s.van === id).map(s => s.naar); }
+function vorige(id){ return state.stromen.filter(s => s.naar === id).map(s => s.van); }
+
+// Alle stroomopwaarts gelegen schakels (herkomstkant, cyclusveilig)
+function stroomopwaarts(id){
+  const gezien = new Set(); const stapel = [...vorige(id)];
+  while (stapel.length){
+    const x = stapel.pop();
+    if (gezien.has(x)) continue;
+    gezien.add(x);
+    vorige(x).forEach(v => stapel.push(v));
+  }
+  return [...gezien];
+}
+
+// Herkomstoordeel voor een inkomende stroom: oorsprong en risicovlaggen stroomopwaarts
+function herkomstAnalyse(s){
+  const op = stroomopwaarts(s.van);
+  const oorsprong = op.length ? op.filter(x => vorige(x).length === 0) : [s.van];
+  const vlaggen = [];
+  [...op, s.van].forEach(x => {
+    const l = LAND[x];
+    if (!l || l.rol === 'vertrek') return;
+    if (l.rol === 'doel' || l.rol === 'beide') vlaggen.push(`de herkomstketen loopt via ${l.naam}, waar sancties gelden (${l.karakter.toLowerCase()})`);
+    if (l.rol === 'doorvoer') vlaggen.push(`de herkomstketen loopt via ${l.naam}, een bekend doorvoerkanaal (${(l.doorvoer||[]).map(d => LAND[d] ? LAND[d].naam : d).join(', ')})`);
+  });
+  return { oorsprong, vlaggen };
+}
+
+// Alle stroomafwaarts bereikbare schakels vanaf een schakel (cyclusveilig)
+function stroomafwaarts(id){
+  const gezien = new Set(); const stapel = [...volgende(id)];
+  while (stapel.length){
+    const x = stapel.pop();
+    if (gezien.has(x)) continue;
+    gezien.add(x);
+    volgende(x).forEach(v => stapel.push(v));
+  }
+  return [...gezien];
+}
+
+// Ketenoordeel voor een stroom: eindbestemmingen en risicovlaggen
+function ketenAnalyse(s){
+  const af = stroomafwaarts(s.naar);
+  const eind = af.length ? af.filter(x => volgende(x).length === 0) : [s.naar];
+  const vlaggen = [];
+  af.forEach(x => {
+    const l = LAND[x];
+    if (!l) return;
+    if (l.rol === 'doel' || l.rol === 'beide') vlaggen.push(`de keten loopt door naar ${l.naam}, waar sancties gelden (${l.karakter.toLowerCase()})`);
+    if (l.rol === 'doorvoer') vlaggen.push(`de keten loopt via ${l.naam}, een bekend doorvoerkanaal richting ${(l.doorvoer||[]).map(d => LAND[d] ? LAND[d].naam : d).join(', ')}`);
+  });
+  const naarL = LAND[s.naar];
+  if ((naarL.doorvoer || []).length && (naarL.rol === 'doorvoer' || naarL.rol === 'beide')){
+    vlaggen.push(`${naarL.naam} is zelf een bekend doorvoerkanaal richting ${naarL.doorvoer.map(d => LAND[d] ? LAND[d].naam : d).join(', ')}, ook als de keten daar in de tool ophoudt`);
+  }
+  return { eind, vlaggen };
+}
+
+/* ---------- Fasen ---------- */
+function startTool(){
+  document.getElementById('tool').classList.add('actief');
+  document.getElementById('tool').scrollIntoView({behavior:'smooth'});
+}
+function gaNaarFase(f){
+  if (f >= 3 && state.stromen.length === 0) return;
+  state.fase = f;
+  for (let i = 1; i <= 4; i++){
+    document.getElementById('fase-'+i).classList.toggle('actief', i === f);
+    const chip = document.getElementById('chip-'+i);
+    chip.classList.toggle('actief', i === f);
+    chip.classList.toggle('klaar', i < f);
+  }
+  if (f === 2) vulStroomSelects();
+  if (f === 3) renderAnalyse();
+  if (f === 4) renderOverzicht();
+  tekenKaart();
+}
+function printOverzicht(){
+  gaNaarFase(3);
+  const nu = new Date();
+  document.getElementById('print-datum').textContent =
+    'Educatief, geen advies · geprint op ' + nu.toLocaleDateString('nl-NL', {day:'numeric',month:'long',year:'numeric'}) + ' · dataset-peildatum ' + peil(DATA.peildatum) + ' · trnkl.nl/flowcharts/flowtool-sancties.html';
+  window.print();
+}
+function herstart(){
+  state.landen = []; state.stromen = []; state.fase = 1;
+  renderLandenlijst(); renderStromenlijst(); gaNaarFase(1); checkKlaar();
+}
+
+/* ---------- Fase 1: schakels ---------- */
+function toggleLand(id){
+  const i = state.landen.indexOf(id);
+  if (i >= 0) {
+    state.landen.splice(i, 1);
+    state.stromen = state.stromen.filter(s => s.van !== id && s.naar !== id);
+  } else {
+    state.landen.push(id);
+  }
+  renderLandenlijst(); renderStromenlijst(); tekenKaart(); checkKlaar();
+}
+function checkKlaar(){
+  document.getElementById('naar-2').disabled = false; // stap 1 is optioneel: landen kiezen kan ook in stap 2
+  document.getElementById('naar-3').disabled = state.stromen.length === 0;
+}
+
+function renderLandenlijst(){
+  const wrap = document.getElementById('landenlijst');
+  const regios = ['Europa en Kaukasus','Midden-Oosten','Azië','Afrika',"Amerika's",'Doorvoerlanden'];
+  let html = '';
+  regios.forEach(r => {
+    const groep = DATA.landen.filter(l => l.regio === r);
+    if (!groep.length) return;
+    html += `<div class="land-groep">${r === 'Doorvoerlanden' ? 'Doorvoerlanden (omzeilingsrisico)' : r}</div>`;
+    groep.forEach(l => {
+      const aan = state.landen.includes(l.id);
+      const vlag = l.rol === 'doorvoer' ? '<span class="vlagje">doorvoer</span>' : (l.rol === 'beide' ? '<span class="vlagje rood">sancties + doorvoer</span>' : '<span class="vlagje rood">sancties</span>');
+      html += `<div class="land-rij"><input type="checkbox" ${aan ? 'checked' : ''} onchange="toggleLand('${l.id}')" id="cb-${l.id}"><label class="ln" for="cb-${l.id}">${l.naam}</label>${vlag}<span class="info" onclick="openLand('${l.id}')">status</span></div>`;
+    });
+  });
+  wrap.innerHTML = html;
+  // gekozen tussenschakels van de kaart (generieke landen)
+  const extra = state.landen.filter(id => LAND[id] && LAND[id].generiek);
+  const gw = document.getElementById('gekozen-schakels');
+  gw.innerHTML = extra.length
+    ? `<div class="land-groep">Gekozen tussenschakels (via de kaart)</div>` + extra.map(id =>
+        `<div class="land-rij"><input type="checkbox" checked onchange="toggleLand('${id}')" id="cb-${id}"><label class="ln" for="cb-${id}">${LAND[id].naam}</label><span class="vlagje ok">tussenschakel</span><span class="info" onclick="openLand('${id}')">status</span></div>`).join('')
+    : '';
+}
+
+/* ---------- Fase 2: stromen ---------- */
+// De van/naar-lijsten bevatten ALLE landen: gekozen schakels bovenaan, dan de
+// sanctie- en doorvoerlanden uit de dataset, dan alle overige wereldlanden.
+// Wat je hier gebruikt, wordt automatisch een schakel; stap 1 vooraf is optioneel.
+function vulStroomSelects(){
+  const vanSel = document.getElementById('stroom-van');
+  const naarSel = document.getElementById('stroom-naar');
+  const oudVan = vanSel.value, oudNaar = naarSel.value;
+  const gekozen = ['NL', ...state.landen];
+  let html = '<optgroup label="Gekozen schakels">' +
+    gekozen.map(id => `<option value="${id}">${LAND[id].naam}</option>`).join('') + '</optgroup>';
+  const rest = DATA.landen.filter(l => l.rol !== 'vertrek' && !state.landen.includes(l.id))
+    .slice().sort((a, b) => a.naam.localeCompare(b.naam, 'nl'));
+  if (rest.length){
+    html += '<optgroup label="Sanctie- en doorvoerlanden">' +
+      rest.map(l => `<option value="${l.id}">${l.naam}</option>`).join('') + '</optgroup>';
+  }
+  if (state.wereld){
+    const skip = new Set([10, 260, 5]);
+    const overig = Object.keys(state.features).map(Number)
+      .filter(iso => {
+        if (skip.has(iso)) return false;
+        const id = ISO2ID[iso];
+        if (id && !LAND[id].generiek) return false;
+        if (id && state.landen.includes(id)) return false;
+        return true;
+      })
+      .map(iso => ({ iso, naam: NAMEN_NL[iso] || (state.features[iso].properties && state.features[iso].properties.name) || ('Land ' + iso) }))
+      .sort((a, b) => a.naam.localeCompare(b.naam, 'nl'));
+    html += '<optgroup label="Alle overige landen">' +
+      overig.map(o => `<option value="iso:${o.iso}">${o.naam}</option>`).join('') + '</optgroup>';
+  }
+  vanSel.innerHTML = html; naarSel.innerHTML = html;
+  // In de Naar-lijst maakt het NL-label expliciet dat Nederland eindbestemming
+  // kan zijn en dat de analyse dan naar de herkomstkant kantelt.
+  const nlNaar = [...naarSel.options].find(o => o.value === 'NL');
+  if (nlNaar) nlNaar.textContent = 'Nederland (eindbestemming · herkomstanalyse)';
+  if (oudVan && [...vanSel.options].some(o => o.value === oudVan)) vanSel.value = oudVan;
+  if (oudNaar && [...naarSel.options].some(o => o.value === oudNaar)) naarSel.value = oudNaar;
+  else if (state.landen.length) naarSel.value = state.landen[0];
+}
+// Waarde uit de selects omzetten naar een schakel-id; nieuw land wordt schakel
+function schakelVanWaarde(w){
+  if (!w) return null;
+  if (w.startsWith('iso:')){
+    const iso = +w.slice(4);
+    let id = ISO2ID[iso];
+    if (!id) id = maakGeneriekLand(iso, state.features[iso]);
+    if (id !== 'NL' && !state.landen.includes(id)) state.landen.push(id);
+    return id;
+  }
+  if (w !== 'NL' && LAND[w] && !state.landen.includes(w)) state.landen.push(w);
+  return w;
+}
+function melding(tekst){
+  const el = document.getElementById('stroom-melding');
+  if (!el) return;
+  if (!tekst){ el.style.display = 'none'; el.textContent = ''; return; }
+  el.textContent = tekst; el.style.display = 'block';
+}
+function voegStroomToe(){
+  const van = schakelVanWaarde(document.getElementById('stroom-van').value);
+  const naar = schakelVanWaarde(document.getElementById('stroom-naar').value);
+  const type = document.getElementById('stroom-type').value;
+  if (!van || !naar) { melding('Kies eerst een van- en een naar-land.'); return; }
+  if (van === naar) { melding('Van en naar staan allebei op hetzelfde land. Kies bij "Naar" een ander land; een keten door hetzelfde land maak je met twee stromen via een tussenschakel.'); return; }
+  if (state.stromen.some(s => s.van === van && s.naar === naar && s.type === type)) { melding('Deze stroom (zelfde van, naar en type) staat al in de lijst. Kies een ander type of een andere schakel.'); return; }
+  melding('');
+  state.stromen.push({ van, naar, type });
+  renderLandenlijst(); renderStromenlijst(); vulStroomSelects(); tekenKaart(); checkKlaar();
+}
+function verwijderStroom(i){
+  state.stromen.splice(i, 1);
+  renderStromenlijst(); tekenKaart(); checkKlaar();
+}
+function renderStromenlijst(){
+  const wrap = document.getElementById('stromenlijst');
+  if (!wrap) return;
+  wrap.innerHTML = state.stromen.map((s, i) =>
+    `<div class="land-rij" style="background:var(--bg-secondary);border:0.5px solid var(--border-light);border-radius:9px;padding:8px 10px;margin-top:8px">
+      <span class="ln">${LAND[s.van].naam} → ${LAND[s.naar].naam}</span>
+      <span class="vlagje">${TYPENAAM[s.type] || s.type}</span>
+      <span class="info" onclick="verwijderStroom(${i})" title="Verwijderen">✕</span>
+    </div>`).join('');
+}
+
+/* ---------- Regimebadges ---------- */
+function badge(k, tekst){
+  const geen = /^geen/i.test(tekst || '');
+  return `<span class="rb ${geen ? 'geen' : k}">${k.toUpperCase()}</span>`;
+}
+function regimeRegel(l){
+  return `${badge('vn', l.vn)}${badge('eu', l.eu)}${badge('vs', l.vs)}${badge('vk', l.vk)}`;
+}
+
+/* ---------- Fase 3: analyse per stroom ---------- */
+// Documentatie voor een stroom: de sjablonen van de ontvangende schakel,
+// gefilterd op het stroomtype, plus het ketensjabloon zodra er wordt doorgeleverd.
+function docBlok(l, s){
+  const relevant = TYPE_DOCS[s ? s.type : 'gemengd'] || [];
+  let keys = (l.docs || []).filter(k => relevant.includes(k));
+  if (s && (s.type === 'diensten' || s.type === 'gemengd') && !keys.includes('diensten') && (l.rol === 'doel' || l.rol === 'beide')) keys.push('diensten');
+  if (s && volgende(s.naar).length && !keys.includes('keten')) keys.push('keten');
+  if (s && s.naar === 'NL'){ keys = keys.filter(k => k !== 'keten'); if (!keys.includes('herkomst')) keys.unshift('herkomst'); }
+  if (!keys.length) keys = (l.docs || []).length ? l.docs : ['tfs'];
+  let html = '';
+  keys.forEach(k => {
+    const t = DOCS[k];
+    if (!t) return;
+    html += `<div class="uk-blok"><div class="uk-label">${t.naam} <span class="peil">· peildatum ${peil(l.peildatum)}</span></div><ul class="doclijst">` +
+      t.items.map(i => `<li>${i}</li>`).join('') + `</ul></div>`;
+  });
+  if (l.docnote) html += `<div class="uk-blok"><div class="uk-label">Landspecifiek <span class="peil">· peildatum ${peil(l.peildatum)}</span></div><div class="uk-tekst">${l.docnote}</div></div>`;
+  return html;
+}
+
+function verplichtingBlok(l){
+  const regels = [
+    'Bevriezings- en beschikbaarstellingsverbod: geldt voor iedereen in de Unie (EU-sanctieverordeningen, rechtstreeks werkend)',
+    'Bij een hit: bevriezen en onverwijld melden aan DNB (Regeling Toezicht Sanctiewet 1977); bij een ongebruikelijke transactie ook FIU-melding (Wwft)',
+    'Screening van transfers: EBA/GL/2024/14 en /15 (sinds 30 december 2025)',
+    'Vanaf 10 juli 2027: TFS-toets in het cliëntenonderzoek incl. UBO- en zeggenschapstoets (art. 20(1)(d) AMLR); monitoring bij elke nieuwe designation (art. 26(4))',
+    'Schending én omzeiling strafbaar: WED en Richtlijn (EU) 2024/1226; opbrengsten afpakbaar (Richtlijn (EU) 2024/1260)'
+  ];
+  if (l.id === 'CU' || l.id === 'IR') regels.push('Let op: weigeren puur op grond van het VS-embargo kan botsen met de blokkeringsverordening (Vo. 2271/96); zie de flowchart, spoor A stap 3');
+  return `<ul class="doclijst">` + regels.map(r => `<li>${r}</li>`).join('') + `</ul>`;
+}
+
+function stroomKaart(s, idx, compact){
+  const inkomend = s.naar === 'NL';
+  // Bij een inkomende stroom kantelt de analyse naar de verzendende kant (herkomst)
+  const l = inkomend ? LAND[s.van] : LAND[s.naar];
+  let risico = '';
+  if (inkomend){
+    const h = herkomstAnalyse(s);
+    if (h.vlaggen.length) risico += `<strong>Herkomstbeeld:</strong> ` + h.vlaggen.join('; ') + '.';
+    const bronNamen = h.oorsprong.map(x => LAND[x] ? LAND[x].naam : x);
+    if (h.oorsprong.length && !(h.oorsprong.length === 1 && h.oorsprong[0] === s.van)){
+      risico += ` <strong>Oorsprong volgens de getrokken keten:</strong> ${bronNamen.join(', ')}. Het herkomstbeeld hoort bij die oorsprong, niet alleen bij de directe afzender.`;
+    }
+    if (!risico){
+      risico = l.generiek || l.rol === 'vertrek'
+        ? 'Geen eigen regime bij de directe afzender; het risico zit in de schakels dáárvoor. Trek de herkomststromen om het herkomstbeeld te zien.'
+        : 'Directe afzender heeft een eigen sanctieregime; toets de herkomst van de gelden of goederen tegen dat regime.';
+    }
+  } else {
+    const keten = ketenAnalyse(s);
+    const dv = (l.doorvoer || []).filter(d => LAND[d]);
+    if (keten.vlaggen.length){
+      risico += `<strong>Ketenbeeld:</strong> ` + keten.vlaggen.join('; ') + '.';
+    }
+    const eindNamen = keten.eind.map(x => LAND[x] ? LAND[x].naam : x);
+    if (keten.eind.length && !(keten.eind.length === 1 && keten.eind[0] === s.naar)){
+      risico += ` <strong>Eindbestemming volgens de getrokken keten:</strong> ${eindNamen.join(', ')}. Het end-user-beeld hoort bij die eindbestemming, niet bij de directe tegenpartij.`;
+    } else if (dv.length){
+      risico += (risico ? ' ' : '') + `Bekende doorvoer- en omzeilingskanalen voorbij deze bestemming: ${dv.map(d => LAND[d].naam).join(', ')} (amber op de kaart).`;
+    } else if (!risico){
+      risico = l.generiek
+        ? 'Geen eigen regime in de dataset; het risico van deze schakel zit in wat er ná deze schakel gebeurt. Trek de doorleverstroom om het ketenbeeld te zien.'
+        : 'Geen specifiek doorvoerpatroon bekend voor deze stroom.';
+    }
+  }
+  return `<div class="uitkomst-kaart">
+    <div class="uk-kop">${LAND[s.van].naam} → ${LAND[s.naar].naam} <span class="vlagje">${TYPENAAM[s.type] || s.type}</span>${inkomend ? ' <span class="vlagje ok">inkomend</span>' : ''} <span class="peil">· peildatum ${peil(l.peildatum)}</span></div>
+    <div class="uk-blok"><div class="uk-label">1 · Sanctiestatus van de ${inkomend ? 'verzendende' : 'ontvangende'} schakel (${l.naam})</div><div class="uk-tekst">${regimeRegel(l)}<br>
+      <strong>VN:</strong> ${l.vn}<br><strong>EU:</strong> ${l.eu}<br><strong>VS:</strong> ${l.vs}<br><strong>VK:</strong> ${l.vk}<br><em>${l.karakter}.</em></div></div>
+    <div class="uk-blok"><div class="uk-label">2 · ${inkomend ? 'Herkomstrisico (herkomstbeeld)' : 'Doorlever- en omzeilingsrisico (ketenbeeld)'}</div><div class="uk-tekst">${risico}</div></div>
+    <div class="uk-blok"><div class="uk-label">3 · Mitigerende documentatie (${(TYPENAAM[s.type] || s.type).toLowerCase()})</div>${docBlok(l, s)}</div>
+    <div class="uk-blok"><div class="uk-label">4 · Verplichting</div>${verplichtingBlok(l)}</div>
+    ${compact ? '' : `<button class="knop klein no-print" onclick="openPM(${idx})">Signalen na de transactie →</button>
+    <button class="knop klein secundair no-print" onclick="openLand('${l.id}')">Volledige status</button>`}
+  </div>`;
+}
+
+// Ketensamenvatting bovenaan de analyse: elke route uitgeschreven, vanaf elk
+// startpunt (een schakel die wel verzendt maar niets ontvangt); NL kan dus
+// beginpunt, tussenschakel of eindstation zijn.
+function ketenSamenvatting(){
+  const routes = [];
+  const starts = [...new Set(state.stromen.map(s => s.van))].filter(id => vorige(id).length === 0);
+  (starts.length ? starts : ['NL']).forEach(start => {
+    (function loop(pad){
+      const uit = volgende(pad[pad.length - 1]).filter(x => !pad.includes(x));
+      if (!uit.length){ if (pad.length > 1) routes.push(pad); return; }
+      uit.forEach(x => loop([...pad, x]));
+    })([start]);
+  });
+  if (!routes.length) return '';
+  return `<div class="signaal"><strong>Getrokken ketens:</strong> ` +
+    routes.map(r => r.map(x => LAND[x] ? LAND[x].naam : x).join(' → ')).join(' &nbsp;|&nbsp; ') +
+    `. De sanctie- en documentatietoets hoort bij de hele keten, tot en met de eindbestemming.</div>`;
+}
+
+function renderAnalyse(){
+  const wrap = document.getElementById('analyse');
+  if (!state.stromen.length){
+    wrap.innerHTML = '<div class="zp-sub">Nog geen stromen getrokken; ga terug naar stap 2.</div>';
+    return;
+  }
+  // Accordeon: elke stroom een eigen klikbare balk, zodat alle stromen
+  // zichtbaar en apart te analyseren zijn (eerste staat open).
+  wrap.innerHTML = ketenSamenvatting() + state.stromen.map((s, i) => {
+    const inkomend = s.naar === 'NL';
+    return `<details class="stroom-acc"${i === 0 ? ' open' : ''}>
+      <summary>${i + 1}. ${LAND[s.van].naam} → ${LAND[s.naar].naam} <span class="vlagje">${TYPENAAM[s.type] || s.type}</span>${inkomend ? ' <span class="vlagje ok">inkomend</span>' : ''}</summary>
+      <div class="acc-body">${stroomKaart(s, i, false)}</div>
+    </details>`;
+  }).join('');
+}
+
+/* ---------- Fase 4: overzicht ---------- */
+function renderOverzicht(){
+  const wrap = document.getElementById('overzicht');
+  let html = ketenSamenvatting() + state.stromen.map((s, i) => stroomKaart(s, i, true)).join('');
+  if (state.stromen.length){
+    html += `<div class="signaal" style="margin-top:12px"><strong>Post-monitoring (alle stromen):</strong> ${PM_BASIS.slice(0,3).join('; ').toLowerCase()}; en verder per stroom het landspecifieke signaal in het analysepaneel. Meldroutes: sanctiehit onverwijld aan DNB; ongebruikelijke transactie aan FIU-Nederland.</div>`;
+  } else {
+    html = '<div class="zp-sub">Nog geen stromen getrokken; ga terug naar stap 2.</div>';
+  }
+  wrap.innerHTML = html;
+}
+
+/* ---------- Modals ---------- */
+function openLand(id){
+  const l = LAND[id];
+  document.getElementById('lm-titel').textContent = l.naam;
+  document.getElementById('lm-kicker').textContent = (l.rol === 'doorvoer' ? 'Doorvoerland · omzeilingsrisico' : (l.generiek ? 'Tussenschakel · generiek profiel' : 'Sanctiestatus')) + ' · peildatum ' + peil(l.peildatum);
+  document.getElementById('lm-inhoud').innerHTML =
+    `<div class="regime-veld"><div class="rv-label">VN-Veiligheidsraad</div><div class="rv-tekst">${l.vn || 'n.v.t.'}</div></div>
+     <div class="regime-veld"><div class="rv-label">Europese Unie</div><div class="rv-tekst">${l.eu || 'n.v.t.'}</div></div>
+     <div class="regime-veld"><div class="rv-label">Verenigde Staten</div><div class="rv-tekst">${l.vs || 'n.v.t.'}</div></div>
+     <div class="regime-veld"><div class="rv-label">Verenigd Koninkrijk</div><div class="rv-tekst">${l.vk || 'n.v.t.'}</div></div>
+     <div class="regime-veld"><div class="rv-label">Karakter</div><div class="rv-tekst">${l.karakter}.</div></div>`;
+  document.getElementById('land-modal').classList.add('open'); document.body.style.overflow = 'hidden';
+}
+function openPM(idx){
+  const s = state.stromen[idx];
+  if (!s) return;
+  const inkomend = s.naar === 'NL';
+  const l = inkomend ? LAND[s.van] : LAND[s.naar];
+  const vlaggen = inkomend ? herkomstAnalyse(s).vlaggen : ketenAnalyse(s).vlaggen;
+  document.getElementById('pm-titel').textContent = LAND[s.van].naam + ' → ' + LAND[s.naar].naam + ' (' + (TYPENAAM[s.type] || s.type).toLowerCase() + (inkomend ? ', inkomend' : '') + ')';
+  let html = `<div class="regime-veld"><div class="rv-label">Transactiesignalen (basis)</div><ul class="flag-list" style="margin-top:6px">` +
+    PM_BASIS.map(x => `<li>${x}</li>`).join('') + `</ul></div>`;
+  if (l.signaal) html += `<div class="regime-veld"><div class="rv-label">Schakelspecifiek signaal</div><ul class="flag-list" style="margin-top:6px"><li>${l.signaal}</li></ul></div>`;
+  if (vlaggen.length) html += `<div class="regime-veld"><div class="rv-label">${inkomend ? 'Herkomstsignaal' : 'Ketensignaal'}</div><ul class="flag-list" style="margin-top:6px">` +
+    vlaggen.map(v => `<li>Achteraf toetsen of de betaal- en goederenstroom sporen met het ${inkomend ? 'herkomstbeeld' : 'ketenbeeld'}: ${v}</li>`).join('') + `</ul></div>`;
+  html += `<div class="regime-veld"><div class="rv-label">Beoordelingsstappen</div><ul class="doclijst" style="margin-top:6px">` +
+    PM_STAPPEN.map(s => `<li>${s}</li>`).join('') + `</ul></div>
+    <div class="regime-veld"><div class="rv-label">Meldroutes (naast elkaar)</div><div class="rv-tekst">Sanctiehit: onverwijld aan DNB (Regeling Toezicht Sanctiewet 1977). Ongebruikelijke transactie: aan FIU-Nederland (Wwft). Zodra de Wet internationale sanctiemaatregelen (36898, in behandeling) is aangenomen, komt daar het centrale meldpunt sancties (CMS) bij.</div></div>
+    <div class="signaal"><strong>Begrenzing:</strong> signalen zijn indicatoren voor onderzoek en melding, geen oordeel en geen routekaart. Vanaf 10 juli 2027 verankert de AMLR deze monitoring (art. 10 en 26(4)).</div>`;
+  document.getElementById('pm-inhoud').innerHTML = html;
+  document.getElementById('pm-modal').classList.add('open'); document.body.style.overflow = 'hidden';
+}
+function sluitModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+document.querySelectorAll('.modal-overlay').forEach(function(ov){
+  ov.addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; } });
+});
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ document.querySelectorAll('.modal-overlay.open').forEach(function(ov){ ov.classList.remove('open'); }); document.body.style.overflow=''; }
+});
+
+// === Kopieerbeveiliging ===
+// Eén schakelaar; op TRUE zetten bij publicatie na akkoord Toine (bronblokken blijven kopieerbaar).
+const BLOKKEER_KOPIEREN = true;
+if (BLOKKEER_KOPIEREN) {
+  document.querySelectorAll('.modal-box').forEach(function(box){
+    box.style.userSelect = 'none'; box.style.webkitUserSelect = 'none';
+    function allowInSource(e){ return e.target.closest('.source-block')!==null; }
+    box.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  });
+}
+
+renderLandenlijst(); renderStromenlijst(); checkKlaar();
+</script>
+
+
+<section class="uitleg-sectie">
+<details class="uitleg-wrap">
+<summary class="uitleg-trigger">Achtergrond en veelgestelde vragen</summary>
+<div class="uitleg-body">
+<p class="kicker">Achtergrond</p>
+<h2>Wat doet de flowtool sancties?</h2>
+<p>De flowtool sancties is een casusbouwer bij de TRNKL-flowchart sancties. Op de wereldkaart bouw je de keten zoals de bank hem ziet: je kiest de schakels (ook tussenschakels zonder eigen sancties, zoals België of Duitsland, die een generiek profiel krijgen) en trekt daartussen de stromen, met per stroom het type: geld, goederen, diensten of gemengd. Een doorleverketen als Nederland naar België naar Servië bestaat dus uit twee stromen, en de tool volgt die keten tot de eindbestemming. Per stroom krijg je vier uitkomsten. Eerst de sanctiestatus van de ontvangende schakel, uitgesplitst naar de vier regimes die de praktijk bepalen: de VN-Veiligheidsraad, de EU, de Verenigde Staten en het Verenigd Koninkrijk. Daarna het doorlever- en omzeilingsrisico in de keten: waar landt de stroom uiteindelijk (end-user-beeld) en welke schakels zijn bekende doorvoerkanalen, want een land zonder eigen sancties kan een verhoogd sanctierisico dragen. Vervolgens de mitigerende documentatie, afgestemd op het stroomtype en per land uitgeschreven met peildatum: van screeningsbewijs en UBO-analyse tot end-user-verklaringen, doorleververklaringen, de no-Russia-clausule en OFAC-licenses. Tot slot de verplichting die erbij hoort, van het bevriezings- en beschikbaarstellingsverbod tot de meldplicht aan DNB en de AMLR-cliëntenonderzoektoets die vanaf 10 juli 2027 gaat gelden.</p>
+
+<p>Een apart paneel per stroom toont de signalen die na de transactie in transactiemonitoring kunnen opvallen, op basis van de FinCEN/BIS-alerts en de Europese EBA-guidelines: betalingen via tussenpersonen in doorvoerlanden kort na nieuwe designaties, goederenomschrijvingen die matchen met de common high priority-lijst, over- of onderfacturering en crypto-omleidingen. De tool is nadrukkelijk begrensd: hij vergelijkt geen routes, adviseert niet over transacties en dient uitsluitend de nalevingskant. Alle landregels dragen een peildatum en worden maandelijks gecontroleerd tegen de officiële lijsten, die voor elk besluit leidend blijven.</p>
+<h2 class="faq-kop">Veelgestelde vragen</h2>
+<details class="faq-item"><summary>Wat doet de flowtool sancties?</summary><div class="antwoord">Je bouwt op de wereldkaart de keten zoals de bank hem ziet: schakels kiezen (ook tussenschakels zonder eigen sancties, zoals België of Duitsland) en daartussen geld-, goederen- of dienstenstromen trekken, bijvoorbeeld Nederland naar België en België naar Servië. Per stroom toont de tool vier dingen: de sanctiestatus van de ontvangende schakel per regime (VN, EU, VS, VK), het doorlever- en omzeilingsrisico in de keten met de eindbestemming (end-user-beeld), de documentatie die het risico mitigeert, afgestemd op het stroomtype, en de verplichting die erbij hoort. Een apart paneel toont de signalen die na de transactie in transactiemonitoring kunnen opvallen. De tool is educatief en gericht op naleving; hij vergelijkt geen routes en geeft geen advies.</div></details>
+<details class="faq-item"><summary>Waarom toont de tool ook landen zonder eigen sancties?</summary><div class="antwoord">Omdat omzeiling juist via die landen loopt. Sinds de Ruslandpakketten verschuiven verboden goederenstromen naar doorvoerlanden: EU-handelsdata over de eerste tien maanden van 2025 toonden een stijging van circa 800 procent in de export van common high priority-goederen naar Kirgizië ten opzichte van 2022, en circa 1.200 procent in de doorvoer van diezelfde goederen van Kirgizië naar Rusland. Een geldstroom naar een land zonder sancties kan dus toch een sanctierisico dragen; de tool benoemt dat risico en de documentatie die het afdekt. Daarnaast geldt: de landenlijst dekt de landgebonden regimes, maar thematische sancties (terrorisme, cyber, mensenrechten, chemische wapens) raken personen en entiteiten in elk land. Naamscreening van de tegenpartij blijft daarom altijd nodig.</div></details>
+<details class="faq-item"><summary>Welke documentatie vraagt een bank bij een sanctiegevoelige geldstroom?</summary><div class="antwoord">Dat hangt af van het sanctietype. Bij listings: screeningsbewijs met datum en lijstversie, UBO-verklaring en een eigendoms- en zeggenschapsanalyse. Bij sectorale handelssancties: goederenclassificatie, end-user-verklaring, bewijs van eindbestemming en de no-Russia-clausule in het contract. Bij Amerikaanse embargo's: een OFAC-license of bewijs dat een VS-touchpoint ontbreekt, plus bij Cuba en Iran de toets aan de Europese blokkeringsverordening. Bij het olieprijsplafond: attestations en een schaduwvloot-check. De tool werkt dit per land uit, met peildatum per regel.</div></details>
+<details class="faq-item"><summary>Slaat de tool mijn gegevens op?</summary><div class="antwoord">Nee. Alles gebeurt in de browser; er wordt niets verzonden of opgeslagen. Wil je het overzicht bewaren, print het dan of sla het via het printmenu op als PDF.</div></details>
+<details class="faq-item"><summary>Hoe actueel is de landeninformatie?</summary><div class="antwoord">Elke landregel draagt een eigen peildatum (bij lancering: 10 juli 2026). Sanctielijsten wijzigen meerdere keren per week; de tool wordt daarom maandelijks gecontroleerd tegen de officiële bronnen (VN Consolidated List, EU Sanctions Map, OFAC Recent Actions, UK Sanctions List). Voor een besluit is altijd de officiële lijst van dat moment leidend, niet deze tool.</div></details>
+</div>
+</details>
+</section>
+
+<footer class="site-footer">
+  <span class="fmark">TRNKL<span class="merkpunt"></span></span> &middot; Atelier voor kennis en beleid<br>
+  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a>
+</footer>
+
+</body>
+</html>
