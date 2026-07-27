@@ -144,6 +144,9 @@
 <meta property="og:description" content="Interactieve flowchart · het stelsel 2026 met forfaits en tegenbewijsregeling · de arrestenlijn van Kerstarrest tot massaal bezwaar plus · de Wet werkelijk rendement (beoogd 2028)">
 <style>
 
+  /* iOS Safari: automatische tekstvergroting uitschakelen (fix modal-tabellen op iPhone) */
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -405,6 +408,11 @@
   .zlab.poortwachter { background:#E1F5EE; color:#085041; }
   .zlab.grens { background:#FCEBEB; color:#791F1F; }
 
+
+  /* Tweekolomstabellen lopen om op smalle schermen in plaats van zijwaarts scrollen */
+  @media (max-width: 1020px) {
+    .dtable-wrap .dtable:has(tr:first-child > th:nth-child(2):last-child) { min-width: 0; }
+  }
 </style>
 </head>
 <body>

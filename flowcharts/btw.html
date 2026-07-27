@@ -144,6 +144,9 @@
 <meta property="og:description" content="Interactieve flowchart · ondernemer, tarieven en vrijstellingen 2026 · de aftrek van voorbelasting · de fraudeleer van Kittel tot carrouselfraude · ViDA als vooruitblik">
 <style>
 
+  /* iOS Safari: automatische tekstvergroting uitschakelen (fix modal-tabellen op iPhone) */
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -416,6 +419,11 @@
   .proc .ps { font-size:9px; color:var(--text-secondary); margin-top:3px; line-height:1.4; }
   .proc .pa { display:flex; align-items:center; color:var(--text-tertiary); font-weight:700; }
 
+
+  /* Tweekolomstabellen lopen om op smalle schermen in plaats van zijwaarts scrollen */
+  @media (max-width: 1020px) {
+    .dtable-wrap .dtable:has(tr:first-child > th:nth-child(2):last-child) { min-width: 0; }
+  }
 </style>
 </head>
 <body>
