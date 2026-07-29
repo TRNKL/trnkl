@@ -146,6 +146,42 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 .rubriek-kop { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.09em; margin: 34px 0 12px; padding-top: 20px; border-top: 1px solid var(--border-light); }
 .rubriek-kop.eerst { margin-top: 6px; padding-top: 0; border-top: none; }
 .rubriek-intro { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; margin: -4px 0 14px; max-width: 680px; }
+
+/* Reeksen: uitklapbare reekskaarten */
+.reeks { margin-bottom: 12px; scroll-margin-top: 92px; }
+.reeks-kaart {
+  display: block; cursor: pointer; list-style: none;
+  background: var(--bg-primary); border: 1px solid var(--border-light);
+  border-radius: 14px; padding: 20px 22px;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.section.bg-primary .reeks-kaart { background: var(--bg-secondary); }
+.reeks-kaart::-webkit-details-marker { display: none; }
+.reeks-kaart::marker { content: ""; }
+.reeks-kaart:hover { border-color: var(--orange-border); box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+.reeks-kaart:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.reeks[open] > .reeks-kaart { border-color: var(--orange-border); background: var(--orange-light); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reeks-kop { display: flex; align-items: baseline; gap: 8px 14px; flex-wrap: wrap; }
+.reeks-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.09em; }
+.reeks-telling { font-size: 11px; font-weight: 600; color: var(--text-tertiary); letter-spacing: 0.02em; margin-left: auto; white-space: nowrap; }
+.reeks-titel { display: block; font-size: 17px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--text-primary); margin: 7px 0 0; }
+.reeks-intro { display: block; font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; margin: 8px 0 0; max-width: 680px; }
+.reeks-toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 14px; }
+.reeks-chevron { display: inline-block; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform 0.2s ease; position: relative; top: -1px; }
+.reeks[open] .reeks-chevron { transform: rotate(45deg); top: -3px; }
+.reeks-toggle .label-dicht { display: inline; }
+.reeks-toggle .label-open { display: none; }
+.reeks[open] .reeks-toggle .label-dicht { display: none; }
+.reeks[open] .reeks-toggle .label-open { display: inline; }
+.reeks-inhoud { border: 1px solid var(--orange-border); border-top: none; border-radius: 0 0 14px 14px; padding: 18px 18px 20px; background: var(--bg-primary); }
+.section.bg-primary .reeks-inhoud { background: var(--bg-secondary); }
+@media (prefers-reduced-motion: reduce) { .reeks-chevron { transition: none; } }
+@media (max-width: 560px) {
+  .reeks-kaart { padding: 17px 18px; }
+  .reeks-telling { margin-left: 0; }
+  .reeks-inhoud { padding: 14px 14px 16px; }
+}
 .product-card {
   display: flex; flex-direction: column;
   background: var(--bg-secondary); border: 1px solid var(--border-light);
@@ -218,7 +254,17 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
     <div class="section-eyebrow">Vorm één</div>
     <h2 class="section-title">Flowcharts</h2>
     <p class="section-lede">Een flowchart werkt een wet of regeling stap voor stap uit: welke verplichting geldt wanneer, en wat dat betekent voor de onderneming die eronder valt. Bij elke stap staat operationeel en strategisch advies. De flowcharts zijn gebaseerd op bestaande en toekomstige wet- en regelgeving.</p>
-    <div class="rubriek-kop eerst">Wwft &amp; AMLR &middot; de poortwachterspraktijk</div>
+    <details class="reeks" name="reeks-flowcharts">
+      <summary class="reeks-kaart">
+        <span class="reeks-kop">
+          <span class="reeks-label">Wwft &amp; AMLR</span>
+          <span class="reeks-telling">3 flowcharts</span>
+        </span>
+        <span class="reeks-titel">De poortwachterspraktijk</span>
+        <span class="reeks-intro">Drie scharnierpunten in de poortwachterspraktijk: wanneer de FIU een banktransactie mag opschorten, hoe meldingsplichtige instellingen informatie mogen delen binnen een partnerschap onder de nieuwe Europese antiwitwasverordening, en wanneer de bank de relatie mag of moet be&euml;indigen als het cli&euml;ntenonderzoek niet rondkomt.</span>
+        <span class="reeks-toggle"><span class="label-dicht">Bekijk de flowcharts</span><span class="label-open">Verberg de flowcharts</span><span class="reeks-chevron"></span></span>
+      </summary>
+      <div class="reeks-inhoud">
     <div class="product-grid">
       <a href="flowcharts/artikel17a-wwft.html" class="product-card">
         <div class="card-label">Art. 17a Wwft</div>
@@ -239,9 +285,20 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
     </div>
+      </div>
+    </details>
 
-    <div class="rubriek-kop">FCTA-reeks &middot; de veertien dreigingscategorie&euml;n</div>
-    <p class="rubriek-intro">De Financial Crime Threat Assessment 2026 van de Nederlandse banken onderscheidt veertien categorie&euml;n van financieel-economische criminaliteit. TRNKL werkt ze alle veertien uit tot afzonderlijke flowcharts: per categorie de dreiging in kaart, met daartegenover de poortwachtersrol.</p>
+    <details class="reeks" name="reeks-flowcharts">
+      <summary class="reeks-kaart">
+        <span class="reeks-kop">
+          <span class="reeks-label">FCTA-reeks</span>
+          <span class="reeks-telling">14 flowcharts</span>
+        </span>
+        <span class="reeks-titel">De veertien dreigingscategorie&euml;n</span>
+        <span class="reeks-intro">De Financial Crime Threat Assessment 2026 van de Nederlandse banken onderscheidt veertien categorie&euml;n van financieel-economische criminaliteit. TRNKL werkt ze alle veertien uit tot afzonderlijke flowcharts: per categorie de dreiging in kaart, met daartegenover de poortwachtersrol.</span>
+        <span class="reeks-toggle"><span class="label-dicht">Bekijk de flowcharts</span><span class="label-open">Verberg de flowcharts</span><span class="reeks-chevron"></span></span>
+      </summary>
+      <div class="reeks-inhoud">
     <div class="product-grid">
       <a href="flowcharts/witwassen-contant-geld.html" class="product-card">
         <div class="card-label">FCTA-reeks &middot; deel 1 &middot; Wwft &middot; art. 420bis Sr</div>
@@ -328,9 +385,20 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
     </div>
+      </div>
+    </details>
 
-    <div class="rubriek-kop">Fiscale reeks &middot; het Nederlandse belastingstelsel</div>
-    <p class="rubriek-intro">De inkomstenbelasting, de btw, de vennootschapsbelasting en de erfbelasting, uitgewerkt tot &eacute;&eacute;n samenhangende reeks. TRNKL behandelt het Nederlandse belastingstelsel in zeven delen, van box 1 en de eigen woning tot de winst van lichamen en de nalatenschap, met per deel de wet, de tarieven en vrijstellingen van 2026 en de rechtspraak van Hoge Raad, Hof van Justitie en het EHRM, telkens met zelfstandig geverifieerde bronnen.</p>
+    <details class="reeks" name="reeks-flowcharts">
+      <summary class="reeks-kaart">
+        <span class="reeks-kop">
+          <span class="reeks-label">Fiscale reeks</span>
+          <span class="reeks-telling">8 flowcharts</span>
+        </span>
+        <span class="reeks-titel">Het Nederlandse belastingstelsel</span>
+        <span class="reeks-intro">De inkomstenbelasting, de btw, de vennootschapsbelasting en de erfbelasting, uitgewerkt tot &eacute;&eacute;n samenhangende reeks. TRNKL behandelt het Nederlandse belastingstelsel in zeven delen, van box 1 en de eigen woning tot de winst van lichamen en de nalatenschap, met per deel de wet, de tarieven en vrijstellingen van 2026 en de rechtspraak van Hoge Raad, Hof van Justitie en het EHRM, telkens met zelfstandig geverifieerde bronnen. Daarbij komt een verwante uitwerking: transfer pricing.</span>
+        <span class="reeks-toggle"><span class="label-dicht">Bekijk de flowcharts</span><span class="label-open">Verberg de flowcharts</span><span class="reeks-chevron"></span></span>
+      </summary>
+      <div class="reeks-inhoud">
     <div class="product-grid">
       <a href="flowcharts/inkomstenbelasting-box1.html" class="product-card">
         <div class="card-label">Fiscale reeks &middot; deel 1</div>
@@ -381,8 +449,20 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
     </div>
+      </div>
+    </details>
 
-    <div class="rubriek-kop">Sectorbeelden &middot; zorg, agrifood &amp; pensioen</div>
+    <details class="reeks" name="reeks-flowcharts">
+      <summary class="reeks-kaart">
+        <span class="reeks-kop">
+          <span class="reeks-label">Sectorbeelden</span>
+          <span class="reeks-telling">4 flowcharts</span>
+        </span>
+        <span class="reeks-titel">Zorg, agrifood en pensioen</span>
+        <span class="reeks-intro">Vier beelden waarin het stelsel, de geldstromen en de risico&rsquo;s van een sector bij elkaar komen: de gemeentelijk gefinancierde zorg en de bank als poortwachter in die keten, de agri-food-keten en het pensioenstelsel in transitie.</span>
+        <span class="reeks-toggle"><span class="label-dicht">Bekijk de flowcharts</span><span class="label-open">Verberg de flowcharts</span><span class="reeks-chevron"></span></span>
+      </summary>
+      <div class="reeks-inhoud">
     <div class="product-grid">
       <a href="flowcharts/integriteit-zorg.html" class="product-card">
         <div class="card-label">Wmo 2015 &middot; Jeugdwet</div>
@@ -409,10 +489,21 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
     </div>
+      </div>
+    </details>
 
-    <!-- CONCEPT-RUBRIEK "Trouwen en scheiden" (NIET live). Uncommenten = verwijder DEZE regel en de EINDE-regel onderaan dit blok. Publiceren: zie LOKAAL-NOG-TE-DOEN.md (deel-bestandsnamen uit CONCEPT_FLOWCHARTS in bouw_site.py halen en bouw_site.py draaien).
-    <div class="rubriek-kop">Trouwen en scheiden &middot; het huwelijksvermogensrecht</div>
-    <p class="rubriek-intro">Wat gebeurt er met vermogen, schulden, de woning, het pensioen en de onderneming bij trouwen en scheiden? TRNKL werkt het huwelijksvermogensrecht uit in zeven delen, met telkens de twee regimes (voor en vanaf 1 januari 2018) naast elkaar. De fiscale kant sluit aan op de Fiscale reeks.</p>
+    <!-- CONCEPT-REEKS "Trouwen en scheiden" (NIET live). Uncommenten = verwijder DEZE regel en de EINDE-regel onderaan dit blok. Publiceren: zie LOKAAL-NOG-TE-DOEN.md (deel-bestandsnamen uit CONCEPT_FLOWCHARTS in bouw_site.py halen en bouw_site.py draaien).
+    <details class="reeks" name="reeks-flowcharts">
+      <summary class="reeks-kaart">
+        <span class="reeks-kop">
+          <span class="reeks-label">Trouwen en scheiden</span>
+          <span class="reeks-telling">7 flowcharts</span>
+        </span>
+        <span class="reeks-titel">Het huwelijksvermogensrecht</span>
+        <span class="reeks-intro">Wat gebeurt er met vermogen, schulden, de woning, het pensioen en de onderneming bij trouwen en scheiden? TRNKL werkt het huwelijksvermogensrecht uit in zeven delen, met telkens de twee regimes (voor en vanaf 1 januari 2018) naast elkaar. De fiscale kant sluit aan op de Fiscale reeks.</span>
+        <span class="reeks-toggle"><span class="label-dicht">Bekijk de flowcharts</span><span class="label-open">Verberg de flowcharts</span><span class="reeks-chevron"></span></span>
+      </summary>
+      <div class="reeks-inhoud">
     <div class="product-grid">
       <a href="flowcharts/gemeenschap-van-goederen.html" class="product-card">
         <div class="card-label">Trouwen en scheiden &middot; deel 1</div>
@@ -457,7 +548,9 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
         <div class="card-cta">Open de flowchart &rarr;</div>
       </a>
     </div>
-    EINDE CONCEPT-RUBRIEK "Trouwen en scheiden" -->
+      </div>
+    </details>
+    EINDE CONCEPT-REEKS "Trouwen en scheiden" -->
 
     <div class="flow-cta">
       <h3>Flowcharts op maat</h3>
@@ -539,6 +632,31 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
     <p class="footer-meta">KvK 88301648 &nbsp;&middot;&nbsp; <a href="over.html">Over</a> &nbsp;&middot;&nbsp; <a href="contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="disclaimer.html">Disclaimer</a></p>
   </div>
 </footer>
+
+<script>
+/* Reekskaarten: houd de geopende reeks in beeld en zorg dat er altijd maar
+   een reeks tegelijk openstaat, ook in browsers zonder ondersteuning voor
+   het name-attribuut op <details>. Zonder JS werkt alles gewoon door. */
+(function () {
+  var reeksen = Array.prototype.slice.call(document.querySelectorAll('details.reeks'));
+  if (!reeksen.length) return;
+  var exclusief = 'name' in document.createElement('details');
+  reeksen.forEach(function (reeks) {
+    reeks.addEventListener('toggle', function () {
+      if (!reeks.open) return;
+      if (!exclusief) {
+        reeksen.forEach(function (a) { if (a !== reeks) a.open = false; });
+      }
+      var kop = document.querySelector('header');
+      var offset = (kop ? kop.offsetHeight : 0) + 12;
+      var top = reeks.getBoundingClientRect().top;
+      if (top < offset || top > window.innerHeight - 80) {
+        window.scrollTo({ top: window.scrollY + top - offset, behavior: 'smooth' });
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
