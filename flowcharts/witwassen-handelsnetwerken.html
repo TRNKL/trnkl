@@ -1102,9 +1102,9 @@ window.addEventListener('load', lijnSporenUit);
 window.addEventListener('resize', function(){ clearTimeout(window.__lsuTimer); window.__lsuTimer = setTimeout(lijnSporenUit, 120); });
 
 // === Kopieerbeveiliging ===
-// Eén schakelaar. Zet op TRUE vóór publicatie om kopiëren, plakken en tekstselectie in de
-// modals te blokkeren (bronvermeldingen blijven altijd kopieerbaar). Nog op FALSE:
-// beslispunt bij publicatie, na akkoord Toine.
+// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie in
+// de modals. Bronvermeldingen (.source-block) blijven altijd kopieerbaar.
+// Staat AAN sinds 6 augustus 2026 (akkoord Toine). Nieuwe flowcharts nemen hem op TRUE over.
 const BLOKKEER_KOPIEREN = true;
 if (BLOKKEER_KOPIEREN) {
   document.querySelectorAll('.modal-box').forEach(function(box){

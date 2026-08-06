@@ -1443,8 +1443,17 @@ document.addEventListener('keydown', function(e){
   if(e.key==='Escape'){ document.querySelectorAll('.modal-overlay.open').forEach(function(ov){ ov.classList.remove('open'); }); document.body.style.overflow=''; }
 });
 
+
+renderLandenlijst(); renderStromenlijst(); checkKlaar();
+</script>
+
+<script>
 // === Kopieerbeveiliging ===
-// Eén schakelaar; op TRUE zetten bij publicatie na akkoord Toine (bronblokken blijven kopieerbaar).
+// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie in
+// de modals. Bronvermeldingen (.source-block) blijven altijd kopieerbaar.
+// Staat AAN sinds 6 augustus 2026 (akkoord Toine). Nieuwe flowcharts nemen hem op TRUE over.
+// Bewust een EIGEN script-tag: een fout elders (bijv. een CDN-lib die niet laadt) mag de
+// beveiliging nooit stilzwijgend uitschakelen.
 const BLOKKEER_KOPIEREN = true;
 if (BLOKKEER_KOPIEREN) {
   document.querySelectorAll('.modal-box').forEach(function(box){
@@ -1456,8 +1465,6 @@ if (BLOKKEER_KOPIEREN) {
     box.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
   });
 }
-
-renderLandenlijst(); renderStromenlijst(); checkKlaar();
 </script>
 
 

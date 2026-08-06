@@ -1278,17 +1278,21 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') { closeModal(); closeFiuModal(); closeDuurModal(); closeInfoClientModal(); closeEindeModal(); closeVrijwaringModal(); closeToezichtModal(); closeWedModal(); closeEdrModal(); }
 });
 
-// Blokkeer kopiëren, contextmenu en slepen binnen alle modals,
-// behalve binnen source-blocks (bronnen mogen wel worden gekopieerd)
-document.querySelectorAll('.modal-box').forEach(function(box) {
-  function allowInSource(e) {
-    return e.target.closest('.source-block') !== null;
-  }
-  box.addEventListener('copy', function(e) { if (!allowInSource(e)) e.preventDefault(); });
-  box.addEventListener('cut', function(e) { if (!allowInSource(e)) e.preventDefault(); });
-  box.addEventListener('contextmenu', function(e) { if (!allowInSource(e)) e.preventDefault(); });
-  box.addEventListener('dragstart', function(e) { if (!allowInSource(e)) e.preventDefault(); });
-});
+// === Kopieerbeveiliging ===
+// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie in
+// de modals. Bronvermeldingen (.source-block) blijven altijd kopieerbaar.
+// Staat AAN sinds 6 augustus 2026 (akkoord Toine). Nieuwe flowcharts nemen hem op TRUE over.
+const BLOKKEER_KOPIEREN = true;
+if (BLOKKEER_KOPIEREN) {
+  document.querySelectorAll('.modal-box').forEach(function(box){
+    box.style.userSelect = 'none'; box.style.webkitUserSelect = 'none';
+    function allowInSource(e){ return e.target.closest('.source-block')!==null; }
+    box.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  });
+}
 </script>
 
 

@@ -307,7 +307,7 @@
   .regime-veld { margin-top: 12px; }
   .rv-label { font-size: 9.5px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
   .rv-tekst { font-size: 12px; line-height: 1.7; }
-  .source-block { margin-top: 16px; padding-top: 10px; border-top: 0.5px solid var(--border-light); }
+  .source-block { margin-top: 16px; padding-top: 10px; border-top: 0.5px solid var(--border-light); user-select: text; -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; }
   .source-label { font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
   .source-text { font-size: 10px; color: var(--text-secondary); line-height: 1.6; }
   .source-text a { color: #185FA5; text-decoration: none; }
@@ -2341,6 +2341,27 @@ document.getElementById('land-modal').addEventListener('click', function(e){ if(
 document.addEventListener('keydown', e => { if(e.key === 'Escape') sluitLand(); });
 
 renderLandenlijst();
+
+</script>
+
+<script>
+// === Kopieerbeveiliging ===
+// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie in
+// de modals. Bronvermeldingen (.source-block) blijven altijd kopieerbaar.
+// Staat AAN sinds 6 augustus 2026 (akkoord Toine). Nieuwe flowcharts nemen hem op TRUE over.
+// Bewust een EIGEN script-tag: een fout elders (bijv. een CDN-lib die niet laadt) mag de
+// beveiliging nooit stilzwijgend uitschakelen.
+const BLOKKEER_KOPIEREN = true;
+if (BLOKKEER_KOPIEREN) {
+  document.querySelectorAll('.modal-box').forEach(function(box){
+    box.style.userSelect = 'none'; box.style.webkitUserSelect = 'none';
+    function allowInSource(e){ return e.target.closest('.source-block')!==null; }
+    box.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+    box.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  });
+}
 </script>
 
 <style>

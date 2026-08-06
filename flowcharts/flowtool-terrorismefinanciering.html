@@ -1396,7 +1396,9 @@ document.addEventListener('keydown', function(e){
 });
 
 // === Kopieerbeveiliging ===
-// Eén schakelaar; op TRUE zetten bij publicatie na akkoord Toine (bronblokken blijven kopieerbaar).
+// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie in
+// de modals. Bronvermeldingen (.source-block) blijven altijd kopieerbaar.
+// Staat AAN sinds 6 augustus 2026 (akkoord Toine). Nieuwe flowcharts nemen hem op TRUE over.
 const BLOKKEER_KOPIEREN = true;
 if (BLOKKEER_KOPIEREN) {
   document.querySelectorAll('.modal-box').forEach(function(box){
