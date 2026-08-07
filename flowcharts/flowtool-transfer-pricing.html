@@ -127,8 +127,8 @@
 <meta property="og:title" content="Flowtool transfer pricing: bouw je structuur op de wereldkaart">
 <meta property="og:description" content="Interactieve flowtool · kies landen op de kaart · trek transactiestromen · vragenmodule wijst de meest geschikte methode · regime en documentatieplichten per land">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script src="/assets/vendor/d3-7.8.5.min.js"></script>
+<script src="/assets/vendor/topojson-3.0.2.min.js"></script>
 
 <style>
 
@@ -2004,7 +2004,7 @@ const state = { fase:1, landen:[], stromen:[], antwoorden:{}, omzet:null, wereld
   }
   function auto(){ autoT = d3.timer(() => { if(!sleep){ rot[0] += 0.18; teken(); } }); }
 
-  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w => {
+  d3.json('/assets/vendor/world-atlas-2.0.2-countries-110m.json').then(w => {
     state.wereld = w;
     const landen = topojson.feature(w, w.objects.countries).features;
     laag.selectAll('path').data(landen).join('path')
@@ -2407,7 +2407,7 @@ if (BLOKKEER_KOPIEREN) {
 
 <footer class="site-footer">
   <span class="fmark">TRNKL<span class="merkpunt"></span></span> &middot; Atelier voor kennis en beleid<br>
-  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a>
+  KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a> &nbsp;&middot;&nbsp; <a href="../privacy.html">Privacy</a>
 </footer>
 
 </body>
