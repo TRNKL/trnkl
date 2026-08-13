@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRNKL-kennisserver: je AI-assistent met vindplaats en peildatum | TRNKL</title>
+<meta name="description" content="Geef je eigen AI-assistent toegang tot 52 gecontroleerde kennisbanken over Wwft, AMLR, zorg en fiscaliteit. Vindplaats en peildatum bij elk antwoord.">
+<link rel="canonical" href="https://trnkl.nl/kennisserver.html">
+<meta name="tdm-reservation" content="1">
+<meta name="tdm-policy" content="https://trnkl.nl/disclaimer.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TRNKL">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="De TRNKL-kennisserver">
+<meta property="og:description" content="Geef je eigen AI-assistent toegang tot 52 gecontroleerde kennisbanken, met vindplaats, versie en peildatum bij elk antwoord. Draait lokaal, binnen je eigen omgeving.">
+<meta property="og:url" content="https://trnkl.nl/kennisserver.html">
+<meta property="og:image" content="https://trnkl.nl/assets/og/og-kennisserver.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://trnkl.nl/kennisserver.html",
+      "url": "https://trnkl.nl/kennisserver.html",
+      "name": "De TRNKL-kennisserver",
+      "description": "Een lokale MCP-server die de eigen AI-assistent van een organisatie toegang geeft tot de gecontroleerde kennisbanken van TRNKL, met vindplaats, versie en peildatum bij elk antwoord.",
+      "inLanguage": "nl-NL",
+      "isPartOf": { "@id": "https://trnkl.nl/#website" },
+      "author": { "@id": "https://trnkl.nl/#person" },
+      "publisher": { "@id": "https://trnkl.nl/#organization" },
+      "datePublished": "2026-08-13T09:00:00+02:00",
+      "dateModified": "2026-08-13T09:00:00+02:00"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://trnkl.nl/#person",
+      "name": "Toine Jorna",
+      "honorificPrefix": "mr.",
+      "url": "https://trnkl.nl/over.html",
+      "jobTitle": "Jurist en oprichter van TRNKL",
+      "worksFor": { "@id": "https://trnkl.nl/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://trnkl.nl/kennisserver.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "TRNKL", "item": "https://trnkl.nl/" },
+        { "@type": "ListItem", "position": 2, "name": "Kennisserver", "item": "https://trnkl.nl/kennisserver.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://trnkl.nl/kennisserver.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Werkt de kennisserver met ChatGPT, Claude of Copilot?",
+          "acceptedAnswer": { "@type": "Answer", "text": "De server spreekt het Model Context Protocol, een open standaard. Elke assistent die MCP ondersteunt kan hem als lokale bron aanspreken. Microsoft 365 Copilot vormt de uitzondering: dat platform vraagt om een publiek bereikbaar adres en werkt daarom alleen met de gehoste variant, die is voorzien en wordt gebouwd zodra een licentienemer die nodig heeft." }
+        },
+        {
+          "@type": "Question",
+          "name": "Komen onze zoekvragen bij TRNKL terecht?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nee. De server draait als lokaal subproces binnen de eigen omgeving en communiceert alleen met de assistent die hem heeft gestart. Er is geen netwerkpoort, geen telemetrie en geen netwerkcode in het bestand. Geen enkele zoekopdracht bereikt TRNKL: de server stuurt niets weg en heeft er de code niet voor. Omdat er zo geen gegevens naar TRNKL stromen, is TRNKL naar mijn mening bij het gebruik van de kennisserver geen verwerker in de zin van de AVG; dat oordeel hoort u wel in uw eigen verwerkingsregister te toetsen, en ik lever de technische onderbouwing daarvoor mee in de bijsluiter. Wat er met de vraag gebeurt in de assistent zelf staat daar los van: een cloudassistent verwerkt uw vraag op zijn eigen infrastructuur." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wat gebeurt er als de wet verandert?",
+          "acceptedAnswer": { "@type": "Answer", "text": "De licentie kent een maandelijkse controlecyclus: de volledige kennisbank wordt getoetst aan wettenbank, rechtspraak.nl en EUR-Lex, en na afronding van die ronde volgt een levering met changelog, zodat zichtbaar is wat er is gewijzigd en waarom. De eerste ronde staat op 4 september 2026, en die datum staat ook als volgende controle onder elk antwoord, zodat u zelf kunt zien of hij is gehaald. Raakt een wijziging de uitkomst van een regel, dan volgt een tussentijdse levering. Daarnaast rekent de server bij elke vraag uit hoe oud zijn eigen peildatum is en waarschuwt hij zelf zodra die buiten de controlecyclus valt." }
+        },
+        {
+          "@type": "Question",
+          "name": "Verzint de assistent dan geen vindplaatsen meer?",
+          "acceptedAnswer": { "@type": "Answer", "text": "De server levert alleen wat in de kennisbank staat, met de vindplaats die daar is vastgelegd. Levert een zoekopdracht geen treffer op, dan meldt hij dat en gokt hij niet. Het taalmodel blijft wel van de organisatie zelf: de kennisserver borgt de vindplaats van de aangeleverde kennis, hij vervangt niet de eigen controle op wat de assistent daarmee doet." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is de kennisserver zelf een AI-systeem?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nee. De server bevat geen model, leert niet en genereert geen tekst; hij zoekt in vastgelegde kennis en levert die uit met de borgingsgegevens erbij. Mijns inziens is hij daarmee geen AI-systeem in de zin van artikel 3 lid 1 van de AI-verordening, maar een gegevensbron. Het AI-systeem is de eigen assistent van de organisatie, en die organisatie is daarvoor de gebruiksverantwoordelijke." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wat kost een kennislicentie?",
+          "acceptedAnswer": { "@type": "Answer", "text": "De licentie geldt per kantoor, met onbeperkt gebruikers en onbeperkt vestigingen, en is maandelijks opzegbaar. Bij beëindiging behoudt de licentienemer de laatste levering voor onbepaalde tijd. Prijzen zijn op aanvraag via info@trnkl.nl." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wat zit er niet in?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Geen advies op maat en geen beslismotor. De kennisbank is een referentielaag: hij levert de regel, de uitzondering en de vindplaats. De weging van het concrete geval, het beleid van de instelling en het uiteindelijke besluit blijven waar ze horen, bij de professional." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan de kennisbank ook zonder chatinterface worden gebruikt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. De kennisbank is een set gestructureerde JSON-bestanden; de MCP-server is één manier om die te ontsluiten. Dezelfde bestanden kunnen als referentielaag worden ingeladen in een bestaand systeem voor cliëntenonderzoek, sanctietoetsing of dossierbehandeling, gekoppeld op het veld risicotype. Of dat in een concreet geval lukt hangt af van dat systeem." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf9f4;
+  --bg-tertiary: #f5f4ee;
+  --bg-orange-fade: linear-gradient(135deg, #FFF8F2 0%, #FFFAF6 100%);
+  --text-primary: #1a1a18;
+  --text-secondary: #5f5e5a;
+  --text-tertiary: #888780;
+  --border-light: rgba(0,0,0,0.08);
+  --border-mid: rgba(0,0,0,0.14);
+  --orange: #FF5A1F;
+  --orange-text: #C2410C;
+  --orange-light: #FFF1EA;
+  --orange-border: #FFE3D1;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1c;
+    --bg-secondary: #2a2a27;
+    --bg-tertiary: #242422;
+    --bg-orange-fade: linear-gradient(135deg, #2a201c 0%, #241e1a 100%);
+    --text-primary: #e8e6de;
+    --text-secondary: #9c9a92;
+    --text-tertiary: #94928a;
+    --border-light: rgba(255,255,255,0.06);
+    --border-mid: rgba(255,255,255,0.12);
+    --orange-light: #3a2520;
+    --orange-border: #5a3525;
+    --orange-text: #FF5A1F;
+  }
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg-secondary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--orange-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
+.accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
+
+/* Header */
+header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border-mid); position: sticky; top: 0; z-index: 100; }
+@media (prefers-color-scheme: dark) { header { background: rgba(30,30,28,0.85); } }
+.nav { display: flex; align-items: center; padding: 14px 0; gap: 16px 24px; flex-wrap: wrap; }
+.nav-logo { flex-shrink: 0; }
+.nav-logo:hover { text-decoration: none; }
+.nav-logo .bl-mark { font-weight: 800; font-size: 22px; color: var(--orange); letter-spacing: -0.03em; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 14px 22px; margin-left: auto; align-items: center; }
+.nav-link { font-size: 13px; color: var(--text-secondary); font-weight: 500; -webkit-tap-highlight-color: transparent; }
+.nav-link:link, .nav-link:focus, .nav-link:active { color: var(--text-secondary); background: transparent; outline: none; }
+.nav-link:hover { text-decoration: none; }
+.nav-link.actief { color: var(--orange-text); }
+@media (hover: hover) { .nav-link:hover { color: var(--text-primary); } }
+
+/* Hero */
+.hero { background: var(--bg-orange-fade); border-bottom: 0.5px solid var(--border-mid); padding: 56px 0 52px; }
+.hero h1 { font-size: 38px; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 18px; max-width: 720px; }
+.hero p.lede { font-size: 17px; color: var(--text-secondary); max-width: 680px; line-height: 1.6; }
+.hero-byline { font-size: 12px; color: var(--text-primary); margin-top: 20px; }
+.status-pil { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--orange-text); background: var(--orange-light); border: 0.5px solid var(--orange-border); border-radius: 999px; padding: 4px 11px; margin-bottom: 16px; }
+@media (max-width: 560px) {
+  .hero h1 { font-size: 28px; }
+  .hero p.lede { font-size: 15px; }
+}
+
+/* Secties */
+.section { padding: 52px 0; }
+.section.bg-primary { background: var(--bg-primary); }
+.section-eyebrow { font-size: 11px; font-weight: 700; color: var(--orange-text); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 10px; }
+.section-title { font-size: 27px; font-weight: 700; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 14px; }
+.section-lede { font-size: 15px; color: var(--text-secondary); margin-bottom: 26px; max-width: 680px; line-height: 1.65; }
+.tekst { max-width: 680px; }
+.tekst p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+.tekst p:last-child { margin-bottom: 0; }
+.tekst strong { color: var(--text-primary); font-weight: 600; }
+
+/* Kaarten */
+.kaart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.kaart-grid.drie { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .kaart-grid.drie { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .kaart-grid { grid-template-columns: 1fr; } }
+
+/* Uitgewerkte casus */
+.casus { max-width: 680px; }
+.casus-vraag { background: var(--orange-light); border: 1px solid var(--orange-border); border-radius: 14px 14px 14px 4px; padding: 18px 20px; }
+.casus-rol { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--orange-text); margin-bottom: 7px; }
+.casus-vraag p { font-size: 15px; color: var(--text-primary); line-height: 1.65; }
+.casus-antwoord { margin-top: 14px; background: var(--bg-primary); border: 1px solid var(--border-mid); border-radius: 14px 14px 4px 14px; padding: 20px 22px; }
+.section.bg-primary .casus-antwoord { background: var(--bg-secondary); }
+.casus-antwoord p { font-size: 14.5px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 11px; }
+.casus-antwoord p:last-of-type { margin-bottom: 0; }
+.casus-antwoord strong { color: var(--text-primary); font-weight: 600; }
+.casus-vindplaats { font-family: var(--font-mono); font-size: 12px; line-height: 1.7; color: var(--text-secondary); background: var(--bg-tertiary); border-left: 2px solid var(--orange); border-radius: 0 8px 8px 0; padding: 11px 14px; margin: 13px 0; overflow-x: auto; }
+.casus-vindplaats .sleutel { color: var(--orange-text); }
+.casus-voet { border-top: 1px solid var(--border-light); margin-top: 15px; padding-top: 12px; font-family: var(--font-mono); font-size: 11.5px; line-height: 1.75; color: var(--text-tertiary); }
+.casus-voet .sleutel { color: var(--orange-text); }
+.kaart { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 14px; padding: 22px 22px; }
+.section.bg-primary .kaart { background: var(--bg-primary); }
+.kaart-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.04em; text-transform: uppercase; }
+.kaart-titel { font-size: 17px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; margin: 8px 0 9px; color: var(--text-primary); }
+.kaart-tekst { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; }
+
+/* Cijferstrook */
+.cijfers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 26px; }
+@media (max-width: 700px) { .cijfers { grid-template-columns: 1fr 1fr; } }
+.cijfer { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 18px 16px; }
+.section.bg-primary .cijfer { background: var(--bg-primary); }
+.cijfer-getal { font-size: 27px; font-weight: 700; letter-spacing: -0.03em; color: var(--orange-text); line-height: 1.1; }
+.cijfer-tekst { font-size: 12.5px; color: var(--text-secondary); line-height: 1.5; margin-top: 6px; }
+
+/* Lijst met streepjes */
+.lijst { list-style: none; max-width: 680px; }
+.lijst li { position: relative; padding-left: 18px; font-size: 14.5px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 9px; }
+.lijst li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 7px; height: 1.5px; background: var(--orange); }
+.lijst li strong { color: var(--text-primary); font-weight: 600; }
+
+/* Voorbeeldblok borging */
+.borging { background: var(--bg-primary); border: 1px solid var(--orange-border); border-radius: 14px; padding: 20px 22px; max-width: 680px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.85; color: var(--text-secondary); overflow-x: auto; }
+.section.bg-primary .borging { background: var(--bg-secondary); }
+.borging .sleutel { color: var(--orange-text); }
+.borging-bijschrift { font-size: 12.5px; color: var(--text-tertiary); margin-top: 10px; max-width: 680px; line-height: 1.6; }
+
+/* Tabel meetresultaten */
+.meting { width: 100%; max-width: 680px; border-collapse: collapse; font-size: 14px; margin-bottom: 16px; }
+.meting th, .meting td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-light); }
+.meting th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-tertiary); font-weight: 700; }
+.meting td { color: var(--text-secondary); }
+.meting td:first-child { color: var(--text-primary); font-weight: 600; }
+.meting td.uit { font-family: var(--font-mono); }
+
+/* CTA */
+.cta-blok { background: var(--orange-light); border: 1px solid var(--orange-border); border-radius: 14px; padding: 24px 24px; max-width: 680px; }
+.cta-blok h2 { font-size: 19px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.01em; }
+.cta-blok p { font-size: 14.5px; color: var(--text-secondary); line-height: 1.65; }
+.cta-blok a.knop { display: inline-block; margin-top: 14px; font-size: 13.5px; font-weight: 600; color: var(--orange-text); }
+
+/* Uitleg en FAQ (zelfde opmaak als de flowcharts) */
+.uitleg-sectie{max-width:680px;margin:0;padding:0}
+.uitleg-body .faq-kop{font-size:20px;color:var(--text-primary);margin:0 0 10px;letter-spacing:-.01em}
+.faq-item{border-top:.5px solid var(--border-light)}
+.faq-item:last-of-type{border-bottom:.5px solid var(--border-light)}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;padding:13px 0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text-primary);list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:#FF5A1F;font-size:17px;margin-left:12px;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item .antwoord{padding:0 0 14px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+
+/* Footer */
+footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid var(--border-light); margin-top: 8px; }
+.footer-mark { font-weight: 800; font-size: 15px; color: var(--orange); letter-spacing: -0.03em; }
+.footer-text { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; line-height: 1.6; }
+.footer-meta { font-size: 12px; color: var(--text-tertiary); margin-top: 10px; }
+.footer-meta a { color: var(--text-tertiary); text-decoration: underline; }
+.footer-meta a:hover { color: var(--orange-text); }
+@media (max-width: 560px) {
+  header .nav { padding: 9px 0 11px; row-gap: 3px; }
+  .nav-links { margin-left: 0; gap: 8px 18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container-narrow">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"><span class="bl-mark">TRNKL<span class="merkpunt"></span></span></a>
+      <div class="nav-links">
+        <a href="index.html#flowcharts" class="nav-link">Flowcharts</a>
+        <a href="index.html#flowtools" class="nav-link">Flowtools</a>
+        <a href="index.html#dashboards" class="nav-link">Dashboards</a>
+        <a href="kennisserver.html" class="nav-link actief">Kennisserver</a>
+        <a href="over.html" class="nav-link">Over</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container-narrow">
+    <span class="status-pil">Beschikbaar voor een toetsgesprek</span>
+    <h1>De TRNKL-kennisserver</h1>
+    <p class="lede">Geef je eigen AI-assistent toegang tot 52 gecontroleerde kennisbanken over de Wwft en de AMLR, integriteit in de zorg, fiscaliteit, familievermogensrecht en het politiek dashboard. Elk antwoord komt met vindplaats, versie en peildatum. De server draait lokaal, binnen je eigen omgeving.</p>
+    <p class="hero-byline">Door mr. Toine Jorna &middot; eerste publicatie 13 augustus 2026 &middot; bijgewerkt 13 augustus 2026</p>
+  </div>
+</section>
+
+<section class="section bg-primary">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Het probleem</div>
+    <h2 class="section-title">Een goed antwoord zonder vindplaats is geen antwoord</h2>
+    <div class="tekst">
+      <p>Vraag een AI-assistent naar de meldplicht bij een ongebruikelijke transactie en je krijgt een vlot en plausibel verhaal. Vraag door naar het artikel, de datum waarop het geldt en de uitspraak waarop het steunt, en het wordt stil, of erger: het model vult de vindplaats in die het verwacht. Voor wie moet kunnen aantonen waaróm een besluit is genomen, is dat onbruikbaar.</p>
+      <p>Het tekort zit niet in het model maar in de bron. Een assistent zonder gecontroleerde kennisbank put uit een geheugen zonder peildatum, waarin een ingetrokken artikel en een geldend artikel er precies hetzelfde uitzien. De kennisserver zet daar een andere laag onder: vastgelegde kennis, per regel herleid tot wet, rechtspraak of parlementair stuk, met de datum waarop die is getoetst.</p>
+      <p>Daar komt bij dat lang niet elke organisatie een compliance-afdeling kan optuigen, en lang niet elke vraag er een rechtvaardigt. Een makelaarskantoor, een accountantspraktijk, een handelaar of een gemeentelijke afdeling loopt geregeld tegen een vraag aan die een halve ochtend uitzoekwerk kan kosten terwijl het antwoord in de wet of de toelichting te vinden is: moet dit gemeld worden, geldt hier een uitzondering, welke termijn loopt er, en wat verandert er in 2027. Met een gecontroleerde kennisbank onder de assistent beantwoordt de organisatie die vragen zelf, met de vindplaats erbij, en houdt ze de externe adviseur voor de gevallen die daar werkelijk om vragen.</p>
+      <p>Dat vervangt geen compliance-functie waar de wet die voorschrijft, en het vervangt geen jurist bij een echte beoordeling. Het scheelt in de laag daarvóór: de vragen die nu blijven liggen, op gevoel worden beantwoord of tegen uurtarief worden uitbesteed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Wat het is</div>
+    <h2 class="section-title">Drie dingen die je assistent erbij krijgt</h2>
+    <p class="section-lede">De kennisserver spreekt het Model Context Protocol (MCP), een open standaard voor het koppelen van bronnen aan AI-assistenten. Hij biedt vier handelingen aan en de assistent kiest daaruit zelf, op grond van je vraag. De drie hieronder zijn de hoofdroute; de vierde ontsluit het stemgedrag van de fracties op de doelen uit het politiek dashboard.</p>
+    <div class="kaart-grid drie">
+      <div class="kaart">
+        <div class="kaart-label">lijst_kennisbanken</div>
+        <div class="kaart-titel">Tonen wat er is</div>
+        <div class="kaart-tekst">Een overzicht van alle beschikbare kennisbanken, met versie, peildatum en de datum van de laatste inhoudelijke wijziging.</div>
+      </div>
+      <div class="kaart">
+        <div class="kaart-label">zoek_kennis</div>
+        <div class="kaart-titel">Zoeken op onderwerp</div>
+        <div class="kaart-tekst">De hoofdroute. Zoekt over alle kennisbanken heen en geeft de best passende regels terug, elk met vindplaats en peildatum. Geen treffer levert een expliciet “niet gevonden” op, geen gok.</div>
+      </div>
+      <div class="kaart">
+        <div class="kaart-label">geef_item</div>
+        <div class="kaart-titel">Eén regel volledig ophalen</div>
+        <div class="kaart-tekst">Voor doorvragen: de volledige tekst van een regel, uitzondering of processtap, inclusief de grondslag en de dekkingsregel van de levering.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-primary">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Wat erin zit</div>
+    <h2 class="section-title">52 kennisbanken, 3.077 vastgelegde items</h2>
+    <div class="cijfers">
+      <div class="cijfer"><div class="cijfer-getal">52</div><div class="cijfer-tekst">kennisbanken: 49 flowcharts en flowtools, 3 dashboardthema's</div></div>
+      <div class="cijfer"><div class="cijfer-getal">3.077</div><div class="cijfer-tekst">kennisitems; elke kernregel en elke uitzondering met eigen vindplaats en aard-label</div></div>
+      <div class="cijfer"><div class="cijfer-getal">1.428</div><div class="cijfer-tekst">bronverwijzingen aan de primaire bron bevestigd</div></div>
+      <div class="cijfer"><div class="cijfer-getal">90</div><div class="cijfer-tekst">verwijzingen gemotiveerd uitgezonderd omdat ze niet machinaal op te halen zijn; geen enkele bleef onbevestigd zonder motivering</div></div>
+    </div>
+    <ul class="lijst">
+      <li><strong>815 kernregels</strong> en <strong>222 uitzonderingen en grensgevallen</strong>: wat de regel zegt, en waar hij anders uitpakt dan je zou verwachten.</li>
+      <li><strong>380 antwoorden op veelgestelde vragen</strong>, <strong>61 processtappen</strong> en <strong>121 achtergrondblokken</strong>, in de volgorde waarin een dossier ze tegenkomt.</li>
+      <li><strong>171 risicosignalen</strong> verdeeld over <strong>42 domeinprofielen</strong>, voor de flowtools waarin je een casus opbouwt.</li>
+      <li><strong>920 Kamerstukken en stemmingen</strong>, <strong>160 beleidsdoelen</strong> en <strong>149 indicatoren</strong> uit de politieke dashboards Wonen, Zorg en Asiel &amp; migratie.</li>
+      <li>Domeinen: Wwft en AMLR, sancties, terrorismefinanciering, de witwastypologieën (onder meer contant geld, vastgoed, kansspelen, virtuele activa, handelsnetwerken, effecten, vennootschapsstructuren, jurisdictie-arbitrage, waardevolle goederen, trade-based money laundering, geldezelnetwerken en ondergronds bankieren), integriteit in de zorg, voedselfraude, transfer pricing, de fiscale reeks van box 1 tot erfbelasting, het ondernemingsrecht en het huwelijksvermogensrecht.</li>
+    </ul>
+    <p class="borging-bijschrift">Stand van de kennisbank op 12 augustus 2026. Alle kennisbanken zijn op of na 6 augustus 2026 aan de bron getoetst. Van de 52 dragen er 49 een bronattest; 46 daarvan zijn machinaal aan de primaire bron getoetst. Twee kennisbanken bevatten geen verwijzingen die machinaal te toetsen zijn en zeggen dat zichtbaar in hun attest; één kennisbank wacht nog op haar eerste machinale broncontrole en zegt dat eveneens in haar attest. De drie dashboardthema's komen uit een export van openbare data met een eigen herkomstverklaring.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-eyebrow">De kern</div>
+    <h2 class="section-title">Wat er onder elk antwoord staat</h2>
+    <p class="section-lede">Dit is het verschil met een assistent die het uit zijn geheugen doet. Elke regel die de server uitlevert draagt zijn eigen verantwoording mee, en die verantwoording komt automatisch mee de assistent in.</p>
+    <div class="borging">
+      <span class="sleutel">kennisbank</span>&nbsp;&nbsp;Van ongebruikelijk naar verdacht: de meldplicht onder de AMLR<br>
+      <span class="sleutel">grondslag</span>&nbsp;&nbsp;art. 16 Wwft; art. 69 en 90 AMLR<br>
+      <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk<br>
+      <span class="sleutel">versie</span>&nbsp;&nbsp;1.13.0<br>
+      <span class="sleutel">peildatum</span>&nbsp;&nbsp;10-08-2026<br>
+      <span class="sleutel">inhoudelijk bijgewerkt</span>&nbsp;&nbsp;08-08-2026<br>
+      <span class="sleutel">volgende controle</span>&nbsp;&nbsp;04-09-2026<br>
+      <span class="sleutel">verificatie</span>&nbsp;&nbsp;45 van 46 verwijzingen aan de primaire bron bevestigd, 1 gemotiveerd uitgezonderd (niet machinaal toetsbaar)<br>
+      <span class="sleutel">let op</span>&nbsp;&nbsp;de uitkomst van deze regel hangt af van een scharnierdatum
+    </div>
+    <p class="borging-bijschrift">De borging bij de kernregel over de dubbele meldnorm, vereenvoudigd weergegeven. De server levert deze velden bij elk resultaat mee, samen met de bron, de licentie en een kant-en-klare borgingszin. De waarden verschillen per regel en per levering.</p>
+    <ul class="lijst" style="margin-top:22px">
+      <li><strong>Grondslag per regel.</strong> Niet één bronnenlijst onderaan, maar de vindplaats bij de regel zelf: het artikel, de uitspraak of het Kamerstuk waar die regel op steunt.</li>
+      <li><strong>Een aard-label.</strong> Elke kernregel en elke uitzondering is gemerkt als <em>wettelijk</em>, <em>praktijk</em> of <em>analyse TRNKL</em>. Zo blijft zichtbaar waar het recht ophoudt en de duiding begint.</li>
+      <li><strong>Twee datums met twee betekenissen.</strong> De peildatum zegt: tot en met deze dag getoetst en juist bevonden. De datum van laatste inhoudelijke wijziging zegt: op die dag is er voor het laatst werkelijk iets veranderd. Een kennisbank waarin niets wijzigde krijgt dus toch een verse peildatum, zodat je weet dat er is gekeken.</li>
+      <li><strong>Een verificatieregel.</strong> Onder elk antwoord staat hoeveel verwijzingen van die kennisbank aan de primaire bron zijn bevestigd en hoeveel er gemotiveerd zijn uitgezonderd, en bij het eerste resultaat ook diezelfde telling over de hele levering. Een kamerstuk van voor 1995 is niet machinaal op te halen; dat wordt dan met reden, datum en naam als uitzondering vastgelegd in plaats van weggelaten.</li>
+      <li><strong>Een waarschuwing bij scharnierdatums.</strong> Waar de uitkomst afhangt van een datum, bijvoorbeeld de overgang naar de AMLR op 10 juli 2027, zegt de server dat er expliciet bij.</li>
+      <li><strong>Een server die zijn eigen houdbaarheid bewaakt.</strong> Bij elke vraag rekent hij uit hoe oud zijn eigen peildatum is. Valt die buiten de controlecyclus, dan waarschuwt hij daarvoor in het antwoord.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section bg-primary">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Twee voorbeelden</div>
+    <h2 class="section-title">Moet deze transactie gemeld worden?</h2>
+    <p class="section-lede">Twee fictieve casus, zoals een medewerker ze op een dinsdagmiddag aan de assistent zou stellen. De antwoorden hieronder zijn opgebouwd uit regels van de kennisbank, met de vindplaats die daar is vastgelegd.</p>
+    <div class="casus">
+      <div class="casus-vraag">
+        <div class="casus-rol">Vraag van de medewerker</div>
+        <p>Een klant van ons kantoor stort in tien dagen drie keer 9.500 euro contant op zijn rekening. Hij heeft een eenmanszaak in tweedehands auto's en zegt dat het verkoopopbrengst is. Elk bedrag blijft onder de 10.000 euro. Moet ik dit melden?</p>
+      </div>
+      <div class="casus-antwoord">
+        <div class="casus-rol">Antwoord met de kennisserver</div>
+        <p><strong>Niet op de drempel; wel op het patroon.</strong> Voor een contante storting op de eigen rekening bestaat geen objectieve drempelindicator. De 10.000-euro-indicatoren van een bank zien op contante omwisseling in een andere valuta of van kleine naar grote coupures, en op een storting ten gunste van een creditcard of prepaid card. Er gaat hier dus geen drempel af, en dat zou ook niet gebeuren bij een hoger bedrag. Wie op de 9.500 let, let op iets wat voor dit type transactie niet bestaat.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;bijlage Uitvoeringsbesluit Wwft 2018, tabel 1 (Objectief04 en Objectief05)<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk
+        </div>
+        <p>Wat overblijft is de subjectieve indicator: heeft de instelling aanleiding om te veronderstellen dat de transactie verband kan houden met witwassen of terrorismefinanciering? Daar telt het patroon wel. Het bewust opknippen of onder een drempel houden van transacties geldt als witwassignaal, en een transactie is in de Wwft gedefinieerd als een handeling of een samenstel van handelingen. Drie stortingen van 9.500 euro binnen tien dagen beoordeelt u daarom niet als drie losse transacties maar als één feitencomplex van 28.500 euro. Voor de terugkijkperiode bestaat geen wettelijke termijn; de instelling legt haar eigen periode vast.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;bijlage Uitvoeringsbesluit Wwft 2018 (Subjectief01); art. 1 Wwft (samenstel van handelingen); AMLC-witwasindicatoren (2020, structureren van geldbedragen)<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk (norm) &middot; analyse TRNKL (het samenstel in deze casus)
+        </div>
+        <p>De verklaring van de klant weegt daarin mee, maar neemt het signaal niet weg zolang de contante verkoopopbrengst niet aansluit op de administratie en de historie van de rekening. Of u meldt, is uw oordeel; de kennisbank levert de regel en de grondslag, niet de uitkomst. Luidt dat oordeel dat de aanleiding er is, dan meldt u onverwijld bij FIU-Nederland, met het samenstel als feitencomplex.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;art. 15 en 16 Wwft (meldplicht, onverwijld)<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk (norm) &middot; analyse TRNKL (weging van de verklaring)
+        </div>
+        <p><strong>Let op de scharnierdatum.</strong> Vanaf 10 juli 2027 vervallen de drempelindicatoren grotendeels. Structureren blijft dan een gedragssignaal dat bijdraagt aan redelijke gronden om te vermoeden, juist omdat het op het ontwijken van controle wijst. De vraag verschuift dan van "welke drempel is geraakt" naar "wat heeft u zelf gedetecteerd en hoe onderbouwt u dat".</p>
+        <p><strong>Leg uw oordeel vast, ook als u niet meldt.</strong> Leg vast wie het oordeel wanneer vormde, op welke feiten en welke typologie het steunt, welke verklaring de klant gaf en wat de conclusie was. Onder de Wwft volgt die vastlegging niet met zoveel woorden uit de wet, maar zij is wel wat u overeind houdt in een toezichtgesprek. Vanaf 10 juli 2027 is het een uitdrukkelijke plicht: de beoordeling wordt geregistreerd, ongeacht of zij tot een melding leidt.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;art. 33 Wwft (vastlegging cliëntenonderzoek); art. 77 lid 1 onder b AMLR (register van de beoordeling, ook zonder melding)<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk (AMLR) &middot; praktijk (huidig recht)
+        </div>
+        <div class="casus-voet">
+          <span class="sleutel">kennisbank</span>&nbsp;&nbsp;Van ongebruikelijk naar verdacht: de meldplicht onder de AMLR &middot; versie 1.13.0<br>
+          <span class="sleutel">peildatum</span>&nbsp;&nbsp;10-08-2026 &middot; volgende controle 04-09-2026<br>
+          <span class="sleutel">verificatie</span>&nbsp;&nbsp;45 van 46 verwijzingen aan de primaire bron bevestigd, 1 gemotiveerd uitgezonderd (niet machinaal toetsbaar)
+        </div>
+      </div>
+    </div>
+    <p class="borging-bijschrift">Dit is precies het type vraag waarbij het bedrag naar het ene antwoord wijst en de vindplaats naar het andere. De assistent trekt de conclusie niet zelf: hij legt de regel, de uitzondering en de grondslag naast elkaar, en de beoordeling blijft bij de medewerker.</p>
+
+    <h2 class="section-title" style="margin-top:44px">En wie is hier de UBO?</h2>
+    <p class="section-lede">Dezelfde route, maar dan door de kennisbank over het bepalen van de uiteindelijk belanghebbende. Een vraag die op elk kantoor wekelijks langskomt en waarbij het antwoord van vandaag niet het antwoord van 2027 is.</p>
+    <div class="casus">
+      <div class="casus-vraag">
+        <div class="casus-rol">Vraag van de medewerker</div>
+        <p>Onze klant is een BV. Twee particulieren houden ieder precies 25,00 procent van de aandelen. De resterende 50 procent zit in een holding, waarvan een derde persoon 60 procent bezit. Wie moeten wij als UBO vastleggen?</p>
+      </div>
+      <div class="casus-antwoord">
+        <div class="casus-rol">Antwoord met de kennisserver</div>
+        <p><strong>Op deze gegevens: vandaag de derde persoon, vanaf 10 juli 2027 ook de twee particulieren. Eén gegeven ontbreekt nog.</strong> De eigendomsdrempel luidt nu <em>meer dan</em> 25 procent. Exact 25,00 procent haalt die drempel dus net niet. Onder de verordening wordt de drempel <em>25 procent of meer</em>, en dan tellen beide particulieren wel mee. Twee woorden, een ander antwoord.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;art. 3 lid 1 onderdeel a Uitvoeringsbesluit Wwft 2018; art. 52 lid 1 Verordening (EU) 2024/1624 (AMLR)<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk
+        </div>
+        <p>De derde persoon houdt indirect 60 procent van 50 procent, dus 30 procent. Het Uitvoeringsbesluit kent geen rekenregel en spreekt alleen van direct of indirect houden; in de praktijk wordt per keten gerekend, en op die rekenwijze zit hij boven de drempel. De verordening schrijft de rekenwijze voor het eerst uitdrukkelijk voor: binnen een keten vermenigvuldigen, over verschillende ketens optellen, <em>tenzij artikel 54 van toepassing is</em>. Die uitzondering speelt hier vermoedelijk. Wie meer dan de helft van de holding houdt, oefent zeggenschap uit over een entiteit met een direct eigendomsbelang in de cliënt, en dan wijst artikel 54 de uiteindelijk begunstigden rechtstreeks aan in plaats van door te rekenen. Dezelfde persoon, andere route, en de 30 procent verdwijnt uit de motivering.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;art. 3 lid 1 Uitvoeringsbesluit Wwft 2018 (geen rekenregel); art. 52 lid 1 AMLR (rekenregel, met de uitzondering van art. 54); art. 53 lid 2 en art. 54 AMLR (zeggenschap en samenloop)<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk (norm) &middot; praktijk (de rekenwijze onder huidig recht)
+        </div>
+        <p><strong>Stop niet bij het percentage.</strong> De wettelijke definitie noemt helemaal geen percentage; het getal 25 komt pas uit de algemene maatregel van bestuur, en die noemt de categorieën die "in elk geval" als uiteindelijk belanghebbende gelden. Het is dus een minimum, geen uitputtende opsomming. Daarnaast staat de route van zeggenschap via andere middelen, die geen drempel kent en die de verordening uitdrukkelijk onafhankelijk van en parallel aan het eigendomsbelang laat vaststellen. Daaronder vallen de consolidatievoorwaarden van art. 2:406 BW, en onder de verordening ook stemregelingen en het recht een meerderheid van de bestuurders te benoemen. Wie hier alleen het aandeelhoudersregister naloopt, kan een uiteindelijk belanghebbende missen die er langs die weg wél is.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;art. 1 Wwft (definitie zonder percentage); art. 3 lid 1 onderdeel a Uitvoeringsbesluit Wwft 2018 (drempel en andere middelen, art. 2:406 BW); art. 51 en art. 53 lid 3 en 4 AMLR<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk (norm) &middot; analyse TRNKL (de waarschuwing dat het register alleen niet volstaat)
+        </div>
+        <p><strong>Het verifiëren is een inspanningsverplichting.</strong> De wet vraagt de uiteindelijk belanghebbende te identificeren en redelijke maatregelen te nemen om zijn identiteit te verifiëren, waarbij u vastlegt welke maatregelen u nam en welke moeilijkheden u ondervond. Dat dossier is het bewijs van de inspanning. De terugval op het hoger leidinggevend personeel is een uiterste uitzondering: pas na uitputting van alle mogelijke middelen én alleen wanneer er geen gronden voor verdenking bestaan. Geen sluiproute voor een ingewikkelde structuur.</p>
+        <div class="casus-vindplaats">
+          <span class="sleutel">grondslag</span>&nbsp;&nbsp;inspanning en vastlegging: art. 3 lid 2 onderdeel b en art. 33 Wwft; art. 20 lid 1 onder b en art. 22 lid 2 AMLR &middot; terugvaloptie: art. 3 lid 1 onder a, 2e Uitvoeringsbesluit Wwft 2018; art. 22 lid 2, tweede alinea AMLR<br>
+          <span class="sleutel">aard</span>&nbsp;&nbsp;wettelijk
+        </div>
+        <p>Eén gegeven ontbreekt nog voordat dit een uitkomst kan zijn: kan iemand zeggenschap uitoefenen langs een andere weg dan het percentage, via de statuten, een aandeelhoudersovereenkomst, een benoemingsrecht, een vetorecht of feitelijk gezag? De kennisbank vraagt daarop door, want die route kent geen drempel en kan de uitkomst veranderen.</p>
+        <div class="casus-voet">
+          <span class="sleutel">kennisbank</span>&nbsp;&nbsp;UBO bepalen: de wettelijke grondslagen &middot; versie 1.0.0<br>
+          <span class="sleutel">peildatum</span>&nbsp;&nbsp;10-08-2026<br>
+          <span class="sleutel">status</span>&nbsp;&nbsp;demonstratie-export: de machinale broncontrole is voor deze kennisbank nog niet gedraaid<br>
+          <span class="sleutel">let op</span>&nbsp;&nbsp;de uitkomst van deze regels hangt af van een scharnierdatum
+        </div>
+      </div>
+    </div>
+    <p class="borging-bijschrift">Twee kennisbanken, dezelfde opbouw: de regel, de uitzondering, de grondslag en de datum waarop het antwoord verandert. De assistent zoekt er zelf de juiste bij, je hoeft niet te weten in welke bank het staat.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Wat het oplevert</div>
+    <h2 class="section-title">Gemeten, niet beweerd</h2>
+    <p class="section-lede">Vijfentwintig casus over acht domeinen, twee keer voorgelegd aan hetzelfde taalmodel: één keer zonder kennisbank en één keer met. Samen 490 runs per conditie, twintig per casus en tien bij de eerste, telkens in een verse sessie en blind geteld tegen een vooraf vastgelegde scorelijst. De conditie met kennisbank kreeg daarbij de instructie elk punt te onderbouwen met grondslag, aard-label en peildatum; die instructie hoort bij de meting en verklaart mede waarom de borging zo scherp uiteenloopt.</p>
+    <table class="meting">
+      <thead>
+        <tr><th>Gemeten</th><th>Zonder kennisbank</th><th>Met kennisbank</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Borging: vindplaats, versie en peildatum bij het antwoord</td><td class="uit">0 van 490</td><td class="uit">490 van 490</td></tr>
+        <tr><td>Herkenning: de casus juist geplaatst in het kader</td><td class="uit">304 van 490</td><td class="uit">489 van 490</td></tr>
+      </tbody>
+    </table>
+    <div class="tekst">
+      <p>De borging is het structurele deel: zonder kennisbank is er geen vindplaats om naar te verwijzen, ook niet als erom wordt gevraagd, en met kennisbank kwam de verantwoording in alle 490 runs mee. Dat zegt iets over de herleidbaarheid van een antwoord, niet over de juistheid ervan. De herkenning verschilt sterk per onderwerp, en dat is het eerlijke beeld. Bij onderwerpen die goed in het publieke domein zitten, zoals contant geld, transfer pricing en voedselfraude, was het verschil nul. Bij het pensioenstelsel, artikel 75 AMLR, box 2 en de sanctieregimes lag de juistheid zonder kennisbank op nul van de twintig en met kennisbank op twintig van de twintig.</p>
+      <p>Waar het over gaat: het scheelt niet zozeer of de assistent iets zinnigs zegt, maar of je het kunt narekenen. Een medewerker die de vindplaats onder het antwoord ziet staan, klikt door naar het artikel en is klaar. Zonder vindplaats begint het zoeken opnieuw, en naar mijn waarneming uit gesprekken met kantoren wordt die zekerheid dan vaak niet gehaald. Dat laatste is een waarneming, geen meting.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-primary">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Hoe het draait</div>
+    <h2 class="section-title">Lokaal, binnen je eigen omgeving</h2>
+    <div class="kaart-grid">
+      <div class="kaart">
+        <div class="kaart-label">Levering</div>
+        <div class="kaart-titel">Een map en één bestand</div>
+        <div class="kaart-tekst">Je krijgt de kennisbanken als JSON met een inhoudsopgave en SHA-256-controlesommen, de server zelf, en een bijsluiter voor IT met de installatie- en beveiligingstoelichting. Het pakket is klein genoeg om in één zitting door te nemen: één map, één bestand code en de controlesommen.</div>
+      </div>
+      <div class="kaart">
+        <div class="kaart-label">Verbinding</div>
+        <div class="kaart-titel">Geen netwerkpoort</div>
+        <div class="kaart-tekst">De assistent start de server als lokaal subproces. Geen open poort, geen firewall-regel, geen certificaat, geen telemetrie, alleen leesrechten. Geen zoekopdracht bereikt TRNKL.</div>
+      </div>
+      <div class="kaart">
+        <div class="kaart-label">Actualiteit</div>
+        <div class="kaart-titel">Maandelijkse levering</div>
+        <div class="kaart-tekst">De kennisbank wordt maandelijks getoetst aan wettenbank, rechtspraak.nl en EUR-Lex, gevolgd door een levering met changelog. Eerste ronde: 4 september 2026. Bijwerken is de map vervangen en de assistent herstarten.</div>
+      </div>
+      <div class="kaart">
+        <div class="kaart-label">Uitzondering</div>
+        <div class="kaart-titel">Microsoft 365 Copilot</div>
+        <div class="kaart-tekst">Dat platform vraagt om een publiek bereikbaar adres en werkt dus niet met de lokale route. Daarvoor is een door TRNKL gehoste variant voorzien, die wordt gebouwd zodra een licentienemer hem nodig heeft.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-eyebrow">De grenzen</div>
+    <h2 class="section-title">Wat de kennisserver niet is</h2>
+    <div class="tekst">
+      <p><strong>Geen AI-systeem.</strong> De server bevat geen model, leert niet en genereert geen tekst. Hij zoekt in vastgelegde kennis en levert die uit. Het AI-systeem is je eigen assistent; die blijft van jou, en de verantwoordelijkheid voor het gebruik daarvan ook.</p>
+      <p><strong>Geen beslismotor.</strong> De kennisbank is een referentielaag. Hij geeft de regel, de uitzondering en de vindplaats. De weging van het concrete geval, het beleid van de instelling en het besluit blijven bij de professional. Een kennisbank die zou beslissen, zou precies datgene weghalen wat hij hoort te ondersteunen.</p>
+      <p><strong>Geen garantie op volledigheid.</strong> De controles die eronder liggen meten consistentie: kloppen de verwijzingen, staan de datums in de goede volgorde, dekt elke regel een grondslag. Of de weergegeven kern werkelijk dekt wat een uitspraak zegt, blijft leeswerk. Dat leeswerk gebeurt en wordt vastgelegd, maar het is mensenwerk en geen groen vinkje.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-primary">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Veelgestelde vragen</div>
+    <h2 class="section-title">Vragen die vooraf worden gesteld</h2>
+    <section class="uitleg-sectie">
+      <div class="uitleg-body">
+        <details class="faq-item"><summary>Werkt de kennisserver met ChatGPT, Claude of Copilot?</summary><div class="antwoord">De server spreekt het Model Context Protocol, een open standaard. Elke assistent die MCP ondersteunt kan hem als lokale bron aanspreken. Microsoft 365 Copilot vormt de uitzondering: dat platform vraagt om een publiek bereikbaar adres en werkt daarom alleen met de gehoste variant, die is voorzien en wordt gebouwd zodra een licentienemer die nodig heeft.</div></details>
+        <details class="faq-item"><summary>Komen onze zoekvragen bij TRNKL terecht?</summary><div class="antwoord">Nee. De server draait als lokaal subproces binnen de eigen omgeving en communiceert alleen met de assistent die hem heeft gestart. Er is geen netwerkpoort, geen telemetrie en geen netwerkcode in het bestand. Geen enkele zoekopdracht bereikt TRNKL: de server stuurt niets weg en heeft er de code niet voor. Omdat er zo geen gegevens naar TRNKL stromen, is TRNKL naar mijn mening bij het gebruik van de kennisserver geen verwerker in de zin van de AVG; dat oordeel hoort u wel in uw eigen verwerkingsregister te toetsen, en ik lever de technische onderbouwing daarvoor mee in de bijsluiter. Wat er met de vraag gebeurt in de assistent zelf staat daar los van: een cloudassistent verwerkt uw vraag op zijn eigen infrastructuur.</div></details>
+        <details class="faq-item"><summary>Wat gebeurt er als de wet verandert?</summary><div class="antwoord">De licentie kent een maandelijkse controlecyclus: de volledige kennisbank wordt getoetst aan wettenbank, rechtspraak.nl en EUR-Lex, en na afronding van die ronde volgt een levering met changelog, zodat zichtbaar is wat er is gewijzigd en waarom. De eerste ronde staat op 4 september 2026, en die datum staat ook als volgende controle onder elk antwoord, zodat u zelf kunt zien of hij is gehaald. Raakt een wijziging de uitkomst van een regel, dan volgt een tussentijdse levering. Daarnaast rekent de server bij elke vraag uit hoe oud zijn eigen peildatum is en waarschuwt hij zelf zodra die buiten de controlecyclus valt.</div></details>
+        <details class="faq-item"><summary>Verzint de assistent dan geen vindplaatsen meer?</summary><div class="antwoord">De server levert alleen wat in de kennisbank staat, met de vindplaats die daar is vastgelegd. Levert een zoekopdracht geen treffer op, dan meldt hij dat en gokt hij niet. Het taalmodel blijft wel van de organisatie zelf: de kennisserver borgt de vindplaats van de aangeleverde kennis, hij vervangt niet de eigen controle op wat de assistent daarmee doet.</div></details>
+        <details class="faq-item"><summary>Is de kennisserver zelf een AI-systeem?</summary><div class="antwoord">Nee. De server bevat geen model, leert niet en genereert geen tekst; hij zoekt in vastgelegde kennis en levert die uit met de borgingsgegevens erbij. Mijns inziens is hij daarmee geen AI-systeem in de zin van artikel 3 lid 1 van de AI-verordening, maar een gegevensbron. Het AI-systeem is de eigen assistent van de organisatie, en die organisatie is daarvoor de gebruiksverantwoordelijke.</div></details>
+        <details class="faq-item"><summary>Wat kost een kennislicentie?</summary><div class="antwoord">De licentie geldt per kantoor, met onbeperkt gebruikers en onbeperkt vestigingen, en is maandelijks opzegbaar. Bij beëindiging behoudt de licentienemer de laatste levering voor onbepaalde tijd. Prijzen zijn op aanvraag via <a href="mailto:info@trnkl.nl?subject=TRNKL-kennisserver">info@trnkl.nl</a>.</div></details>
+        <details class="faq-item"><summary>Wat zit er niet in?</summary><div class="antwoord">Geen advies op maat en geen beslismotor. De kennisbank is een referentielaag: hij levert de regel, de uitzondering en de vindplaats. De weging van het concrete geval, het beleid van de instelling en het uiteindelijke besluit blijven waar ze horen, bij de professional.</div></details>
+        <details class="faq-item"><summary>Kan de kennisbank ook zonder chatinterface worden gebruikt?</summary><div class="antwoord">Ja. De kennisbank is een set gestructureerde JSON-bestanden; de MCP-server is één manier om die te ontsluiten. Dezelfde bestanden kunnen als referentielaag worden ingeladen in een bestaand systeem voor cliëntenonderzoek, sanctietoetsing of dossierbehandeling, gekoppeld op het veld risicotype. Of dat in een concreet geval lukt hangt af van dat systeem.</div></details>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <div class="cta-blok">
+      <h2>Een keer meekijken?</h2>
+      <p>De kennisserver is beschikbaar voor een toetsgesprek: een demonstratie op je eigen casuïstiek, waarin je ziet wat er onder een antwoord komt te staan en wat dat in je werk zou schelen. Daarna weet je of het bij je past.</p>
+      <a class="knop" href="mailto:info@trnkl.nl?subject=TRNKL-kennisserver">Plan een toetsgesprek via info@trnkl.nl &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container-narrow">
+    <span class="footer-mark">TRNKL<span class="merkpunt"></span></span>
+    <p class="footer-text">Atelier voor kennis en beleid. Alle uitwerkingen zijn herleidbaar tot openbare bronnen: wet- en regelgeving, parlementaire stukken en officiële statistiek.</p>
+    <p class="footer-meta">KvK 88301648 &nbsp;&middot;&nbsp; <a href="over.html">Over</a> &nbsp;&middot;&nbsp; <a href="contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="disclaimer.html">Disclaimer</a> &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
