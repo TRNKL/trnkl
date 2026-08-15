@@ -1070,19 +1070,29 @@ window.addEventListener('load', lijnSporenUit);
 window.addEventListener('resize', function(){ clearTimeout(window.__lsuTimer); window.__lsuTimer = setTimeout(lijnSporenUit, 120); });
 
 // === Kopieerbeveiliging ===
-// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie in
-// de modals. Bronvermeldingen (.source-block) blijven altijd kopieerbaar.
-// Staat AAN sinds 6 augustus 2026 (akkoord Toine). Nieuwe flowcharts nemen hem op TRUE over.
+// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie op
+// de hele pagina, modals en lopende tekst inbegrepen (paginabreed sinds 15 augustus 2026).
+// Bronvermeldingen (.source-block) blijven altijd kopieerbaar en invoervelden van
+// flowtools blijven werken. Staat AAN sinds 6 augustus 2026 (akkoord Toine). Nieuwe
+// flowcharts nemen hem op TRUE over.
 const BLOKKEER_KOPIEREN = true;
 if (BLOKKEER_KOPIEREN) {
-  document.querySelectorAll('.modal-box').forEach(function(box){
-    box.style.userSelect = 'none'; box.style.webkitUserSelect = 'none';
-    function allowInSource(e){ return e.target.closest('.source-block')!==null; }
-    box.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
-    box.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
-    box.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
-    box.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  function allowInSource(e){
+    var t = e.target;
+    if (t && t.closest && t.closest('.source-block')) return true;
+    return !!(t && t.tagName && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
+  }
+  document.body.style.userSelect = 'none'; document.body.style.webkitUserSelect = 'none';
+  document.querySelectorAll('.source-block').forEach(function(sb){
+    sb.style.userSelect = 'text'; sb.style.webkitUserSelect = 'text';
   });
+  document.querySelectorAll('input, textarea, select').forEach(function(el){
+    el.style.userSelect = 'text'; el.style.webkitUserSelect = 'text';
+  });
+  document.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  document.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  document.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  document.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
 }
 
 </script>
