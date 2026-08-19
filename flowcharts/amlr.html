@@ -390,5 +390,32 @@
   KvK 88301648 &nbsp;&middot;&nbsp; <a href="../contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="../disclaimer.html">Disclaimer</a> &nbsp;&middot;&nbsp; <a href="../privacy.html">Privacy</a>
 </footer>
 
+<script>
+// === Kopieerbeveiliging ===
+// Eén schakelaar. Blokkeert kopiëren, knippen, rechtsklikken, slepen en tekstselectie op
+// de hele pagina (paginabreed sinds 15 augustus 2026). Bronvermeldingen (.source-block)
+// blijven altijd kopieerbaar en invoervelden blijven werken. Staat AAN sinds
+// 6 augustus 2026 (akkoord Toine). Nieuwe pagina's nemen hem op TRUE over.
+const BLOKKEER_KOPIEREN = true;
+if (BLOKKEER_KOPIEREN) {
+  function allowInSource(e){
+    var t = e.target;
+    if (t && t.closest && t.closest('.source-block')) return true;
+    return !!(t && t.tagName && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
+  }
+  document.body.style.userSelect = 'none'; document.body.style.webkitUserSelect = 'none';
+  document.querySelectorAll('.source-block').forEach(function(sb){
+    sb.style.userSelect = 'text'; sb.style.webkitUserSelect = 'text';
+  });
+  document.querySelectorAll('input, textarea, select').forEach(function(el){
+    el.style.userSelect = 'text'; el.style.webkitUserSelect = 'text';
+  });
+  document.addEventListener('copy', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  document.addEventListener('cut', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  document.addEventListener('contextmenu', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+  document.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
+}
+</script>
+
 </body>
 </html>
