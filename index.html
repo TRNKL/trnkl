@@ -196,6 +196,10 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 .card-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; flex-grow: 1; }
 .card-cta { font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 18px; }
 
+.dash-notice { display:flex; gap:14px; align-items:flex-start; margin: 0 0 18px; background: var(--orange-light); border: 1px solid var(--orange-border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 16px 20px; }
+.dash-notice-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+.dash-notice-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
 /* Flowcharts op maat */
 .flow-cta { margin-top: 18px; background: var(--orange-light); border: 1px solid var(--orange-border); border-radius: 14px; padding: 20px 22px; }
 .flow-cta h3 { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; letter-spacing: -0.01em; }
@@ -647,6 +651,12 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
     <div class="section-eyebrow">Vorm drie</div>
     <h2 class="section-title">Dashboards</h2>
     <p class="section-lede">Een dashboard volgt politiek beleid doel voor doel en legt het naast de feiten: wat is afgesproken, wat ermee gebeurt, en hoe dat zich verhoudt tot publieke cijfers. Het dashboard velt geen oordeel; het toont het verschil, de lezer weegt het.</p>
+    <div class="dash-notice" role="status">
+      <div>
+        <div class="dash-notice-label">Tijdelijk niet bijgewerkt</div>
+        <p class="dash-notice-text">In afwachting van Prinsjesdag (15 september) en de begrotingsdebatten daarna wordt het dashboard tijdelijk niet bijgewerkt. De volgende bijwerking volgt zodra de begroting 2027 is verwerkt; de vermelde peildatums per doel blijven gelden.</p>
+      </div>
+    </div>
     <a href="dashboard/index.html" class="product-card">
       <div class="card-label">Coalitieakkoord 2026&ndash;2030</div>
       <div class="card-title">Het akkoord, doel voor doel</div>
