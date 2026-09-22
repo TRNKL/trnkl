@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRNKL — Atelier voor kennis en beleid · flowcharts, flowtools en dashboards</title>
-<meta name="description" content="TRNKL maakt kennis van recht en beleid navolgbaar, in drie vormen: flowcharts, flowtools en dashboards. Over o.a. de Wwft, AMLR en integriteit in de zorg.">
+<title>TRNKL — Atelier voor kennis en beleid · flowcharts en flowtools</title>
+<meta name="description" content="TRNKL maakt kennis van recht en beleid navolgbaar, in twee vormen: flowcharts en flowtools. Over o.a. de Wwft, AMLR en integriteit in de zorg.">
 <link rel="canonical" href="https://trnkl.nl/">
 <meta name="tdm-reservation" content="1">
 <meta name="tdm-policy" content="https://trnkl.nl/disclaimer.html">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="TRNKL">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:title" content="TRNKL — Atelier voor kennis en beleid">
-<meta property="og:description" content="Kennis van recht en beleid navolgbaar gemaakt, in drie vormen: flowcharts, flowtools en dashboards.">
+<meta property="og:description" content="Kennis van recht en beleid navolgbaar gemaakt, in twee vormen: flowcharts en flowtools.">
 <meta property="og:url" content="https://trnkl.nl/">
 <meta property="og:image" content="https://trnkl.nl/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +29,7 @@
       "name": "TRNKL",
       "url": "https://trnkl.nl/",
       "logo": "https://trnkl.nl/assets/icon-512.png",
-      "description": "Atelier voor kennis en beleid. TRNKL maakt kennis van recht en beleid navolgbaar in flowcharts, flowtools en dashboards.",
+      "description": "Atelier voor kennis en beleid. TRNKL maakt kennis van recht en beleid navolgbaar in flowcharts en flowtools.",
       "email": "info@trnkl.nl",
       "sameAs": [ "https://www.instagram.com/trnkl.nl/" ],
       "founder": { "@id": "https://trnkl.nl/#person" }
@@ -196,9 +196,6 @@ header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border
 .card-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; flex-grow: 1; }
 .card-cta { font-size: 13px; font-weight: 600; color: var(--orange-text); margin-top: 18px; }
 
-.dash-notice { display:flex; gap:14px; align-items:flex-start; margin: 0 0 18px; background: var(--orange-light); border: 1px solid var(--orange-border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 16px 20px; }
-.dash-notice-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--orange-text); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
-.dash-notice-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
 
 /* Flowcharts op maat */
 .flow-cta { margin-top: 18px; background: var(--orange-light); border: 1px solid var(--orange-border); border-radius: 14px; padding: 20px 22px; }
@@ -214,12 +211,12 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
 .footer-meta a { color: var(--text-tertiary); text-decoration: underline; }
 .footer-meta a:hover { color: var(--orange-text); }
 /* Anker-offset zodat de sectietitel niet onder de sticky header valt */
-#flowcharts, #flowtools, #dashboards { scroll-margin-top: 84px; }
+#flowcharts, #flowtools { scroll-margin-top: 84px; }
 /* Compacter menu op mobiel: links links uitlijnen, dicht onder het logo */
 @media (max-width: 560px) {
   header .nav { padding: 9px 0 11px; row-gap: 3px; }
   .nav-links { margin-left: 0; gap: 8px 18px; }
-  #flowcharts, #flowtools, #dashboards { scroll-margin-top: 104px; }
+  #flowcharts, #flowtools { scroll-margin-top: 104px; }
 }
 </style>
 </head>
@@ -232,7 +229,6 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
       <div class="nav-links">
         <a href="#flowcharts" class="nav-link">Flowcharts</a>
         <a href="#flowtools" class="nav-link">Flowtools</a>
-        <a href="#dashboards" class="nav-link">Dashboards</a>
         <a href="kennisserver.html" class="nav-link">Kennisserver</a>
         <a href="over.html" class="nav-link">Over</a>
       </div>
@@ -247,7 +243,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
       <span class="bl-sub">Atelier voor kennis en beleid</span>
     </div>
     <h1>Kennis van recht en beleid, navolgbaar gemaakt.</h1>
-    <p class="lede"><span class="accent">TRNKL<span class="merkpunt"></span></span> werkt complexe regelgeving en politieke afspraken stap voor stap uit, herleidbaar tot de bron. Dat gebeurt in drie vormen: flowcharts, flowtools en dashboards.</p>
+    <p class="lede"><span class="accent">TRNKL<span class="merkpunt"></span></span> werkt complexe regelgeving en beleid stap voor stap uit, herleidbaar tot de bron. Dat gebeurt in twee vormen: flowcharts en flowtools.</p>
     <div class="hero-banner">
       <span class="banner-label">Nieuw</span>
       <span class="banner-tekst">De TRNKL-kennisserver geeft je eigen AI-assistent toegang tot 58 gecontroleerde kennisbanken, met vindplaats, versie en peildatum bij elk antwoord. Draait lokaal, binnen je eigen omgeving. <a href="kennisserver.html">Hoe het werkt &rarr;</a></span>
@@ -655,26 +651,6 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
       <p>Een wet, werkproces of risicogebied dat om een zelfevaluatie vraagt? <span class="accent">TRNKL<span class="merkpunt"></span></span> bouwt de kennis om tot een flowtool op maat: interactief, volledig in de browser en zonder dat er gegevens worden verzonden of opgeslagen.</p>
       <a href="contact.html">Neem contact op &rarr;</a>
     </div>
-  </div>
-</section>
-
-<section class="section" id="dashboards">
-  <div class="container-narrow">
-    <div class="section-eyebrow">Vorm drie</div>
-    <h2 class="section-title">Dashboards</h2>
-    <p class="section-lede">Een dashboard volgt politiek beleid doel voor doel en legt het naast de feiten: wat is afgesproken, wat ermee gebeurt, en hoe dat zich verhoudt tot publieke cijfers. Het dashboard velt geen oordeel; het toont het verschil, de lezer weegt het.</p>
-    <div class="dash-notice" role="status">
-      <div>
-        <div class="dash-notice-label">Tijdelijk niet bijgewerkt</div>
-        <p class="dash-notice-text">In afwachting van Prinsjesdag (15 september) en de begrotingsdebatten daarna wordt het dashboard tijdelijk niet bijgewerkt. De volgende bijwerking volgt zodra de begroting 2027 is verwerkt; de vermelde peildatums per doel blijven gelden.</p>
-      </div>
-    </div>
-    <a href="dashboard/index.html" class="product-card">
-      <div class="card-label">Coalitieakkoord 2026&ndash;2030</div>
-      <div class="card-title">Het akkoord, doel voor doel</div>
-      <div class="card-desc">Het coalitieakkoord van het kabinet-Jetten ontleed in losse doelen. Per doel zie je naast elkaar wat het akkoord afspreekt, wat de coalitiepartijen er in hun verkiezingsprogramma over schreven, wat de Tweede Kamer ermee doet en welke feitelijke cijfers uit publieke bronnen erbij horen. Het thema Wonen is volledig uitgewerkt; de overige thema&rsquo;s volgen.</div>
-      <div class="card-cta">Open het dashboard &rarr;</div>
-    </a>
   </div>
 </section>
 
