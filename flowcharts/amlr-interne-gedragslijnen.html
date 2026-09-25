@@ -1313,5 +1313,35 @@ if (BLOKKEER_KOPIEREN) {
 </footer>
 
 
+<script>
+// === Modal uit de URL-hash (standaardblok sinds 24 september 2026) ===
+// pagina.html#ov-art9 opent die modal direct. Wijst de hash naar een element BINNEN
+// een modal (#a-cijfers), dan gaat eerst die modal open en scrolt hij naar het
+// element. Gebruikt door de Vraagbaak (link onder elk antwoord) en bruikbaar voor
+// elke verwijzing van buiten. Eigen <script>-tag: een fout elders op de pagina
+// (bijv. een externe library die niet laadt) legt dit blok niet stil.
+// Gate: modalanker-check.py. Geen inhoudelijke wijziging: geen UPDATED-bump.
+(function () {
+  function openUitHash() {
+    var id;
+    try { id = decodeURIComponent((location.hash || '').slice(1)); } catch (e) { return; }
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el || !el.closest) return;
+    var ov = el.classList.contains('modal-overlay') ? el : el.closest('.modal-overlay');
+    if (!ov) return;
+    var m = /^(ov|m)-(.+)$/.exec(ov.id || '');
+    var geopend = false;
+    if (m && typeof window.openM === 'function') {
+      try { window.openM(m[2]); geopend = ov.classList.contains('open'); } catch (e) {}
+    }
+    if (!geopend) { ov.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    if (el !== ov) setTimeout(function () { el.scrollIntoView({ block: 'start' }); }, 60);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', openUitHash);
+  else openUitHash();
+  window.addEventListener('hashchange', openUitHash);
+})();
+</script>
 </body>
 </html>
