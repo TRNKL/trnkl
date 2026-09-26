@@ -218,6 +218,11 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
   .nav-links { margin-left: 0; gap: 8px 18px; }
   #flowcharts, #flowtools { scroll-margin-top: 104px; }
 }
+
+/* Flowfinder in de hero (voorstel 25-09-2026) */
+.hero-grid { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0,1fr) 400px; grid-template-areas: "kop paneel" "banners paneel"; grid-template-rows: auto 1fr; column-gap: 56px; align-items: start; }
+.hero-kop { grid-area: kop; } .hero-banners { grid-area: banners; } .hero-paneel { grid-area: paneel; position: sticky; top: 84px; }
+@media (max-width: 1020px) { .hero-grid { grid-template-columns: minmax(0,1fr); grid-template-areas: "kop" "paneel" "banners"; grid-template-rows: auto; max-width: 880px; } .hero-paneel { position: static; margin: 28px 0 4px; } }
 </style>
 </head>
 <body>
@@ -237,13 +242,16 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
 </header>
 
 <section class="hero">
-  <div class="container-narrow">
+  <div class="hero-grid">
+    <div class="hero-kop">
     <div class="hero-logo">
       <span class="bl-mark">TRNKL<span class="merkpunt"></span></span>
       <span class="bl-sub">Atelier voor kennis en beleid</span>
     </div>
     <h1>Kennis van recht en beleid, navolgbaar gemaakt.</h1>
     <p class="lede"><span class="accent">TRNKL<span class="merkpunt"></span></span> werkt complexe regelgeving en beleid stap voor stap uit, herleidbaar tot de bron. Dat gebeurt in twee vormen: flowcharts en flowtools.</p>
+    </div>
+    <div class="hero-banners">
     <div class="hero-banner">
       <span class="banner-label">Nieuw</span>
       <span class="banner-tekst">De TRNKL-kennisserver geeft je eigen AI-assistent toegang tot 50 gecontroleerde kennisbanken, met vindplaats, versie en peildatum bij elk antwoord. Draait lokaal, binnen je eigen omgeving. <a href="kennisserver.html">Hoe het werkt &rarr;</a></span>
@@ -256,6 +264,10 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
       <span class="banner-label">AMLA</span>
       <span class="banner-tekst">Sinds 1 juli 2025 is AMLA operationeel: de Europese antiwitwastoezichthouder in Frankfurt, die vanaf 2028 direct toezicht houdt op de meest risicovolle financi&euml;le instellingen van de Unie. <a href="flowcharts/amla.html">AMLA uitgelegd &rarr;</a></span>
     </div>
+  </div>
+    <aside class="hero-paneel" aria-label="Flowfinder">
+      <div data-trnkl-flowfinder data-api="https://api.trnkl.nl"></div>
+    </aside>
   </div>
 </section>
 
@@ -712,5 +724,6 @@ if (BLOKKEER_KOPIEREN) {
   document.addEventListener('dragstart', function(e){ if(!allowInSource(e)) e.preventDefault(); });
 }
 </script>
+<script src="assets/trnkl-flowfinder.js" defer></script>
 </body>
 </html>
