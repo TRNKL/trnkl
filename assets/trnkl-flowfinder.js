@@ -233,10 +233,16 @@
     if (meta.length) u.appendChild(el("p", "tvb-meta", meta.join(" · ").replace(/^./, function (c) { return c.toUpperCase(); })));
     if (hoofd.let_op) u.appendChild(el("p", "tvb-letop", hoofd.let_op));
     u.appendChild(link("Open de flowchart →", hoofd.flowchart_url, "tvb-open"));
-    var gezien = {}, ook = [];
+    // "Ook relevant": alleen een andere kennisbank die de vraag echt raakt,
+    // dus minstens de helft van de vraag dekt of dicht bij de topscore zit.
+    // Zonder die eis kwam bij "Hoe herken ik zorgfraude?" de meldplichtbank
+    // mee op een enkel woord (26-09-2026).
+    var gezien = {}, ook = [], top = items[0].score || 0;
     gezien[bank] = 1;
     items.forEach(function (k) {
-      if (!gezien[k.kennisbank]) { gezien[k.kennisbank] = 1; ook.push(k); }
+      if (gezien[k.kennisbank]) return;
+      if ((k.dekking || 0) < 0.5 && (k.score || 0) < 0.6 * top) return;
+      gezien[k.kennisbank] = 1; ook.push(k);
     });
     if (ook.length) {
       u.appendChild(el("p", "tvb-label", "Ook relevant"));
