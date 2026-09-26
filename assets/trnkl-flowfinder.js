@@ -41,7 +41,11 @@
     ".tvb-uit{margin-top:14px}",
     ".tvb-status{font-size:13px;color:var(--t2);margin:6px 0}",
     ".tvb-label{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--ot);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 4px}",
-    ".tvb-echo{font-size:13px;color:var(--t2);margin:0;padding-bottom:12px;border-bottom:1px solid var(--r1)}",
+    ".tvb-echo{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px;color:var(--t2);margin:0;padding-bottom:12px;border-bottom:1px solid var(--r1)}",
+    ".tvb-echo span{min-width:0}",
+    ".tvb-nieuw{font:inherit;font-size:12.5px;font-weight:600;color:var(--ot);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}",
+    ".tvb-nieuw:hover{text-decoration:underline}.tvb-nieuw:focus-visible{outline:2px solid var(--ot);outline-offset:2px}",
+    ".tvb-nieuw-onder{display:block;margin:14px 0 0}",
     ".tvb-fc{display:block;font-size:16px;font-weight:700;line-height:1.3;color:var(--t1);text-decoration:none}",
     ".tvb-fc:hover{color:var(--ot)}",
     ".tvb-tekst{font-size:14px;color:var(--t1);margin:0}",
@@ -186,7 +190,6 @@
     var bank = items[0].kennisbank;
     var eigen = items.filter(function (k) { return k.kennisbank === bank; });
     var hoofd = eigen.filter(function (k) { return k.type === "faq"; })[0] || items[0];
-    u.appendChild(el("p", "tvb-echo", "Je vroeg: ‘" + vraag + "’"));
     u.appendChild(el("p", "tvb-label", "Staat in flowchart"));
     u.appendChild(link((hoofd.kennisbank_titel || hoofd.kennisbank) + " →", hoofd.flowchart_url, "tvb-fc"));
     u.appendChild(el("p", "tvb-label", "Kort antwoord"));
@@ -263,9 +266,28 @@
     return c;
   }
 
+  // "Je vroeg: ..." met een knop om terug te gaan naar de beginstand
+  // (leeg invoerveld, voorbeeldvragen). Zonder die knop bleef het oude
+  // antwoord staan tot de volgende vraag (opmerking Toine, 26-09-2026).
+  Flowfinder.prototype.nieuwKnop = function (klasse) {
+    var self = this;
+    var b = el("button", "tvb-nieuw" + (klasse ? " " + klasse : ""), "Nieuwe vraag ↺");
+    b.type = "button";
+    b.addEventListener("click", function () {
+      self.invoer.value = "";
+      self.leeg();
+      self.invoer.focus();
+    });
+    return b;
+  };
+
   Flowfinder.prototype.toon = function (d, vraag) {
     var u = this.uit;
     u.innerHTML = "";
+    var echo = el("p", "tvb-echo");
+    echo.appendChild(el("span", null, "Je vroeg: ‘" + vraag + "’"));
+    echo.appendChild(this.nieuwKnop());
+    u.appendChild(echo);
     if (d.status === "treffer" && d.items && d.items.length) {
       if (this.compact) this.compactAntwoord(d, vraag);
       else d.items.forEach(function (k) { u.appendChild(kaart(k)); });
@@ -289,6 +311,7 @@
     if (typeof d.resterend === "number" && d.status !== "limiet")
       voet.push(d.resterend === 1 ? "Nog 1 vraag vandaag." : "Nog " + d.resterend + " vragen vandaag.");
     if (voet.length) u.appendChild(el("p", "tvb-voet", voet.join(" ")));
+    if (d.status === "treffer") u.appendChild(this.nieuwKnop("tvb-nieuw-onder"));
   };
 
   function start() {
