@@ -61,6 +61,7 @@
     ".tvb-meta{font-size:12px;color:var(--t3);margin:3px 0 0}",
     ".tvb-letop{font-size:12.5px;color:#C2410C;background:#FFF4EE;border-left:3px solid #FF5A1F;padding:6px 10px;margin:10px 0 0;border-radius:0 6px 6px 0}",
     ".tvb-open{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--ot);text-decoration:none;border:1px solid var(--ob);background:var(--ol);border-radius:999px;padding:7px 14px}",
+    ".tvb-open-licht{background:transparent;margin-left:8px}",
     ".tvb-open:hover{border-color:var(--o)}",
     ".tvb-ook{margin:0;padding:0;list-style:none}",
     ".tvb-ook li{margin:3px 0;font-size:13px}",
@@ -89,6 +90,11 @@
   }
   function veiligeUrl(u) {
     return /^https:\/\/(www\.)?trnkl\.nl\//.test(u || "") ? u : null;
+  }
+  // De flowchart opent bovenaan de pagina (opmerking Toine 26-09-2026); de
+  // precieze plek (modal of FAQ-vraag) blijft bereikbaar via een aparte link.
+  function bovenaan(url) {
+    return (url || "").split("#")[0];
   }
   function link(tekst, url, cls) {
     var u = veiligeUrl(url);
@@ -191,7 +197,7 @@
     var eigen = items.filter(function (k) { return k.kennisbank === bank; });
     var hoofd = eigen.filter(function (k) { return k.type === "faq"; })[0] || items[0];
     u.appendChild(el("p", "tvb-label", "Staat in flowchart"));
-    u.appendChild(link((hoofd.kennisbank_titel || hoofd.kennisbank) + " →", hoofd.flowchart_url, "tvb-fc"));
+    u.appendChild(link((hoofd.kennisbank_titel || hoofd.kennisbank) + " →", bovenaan(hoofd.flowchart_url), "tvb-fc"));
     u.appendChild(el("p", "tvb-label", "Kort antwoord"));
     if (hoofd.type !== "faq" && hoofd.titel) u.appendChild(el("p", "tvb-tekst", hoofd.titel)).style.fontWeight = "600";
     var t = el("p", "tvb-tekst tvb-klem", hoofd.tekst || "");
@@ -232,7 +238,9 @@
     if (hoofd.versie) meta.push("versie " + hoofd.versie);
     if (meta.length) u.appendChild(el("p", "tvb-meta", meta.join(" · ").replace(/^./, function (c) { return c.toUpperCase(); })));
     if (hoofd.let_op) u.appendChild(el("p", "tvb-letop", hoofd.let_op));
-    u.appendChild(link("Open de flowchart →", hoofd.flowchart_url, "tvb-open"));
+    u.appendChild(link("Open de flowchart →", bovenaan(hoofd.flowchart_url), "tvb-open"));
+    if (hoofd.flowchart_url && hoofd.flowchart_url.indexOf("#") > 0)
+      u.appendChild(link("Direct naar deze passage →", hoofd.flowchart_url, "tvb-open tvb-open-licht"));
     // "Ook relevant": alleen een andere kennisbank die de vraag echt raakt,
     // dus minstens de helft van de vraag dekt of dicht bij de topscore zit.
     // Zonder die eis kwam bij "Hoe herken ik zorgfraude?" de meldplichtbank
@@ -249,7 +257,7 @@
       var ol = el("ul", "tvb-ook");
       ook.slice(0, 3).forEach(function (k) {
         var li = el("li");
-        li.appendChild(link(k.kennisbank_titel || k.kennisbank, k.flowchart_url));
+        li.appendChild(link(k.kennisbank_titel || k.kennisbank, bovenaan(k.flowchart_url)));
         ol.appendChild(li);
       });
       u.appendChild(ol);
@@ -265,7 +273,11 @@
     c.appendChild(el("p", "tvb-tekst", k.tekst || ""));
     if (k.bron) c.appendChild(el("p", "tvb-bron", "Bron: " + k.bron));
     var meta = el("p", "tvb-meta");
-    meta.appendChild(link(k.kennisbank_titel || k.kennisbank, k.flowchart_url));
+    meta.appendChild(link(k.kennisbank_titel || k.kennisbank, bovenaan(k.flowchart_url)));
+    if (k.flowchart_url && k.flowchart_url.indexOf("#") > 0) {
+      meta.appendChild(document.createTextNode(" · "));
+      meta.appendChild(link("naar deze passage", k.flowchart_url));
+    }
     if (k.peildatum) meta.appendChild(document.createTextNode(" · getoetst tot " + nlDatum(k.peildatum)));
     c.appendChild(meta);
     if (k.let_op) c.appendChild(el("p", "tvb-letop", k.let_op));
