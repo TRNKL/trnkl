@@ -231,7 +231,7 @@
   .zij-paneel { background: var(--bg-primary); border: 0.5px solid var(--border-mid); border-radius: 14px; padding: 16px; }
   .zp-titel { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
   .zp-sub { font-size: 10.5px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5; }
-  .fase { display: none; }
+  .fase { display: none; scroll-margin-top: 84px; }
   .fase.actief { display: block; }
 
   .land-groep { font-size: 9px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin: 12px 0 5px; }
@@ -2111,6 +2111,9 @@ function gaNaarFase(f){
   if(f===2) vulStroomSelects();
   if(f===3) renderVragen();
   if(f===4) renderOverzicht();
+  // Begin elke stap bovenaan: op een telefoon staan de panelen onder elkaar en bleef de
+  // pagina anders staan waar de knop van de vorige stap stond, dus onderaan de nieuwe stap.
+  document.getElementById('fase-' + f).scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 function printOverzicht(){
   renderOverzicht();
