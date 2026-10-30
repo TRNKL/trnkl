@@ -107,6 +107,8 @@ body { font-family: var(--font); background: var(--bg-secondary); color: var(--t
 a { color: var(--orange-text); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+/* Header op volle breedte, zoals de flowchart-header: logo aan de linkerrand (30 oktober 2026) */
+.container-nav { padding: 0 24px; }
 .merkpunt { display: inline-block; width: 0.15em; height: 0.15em; border-radius: 50%; background: currentColor; vertical-align: baseline; margin-left: 0.09em; }
 .accent { color: var(--orange-text); font-weight: 700; letter-spacing: -0.02em; }
 /* Header */
@@ -151,7 +153,7 @@ footer { padding: 36px 0; background: var(--bg-primary); border-top: 0.5px solid
 <body>
 
 <header>
-  <div class="container-narrow">
+  <div class="container-nav">
     <nav class="nav">
       <a href="index.html" class="nav-logo"><span class="bl-mark">TRNKL<span class="merkpunt"></span></span></a>
       <div class="nav-links">
